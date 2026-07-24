@@ -1,0 +1,4347 @@
+{
+  "config": "subscription/ponyo.json",
+  "accelerator": "https://cdn.jsdelivr.net",
+  "proxy_disabled": true,
+  "rounds": 2,
+  "summary": {
+    "verified": 99,
+    "builtin-or-conditional": 74,
+    "partial": 2
+  },
+  "sites": [
+    {
+      "index": 0,
+      "key": "drpy_js_豆瓣",
+      "name": "豆瓣推荐",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/drpy.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 1,
+      "key": "配置中心",
+      "name": "配置中心",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 2,
+      "key": "本地",
+      "name": "本地视频",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 3,
+      "key": "新闪雷",
+      "name": "新闪雷影视（MP4）",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/新闪雷.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 4,
+      "key": "fyyy",
+      "name": "飞宇影视",
+      "verdict": "verified",
+      "urls": [
+        "http://ntfeiyu.com/nt/{cateId}/area/{area}/by/{by}/class/{class}/lang/{lang}/page/{catePg}/year/{year}.html"
+      ]
+    },
+    {
+      "index": 5,
+      "key": "cupfox_in",
+      "name": "茶杯狐影视",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/茶杯狐.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 6,
+      "key": "italkbbtv",
+      "name": "ITalkBB影视（海外）",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/ITalkBBTV.py"
+      ]
+    },
+    {
+      "index": 7,
+      "key": "qiletv",
+      "name": "奇乐影视",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/奇乐.json"
+      ]
+    },
+    {
+      "index": 8,
+      "key": "热播影视",
+      "name": "热播影视",
+      "verdict": "verified",
+      "urls": [
+        "http://v.rbotv.cn"
+      ]
+    },
+    {
+      "index": 9,
+      "key": "橙子99",
+      "name": "橙子影视",
+      "verdict": "verified",
+      "urls": [
+        "http://113.31.180.218:19987/app/bn"
+      ]
+    },
+    {
+      "index": 10,
+      "key": "剧圈99",
+      "name": "剧圈影视（线路1）",
+      "verdict": "verified",
+      "urls": [
+        "http://124.221.3.182:19987/app/bn"
+      ]
+    },
+    {
+      "index": 11,
+      "key": "双星99",
+      "name": "双星影视",
+      "verdict": "verified",
+      "urls": [
+        "http://175.178.65.250:19987/app/bn"
+      ]
+    },
+    {
+      "index": 12,
+      "key": "天堂",
+      "name": "天堂影视",
+      "verdict": "verified",
+      "urls": [
+        "https://dyttandroid04-1372779881.cos.ap-shanghai.myqcloud.com/app_dyttandroid.txt"
+      ]
+    },
+    {
+      "index": 13,
+      "key": "橘汁",
+      "name": "橘汁影视",
+      "verdict": "verified",
+      "urls": [
+        "https://123-1349250429.cos.ap-shanghai.myqcloud.com/app.txt"
+      ]
+    },
+    {
+      "index": 14,
+      "key": "苹果",
+      "name": "苹果影视",
+      "verdict": "verified",
+      "urls": [
+        "https://xpgandroid03-1372779881.cos.ap-beijing.myqcloud.com/app_xpg_android.txt"
+      ]
+    },
+    {
+      "index": 15,
+      "key": "薯条",
+      "name": "薯条影视",
+      "verdict": "verified",
+      "urls": [
+        "https://dyttandroid-1372779881.cos.ap-guangzhou.myqcloud.com/app_dyttandroid.txt"
+      ]
+    },
+    {
+      "index": 16,
+      "key": "蓝鹰",
+      "name": "蓝鹰影视",
+      "verdict": "verified",
+      "urls": [
+        "https://xinlanyinghb.oss-cn-wuhan-lr.aliyuncs.com/xly.txt"
+      ]
+    },
+    {
+      "index": 17,
+      "key": "高清",
+      "name": "高清影视",
+      "verdict": "verified",
+      "urls": [
+        "https://yun-1316442804.cos.ap-guangzhou.myqcloud.com/602.txt"
+      ]
+    },
+    {
+      "index": 18,
+      "key": "麻花",
+      "name": "麻花影视",
+      "verdict": "verified",
+      "urls": [
+        "http://150.158.123.62:130"
+      ]
+    },
+    {
+      "index": 19,
+      "key": "不戳",
+      "name": "不戳影视",
+      "verdict": "verified",
+      "urls": [
+        "https://appcmszbc.zbc4k.app"
+      ]
+    },
+    {
+      "index": 20,
+      "key": "魔方",
+      "name": "魔方影视",
+      "verdict": "verified",
+      "urls": [
+        "https://www.douy32mf.top"
+      ]
+    },
+    {
+      "index": 21,
+      "key": "王子",
+      "name": "王子影视",
+      "verdict": "verified",
+      "urls": [
+        "https://app.95112475.xyz"
+      ]
+    },
+    {
+      "index": 22,
+      "key": "茉莉",
+      "name": "茉莉影视",
+      "verdict": "verified",
+      "urls": [
+        "https://allinadmin.oss-cn-hangzhou.aliyuncs.com/bk/9.txt"
+      ]
+    },
+    {
+      "index": 23,
+      "key": "玩偶",
+      "name": "玩偶影视（4K）",
+      "verdict": "verified",
+      "urls": [
+        "https://wogg.xxooo.cf",
+        "https://woggpan.xxooo.cf",
+        "https://www.wogg.net"
+      ]
+    },
+    {
+      "index": 24,
+      "key": "快映",
+      "name": "快映影视（4K）",
+      "verdict": "verified",
+      "urls": [
+        "http://38.76.197.172:12521"
+      ]
+    },
+    {
+      "index": 25,
+      "key": "木偶",
+      "name": "木偶影视（4K）",
+      "verdict": "verified",
+      "urls": [
+        "https://123.666291.xyz",
+        "https://666.666291.xyz",
+        "https://www.muou.asia",
+        "https://www.muou.site"
+      ]
+    },
+    {
+      "index": 26,
+      "key": "至臻",
+      "name": "至臻影视（4K）",
+      "verdict": "verified",
+      "urls": [
+        "https://mihdr.top",
+        "https://www.mihdr.top",
+        "https://www.miqk.cc"
+      ]
+    },
+    {
+      "index": 27,
+      "key": "多多",
+      "name": "多多影视（4K）",
+      "verdict": "verified",
+      "urls": [
+        "https://tv.214521.xyz",
+        "https://tv.yydsys.cc",
+        "https://tv.yydsys.top"
+      ]
+    },
+    {
+      "index": 28,
+      "key": "欧哥",
+      "name": "欧哥影视（4K）",
+      "verdict": "verified",
+      "urls": [
+        "https://woog.430520.xyz",
+        "https://woog.nxog.eu.org",
+        "https://woog.nxog.fun"
+      ]
+    },
+    {
+      "index": 29,
+      "key": "虎斑",
+      "name": "虎斑影视（4K）",
+      "verdict": "verified",
+      "urls": [
+        "http://38.76.197.172:16969"
+      ]
+    },
+    {
+      "index": 30,
+      "key": "短木",
+      "name": "短木影视（4K）",
+      "verdict": "verified",
+      "urls": [
+        "https://duanmu.laozhangone.top"
+      ]
+    },
+    {
+      "index": 31,
+      "key": "123",
+      "name": "123影视（4K）",
+      "verdict": "verified",
+      "urls": [
+        "https://123panfx.com",
+        "https://pan1.me"
+      ]
+    },
+    {
+      "index": 32,
+      "key": "星芽短剧",
+      "name": "星芽短剧",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/XYDJ.py"
+      ]
+    },
+    {
+      "index": 33,
+      "key": "果果短剧",
+      "name": "果果短剧",
+      "verdict": "verified",
+      "urls": [
+        "https://www.mochadj.com/i/{cateId}-{catePg}.html"
+      ]
+    },
+    {
+      "index": 34,
+      "key": "厂长影视",
+      "name": "厂长影视（线路1）",
+      "verdict": "verified",
+      "urls": [
+        "https://cz01.vip"
+      ]
+    },
+    {
+      "index": 35,
+      "key": "修罗影视",
+      "name": "修罗影视",
+      "verdict": "verified",
+      "urls": [
+        "https://www.xlysw.ggff.net"
+      ]
+    },
+    {
+      "index": 36,
+      "key": "农民影视",
+      "name": "农民影视",
+      "verdict": "verified",
+      "urls": [
+        "https://vip.wwgz.cn:5200"
+      ]
+    },
+    {
+      "index": 37,
+      "key": "枫叶影视",
+      "name": "枫叶影视",
+      "verdict": "verified",
+      "urls": [
+        "https://www.cd-zj.com/cupfox-list/{cateId}-{area}--{class}-----{catePg}---{year}.html",
+        "https://www.cd-zj.com/label/qq.html"
+      ]
+    },
+    {
+      "index": 38,
+      "key": "小镇影视",
+      "name": "小镇影视",
+      "verdict": "verified",
+      "urls": [
+        "http://dyxz.tv/list/{cateId}_{catePg}.html"
+      ]
+    },
+    {
+      "index": 39,
+      "key": "面包影视",
+      "name": "面包影视",
+      "verdict": "verified",
+      "urls": [
+        "https://v.aiwule.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html"
+      ]
+    },
+    {
+      "index": 40,
+      "key": "永乐影视",
+      "name": "永乐影视",
+      "verdict": "verified",
+      "urls": [
+        "https://www.ylys.tv/vodshow/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html"
+      ]
+    },
+    {
+      "index": 41,
+      "key": "剧圈影视",
+      "name": "剧圈影视（线路2）",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/JQYS.json"
+      ]
+    },
+    {
+      "index": 42,
+      "key": "哆啦新番社",
+      "name": "哆啦动漫",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/DLXFS.json"
+      ]
+    },
+    {
+      "index": 43,
+      "key": "Anime1",
+      "name": "A1动漫",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/Anime1.js",
+        "https://pan.vma.cc/pan/down.php/ec67b9045d393737f073d2c9365533f0.js"
+      ]
+    },
+    {
+      "index": 44,
+      "key": "方舟动漫",
+      "name": "方舟动漫",
+      "verdict": "verified",
+      "urls": [
+        "https://www.cyfz.top"
+      ]
+    },
+    {
+      "index": 45,
+      "key": "曼波动漫",
+      "name": "曼波动漫",
+      "verdict": "verified",
+      "urls": [
+        "https://app.omofun1.top"
+      ]
+    },
+    {
+      "index": 46,
+      "key": "咕咕动漫",
+      "name": "咕咕动漫（线路1）",
+      "verdict": "verified",
+      "urls": [
+        "https://www.gugu3.com"
+      ]
+    },
+    {
+      "index": 47,
+      "key": "巴士动漫",
+      "name": "巴士动漫（线路1）",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/BSDM.json"
+      ]
+    },
+    {
+      "index": 48,
+      "key": "路漫漫",
+      "name": "路漫漫动漫（线路1）",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/LMM.js",
+        "https://pan.vma.cc/pan/down.php/ec67b9045d393737f073d2c9365533f0.js"
+      ]
+    },
+    {
+      "index": 49,
+      "key": "去看吧",
+      "name": "去看吧动漫（线路1）",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/QKB.js",
+        "https://pan.vma.cc/pan/down.php/ec67b9045d393737f073d2c9365533f0.js"
+      ]
+    },
+    {
+      "index": 50,
+      "key": "New6v",
+      "name": "New6V磁力",
+      "verdict": "verified",
+      "urls": [
+        "https://www.xb6v.com"
+      ]
+    },
+    {
+      "index": 51,
+      "key": "迅雷吧",
+      "name": "迅雷吧磁力",
+      "verdict": "verified",
+      "urls": [
+        "https://xunlei8.me"
+      ]
+    },
+    {
+      "index": 52,
+      "key": "电影港",
+      "name": "电影港磁力",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/DYG.json"
+      ]
+    },
+    {
+      "index": 53,
+      "key": "米搜",
+      "name": "米搜搜索",
+      "verdict": "verified",
+      "urls": [
+        "http://www.misoso.shop",
+        "https://misoso.shop"
+      ]
+    },
+    {
+      "index": 54,
+      "key": "爱听音乐",
+      "name": "爱听音乐",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/爱听音乐.py"
+      ]
+    },
+    {
+      "index": 55,
+      "key": "网络直播",
+      "name": "网络直播",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/WLZB.py"
+      ]
+    },
+    {
+      "index": 56,
+      "key": "哔哩直播",
+      "name": "哔哩直播",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/BLZB.py"
+      ]
+    },
+    {
+      "index": 57,
+      "key": "电影天堂",
+      "name": "电影天堂影视",
+      "verdict": "verified",
+      "urls": [
+        "http://caiji.dyttzyapi.com/api.php/provide/vod"
+      ]
+    },
+    {
+      "index": 58,
+      "key": "天涯采集",
+      "name": "天涯影视",
+      "verdict": "verified",
+      "urls": [
+        "http://tyyszy.com/api.php/provide/vod"
+      ]
+    },
+    {
+      "index": 59,
+      "key": "量子",
+      "name": "量子采集（直连）",
+      "verdict": "verified",
+      "urls": [
+        "https://cj.lziapi.com/api.php/provide/vod/"
+      ]
+    },
+    {
+      "index": 60,
+      "key": "非凡",
+      "name": "非凡采集（直连）",
+      "verdict": "verified",
+      "urls": [
+        "http://ffzy.tv/api.php/provide/vod/"
+      ]
+    },
+    {
+      "index": 61,
+      "key": "索尼",
+      "name": "索尼采集（直连）",
+      "verdict": "verified",
+      "urls": [
+        "https://suoniapi.com/api.php/provide/vod/at/xml/"
+      ]
+    },
+    {
+      "index": 62,
+      "key": "卧龙资源",
+      "name": "卧龙采集（直连）",
+      "verdict": "verified",
+      "urls": [
+        "https://wolongzyw.com/api.php/provide/vod/?ac=list"
+      ]
+    },
+    {
+      "index": 63,
+      "key": "极速资源",
+      "name": "极速采集（直连）",
+      "verdict": "verified",
+      "urls": [
+        "https://jszyapi.com/api.php/provide/vod/?ac=list"
+      ]
+    },
+    {
+      "index": 64,
+      "key": "率率",
+      "name": "率率采集（直连）",
+      "verdict": "verified",
+      "urls": [
+        "https://suoniapi.com/api.php/provide/vod/?ac=list"
+      ]
+    },
+    {
+      "index": 65,
+      "key": "百度",
+      "name": "百度",
+      "verdict": "verified",
+      "urls": [
+        "https://api.apibdzy.com/api.php/provide/vod?ac=list"
+      ]
+    },
+    {
+      "index": 66,
+      "key": "暴風",
+      "name": "暴風采集（直连）",
+      "verdict": "verified",
+      "urls": [
+        "https://bfzyapi.com/api.php/provide/vod/?ac=list"
+      ]
+    },
+    {
+      "index": 67,
+      "key": "drpy_js_360影视",
+      "name": "360官源",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/360影视.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 68,
+      "key": "drpy_js_百忙无果",
+      "name": "芒果官源",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/百忙无果.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 69,
+      "key": "drpy_js_腾云驾雾",
+      "name": "腾讯官源",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/腾云驾雾.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 70,
+      "key": "drpy_js_奇珍异兽",
+      "name": "爱奇艺官源",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/奇珍异兽.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 71,
+      "key": "drpy_js_菜狗",
+      "name": "搜狗官源",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/菜狗.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 72,
+      "key": "drpy_js_优酷",
+      "name": "优酷官源",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/优酷.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 73,
+      "key": "drpy_js_Anime1动畫",
+      "name": "Anime1动漫",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/Anime1动畫.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 74,
+      "key": "drpy_js_NT动漫",
+      "name": "NT动漫",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/NT动漫.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 75,
+      "key": "drpy_js_路漫漫",
+      "name": "路漫漫动漫（线路2）",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/路漫漫.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 76,
+      "key": "drpy_js_去看吧",
+      "name": "去看吧动漫（线路2）",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/去看吧.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 77,
+      "key": "drpy_js_A8音乐",
+      "name": "A8音乐",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/A8音乐.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 78,
+      "key": "drpy_js_DJ音乐",
+      "name": "DJ音乐",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/DJ音乐.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 79,
+      "key": "drpy_js_蜻蜓FM",
+      "name": "蜻蜓电台（线路1）",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/蜻蜓FM.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 80,
+      "key": "drpy_js_爱上你听书网",
+      "name": "爱上你听书",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/爱上你听书网.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 81,
+      "key": "drpy_js_博看听书",
+      "name": "博看听书",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/博看听书.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 82,
+      "key": "drpy_js_海洋听书",
+      "name": "海洋听书",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/海洋听书.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 83,
+      "key": "drpy_js_有声小说",
+      "name": "有声小说听书",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/有声小说吧.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 84,
+      "key": "drpy_js_播客",
+      "name": "播客",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/播客.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 85,
+      "key": "drpy_js_酷6网",
+      "name": "酷6网",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/酷6网.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 86,
+      "key": "drpy_js_网易公版影像",
+      "name": "网易公版",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/网易公版影像.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 87,
+      "key": "應用商店",
+      "name": "應用商店",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/market.json"
+      ]
+    },
+    {
+      "index": 88,
+      "key": "bb",
+      "name": "配置接口完全免费",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/drpy.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 89,
+      "key": "cc",
+      "name": "请勿相信视频中任何广告",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/drpy.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 90,
+      "key": "立播",
+      "name": "立播影视",
+      "verdict": "verified",
+      "urls": [
+        "https://www.libvio.pw/"
+      ]
+    },
+    {
+      "index": 91,
+      "key": "新6V",
+      "name": "新6V磁力",
+      "verdict": "verified",
+      "urls": [
+        "https://www.xb6v.com/"
+      ]
+    },
+    {
+      "index": 92,
+      "key": "MTV",
+      "name": "明星MV",
+      "verdict": "verified",
+      "urls": [
+        "https://nos.netease.com/ysf/5af5fbe12a88b7c45aa1c21e6551826c.txt"
+      ]
+    },
+    {
+      "index": 93,
+      "key": "虎牙js",
+      "name": "虎牙直播",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/drpy2.min.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/虎牙.js"
+      ]
+    },
+    {
+      "index": 94,
+      "key": "斗鱼js",
+      "name": "斗鱼直播",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/drpy2.min.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/斗鱼直播.js"
+      ]
+    },
+    {
+      "index": 95,
+      "key": "ZPan",
+      "name": "盘搜搜索（线路1）",
+      "verdict": "verified",
+      "urls": [
+        "http://107.173.211.148/"
+      ]
+    },
+    {
+      "index": 96,
+      "key": "JPan",
+      "name": "易搜搜索",
+      "verdict": "verified",
+      "urls": [
+        "https://so.252035.xyz/"
+      ]
+    },
+    {
+      "index": 97,
+      "key": "Bili",
+      "name": "哔哔合集视频",
+      "verdict": "verified",
+      "urls": [
+        "https://nos.netease.com/ysf/0075389dca9afadd4614e9713765ff17.txt"
+      ]
+    },
+    {
+      "index": 98,
+      "key": "Biliych",
+      "name": "哔哔演唱会视频",
+      "verdict": "verified",
+      "urls": [
+        "https://nos.netease.com/ysf/6496356286589c68f52c2f99c0c674c7.txt"
+      ]
+    },
+    {
+      "index": 99,
+      "key": "dr_兔小贝",
+      "name": "儿童教学",
+      "verdict": "verified",
+      "urls": [
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/%E5%85%94%E5%B0%8F%E8%B4%9D.js",
+        "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/drpy2.min.js"
+      ]
+    },
+    {
+      "index": 100,
+      "key": "高中教育",
+      "name": "高中教学",
+      "verdict": "verified",
+      "urls": [
+        "https://nos.netease.com/ysf/c66a4b5356141c49fd45ec51568017b4.txt"
+      ]
+    },
+    {
+      "index": 101,
+      "key": "蜡笔",
+      "name": "蜡笔影视（4K）",
+      "verdict": "partial",
+      "urls": [
+        "http://feimo.fun",
+        "http://tvpanpan.site",
+        "http://www.xiaocgege.shop",
+        "http://xiaocgege.shop",
+        "https://www.xiaocge.fun"
+      ]
+    },
+    {
+      "index": 102,
+      "key": "二小",
+      "name": "二小影视（4K）",
+      "verdict": "partial",
+      "urls": [
+        "https://2xiaopan.top",
+        "https://wexwp.cc",
+        "https://www.2xiaopan.top",
+        "https://www.2xiaozhan.top",
+        "https://www.erxiaozhan.top"
+      ]
+    },
+    {
+      "index": 103,
+      "key": "预告",
+      "name": "新片预告",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 104,
+      "key": "三秋影视",
+      "name": "三秋影视",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 105,
+      "key": "马猴影视",
+      "name": "马猴影视",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 106,
+      "key": "哔哩视频",
+      "name": "哔哩视频",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 107,
+      "key": "光鸭臻影社",
+      "name": "鸭社影视（4K）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 108,
+      "key": "指南",
+      "name": "指南影视（4K）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 109,
+      "key": "人人",
+      "name": "人人影视（4K）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 110,
+      "key": "即刻",
+      "name": "即刻影视（4K）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 111,
+      "key": "双星",
+      "name": "双星影视（4K）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 112,
+      "key": "笒鬼短剧",
+      "name": "笒鬼短剧",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 113,
+      "key": "好看短剧",
+      "name": "好看短剧",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 114,
+      "key": "瓜子影视",
+      "name": "瓜子影视（线路1）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 115,
+      "key": "山楂影视",
+      "name": "山楂影视",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 116,
+      "key": "飞娱影视",
+      "name": "飞娱影视",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 117,
+      "key": "独播影视",
+      "name": "独播影视",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 118,
+      "key": "爱看机器人",
+      "name": "爱看影视",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 119,
+      "key": "1905",
+      "name": "1905影视",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 120,
+      "key": "荐片",
+      "name": "荐片磁力",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 121,
+      "key": "美剧迷",
+      "name": "美剧迷磁力",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 122,
+      "key": "阿里云盘",
+      "name": "阿里网盘",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 123,
+      "key": "夸克网盘",
+      "name": "夸克网盘",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 124,
+      "key": "UC网盘",
+      "name": "UC网盘",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 125,
+      "key": "百度网盘",
+      "name": "百度网盘",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 126,
+      "key": "聚合",
+      "name": "搜索",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 127,
+      "key": "盘搜",
+      "name": "盘搜搜索（线路2）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 128,
+      "key": "百酷",
+      "name": "百酷搜索",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 129,
+      "key": "酷乐",
+      "name": "酷乐搜索",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 130,
+      "key": "鬼鬼",
+      "name": "鬼鬼搜索",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 131,
+      "key": "天翼",
+      "name": "天翼搜索",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 132,
+      "key": "趣盘",
+      "name": "趣盘搜索",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 133,
+      "key": "88看球",
+      "name": "88体育",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 134,
+      "key": "球通体育",
+      "name": "球通体育",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 135,
+      "key": "瓜子体育",
+      "name": "瓜子体育",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 136,
+      "key": "咖啡体育",
+      "name": "咖啡体育",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 137,
+      "key": "919体育",
+      "name": "919体育",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 138,
+      "key": "呦呦DJ",
+      "name": "呦呦音乐",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 139,
+      "key": "轮回DJ",
+      "name": "轮回音乐",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 140,
+      "key": "蜻蜓FM",
+      "name": "蜻蜓电台（线路2）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 141,
+      "key": "世界听书",
+      "name": "世界听书",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 142,
+      "key": "戏曲多多",
+      "name": "多多戏曲",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 143,
+      "key": "急救教学",
+      "name": "急救教学（线路1）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 144,
+      "key": "养生堂",
+      "name": "养生知识",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 145,
+      "key": "push_agent",
+      "name": "手机推送",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 146,
+      "key": "点我切源",
+      "name": "线路修复",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 147,
+      "key": "MDrive",
+      "name": "我的云盘我配置",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 148,
+      "key": "YGP",
+      "name": "叨观荐影预告片",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 149,
+      "key": "MTV1",
+      "name": "易听音乐带歌词",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 150,
+      "key": "seed",
+      "name": "聚剧搜索",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 151,
+      "key": "光影",
+      "name": "光影影视",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 152,
+      "key": "原创",
+      "name": "原创影视",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 153,
+      "key": "厂长",
+      "name": "厂长影视（线路2）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 154,
+      "key": "瓜子",
+      "name": "瓜子影视（线路2）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 155,
+      "key": "比特",
+      "name": "比特影视",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 156,
+      "key": "糯米",
+      "name": "糯米秒播",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 157,
+      "key": "文采",
+      "name": "文采秒播",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 158,
+      "key": "奶酪",
+      "name": "奶酪秒播",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 159,
+      "key": "热播",
+      "name": "热播多线",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 160,
+      "key": "视界",
+      "name": "茉莉多线",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 161,
+      "key": "播客",
+      "name": "播客多线",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 162,
+      "key": "剧圈",
+      "name": "剧圈多线",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 163,
+      "key": "奥特",
+      "name": "奥特多线",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 164,
+      "key": "咕咕",
+      "name": "咕咕动漫（线路2）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 165,
+      "key": "Dm84",
+      "name": "巴士动漫（线路2）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 166,
+      "key": "看球",
+      "name": "八八体育",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 167,
+      "key": "吃瓜",
+      "name": "吃瓜体育",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 168,
+      "key": "alllive",
+      "name": "一直播",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 169,
+      "key": "有声小说",
+      "name": "有声小说",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 170,
+      "key": "Aid",
+      "name": "急救教学（线路2）",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 171,
+      "key": "YpanSo",
+      "name": "盘她夸父",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 172,
+      "key": "BpanSo",
+      "name": "盘他嘟嘟",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 173,
+      "key": "抠搜",
+      "name": "抠抠搜搜",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    },
+    {
+      "index": 174,
+      "key": "UC",
+      "name": "优汐搜搜",
+      "verdict": "builtin-or-conditional",
+      "urls": []
+    }
+  ],
+  "url_results": [
+    {
+      "url": "http://107.173.211.148/",
+      "target": "http://107.173.211.148/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 438,
+          "content_type": "text/html",
+          "seconds": 0.353,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 438,
+          "content_type": "text/html",
+          "seconds": 0.356,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://113.31.180.218:19987/app/bn",
+      "target": "http://113.31.180.218:19987/app/bn",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 64,
+          "content_type": "application/json",
+          "seconds": 0.095,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 64,
+          "content_type": "application/json",
+          "seconds": 0.085,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://124.221.3.182:19987/app/bn",
+      "target": "http://124.221.3.182:19987/app/bn",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 64,
+          "content_type": "application/json",
+          "seconds": 0.095,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 64,
+          "content_type": "application/json",
+          "seconds": 0.082,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://150.158.123.62:130",
+      "target": "http://150.158.123.62:130",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 144,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.11,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 144,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.094,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://175.178.65.250:19987/app/bn",
+      "target": "http://175.178.65.250:19987/app/bn",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 64,
+          "content_type": "application/json",
+          "seconds": 0.11,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 64,
+          "content_type": "application/json",
+          "seconds": 0.096,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://38.76.197.172:12521",
+      "target": "http://38.76.197.172:12521",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 531372,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.932,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 532091,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.066,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://38.76.197.172:16969",
+      "target": "http://38.76.197.172:16969",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 519252,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.884,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 519252,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.104,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://caiji.dyttzyapi.com/api.php/provide/vod",
+      "target": "http://caiji.dyttzyapi.com/api.php/provide/vod",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 5887,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.587,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 5887,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.371,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://dyxz.tv/list/{cateId}_{catePg}.html",
+      "target": "http://dyxz.tv/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 31597,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.874,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 31597,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.832,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://feimo.fun",
+      "target": "http://feimo.fun",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 675727,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 2.381,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 675727,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 2.824,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://ffzy.tv/api.php/provide/vod/",
+      "target": "http://ffzy.tv/api.php/provide/vod/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 5766,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.325,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 5766,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.42,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://ntfeiyu.com/nt/{cateId}/area/{area}/by/{by}/class/{class}/lang/{lang}/page/{catePg}/year/{year}.html",
+      "target": "http://ntfeiyu.com/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 75328,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.727,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 75328,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 2.224,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://tvpanpan.site",
+      "target": "http://tvpanpan.site",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 675727,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 2.541,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 675727,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 2.027,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://tyyszy.com/api.php/provide/vod",
+      "target": "http://tyyszy.com/api.php/provide/vod",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 6804,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.727,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 6804,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.91,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://v.rbotv.cn",
+      "target": "http://v.rbotv.cn",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 3,
+          "content_type": "text/html; charset=UTF-8",
+          "seconds": 0.128,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 3,
+          "content_type": "text/html; charset=UTF-8",
+          "seconds": 0.137,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://www.misoso.shop",
+      "target": "http://www.misoso.shop",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 9186,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.343,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 9186,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.4,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "http://www.xiaocgege.shop",
+      "target": "http://www.xiaocgege.shop",
+      "ok": false,
+      "successes": 0,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 0,
+          "bytes": 0,
+          "content_type": "",
+          "seconds": 7.349,
+          "error": "curl: (28) Failed to connect to www.xiaocgege.shop port 80 after 8006 ms: Timeout was reached"
+        },
+        {
+          "status": 0,
+          "bytes": 0,
+          "content_type": "",
+          "seconds": 7.352,
+          "error": "curl: (28) Failed to connect to www.xiaocgege.shop port 80 after 8011 ms: Timeout was reached"
+        }
+      ]
+    },
+    {
+      "url": "http://xiaocgege.shop",
+      "target": "http://xiaocgege.shop",
+      "ok": false,
+      "successes": 0,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 0,
+          "bytes": 0,
+          "content_type": "",
+          "seconds": 7.408,
+          "error": "curl: (28) Failed to connect to xiaocgege.shop port 80 after 8007 ms: Timeout was reached"
+        },
+        {
+          "status": 0,
+          "bytes": 0,
+          "content_type": "",
+          "seconds": 7.354,
+          "error": "curl: (28) Failed to connect to xiaocgege.shop port 80 after 8013 ms: Timeout was reached"
+        }
+      ]
+    },
+    {
+      "url": "https://123-1349250429.cos.ap-shanghai.myqcloud.com/app.txt",
+      "target": "https://123-1349250429.cos.ap-shanghai.myqcloud.com/app.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 66,
+          "content_type": "text/plain",
+          "seconds": 0.349,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 66,
+          "content_type": "text/plain",
+          "seconds": 0.299,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://123.666291.xyz",
+      "target": "https://123.666291.xyz",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 586082,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 5.83,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 586082,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 8.181,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://123panfx.com",
+      "target": "https://123panfx.com",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 78522,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.603,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 78522,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.836,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://2xiaopan.top",
+      "target": "https://2xiaopan.top",
+      "ok": false,
+      "successes": 0,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 0,
+          "bytes": 0,
+          "content_type": "",
+          "seconds": 0.106,
+          "error": "curl: (6) Could not resolve host: 2xiaopan.top"
+        },
+        {
+          "status": 0,
+          "bytes": 0,
+          "content_type": "",
+          "seconds": 0.064,
+          "error": "curl: (6) Could not resolve host: 2xiaopan.top"
+        }
+      ]
+    },
+    {
+      "url": "https://666.666291.xyz",
+      "target": "https://666.666291.xyz",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 586082,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.823,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 586082,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 7.525,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://allinadmin.oss-cn-hangzhou.aliyuncs.com/bk/9.txt",
+      "target": "https://allinadmin.oss-cn-hangzhou.aliyuncs.com/bk/9.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 26,
+          "content_type": "text/plain",
+          "seconds": 0.35,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 26,
+          "content_type": "text/plain",
+          "seconds": 0.453,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://api.apibdzy.com/api.php/provide/vod?ac=list",
+      "target": "https://api.apibdzy.com/api.php/provide/vod?ac=list",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 6533,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.964,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 6533,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 2.175,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://app.95112475.xyz",
+      "target": "https://app.95112475.xyz",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 13519,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.886,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 13519,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.867,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://app.omofun1.top",
+      "target": "https://app.omofun1.top",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 13519,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.789,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 13519,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.783,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://appcmszbc.zbc4k.app",
+      "target": "https://appcmszbc.zbc4k.app",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 13519,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.404,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 13519,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.341,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://bfzyapi.com/api.php/provide/vod/?ac=list",
+      "target": "https://bfzyapi.com/api.php/provide/vod/?ac=list",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 6952,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.117,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 6952,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.699,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/%E5%85%94%E5%B0%8F%E8%B4%9D.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/%E5%85%94%E5%B0%8F%E8%B4%9D.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 1009,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.945,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 1009,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.865,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/drpy2.min.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/drpy2.min.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 67381,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 5.139,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 67381,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.389,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/斗鱼直播.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/斗鱼直播.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 32258,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 3.033,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 32258,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.187,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/虎牙.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/FTY/虎牙.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 46047,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 3.153,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 46047,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.794,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/360影视.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/360影视.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 23845,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 4.509,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 23845,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.162,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/A8音乐.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/A8音乐.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 668,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.635,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 668,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.296,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/Anime1.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/Anime1.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 6560,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 3.168,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 6560,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.986,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/Anime1动畫.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/Anime1动畫.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 4910,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.691,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 4910,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 10.886,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/DJ音乐.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/DJ音乐.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 1708,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 5.471,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 1708,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.244,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/LMM.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/LMM.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 16510,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.79,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 16510,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 4.066,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/NT动漫.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/NT动漫.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 25827,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 4.138,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 25827,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.276,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/QKB.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/QKB.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 31221,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.91,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 31221,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 4.152,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/drpy.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/drpy.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 14120,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.108,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 14120,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 3.536,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/优酷.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/优酷.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 73804,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.84,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 73804,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.34,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/博看听书.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/博看听书.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 2039,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.331,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 2039,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.019,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/去看吧.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/去看吧.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 31221,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.726,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 31221,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 0.734,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/奇珍异兽.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/奇珍异兽.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 28088,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.435,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 28088,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.86,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/播客.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/播客.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 2008,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.476,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 2008,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.339,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/新闪雷.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/新闪雷.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 2172,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.231,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 2172,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 0.647,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/有声小说吧.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/有声小说吧.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 1830,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.361,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 1830,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.683,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/海洋听书.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/海洋听书.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 2068,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.425,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 2068,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 4.212,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/爱上你听书网.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/爱上你听书网.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 985,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 3.117,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 985,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.938,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/百忙无果.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/百忙无果.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 10871,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.692,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 10871,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 0.939,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/网易公版影像.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/网易公版影像.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 1007,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.12,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 1007,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.357,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/腾云驾雾.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/腾云驾雾.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 36451,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 5.494,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 36451,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 3.693,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/茶杯狐.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/茶杯狐.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 3811,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.853,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 3811,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.181,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/菜狗.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/菜狗.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 17612,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.902,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 17612,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.273,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/蜻蜓FM.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/蜻蜓FM.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 1225,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.898,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 1225,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 0.952,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/路漫漫.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/路漫漫.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 13672,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 11.07,
+          "error": "curl: (28) Operation timed out after 12065 milliseconds with 13672 bytes received"
+        },
+        {
+          "status": 206,
+          "bytes": 16510,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.196,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/酷6网.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/js/酷6网.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 888,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.025,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 888,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 2.005,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/BSDM.json",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/BSDM.json",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 3170,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 2.376,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 3170,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 1.91,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/DLXFS.json",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/DLXFS.json",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 1274,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 3.639,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 1274,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 1.882,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/DYG.json",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/DYG.json",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 6626,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 1.004,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 6626,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 0.843,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/JQYS.json",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/JQYS.json",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 3445,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 9.457,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 3445,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 2.054,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/market.json",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/market.json",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 4109,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 1.617,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 4109,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 3.048,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/奇乐.json",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/json/奇乐.json",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 2951,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 3.148,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 2951,
+          "content_type": "application/json; charset=utf-8",
+          "seconds": 0.872,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/lib/drpy2.min.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 111826,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 1.488,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 111826,
+          "content_type": "application/javascript; charset=utf-8",
+          "seconds": 3.366,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/BLZB.py",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/BLZB.py",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 9750,
+          "content_type": "application/octet-stream",
+          "seconds": 2.97,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 9750,
+          "content_type": "application/octet-stream",
+          "seconds": 2.311,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/ITalkBBTV.py",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/ITalkBBTV.py",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 9958,
+          "content_type": "application/octet-stream",
+          "seconds": 1.168,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 9958,
+          "content_type": "application/octet-stream",
+          "seconds": 3.499,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/WLZB.py",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/WLZB.py",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 51041,
+          "content_type": "application/octet-stream",
+          "seconds": 4.878,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 51041,
+          "content_type": "application/octet-stream",
+          "seconds": 2.317,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/XYDJ.py",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/XYDJ.py",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 10933,
+          "content_type": "application/octet-stream",
+          "seconds": 2.563,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 10933,
+          "content_type": "application/octet-stream",
+          "seconds": 1.754,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/爱听音乐.py",
+      "target": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/py/爱听音乐.py",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 20181,
+          "content_type": "application/octet-stream",
+          "seconds": 1.861,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 20181,
+          "content_type": "application/octet-stream",
+          "seconds": 10.096,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cj.lziapi.com/api.php/provide/vod/",
+      "target": "https://cj.lziapi.com/api.php/provide/vod/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 7278,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.543,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 7278,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.389,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://cz01.vip",
+      "target": "https://cz01.vip",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 2355,
+          "content_type": "text/html",
+          "seconds": 0.578,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 2355,
+          "content_type": "text/html",
+          "seconds": 0.612,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://duanmu.laozhangone.top",
+      "target": "https://duanmu.laozhangone.top",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 309659,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 2.634,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 309659,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 2.785,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://dyttandroid-1372779881.cos.ap-guangzhou.myqcloud.com/app_dyttandroid.txt",
+      "target": "https://dyttandroid-1372779881.cos.ap-guangzhou.myqcloud.com/app_dyttandroid.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 65,
+          "content_type": "text/plain",
+          "seconds": 0.232,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 65,
+          "content_type": "text/plain",
+          "seconds": 0.265,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://dyttandroid04-1372779881.cos.ap-shanghai.myqcloud.com/app_dyttandroid.txt",
+      "target": "https://dyttandroid04-1372779881.cos.ap-shanghai.myqcloud.com/app_dyttandroid.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 65,
+          "content_type": "text/plain",
+          "seconds": 0.195,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 65,
+          "content_type": "text/plain",
+          "seconds": 0.159,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://jszyapi.com/api.php/provide/vod/?ac=list",
+      "target": "https://jszyapi.com/api.php/provide/vod/?ac=list",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 6285,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.892,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 6285,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.805,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://mihdr.top",
+      "target": "https://mihdr.top",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 731766,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.275,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 731766,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 4.124,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://misoso.shop",
+      "target": "https://misoso.shop",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 9186,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.019,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 9186,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.304,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://nos.netease.com/ysf/0075389dca9afadd4614e9713765ff17.txt",
+      "target": "https://nos.netease.com/ysf/0075389dca9afadd4614e9713765ff17.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 47957,
+          "content_type": "text/plain;charset=UTF-8",
+          "seconds": 0.295,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 47957,
+          "content_type": "text/plain;charset=UTF-8",
+          "seconds": 0.296,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://nos.netease.com/ysf/5af5fbe12a88b7c45aa1c21e6551826c.txt",
+      "target": "https://nos.netease.com/ysf/5af5fbe12a88b7c45aa1c21e6551826c.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 21954,
+          "content_type": "text/plain;charset=UTF-8",
+          "seconds": 0.265,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 21954,
+          "content_type": "text/plain;charset=UTF-8",
+          "seconds": 0.183,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://nos.netease.com/ysf/6496356286589c68f52c2f99c0c674c7.txt",
+      "target": "https://nos.netease.com/ysf/6496356286589c68f52c2f99c0c674c7.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 8484,
+          "content_type": "text/plain;charset=UTF-8",
+          "seconds": 0.182,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 8484,
+          "content_type": "text/plain;charset=UTF-8",
+          "seconds": 0.181,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://nos.netease.com/ysf/c66a4b5356141c49fd45ec51568017b4.txt",
+      "target": "https://nos.netease.com/ysf/c66a4b5356141c49fd45ec51568017b4.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 32078,
+          "content_type": "text/plain;charset=UTF-8",
+          "seconds": 0.218,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 32078,
+          "content_type": "text/plain;charset=UTF-8",
+          "seconds": 0.215,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://pan.vma.cc/pan/down.php/ec67b9045d393737f073d2c9365533f0.js",
+      "target": "https://pan.vma.cc/pan/down.php/ec67b9045d393737f073d2c9365533f0.js",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 65536,
+          "content_type": "text/javascript; charset=utf-8",
+          "seconds": 1.396,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 65536,
+          "content_type": "text/javascript; charset=utf-8",
+          "seconds": 1.123,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://pan1.me",
+      "target": "https://pan1.me",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 78492,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 2.302,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 78492,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.907,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://so.252035.xyz/",
+      "target": "https://so.252035.xyz/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 438,
+          "content_type": "text/html",
+          "seconds": 0.263,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 438,
+          "content_type": "text/html",
+          "seconds": 1.567,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://suoniapi.com/api.php/provide/vod/?ac=list",
+      "target": "https://suoniapi.com/api.php/provide/vod/?ac=list",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 6803,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.927,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 6803,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.561,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://suoniapi.com/api.php/provide/vod/at/xml/",
+      "target": "https://suoniapi.com/api.php/provide/vod/at/xml/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 5820,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.663,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 5820,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.883,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://tv.214521.xyz",
+      "target": "https://tv.214521.xyz",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 514511,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 4.828,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 514511,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 3.681,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://tv.yydsys.cc",
+      "target": "https://tv.yydsys.cc",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 515039,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 2.213,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 515039,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 3.335,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://tv.yydsys.top",
+      "target": "https://tv.yydsys.top",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 506215,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 11.031,
+          "error": "curl: (28) Operation timed out after 12021 milliseconds with 506215 bytes received"
+        },
+        {
+          "status": 200,
+          "bytes": 99793,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 11.066,
+          "error": "curl: (28) Operation timed out after 12056 milliseconds with 99793 bytes received"
+        }
+      ]
+    },
+    {
+      "url": "https://v.aiwule.com/vodshow/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html",
+      "target": "https://v.aiwule.com/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 139850,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.408,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 139850,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.881,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://vip.wwgz.cn:5200",
+      "target": "https://vip.wwgz.cn:5200",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 435,
+          "content_type": "text/html;Charset=utf-8",
+          "seconds": 0.156,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 435,
+          "content_type": "text/html;Charset=utf-8",
+          "seconds": 0.142,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://wexwp.cc",
+      "target": "https://wexwp.cc",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 700008,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 3.433,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 700008,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 2.587,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://wogg.xxooo.cf",
+      "target": "https://wogg.xxooo.cf",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 734484,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 3.718,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 734484,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 5.444,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://woggpan.xxooo.cf",
+      "target": "https://woggpan.xxooo.cf",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 734484,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 3.916,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 734484,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 2.91,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://wolongzyw.com/api.php/provide/vod/?ac=list",
+      "target": "https://wolongzyw.com/api.php/provide/vod/?ac=list",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 6956,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.699,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 6956,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 2.726,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://woog.430520.xyz",
+      "target": "https://woog.430520.xyz",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 453096,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.818,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 453096,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.996,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://woog.nxog.eu.org",
+      "target": "https://woog.nxog.eu.org",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 443249,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.819,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 443249,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 2.929,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://woog.nxog.fun",
+      "target": "https://woog.nxog.fun",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 453096,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.752,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 453096,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.949,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.2xiaopan.top",
+      "target": "https://www.2xiaopan.top",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 688808,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.877,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 688808,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.112,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.2xiaozhan.top",
+      "target": "https://www.2xiaozhan.top",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 138,
+          "content_type": "text/html",
+          "seconds": 0.8,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 138,
+          "content_type": "text/html",
+          "seconds": 2.835,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.cd-zj.com/cupfox-list/{cateId}-{area}--{class}-----{catePg}---{year}.html",
+      "target": "https://www.cd-zj.com/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 147577,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 2.712,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 147577,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 2.557,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.cd-zj.com/label/qq.html",
+      "target": "https://www.cd-zj.com/label/qq.html",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 35100,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.148,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 35100,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.121,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.cyfz.top",
+      "target": "https://www.cyfz.top",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 155186,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.622,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 155186,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.42,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.douy32mf.top",
+      "target": "https://www.douy32mf.top",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 1025,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.271,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 1025,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.653,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.erxiaozhan.top",
+      "target": "https://www.erxiaozhan.top",
+      "ok": false,
+      "successes": 0,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 0,
+          "bytes": 0,
+          "content_type": "",
+          "seconds": 0.42,
+          "error": "curl: (35) OpenSSL/3.0.13: error:0A000438:SSL routines::tlsv1 alert internal error"
+        },
+        {
+          "status": 0,
+          "bytes": 0,
+          "content_type": "",
+          "seconds": 0.418,
+          "error": "curl: (35) OpenSSL/3.0.13: error:0A000438:SSL routines::tlsv1 alert internal error"
+        }
+      ]
+    },
+    {
+      "url": "https://www.gugu3.com",
+      "target": "https://www.gugu3.com",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 248001,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 2.936,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 248001,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.775,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.libvio.pw/",
+      "target": "https://www.libvio.pw/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 50396,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 1.015,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 50396,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 0.935,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.mihdr.top",
+      "target": "https://www.mihdr.top",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 731766,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 6.398,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 731766,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 8.64,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.miqk.cc",
+      "target": "https://www.miqk.cc",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 714790,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 4.515,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 714790,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 4.018,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.mochadj.com/i/{cateId}-{catePg}.html",
+      "target": "https://www.mochadj.com/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 112548,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.499,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 112548,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.533,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.muou.asia",
+      "target": "https://www.muou.asia",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 586082,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 8.918,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 458536,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 11.015,
+          "error": "curl: (28) Operation timed out after 12005 milliseconds with 458536 bytes received"
+        }
+      ]
+    },
+    {
+      "url": "https://www.muou.site",
+      "target": "https://www.muou.site",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 586082,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 6.362,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 586082,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 5.18,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.wogg.net",
+      "target": "https://www.wogg.net",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 737734,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 2.829,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 737734,
+          "content_type": "text/html;charset=utf-8",
+          "seconds": 5.185,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.xb6v.com",
+      "target": "https://www.xb6v.com",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 52056,
+          "content_type": "text/html",
+          "seconds": 1.083,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 52056,
+          "content_type": "text/html",
+          "seconds": 1.905,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.xb6v.com/",
+      "target": "https://www.xb6v.com/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 52056,
+          "content_type": "text/html",
+          "seconds": 1.324,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 52056,
+          "content_type": "text/html",
+          "seconds": 1.299,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.xiaocge.fun",
+      "target": "https://www.xiaocge.fun",
+      "ok": false,
+      "successes": 0,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 0,
+          "bytes": 0,
+          "content_type": "",
+          "seconds": 2.958,
+          "error": "curl: (35) OpenSSL/3.0.13: error:0A000438:SSL routines::tlsv1 alert internal error"
+        },
+        {
+          "status": 0,
+          "bytes": 0,
+          "content_type": "",
+          "seconds": 7.371,
+          "error": "curl: (28) Failed to connect to www.xiaocge.fun port 443 after 8031 ms: Timeout was reached"
+        }
+      ]
+    },
+    {
+      "url": "https://www.xlysw.ggff.net",
+      "target": "https://www.xlysw.ggff.net",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 103637,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.913,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 103637,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 0.795,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://www.ylys.tv/vodshow/{cateId}-{area}-{by}-{class}-{lang}-{letter}---{catePg}---{year}.html",
+      "target": "https://www.ylys.tv/",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 91930,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.427,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 91930,
+          "content_type": "text/html; charset=utf-8",
+          "seconds": 1.255,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://xinlanyinghb.oss-cn-wuhan-lr.aliyuncs.com/xly.txt",
+      "target": "https://xinlanyinghb.oss-cn-wuhan-lr.aliyuncs.com/xly.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 27,
+          "content_type": "text/plain",
+          "seconds": 0.25,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 27,
+          "content_type": "text/plain",
+          "seconds": 0.252,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://xpgandroid03-1372779881.cos.ap-beijing.myqcloud.com/app_xpg_android.txt",
+      "target": "https://xpgandroid03-1372779881.cos.ap-beijing.myqcloud.com/app_xpg_android.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 65,
+          "content_type": "text/plain",
+          "seconds": 0.191,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 65,
+          "content_type": "text/plain",
+          "seconds": 0.171,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://xunlei8.me",
+      "target": "https://xunlei8.me",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 200,
+          "bytes": 29049,
+          "content_type": "text/html;charset=UTF-8",
+          "seconds": 0.999,
+          "error": ""
+        },
+        {
+          "status": 200,
+          "bytes": 29049,
+          "content_type": "text/html;charset=UTF-8",
+          "seconds": 1.189,
+          "error": ""
+        }
+      ]
+    },
+    {
+      "url": "https://yun-1316442804.cos.ap-guangzhou.myqcloud.com/602.txt",
+      "target": "https://yun-1316442804.cos.ap-guangzhou.myqcloud.com/602.txt",
+      "ok": true,
+      "successes": 2,
+      "rounds": 2,
+      "attempts": [
+        {
+          "status": 206,
+          "bytes": 25,
+          "content_type": "text/plain",
+          "seconds": 0.3,
+          "error": ""
+        },
+        {
+          "status": 206,
+          "bytes": 25,
+          "content_type": "text/plain",
+          "seconds": 0.295,
+          "error": ""
+        }
+      ]
+    }
+  ]
+}

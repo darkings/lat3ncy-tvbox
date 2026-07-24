@@ -1,0 +1,1052 @@
+[
+  {
+    "key": "drpy_js_豆瓣",
+    "old": "豆瓣推荐",
+    "new": "豆瓣推荐",
+    "verdict": "verified"
+  },
+  {
+    "key": "配置中心",
+    "old": "配置｜中心",
+    "new": "配置中心",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "本地",
+    "old": "本地｜视频",
+    "new": "本地视频",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "新闪雷",
+    "old": "新闪雷┃MP4",
+    "new": "新闪雷影视（MP4）",
+    "verdict": "verified"
+  },
+  {
+    "key": "fyyy",
+    "old": "飞宇影院",
+    "new": "飞宇影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "cupfox_in",
+    "old": "茶杯狐┃cupfox.in",
+    "new": "茶杯狐影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "italkbbtv",
+    "old": "ITalkBB｜外",
+    "new": "ITalkBB影视（海外）",
+    "verdict": "verified"
+  },
+  {
+    "key": "qiletv",
+    "old": "奇乐影视",
+    "new": "奇乐影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "热播影视",
+    "old": "热播 • APP",
+    "new": "热播影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "橙子99",
+    "old": "橙子 • APP",
+    "new": "橙子影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "剧圈99",
+    "old": "剧圈 • APP",
+    "new": "剧圈影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "双星99",
+    "old": "双星 • APP",
+    "new": "双星影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "天堂",
+    "old": "天堂 • APP",
+    "new": "天堂影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "橘汁",
+    "old": "橘汁 • APP",
+    "new": "橘汁影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "苹果",
+    "old": "苹果 • APP",
+    "new": "苹果影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "薯条",
+    "old": "薯条 • APP",
+    "new": "薯条影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "蓝鹰",
+    "old": "蓝鹰 • APP",
+    "new": "蓝鹰影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "高清",
+    "old": "高清 • APP",
+    "new": "高清影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "麻花",
+    "old": "麻花 • APP",
+    "new": "麻花影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "不戳",
+    "old": "不戳 • APP",
+    "new": "不戳影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "魔方",
+    "old": "魔方 • APP",
+    "new": "魔方影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "王子",
+    "old": "王子 • APP",
+    "new": "王子影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "茉莉",
+    "old": "茉莉 • APP",
+    "new": "茉莉影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "玩偶",
+    "old": "玩偶 • 4K",
+    "new": "玩偶影视（4K）",
+    "verdict": "verified"
+  },
+  {
+    "key": "快映",
+    "old": "快映 • 4K",
+    "new": "快映影视（4K）",
+    "verdict": "verified"
+  },
+  {
+    "key": "木偶",
+    "old": "木偶 • 4K",
+    "new": "木偶影视（4K）",
+    "verdict": "verified"
+  },
+  {
+    "key": "至臻",
+    "old": "至臻 • 4K",
+    "new": "至臻影视（4K）",
+    "verdict": "verified"
+  },
+  {
+    "key": "多多",
+    "old": "多多 • 4K",
+    "new": "多多影视（4K）",
+    "verdict": "verified"
+  },
+  {
+    "key": "欧哥",
+    "old": "欧哥 • 4K",
+    "new": "欧哥影视（4K）",
+    "verdict": "verified"
+  },
+  {
+    "key": "虎斑",
+    "old": "虎斑 • 4K",
+    "new": "虎斑影视（4K）",
+    "verdict": "verified"
+  },
+  {
+    "key": "短木",
+    "old": "短木 • 4K",
+    "new": "短木影视（4K）",
+    "verdict": "verified"
+  },
+  {
+    "key": "123",
+    "old": "123 • 4K",
+    "new": "123影视（4K）",
+    "verdict": "verified"
+  },
+  {
+    "key": "星芽短剧",
+    "old": "星芽 • 短剧",
+    "new": "星芽短剧",
+    "verdict": "verified"
+  },
+  {
+    "key": "果果短剧",
+    "old": "果果 • 短剧",
+    "new": "果果短剧",
+    "verdict": "verified"
+  },
+  {
+    "key": "厂长影视",
+    "old": "厂长 • 影视",
+    "new": "厂长影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "修罗影视",
+    "old": "修罗 • 影视",
+    "new": "修罗影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "农民影视",
+    "old": "农民 • 影视",
+    "new": "农民影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "枫叶影视",
+    "old": "枫叶 • 影视",
+    "new": "枫叶影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "小镇影视",
+    "old": "小镇 • 影视",
+    "new": "小镇影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "面包影视",
+    "old": "面包 • 影视",
+    "new": "面包影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "永乐影视",
+    "old": "永乐 • 影视",
+    "new": "永乐影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "剧圈影视",
+    "old": "剧圈 • 影视",
+    "new": "剧圈影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "哆啦新番社",
+    "old": "哆啦 • 新番社",
+    "new": "哆啦动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "Anime1",
+    "old": "A1 • 动漫",
+    "new": "A1动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "方舟动漫",
+    "old": "方舟 • 动漫",
+    "new": "方舟动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "曼波动漫",
+    "old": "曼波 • 动漫",
+    "new": "曼波动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "咕咕动漫",
+    "old": "咕咕 • 动漫",
+    "new": "咕咕动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "巴士动漫",
+    "old": "巴士 • 动漫",
+    "new": "巴士动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "路漫漫",
+    "old": "路漫漫 • 动漫",
+    "new": "路漫漫动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "去看吧",
+    "old": "去看吧 • 动漫",
+    "new": "去看吧动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "New6v",
+    "old": "New6V • 磁力",
+    "new": "New6V磁力",
+    "verdict": "verified"
+  },
+  {
+    "key": "迅雷吧",
+    "old": "迅雷吧 • 磁力",
+    "new": "迅雷吧磁力",
+    "verdict": "verified"
+  },
+  {
+    "key": "电影港",
+    "old": "电影港 • 磁力",
+    "new": "电影港磁力",
+    "verdict": "verified"
+  },
+  {
+    "key": "米搜",
+    "old": "米搜 • 搜索",
+    "new": "米搜搜索",
+    "verdict": "verified"
+  },
+  {
+    "key": "爱听音乐",
+    "old": "爱听 • 音乐",
+    "new": "爱听音乐",
+    "verdict": "verified"
+  },
+  {
+    "key": "网络直播",
+    "old": "网络 • 直播",
+    "new": "网络直播",
+    "verdict": "verified"
+  },
+  {
+    "key": "哔哩直播",
+    "old": "哔哩 • 直播",
+    "new": "哔哩直播",
+    "verdict": "verified"
+  },
+  {
+    "key": "电影天堂",
+    "old": "影视 | 电影天堂",
+    "new": "电影天堂影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "天涯采集",
+    "old": "影视 | 天涯",
+    "new": "天涯影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "量子",
+    "old": "影视 | 量子[直连]",
+    "new": "量子采集（直连）",
+    "verdict": "verified"
+  },
+  {
+    "key": "非凡",
+    "old": "影视 | 非凡[直连]",
+    "new": "非凡采集（直连）",
+    "verdict": "verified"
+  },
+  {
+    "key": "索尼",
+    "old": "影视 | 索尼[直连]",
+    "new": "索尼采集（直连）",
+    "verdict": "verified"
+  },
+  {
+    "key": "卧龙资源",
+    "old": "影视 | 卧龙资源[直连]",
+    "new": "卧龙采集（直连）",
+    "verdict": "verified"
+  },
+  {
+    "key": "极速资源",
+    "old": "影视 | 极速[直连]",
+    "new": "极速采集（直连）",
+    "verdict": "verified"
+  },
+  {
+    "key": "率率",
+    "old": "影视 | 率率[直连]",
+    "new": "率率采集（直连）",
+    "verdict": "verified"
+  },
+  {
+    "key": "百度",
+    "old": "百度",
+    "new": "百度",
+    "verdict": "verified"
+  },
+  {
+    "key": "暴風",
+    "old": "影视 | 暴風[直连]",
+    "new": "暴風采集（直连）",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_360影视",
+    "old": "官源 | 360[js]",
+    "new": "360官源",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_百忙无果",
+    "old": "官源 | 芒果[js]",
+    "new": "芒果官源",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_腾云驾雾",
+    "old": "官源 | 腾讯[js]",
+    "new": "腾讯官源",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_奇珍异兽",
+    "old": "官源 | 爱奇艺[js]",
+    "new": "爱奇艺官源",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_菜狗",
+    "old": "官源 | 搜狗[js]",
+    "new": "搜狗官源",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_优酷",
+    "old": "官源 | 优酷[js]",
+    "new": "优酷官源",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_Anime1动畫",
+    "old": "动漫 | Anime1动畫[js]",
+    "new": "Anime1动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_NT动漫",
+    "old": "动漫 | NT动漫[js]",
+    "new": "NT动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_路漫漫",
+    "old": "动漫 | 路漫漫[js]",
+    "new": "路漫漫动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_去看吧",
+    "old": "动漫 | 去看吧[js]",
+    "new": "去看吧动漫",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_A8音乐",
+    "old": "音频 | A8音乐[js]",
+    "new": "A8音乐",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_DJ音乐",
+    "old": "音频 | DJ音乐[js]",
+    "new": "DJ音乐",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_蜻蜓FM",
+    "old": "广播 | 蜻蜓FM[js]",
+    "new": "蜻蜓电台",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_爱上你听书网",
+    "old": "听书 | 爱上你听书[js]",
+    "new": "爱上你听书",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_博看听书",
+    "old": "听书 | 博看听书[js]",
+    "new": "博看听书",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_海洋听书",
+    "old": "听书 | 海洋听书[js]",
+    "new": "海洋听书",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_有声小说",
+    "old": "听书 | 有声小说[js]",
+    "new": "有声小说听书",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_播客",
+    "old": "聚合 | 播客[js]",
+    "new": "播客",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_酷6网",
+    "old": "聚合 | 酷6网[js]",
+    "new": "酷6网",
+    "verdict": "verified"
+  },
+  {
+    "key": "drpy_js_网易公版影像",
+    "old": "聚合 | 网易公版[js]",
+    "new": "网易公版",
+    "verdict": "verified"
+  },
+  {
+    "key": "應用商店",
+    "old": "應用商店",
+    "new": "應用商店",
+    "verdict": "verified"
+  },
+  {
+    "key": "bb",
+    "old": "配置接口完全免费",
+    "new": "配置接口完全免费",
+    "verdict": "verified"
+  },
+  {
+    "key": "cc",
+    "old": "请勿相信视频中任何广告",
+    "new": "请勿相信视频中任何广告",
+    "verdict": "verified"
+  },
+  {
+    "key": "立播",
+    "old": "🌟立播┃不卡",
+    "new": "立播影视",
+    "verdict": "verified"
+  },
+  {
+    "key": "新6V",
+    "old": "🧲新6V┃磁力",
+    "new": "新6V磁力",
+    "verdict": "verified"
+  },
+  {
+    "key": "MTV",
+    "old": "🎶明星┃MV",
+    "new": "明星MV",
+    "verdict": "verified"
+  },
+  {
+    "key": "虎牙js",
+    "old": "🐯虎牙┃直播",
+    "new": "虎牙直播",
+    "verdict": "verified"
+  },
+  {
+    "key": "斗鱼js",
+    "old": "🐟斗鱼┃直播",
+    "new": "斗鱼直播",
+    "verdict": "verified"
+  },
+  {
+    "key": "ZPan",
+    "old": "🎈盘搜┃四盘",
+    "new": "盘搜搜索",
+    "verdict": "verified"
+  },
+  {
+    "key": "JPan",
+    "old": "🦋易搜┃四盘",
+    "new": "易搜搜索",
+    "verdict": "verified"
+  },
+  {
+    "key": "Bili",
+    "old": "🅱哔哔合集┃弹幕",
+    "new": "哔哔合集视频",
+    "verdict": "verified"
+  },
+  {
+    "key": "Biliych",
+    "old": "🅱哔哔演唱会┃弹幕",
+    "new": "哔哔演唱会视频",
+    "verdict": "verified"
+  },
+  {
+    "key": "dr_兔小贝",
+    "old": "📚儿童┃启蒙",
+    "new": "儿童教学",
+    "verdict": "verified"
+  },
+  {
+    "key": "高中教育",
+    "old": "📚高中┃课堂",
+    "new": "高中教学",
+    "verdict": "verified"
+  },
+  {
+    "key": "蜡笔",
+    "old": "蜡笔 • 4K",
+    "new": "蜡笔影视（4K）",
+    "verdict": "partial"
+  },
+  {
+    "key": "二小",
+    "old": "二小 • 4K",
+    "new": "二小影视（4K）",
+    "verdict": "partial"
+  },
+  {
+    "key": "预告",
+    "old": "新片｜预告",
+    "new": "新片预告",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "三秋影视",
+    "old": "三秋 • APP",
+    "new": "三秋影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "马猴影视",
+    "old": "马猴 • APP",
+    "new": "马猴影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "哔哩视频",
+    "old": "哔哩 • 视频",
+    "new": "哔哩视频",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "光鸭臻影社",
+    "old": "鸭社 • 4K",
+    "new": "鸭社影视（4K）",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "指南",
+    "old": "指南 • 4K",
+    "new": "指南影视（4K）",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "人人",
+    "old": "人人 • 4K",
+    "new": "人人影视（4K）",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "即刻",
+    "old": "即刻 • 4K",
+    "new": "即刻影视（4K）",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "双星",
+    "old": "双星 • 4K",
+    "new": "双星影视（4K）",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "笒鬼短剧",
+    "old": "笒鬼 • 短剧",
+    "new": "笒鬼短剧",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "好看短剧",
+    "old": "好看 • 短剧",
+    "new": "好看短剧",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "瓜子影视",
+    "old": "瓜子 • 影视",
+    "new": "瓜子影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "山楂影视",
+    "old": "山楂 • 影视",
+    "new": "山楂影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "飞娱影视",
+    "old": "飞娱 • 影视",
+    "new": "飞娱影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "独播影视",
+    "old": "独播 • 影视",
+    "new": "独播影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "爱看机器人",
+    "old": "爱看 • 影视",
+    "new": "爱看影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "1905",
+    "old": "1905 • 影视",
+    "new": "1905影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "荐片",
+    "old": "荐片 • 磁力",
+    "new": "荐片磁力",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "美剧迷",
+    "old": "美剧迷 • 磁力",
+    "new": "美剧迷磁力",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "阿里云盘",
+    "old": "阿里 • 云盘",
+    "new": "阿里网盘",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "夸克网盘",
+    "old": "夸克 • 网盘",
+    "new": "夸克网盘",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "UC网盘",
+    "old": "UC • 网盘",
+    "new": "UC网盘",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "百度网盘",
+    "old": "百度 • 网盘",
+    "new": "百度网盘",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "聚合",
+    "old": "聚合• 搜索",
+    "new": "搜索",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "盘搜",
+    "old": "盘搜 • 搜索",
+    "new": "盘搜搜索",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "百酷",
+    "old": "百酷 • 搜索",
+    "new": "百酷搜索",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "酷乐",
+    "old": "酷乐 • 搜索",
+    "new": "酷乐搜索",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "鬼鬼",
+    "old": "鬼鬼 • 搜索",
+    "new": "鬼鬼搜索",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "天翼",
+    "old": "天翼 • 搜索",
+    "new": "天翼搜索",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "趣盘",
+    "old": "趣盘 • 搜索",
+    "new": "趣盘搜索",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "88看球",
+    "old": "88 • 看球",
+    "new": "88体育",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "球通体育",
+    "old": "球通 • 体育",
+    "new": "球通体育",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "瓜子体育",
+    "old": "瓜子 • 体育",
+    "new": "瓜子体育",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "咖啡体育",
+    "old": "咖啡 • 体育",
+    "new": "咖啡体育",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "919体育",
+    "old": "919 • 体育",
+    "new": "919体育",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "呦呦DJ",
+    "old": "呦呦 • DJ",
+    "new": "呦呦音乐",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "轮回DJ",
+    "old": "轮回 • DJ",
+    "new": "轮回音乐",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "蜻蜓FM",
+    "old": "蜻蜓 • FM",
+    "new": "蜻蜓电台",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "世界听书",
+    "old": "世界 • 听书",
+    "new": "世界听书",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "戏曲多多",
+    "old": "戏曲 • 多多",
+    "new": "多多戏曲",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "急救教学",
+    "old": "急救 • 教学",
+    "new": "急救教学",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "养生堂",
+    "old": "养生 • 知识",
+    "new": "养生知识",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "push_agent",
+    "old": "手机｜推送",
+    "new": "手机推送",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "点我切源",
+    "old": "修复所有,【太太太硬了】领取嘟嘟盘免费容量",
+    "new": "线路修复",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "MDrive",
+    "old": "🗂我的云盘┃我配置",
+    "new": "我的云盘我配置",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "YGP",
+    "old": "🚀叨观荐影┃预告片",
+    "new": "叨观荐影预告片",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "MTV1",
+    "old": "🎙️易听音乐┃带歌词",
+    "new": "易听音乐带歌词",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "seed",
+    "old": "💡聚剧┃四盘",
+    "new": "聚剧搜索",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "光影",
+    "old": "🌞光影┃不卡",
+    "new": "光影影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "原创",
+    "old": "👒原创┃不卡",
+    "new": "原创影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "厂长",
+    "old": "📔厂长┃不卡",
+    "new": "厂长影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "瓜子",
+    "old": "👀瓜子┃不卡",
+    "new": "瓜子影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "比特",
+    "old": "🍄比特┃不卡",
+    "new": "比特影视",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "糯米",
+    "old": "🍓糯米┃秒播",
+    "new": "糯米秒播",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "文采",
+    "old": "💮文采┃秒播",
+    "new": "文采秒播",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "奶酪",
+    "old": "🧀奶酪┃秒播",
+    "new": "奶酪秒播",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "热播",
+    "old": "📺热播┃多线",
+    "new": "热播多线",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "视界",
+    "old": "🌸茉莉┃多线",
+    "new": "茉莉多线",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "播客",
+    "old": "🦊播客┃多线",
+    "new": "播客多线",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "剧圈",
+    "old": "🐻剧圈┃多线",
+    "new": "剧圈多线",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "奥特",
+    "old": "🏝奥特┃多线",
+    "new": "奥特多线",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "咕咕",
+    "old": "🦉咕咕┃动漫",
+    "new": "咕咕动漫",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "Dm84",
+    "old": "🚌巴士┃动漫",
+    "new": "巴士动漫",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "看球",
+    "old": "⚽八八┃看球",
+    "new": "八八体育",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "吃瓜",
+    "old": "🏐吃瓜┃看球",
+    "new": "吃瓜体育",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "alllive",
+    "old": "🎮一直播┃直播",
+    "new": "一直播",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "有声小说",
+    "old": "🎧有声┃小说",
+    "new": "有声小说",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "Aid",
+    "old": "🚑急救┃教学",
+    "new": "急救教学",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "YpanSo",
+    "old": "🐟盘她┃夸父",
+    "new": "盘她夸父",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "BpanSo",
+    "old": "🐞盘他┃嘟嘟",
+    "new": "盘他嘟嘟",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "抠搜",
+    "old": "🍄抠抠┃搜搜",
+    "new": "抠抠搜搜",
+    "verdict": "builtin-or-conditional"
+  },
+  {
+    "key": "UC",
+    "old": "🌈优汐┃搜搜",
+    "new": "优汐搜搜",
+    "verdict": "builtin-or-conditional"
+  }
+]
