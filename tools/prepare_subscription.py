@@ -11,19 +11,34 @@ from pathlib import Path
 
 
 RAW_RE = re.compile(
-    r"https://raw\.githubusercontent\.com/([^/]+)/([^/]+)/([^/]+)/([^\s\"<>]+)"
+    r"(?<!https://ghfast\.top/)https://raw\.githubusercontent\.com/([^/]+)/([^/]+)/([^/]+)/([^\s\"<>]+)"
+)
+CDN_JAR_RE = re.compile(
+    r"https://cdn\.jsdelivr\.net/gh/([^/]+)/([^@/]+)@([^/]+)/(jar/[^\s\"<>]+)"
 )
 
 
 def to_jsdelivr(value):
     if isinstance(value, str):
-        return RAW_RE.sub(
-            lambda match: (
-                "https://cdn.jsdelivr.net/gh/"
-                f"{match.group(1)}/{match.group(2)}@{match.group(3)}/{match.group(4)}"
-            ),
-            value,
+        value = value.replace(
+            "https://ghfast.top/https://ghfast.top/https://raw.githubusercontent.com/",
+            "https://ghfast.top/https://raw.githubusercontent.com/",
         )
+        value = CDN_JAR_RE.sub(
+            lambda match: (
+                "https://ghfast.top/https://raw.githubusercontent.com/"
+                f"{match.group(1)}/{match.group(2)}/{match.group(3)}/{match.group(4)}"
+            ), value,
+        )
+        def replace_raw(match):
+            owner, repo, ref, asset = match.groups()
+            if asset.startswith("jar/"):
+                return (
+                    "https://ghfast.top/https://raw.githubusercontent.com/"
+                    f"{owner}/{repo}/{ref}/{asset}"
+                )
+            return f"https://cdn.jsdelivr.net/gh/{owner}/{repo}@{ref}/{asset}"
+        return RAW_RE.sub(replace_raw, value)
     if isinstance(value, list):
         return [to_jsdelivr(child) for child in value]
     if isinstance(value, dict):
