@@ -1,0 +1,28 @@
+{
+  "quick": {
+    "schedule": "0 8,13,20,23 * * *",
+    "tasks": ["probe_conn", "scan_security"],
+    "note": "快速检测：连通性探测 + 安全扫描"
+  },
+  "deep": {
+    "schedule": "0 3 * * *",
+    "tasks": ["drpy_test", "media_quality"],
+    "note": "深度检测：drpy2 功能链 + ffprobe 媒体质量"
+  },
+  "scoring": {
+    "schedule": "0 4 * * *",
+    "tasks": ["scorer", "promote_demote"],
+    "note": "评分 + 晋降级"
+  },
+  "peak_weight": {
+    "evening": 1.5,
+    "night": 1.5,
+    "morning": 1.0,
+    "noon": 1.0
+  },
+  "retention_days": {
+    "realtime": 1,
+    "ranking": 7,
+    "trend": 14
+  }
+}

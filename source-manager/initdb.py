@@ -8,7 +8,12 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SCHEMA = HERE / "schema.sql"
-SCHEMA_PHASE3 = HERE / "schema_phase3.sql"
+_EXTRA_SCHEMAS = [
+    HERE / "schema_phase3.sql",
+    HERE / "schema_phase3c.sql",
+    HERE / "schema_phase3d.sql",
+    HERE / "schema_phase3e.sql",
+]
 
 
 def init_db(db_path: str, reset: bool = False) -> None:
@@ -20,8 +25,9 @@ def init_db(db_path: str, reset: bool = False) -> None:
     con = sqlite3.connect(str(path))
     try:
         con.executescript(ddl)
-        if SCHEMA_PHASE3.exists():
-            con.executescript(SCHEMA_PHASE3.read_text(encoding="utf-8"))
+        for extra in _EXTRA_SCHEMAS:
+            if extra.exists():
+                con.executescript(extra.read_text(encoding="utf-8"))
         con.commit()
     finally:
         con.close()
