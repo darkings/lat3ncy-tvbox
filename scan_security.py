@@ -5,7 +5,7 @@ import hashlib, json, re
 from pathlib import Path
 
 _SECRET_RE = re.compile(
-    r"(?i)(token|password|authorization)\s*[=:]\s*(?:basic\s+)?[\"']?([A-Za-z0-9+/]{6,})")
+    r"(?i)(token|password|authorization)\s*[=:]\s*(?:basic\s+)?[\"']?([^\s\"'<>]{6,})")
 
 def load_rules(path: str) -> list[dict]:
     return json.loads(Path(path).read_text(encoding="utf-8"))
