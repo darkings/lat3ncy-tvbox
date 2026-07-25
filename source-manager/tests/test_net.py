@@ -36,3 +36,22 @@ def test_probe_http_500_not_ok():
     r = net.probe("https://x.com/a", now="T",
                   resolver=lambda h, t: True, opener=lambda u, t: _resp(500))
     assert r["ok"] == 0 and r["http_status"] == 500
+
+def test_probe_httperror_still_connected():
+    import urllib.error
+    def boom(url, timeout):
+        raise urllib.error.HTTPError(url, 404, "nf", {}, None)
+    r = net.probe("https://x.com/a", now="T",
+                  resolver=lambda h, t: True, opener=boom)
+    assert r["tcp_ok"] == 1 and r["http_status"] == 404 and r["ok"] == 0
+
+def test_probe_retries_on_transient_then_succeeds():
+    calls = {"n": 0}
+    def flaky(url, timeout):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise OSError("conn reset")
+        return _resp(200)
+    r = net.probe("https://x.com/a", now="T",
+                  resolver=lambda h, t: True, opener=flaky, retries=1)
+    assert r["ok"] == 1 and calls["n"] == 2
