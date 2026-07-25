@@ -8,6 +8,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SCHEMA = HERE / "schema.sql"
+SCHEMA_PHASE3 = HERE / "schema_phase3.sql"
 
 
 def init_db(db_path: str, reset: bool = False) -> None:
@@ -19,6 +20,8 @@ def init_db(db_path: str, reset: bool = False) -> None:
     con = sqlite3.connect(str(path))
     try:
         con.executescript(ddl)
+        if SCHEMA_PHASE3.exists():
+            con.executescript(SCHEMA_PHASE3.read_text(encoding="utf-8"))
         con.commit()
     finally:
         con.close()

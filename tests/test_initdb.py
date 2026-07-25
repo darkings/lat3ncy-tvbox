@@ -40,3 +40,14 @@ def test_reset_recreates(tmp_path):
     n = con.execute("SELECT count(*) FROM name_map").fetchone()[0]
     con.close()
     assert n == 0
+
+
+def test_initdb_creates_phase3_tables(tmp_path):
+    db = tmp_path / "s.db"
+    init_db(str(db))
+    import sqlite3
+    con = sqlite3.connect(str(db))
+    names = {r[0] for r in con.execute(
+        "SELECT name FROM sqlite_master WHERE type='table'")}
+    con.close()
+    assert {"security_finding", "conn_probe"} <= names
