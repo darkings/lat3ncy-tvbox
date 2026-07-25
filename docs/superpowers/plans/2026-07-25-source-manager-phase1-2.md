@@ -311,7 +311,8 @@ def compute_fingerprint(site: dict) -> tuple[str, dict]:
     required = item_required_urls(site)
     jar_md5 = _jar_md5(site.get("ext"))
     spider = _spider_class(site)
-    material = "\n".join([normalized_api, api_host, "".join(required), jar_md5, spider])
+    # jar_md5 不参与指纹：同一 jar URL 已在 required_urls 中，;md5; 仅可选校验注解。
+    material = "\n".join([normalized_api, api_host, "".join(required), spider])
     fp = hashlib.sha256(material.encode("utf-8")).hexdigest()
     meta = {"api_host": api_host, "required_urls": required,
             "jar_md5": jar_md5, "spider_class": spider}
