@@ -1,0 +1,10 @@
+[
+  {"rule_id": "kill-process", "severity": "high", "pattern": "killProcess"},
+  {"rule_id": "runtime-exec", "severity": "high", "pattern": "Runtime\\.getRuntime\\(\\)\\.exec"},
+  {"rule_id": "system-exit", "severity": "high", "pattern": "System\\.exit"},
+  {"rule_id": "cleartext-secret", "severity": "high", "pattern": "(?i)(token|password)\\s*[=:]\\s*[\"']?[A-Za-z0-9]{8,}"},
+  {"rule_id": "package-guard", "severity": "medium", "pattern": "getPackageName"},
+  {"rule_id": "intranet-dep", "severity": "medium", "pattern": "(127\\.0\\.0\\.1|192\\.168\\.|localhost|10\\.\\d{1,3}\\.)"},
+  {"rule_id": "remote-eval", "severity": "medium", "pattern": "eval\\("},
+  {"rule_id": "cleartext-http", "severity": "low", "pattern": "http://(?!127|localhost|192\\.168|10\\.)"}
+]
