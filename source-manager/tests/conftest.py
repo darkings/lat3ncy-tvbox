@@ -29,3 +29,10 @@ def sites():
         {"key": "e1", "name": "夸克网盘", "type": 3, "api": "https://q.tld/quark", "ext": ""},
         {"key": "f1", "name": "Ponyo 设置", "type": 3, "api": "https://s.tld/settings", "ext": ""},
     ]
+
+
+@pytest.fixture(autouse=True)
+def clear_proxy_env(monkeypatch):
+    for key in ("http_proxy", "https_proxy", "HTTP_PROXY", "HTTPS_PROXY"):
+        monkeypatch.delenv(key, raising=False)
+

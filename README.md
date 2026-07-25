@@ -2,6 +2,17 @@
 
 Ponyo TV 是面向 Android TV 的 TVBox 美化版本。此仓库只发布可安装 APK、订阅源和订阅验证工具，不包含应用源码。
 
+## 仓库结构
+
+```
+├── android/           App 源码（完整 Gradle 项目，不入库）
+├── docs/              设计文档与实施计划
+├── releases/          APK 发行版
+├── source-manager/    自动化源管理系统
+├── subscription/      订阅配置
+└── tools/             独立辅助脚本
+```
+
 ## 默认订阅
 
 ```text
