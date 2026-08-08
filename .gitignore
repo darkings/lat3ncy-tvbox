@@ -5,3 +5,12 @@ cache/
 *.db
 __pycache__/
 .pytest_cache/
+.tmp/
+.venv/
+.staging/
+*.bak
+*.tar.gz
+*.zip
+deploy-*.tgz
+.publish_tmp_*/
+.publish_bak_*/

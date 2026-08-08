@@ -2,8 +2,8 @@
 import json
 import sqlite3
 import pytest
-from initdb import init_db
-from promote_demote import evaluate_promotion, evaluate_demotion
+from ponyo_source_manager.core.initdb import init_db
+from ponyo_source_manager.scoring.promote_demote import evaluate_promotion, evaluate_demotion
 
 
 def test_evaluate_promotion_new_candidate(tmp_path):

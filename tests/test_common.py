@@ -1,8 +1,4 @@
-import sys
-from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-
-from common import compute_fingerprint, classify, strip_md5, assert_no_proxy
+from ponyo_source_manager.core.common import compute_fingerprint, classify, strip_md5, assert_no_proxy
 
 
 def test_strip_md5():

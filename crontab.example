@@ -1,14 +1,13 @@
 # Ponyo 源管理定时任务配置文件
-# 服务器部署路径假设为 ~/ponyo-source-manager/source-manager
 
 # 1. 快速检测（每 6 小时：08:00 / 13:00 / 20:00 / 23:00）
-0 8 * * * cd ~/ponyo-source-manager/source-manager && python3 scheduler.py --phase quick --db data/sources.db >> logs/scheduler.log 2>&1
-0 13 * * * cd ~/ponyo-source-manager/source-manager && python3 scheduler.py --phase quick --db data/sources.db >> logs/scheduler.log 2>&1
-0 20 * * * cd ~/ponyo-source-manager/source-manager && python3 scheduler.py --phase quick --db data/sources.db >> logs/scheduler.log 2>&1
-0 23 * * * cd ~/ponyo-source-manager/source-manager && python3 scheduler.py --phase quick --db data/sources.db >> logs/scheduler.log 2>&1
+0 8 * * * cd /root/ponyo-source-manager/scripts && python3 scheduler.py --phase quick --db ../data/sources.db >> ../logs/scheduler.log 2>&1
+0 13 * * * cd /root/ponyo-source-manager/scripts && python3 scheduler.py --phase quick --db ../data/sources.db >> ../logs/scheduler.log 2>&1
+0 20 * * * cd /root/ponyo-source-manager/scripts && python3 scheduler.py --phase quick --db ../data/sources.db >> ../logs/scheduler.log 2>&1
+0 23 * * * cd /root/ponyo-source-manager/scripts && python3 scheduler.py --phase quick --db ../data/sources.db >> ../logs/scheduler.log 2>&1
 
 # 2. 深度检测（每天凌晨 03:00）
-0 3 * * * cd ~/ponyo-source-manager/source-manager && python3 scheduler.py --phase deep --db data/sources.db >> logs/scheduler.log 2>&1
+0 3 * * * cd /root/ponyo-source-manager/scripts && python3 scheduler.py --phase deep --db ../data/sources.db >> ../logs/scheduler.log 2>&1
 
 # 3. 评分与晋降级（每天凌晨 04:00）
-0 4 * * * cd ~/ponyo-source-manager/source-manager && python3 scheduler.py --phase scoring --db data/sources.db >> logs/scheduler.log 2>&1
+0 4 * * * cd /root/ponyo-source-manager/scripts && python3 scheduler.py --phase scoring --db ../data/sources.db >> ../logs/scheduler.log 2>&1
