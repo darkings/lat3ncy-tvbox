@@ -13,7 +13,9 @@ from __future__ import annotations
 import argparse
 import atexit
 import json
+import os
 import platform
+import signal
 import sqlite3
 import subprocess
 import sys
@@ -148,23 +150,59 @@ def current_timeslot() -> str:
     return "night"
 
 
-def _run_subprocess(args, name, recorder: PipelineRecorder | None = None):
+# 阶段看门狗：单个流水线阶段超过该时限即杀进程组，防止不可达 IP 拖死整轮。
+STAGE_TIMEOUT_SECONDS = 1800.0
+
+
+def _run_subprocess(
+    args,
+    name,
+    recorder: PipelineRecorder | None = None,
+    timeout_seconds: float = STAGE_TIMEOUT_SECONDS,
+):
     print(f"Running {name}...")
     if recorder:
         recorder.begin(name)
     started = time.monotonic()
-    r = subprocess.run(args, capture_output=True, text=True)
+    # start_new_session（POSIX）：阶段超时时可 killpg 清理 node/ffprobe 等后代进程。
+    proc = subprocess.Popen(
+        args,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True,
+        start_new_session=os.name == "posix",
+    )
+    try:
+        stdout, stderr = proc.communicate(timeout=timeout_seconds)
+        returncode = proc.returncode
+        timed_out = False
+    except subprocess.TimeoutExpired:
+        # 阶段看门狗：超过时限后杀掉整个进程组（含 node/ffprobe 等后代），
+        # 防止 scan_security/probe_conn 等阶段被不可达 IP 拖死整条流水线。
+        timed_out = True
+        try:
+            if os.name == "posix":
+                os.killpg(proc.pid, signal.SIGKILL)
+            else:
+                proc.kill()
+        except OSError:
+            pass
+        stdout, stderr = proc.communicate()
+        returncode = -9
+        print(f"{name} TIMEOUT after {timeout_seconds}s, killed")
     duration_ms = int((time.monotonic() - started) * 1000)
     error = None
-    if r.returncode != 0:
-        error = (r.stderr.strip() or r.stdout.strip())[-500:]
-        print(f"{name} failed with code {r.returncode}:\n{error}")
+    if timed_out:
+        error = f"stage timeout after {int(timeout_seconds)}s; process group killed"
+    elif returncode != 0:
+        error = (stderr.strip() or stdout.strip())[-500:]
+        print(f"{name} failed with code {returncode}:\n{error}")
     if recorder:
-        recorder.finish(name, r.returncode, error)
-    print(f"{name} done in {duration_ms}ms (exit {r.returncode})")
+        recorder.finish(name, returncode, error)
+    print(f"{name} done in {duration_ms}ms (exit {returncode})")
     return {
-        "returncode": r.returncode,
-        "output": r.stdout.strip()[:500],
+        "returncode": returncode,
+        "output": stdout.strip()[:500],
         "duration_ms": duration_ms,
         "error": error,
     }

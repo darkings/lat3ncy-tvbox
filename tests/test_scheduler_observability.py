@@ -40,12 +40,13 @@ def test_run_subprocess_does_not_abort_on_failure(tmp_path, monkeypatch):
     """失败阶段不中断流水线（修复 materialize 失败导致 publish 中断的问题）。"""
     import subprocess as _sp
 
-    class FakeResult:
+    class FakeProc:
         returncode = 1
-        stdout = ""
-        stderr = "boom"
 
-    monkeypatch.setattr(_sp, "run", lambda *a, **k: FakeResult())
+        def communicate(self, timeout=None):
+            return ("", "boom")
+
+    monkeypatch.setattr(_sp, "Popen", lambda *a, **k: FakeProc())
     monkeypatch.setattr(scheduler, "REPORT_DIR", tmp_path)
 
     rec = scheduler.PipelineRecorder("run-002", "full", "night", "/db/x.db")
