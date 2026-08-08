@@ -287,18 +287,21 @@ def run_probe(
     results: dict[str, dict] = {}
     rows_written = 0
     written_urls: set[str] = set()
-    for host, urls in host_urls.items():
+
+    def _probe_host(host: str, urls: list[str]) -> dict[str, dict]:
+        """探测单个 host 下的全部 URL（host 内串行，防目标限流）。"""
+        local: dict[str, dict] = {}
         for url in urls:
             try:
                 if probe_fn is net.probe and _is_trusted_drpy_api(url):
-                    results[url] = _probe_trusted_drpy(url, now=now)
+                    local[url] = _probe_trusted_drpy(url, now=now)
                 elif probe_fn is net.probe and _is_trusted_drpy_asset(url):
-                    results[url] = _probe_trusted_drpy_asset(url, now=now)
+                    local[url] = _probe_trusted_drpy_asset(url, now=now)
                 else:
-                    results[url] = probe_fn(url, now=now)
+                    local[url] = probe_fn(url, now=now)
             except Exception as exc:
                 # 单个 URL 探测异常不中断整轮；其余 URL 继续，避免重蹈 DNS 超时崩溃。
-                results[url] = {
+                local[url] = {
                     "dns_ok": 0,
                     "tcp_ok": 0,
                     "tls_ok": None,
@@ -310,7 +313,11 @@ def run_probe(
                 }
             if inter_host_delay > 0:
                 time.sleep(inter_host_delay)
-        # 该 host 探测完立即落库：阶段被看门狗超时杀掉时，已探数据不丢失。
+        return local
+
+    def _persist_host(host_urls_sub: list[str]) -> None:
+        """把该 host 已探测的结果落库（并发环境下由主线程统一调用）。"""
+        nonlocal rows_written
         for fp, fp_urls in groups.items():
             for url in sorted(fp_urls):
                 if url not in results or url in written_urls:
@@ -338,6 +345,24 @@ def run_probe(
                 )
                 rows_written += 1
         con.commit()
+
+    # host 间并发（同 host 内保持串行）：URL 集膨胀后串行全量探测需 2-3h，
+    # 并发可将单轮压缩到分钟级。写库由主线程串行执行，避免 sqlite 并发写冲突。
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    host_items = list(host_urls.items())
+    with ThreadPoolExecutor(max_workers=16) as ex:
+        futures = {
+            ex.submit(_probe_host, host, urls): host for host, urls in host_items
+        }
+        for fut in as_completed(futures):
+            host = futures[fut]
+            try:
+                results.update(fut.result())
+            except Exception:
+                pass
+            # 该 host 探测完立即落库：阶段被看门狗超时杀掉时，已探数据不丢失。
+            _persist_host(host_urls[host])
 
     # 兜底：写入循环中未覆盖的结果（分组与探测集不一致时的残余）
     for fp, urls in groups.items():
