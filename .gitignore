@@ -25,3 +25,29 @@ __pycache__/
 subscription/reports/
 /subscription/README.md
 .github/
+
+# ── 部署产物 / 打包 ──
+deploy.tar.gz
+*.tgz
+
+# ── 外部数据文件（勿提交）──
+tv.json
+resources.json
+
+# ── Windows 误创建 ──
+nul
+
+# ── Python 补充 ──
+*.py[cod]
+.venv/
+.eggs/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.basedpyright/
+.pylint.d/
+
+# ── source-manager 运行时/测试产物 ──
+source-manager/.tmp-test/
+source-manager/subscription/ponyo-*.json
+source-manager/subscription/manifest.json
