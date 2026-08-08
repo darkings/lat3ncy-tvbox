@@ -2,12 +2,13 @@ import json
 from pathlib import Path
 import pytest
 
-PROJECT = Path(__file__).resolve().parents[2]
+SOURCE_MANAGER_DIR = Path(__file__).resolve().parents[1]
+PROJECT = SOURCE_MANAGER_DIR.parent
 
 
 @pytest.fixture
 def policy():
-    return json.loads((PROJECT / "source-manager" / "config" / "policy.json").read_text(encoding="utf-8"))
+    return json.loads((SOURCE_MANAGER_DIR / "config" / "policy.json").read_text(encoding="utf-8"))
 
 
 @pytest.fixture
@@ -35,4 +36,3 @@ def sites():
 def clear_proxy_env(monkeypatch):
     for key in ("http_proxy", "https_proxy", "HTTP_PROXY", "HTTPS_PROXY"):
         monkeypatch.delenv(key, raising=False)
-

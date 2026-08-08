@@ -1,15 +1,13 @@
 import json
 import sqlite3
-import sys
 from pathlib import Path
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from initdb import init_db
-from import_sources import import_all
-from dedupe import run_dedupe
+from ponyo_source_manager.core.initdb import init_db
+from ponyo_source_manager.discovery.import_sources import import_all
+from ponyo_source_manager.scoring.dedupe import run_dedupe
 
-PROJECT = Path(__file__).resolve().parents[2]
-POLICY = PROJECT / "source-manager" / "config" / "policy.json"
+SOURCE_MANAGER_DIR = Path(__file__).resolve().parents[1]
+POLICY = SOURCE_MANAGER_DIR / "config" / "policy.json"
 
 
 def _mk_inputs(tmp_path, sites):

@@ -1,4 +1,4 @@
-import net
+from ponyo_source_manager.core import net
 
 def _resp(status):
     class R:
@@ -11,8 +11,9 @@ def _resp(status):
 
 def test_classify_url():
     assert net.classify_url("https://x.com/api?wd={wd}") == "template"
-    assert net.classify_url("http://127.0.0.1:9978/x") == "local"
-    assert net.classify_url("http://192.168.1.5/a") == "local"
+    assert net.classify_url("http://127.0.0.1:9978/x") == "probe"
+    assert net.classify_url("http://192.168.1.5/a") == "probe"
+    assert net.classify_url("http://localhost:8080/a") == "local"
     assert net.classify_url("https://cdn.jsdelivr.net/gh/a/b.js") == "probe"
 
 def test_probe_dns_fail():

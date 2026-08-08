@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import pytest
-from children_aggregate import classify_children_content, is_safe_content, dedupe_children_content
+from ponyo_source_manager.publishing.children_aggregate import classify_children_content, is_safe_content, dedupe_children_content
 
 
 def test_classify_children_content():
