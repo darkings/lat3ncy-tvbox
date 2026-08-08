@@ -20,6 +20,10 @@ from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from ponyo_source_manager.core.common import iri_to_uri
 
+# 兜底：进程内所有裸 socket 操作（含连接建立）强制限时，
+# 防止特定目标 IP 无响应时进程无限期挂起（曾观察到 SYN-SENT 卡 2h+）。
+socket.setdefaulttimeout(15.0)
+
 _USER_AGENT = "ponyo-source-manager/1.0"
 
 
