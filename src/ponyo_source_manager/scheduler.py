@@ -151,15 +151,22 @@ def current_timeslot() -> str:
 
 
 # 阶段看门狗：单个流水线阶段超过该时限即杀进程组，防止不可达 IP 拖死整轮。
+# probe_conn 需全量串行探测（URL 集大时 2-3h），单独给更宽时限；
+# 其余阶段默认 30 分钟（scan_security 网络正常时 20-30min，超时即异常）。
 STAGE_TIMEOUT_SECONDS = 1800.0
+STAGE_TIMEOUTS = {
+    "probe_conn": 7200.0,
+}
 
 
 def _run_subprocess(
     args,
     name,
     recorder: PipelineRecorder | None = None,
-    timeout_seconds: float = STAGE_TIMEOUT_SECONDS,
+    timeout_seconds: float | None = None,
 ):
+    if timeout_seconds is None:
+        timeout_seconds = STAGE_TIMEOUTS.get(name, STAGE_TIMEOUT_SECONDS)
     print(f"Running {name}...")
     if recorder:
         recorder.begin(name)
