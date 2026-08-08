@@ -285,6 +285,8 @@ def run_probe(
         host_urls[host].append(url)
 
     results: dict[str, dict] = {}
+    rows_written = 0
+    written_urls: set[str] = set()
     for host, urls in host_urls.items():
         for url in urls:
             try:
@@ -308,14 +310,42 @@ def run_probe(
                 }
             if inter_host_delay > 0:
                 time.sleep(inter_host_delay)
+        # 该 host 探测完立即落库：阶段被看门狗超时杀掉时，已探数据不丢失。
+        for fp, fp_urls in groups.items():
+            for url in sorted(fp_urls):
+                if url not in results or url in written_urls:
+                    continue
+                written_urls.add(url)
+                r = results[url]
+                con.execute(
+                    "INSERT INTO conn_probe"
+                    "(fingerprint,target_url,timeslot,dns_ok,tcp_ok,tls_ok,"
+                    "http_status,latency_ms,ok,err,probed_at)"
+                    " VALUES(?,?,?,?,?,?,?,?,?,?,?)",
+                    (
+                        fp,
+                        url,
+                        timeslot,
+                        r["dns_ok"],
+                        r["tcp_ok"],
+                        r["tls_ok"],
+                        r["http_status"],
+                        r["latency_ms"],
+                        r["ok"],
+                        r["err"],
+                        now,
+                    ),
+                )
+                rows_written += 1
+        con.commit()
 
-    # 按指纹汇总写入 conn_probe；分批提交避免长事务与并发写进程锁冲突
-    rows_written = 0
+    # 兜底：写入循环中未覆盖的结果（分组与探测集不一致时的残余）
     for fp, urls in groups.items():
         for url in sorted(urls):
             r = results.get(url)
-            if not r:
+            if not r or url in written_urls:
                 continue
+            written_urls.add(url)
             con.execute(
                 "INSERT INTO conn_probe"
                 "(fingerprint,target_url,timeslot,dns_ok,tcp_ok,tls_ok,"
@@ -336,8 +366,6 @@ def run_probe(
                 ),
             )
             rows_written += 1
-            if rows_written % 300 == 0:
-                con.commit()
     con.commit()
 
     # 汇总
