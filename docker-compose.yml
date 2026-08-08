@@ -1,0 +1,52 @@
+services:
+  drpy-node:
+    image: ponyo-drpy-node:2f68bb004526
+    container_name: ponyo-drpy-node
+    environment:
+      API_PWD: ponyo-local-drpy
+    ports:
+      - "127.0.0.1:5757:5757"
+    volumes:
+      - ./config/drpy-node-env.json:/app/config/env.json:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:5757/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))\""]
+      interval: 20s
+      timeout: 10s
+      retries: 6
+      start_period: 60s
+
+  scheduler:
+    build:
+      context: .
+    container_name: ponyo-scheduler
+    network_mode: host
+    environment:
+      DRPY2_ADAPTER: /app/drpy2/drpys-http-adapter.js
+      DRPY2_BASE_URL: http://127.0.0.1:5757
+      DRPY2_CONFIG_URL: http://127.0.0.1:5757/config/1?pwd=ponyo-local-drpy
+    depends_on:
+      drpy-node:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+      - ./reports:/app/reports
+      - ./subscription:/app/subscription
+    restart: "no"
+    command: ["python", "-m", "ponyo_source_manager.scheduler", "--phase", "quick"]
+
+  ponyo-children-api:
+    build:
+      context: .
+    container_name: ponyo-children-api
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8000/healthz || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    command: ["uvicorn", "ponyo_source_manager.api.children:app", "--host", "0.0.0.0", "--port", "8000"]

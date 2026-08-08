@@ -1,0 +1,8 @@
+[
+  {
+    "name": "PanDown manual seed",
+    "url": "http://pandown.pro/tvbox/tvbox.json",
+    "enabled": false,
+    "disabled_reason": "2026-07-26 connectivity validation failed"
+  }
+]

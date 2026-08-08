@@ -1,0 +1,16 @@
+[
+  {
+    "provider": "jsdelivr",
+    "repo": "gaotianliuyun/gao",
+    "branch": "master",
+    "paths": ["js.json", "0821.json"],
+    "enabled": true
+  },
+  {
+    "provider": "jsdelivr",
+    "repo": "FongMi/CatVodSpider",
+    "branch": "main",
+    "paths": ["json/config.json"],
+    "enabled": true
+  }
+]

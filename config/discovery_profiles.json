@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "max_queries_per_run": 4,
+  "repositories_per_query": 5,
+  "max_repositories_per_run": 4,
+  "profiles": {
+    "children": {
+      "enabled": true,
+      "target_lane": "children",
+      "queries": ["TVBox 少儿 archived:false", "TVBox 儿童 archived:false"]
+    },
+    "general": {
+      "enabled": true,
+      "target_lane": "general",
+      "queries": [
+        "TVBox maccms archived:false",
+        "TVBox drpy2 archived:false",
+        "TVBox 影视源 archived:false",
+        "TVBox 配置 archived:false",
+        "TVBox 源 archived:false",
+        "tvbox 接口 archived:false",
+        "tvbox cms archived:false",
+        "zy-player 源 archived:false"
+      ]
+    },
+    "animation": {
+      "enabled": true,
+      "target_lane": "animation",
+      "queries": ["TVBox 动漫 archived:false"]
+    },
+    "short_drama": {
+      "enabled": true,
+      "target_lane": "short_drama",
+      "queries": ["TVBox 短剧 archived:false"]
+    },
+    "documentary": {
+      "enabled": true,
+      "target_lane": "documentary",
+      "queries": ["TVBox 纪录片 archived:false"]
+    },
+    "variety": {
+      "enabled": true,
+      "target_lane": "variety",
+      "queries": ["TVBox 综艺 archived:false"]
+    }
+  }
+}

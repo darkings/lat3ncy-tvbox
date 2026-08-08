@@ -1,0 +1,72 @@
+--- a/libs/dr2Adapter.js
++++ b/libs/dr2Adapter.js
+@@ -459,25 +459,28 @@
+         const requestHeaders = { ...fetch_params.headers, ...headers };
+         
+         if (method.toLowerCase() === 'post') {
+-            return globalThis.post(url, { 
++            return request(url, {
++                method: 'POST',
+                 body: postData, 
+                 headers: requestHeaders 
+             });
+         } else if (method.toLowerCase() === 'postjson') {
+             try {
+                 const jsonData = typeof postData === 'string' ? JSON.parse(postData) : postData;
+-                return globalThis.post(url, { 
++                return request(url, {
++                    method: 'POST',
+                     body: JSON.stringify(jsonData), 
+                     headers: { ...requestHeaders, 'Content-Type': 'application/json' }
+                 });
+             } catch (e) {
+-                return globalThis.post(url, { 
++                return request(url, {
++                    method: 'POST',
+                     body: postData, 
+                     headers: { ...requestHeaders, 'Content-Type': 'application/json' }
+                 });
+             }
+         } else {
+-            return globalThis.getHtml(url);
++            return request(url, {headers: requestHeaders});
+         }
+     } catch (e) {
+         log(`请求失败: ${e.message}`);
+@@ -569,7 +572,8 @@
+         axios: globalThis.axios, Buffer: globalThis.Buffer,
+         URL: globalThis.URL, URLSearchParams: globalThis.URLSearchParams,
+         cheerio: globalThis.cheerio, jsonpath: globalThis.jsonpath,
+-        ENV: globalThis.ENV
++        ENV: globalThis.ENV,
++        muban: globalThis.muban
+     };
+ 
+     // 创建沙箱 - 参照drpyS.js的简洁设计
+@@ -1258,6 +1262,9 @@
+     globalThis.jsp = createSafeJsoup(jsoupInstance);
+     const TYPE = "detail";
+     var input = MY_URL;
++    if (!html && MY_URL) {
++        html = makeRequest(MY_URL, fetch_params);
++    }
+     var play_url = "";
+     // 设置MY_FL为空对象，避免未定义错误
+     globalThis.MY_FL = {};
+@@ -1528,6 +1535,7 @@
+             try {
+                 // 重置VODS，确保干净的执行环境
+                 globalThis.VODS = [];
++                globalThis.fetch_params = fetch_params;
+                 // 确保 jsp 对象可用，并正确绑定方法
+                 const jsoupInstance = new jsoup();
+                 globalThis.jsp = createSafeJsoup(jsoupInstance);
+@@ -1577,7 +1585,7 @@
+                 }
+                 
+                 // 搜索结果验证
+-                if (!html.includes(searchObj.wd)) {
++                if (typeof html === 'string' && !html.includes(searchObj.wd)) {
+                     console.log("搜索结果源码未包含关键字,疑似搜索失败");
+                 }
+                 

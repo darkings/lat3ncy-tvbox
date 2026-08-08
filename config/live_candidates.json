@@ -1,0 +1,20 @@
+[
+  {
+    "key": "live_migu",
+    "name": "咪咕直播",
+    "url": "https://develop202.github.io/migu_video/interface.txt",
+    "enabled": true
+  },
+  {
+    "key": "live_aptv",
+    "name": "APTV直播",
+    "url": "https://cdn.jsdelivr.net/gh/Kimentanm/aptv@master/m3u/iptv.m3u",
+    "enabled": true
+  },
+  {
+    "key": "live_qist_ipv6",
+    "name": "IPv6直播",
+    "url": "https://cdn.jsdelivr.net/gh/qist/tvbox@master/tvboxtv.txt",
+    "enabled": true
+  }
+]

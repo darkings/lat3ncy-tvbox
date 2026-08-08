@@ -1,0 +1,22 @@
+[
+  {
+    "name": "PanDown Seed",
+    "url": "http://pandown.pro/tvbox/tvbox.json",
+    "trust_level": "public",
+    "enabled": false,
+    "disabled_reason": "2026-07-26 connectivity validation failed"
+  },
+  {
+    "name": "LiuCN public subscription",
+    "url": "https://raw.liucn.cc/box/m.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "Yoursmile Agit XC",
+    "url": "https://agit.ai/Yoursmile7/TVBox/raw/branch/master/XC.json",
+    "trust_level": "public",
+    "enabled": false,
+    "disabled_reason": "2026-07-26 upstream repository unavailable"
+  }
+]

@@ -1,0 +1,40 @@
+{
+    servers {
+        protocols h1 h2
+    }
+}
+
+https://cvat.ponyo.fun {
+    tls internal
+    encode zstd gzip
+    request_body {
+        max_size 25GB
+    }
+    reverse_proxy http://host.docker.internal:8080 {
+        header_up X-Forwarded-Proto https
+        header_up X-Forwarded-Host {host}
+        header_up X-Real-IP {remote_host}
+        transport http {
+            read_timeout 10m
+            write_timeout 10m
+            dial_timeout 30s
+        }
+    }
+}
+
+https://api.ponyo.fun {
+    # Cloudflare terminates the public trusted certificate. In Full mode it
+    # accepts this private origin certificate while keeping the origin hop TLS.
+    tls internal
+    encode zstd gzip
+    reverse_proxy http://host.docker.internal:8000 {
+        header_up X-Forwarded-Proto https
+        header_up X-Forwarded-Host {host}
+        header_up X-Real-IP {remote_host}
+        transport http {
+            read_timeout 30s
+            write_timeout 30s
+            dial_timeout 5s
+        }
+    }
+}
