@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "max_queries_per_run": 2,
+  "repositories_per_query": 5,
+  "max_repositories_per_run": 5,
+  "profiles": {
+    "general": {
+      "enabled": true,
+      "target_lane": "general",
+      "queries": [
+        "TVBox maccms archived:false",
+        "TVBox api.php provide/vod archived:false"
+      ]
+    }
+  }
+}

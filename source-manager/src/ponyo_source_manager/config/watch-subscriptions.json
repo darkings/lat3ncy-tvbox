@@ -1,0 +1,20 @@
+[
+  {
+    "name": "PanDown Seed",
+    "url": "http://pandown.pro/tvbox/tvbox.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "LiuCN Box",
+    "url": "https://raw.liucn.cc/box/m.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "Yoursmile XC",
+    "url": "https://agit.ai/Yoursmile7/TVBox/raw/branch/master/XC.json",
+    "trust_level": "public",
+    "enabled": true
+  }
+]

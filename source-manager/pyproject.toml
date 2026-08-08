@@ -1,0 +1,22 @@
+[project]
+name = "ponyo_source_manager"
+version = "0.1.0"
+description = "Ponyo source manager and scheduler"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests",
+    "fastapi",
+    "uvicorn",
+    "httpx",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+]
+
+[build-system]
+
+requires = ["hatchling"]
+build-backend = "hatchling.build"

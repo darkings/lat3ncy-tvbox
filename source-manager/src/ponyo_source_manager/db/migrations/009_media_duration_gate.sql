@@ -1,0 +1,3 @@
+-- Schema version marker. SQLite cannot conditionally add a column, and some
+-- supported legacy databases do not yet contain media_probe. initdb.py adds
+-- these columns defensively after applying migrations.
