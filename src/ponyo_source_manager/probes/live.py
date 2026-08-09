@@ -193,7 +193,10 @@ def evaluate_live_source(
     }
 
     try:
-        content = net.fetch_text(live_url, timeout=10)
+        # 候选列表是可信配置（4 个/轮），绕过 A24 限流器——
+        # 同一 host（如 cdn.jsdelivr.net）可能已被 pipeline 前期阶段限流，
+        # 导致列表下载失败进而所有频道误判为不可用。
+        content = net.fetch_text(live_url, timeout=10, limiter=None)
         mapping = parse_live_channels(content)
         routes = parse_live_channel_routes(content)
         metadata = inspect_live_metadata(content)
