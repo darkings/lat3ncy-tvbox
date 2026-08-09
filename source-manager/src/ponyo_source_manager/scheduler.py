@@ -156,6 +156,9 @@ def current_timeslot() -> str:
 STAGE_TIMEOUT_SECONDS = 1800.0
 STAGE_TIMEOUTS = {
     "probe_conn": 7200.0,
+    # 网络波动时 scan_security/drpy_test 30 分钟偶发不够（实测需 29min+）
+    "scan_security": 2700.0,
+    "drpy_test": 2700.0,
 }
 
 
