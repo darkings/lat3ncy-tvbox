@@ -14,7 +14,7 @@ import re
 import sqlite3
 from pathlib import Path
 
-EXEMPT_KEYS = {"drpy_js_豆瓣"}
+EXEMPT_KEYS = {"drpy_js_豆瓣", "配置中心", "本地"}
 
 _EMOJI_RE = re.compile(
     "[\U0001f000-\U0001faff\U00002600-\U000027bf\U0001f900-\U0001f9ff\U0000fe0f\U00002702-\U000027b0]"
