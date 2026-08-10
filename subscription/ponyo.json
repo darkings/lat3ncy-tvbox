@@ -97,160 +97,6 @@
       "changeable": 0
     },
     {
-      "key": "配置中心",
-      "name": "配置中心",
-      "type": 3,
-      "api": "csp_Config",
-      "searchable": 0,
-      "changeable": 0,
-      "indexs": 0,
-      "style": {
-        "type": "rect",
-        "ratio": 1.597
-      }
-    },
-    {
-      "key": "本地",
-      "name": "本地视频",
-      "type": 3,
-      "api": "csp_LocalFile"
-    },
-    {
-      "api": "http://www.zitv.cc/api.php/provide/vod/",
-      "key": "dcbb4b646ce9e6b0c0565925f2008037",
-      "name": "40-橘猫采集",
-      "type": 1
-    },
-    {
-      "key": "wujin",
-      "name": "无尽",
-      "type": 1,
-      "api": "https://api.wujinapi.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1
-    },
-    {
-      "key": "zuida",
-      "name": "最大",
-      "type": 1,
-      "api": "http://zuidazy.me/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1
-    },
-    {
-      "api": "https://zuidazy.co/api.php/provide/vod/",
-      "key": "b31acfcd3fce887b832b0c47754159b5",
-      "name": "25-最大",
-      "type": 1
-    },
-    {
-      "api": "https://www.wyvod.com/api.php/provide/vod/",
-      "key": "130ff3134aa51648a8a5575b98b5d268",
-      "name": "49-无忧",
-      "type": 1
-    },
-    {
-      "id": "4aa83ed0-bce5-4d86-ae48-3524bf7fc907",
-      "key": "暴风资源",
-      "name": "暴风资源",
-      "api": "https://bfzyapi.com/api.php/provide/vod/",
-      "type": 2,
-      "isActive": 0,
-      "time": "2025-08-09T17:40:23.5352433+08:00",
-      "isDefault": 0,
-      "remark": "",
-      "tags": [
-        "代理"
-      ],
-      "priority": 0,
-      "proxyMode": "none",
-      "customProxy": ""
-    },
-    {
-      "key": "drpyS_DJ音乐[听]",
-      "name": "DJ音乐[听](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/DJ音乐[听]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "DJ音乐[听]",
-      "author": "EylinSir",
-      "类型": "影视",
-      "mergeList": true,
-      "more": {
-        "mergeList": 1
-      },
-      "logo": "https://pic.289.com/up/2023-12/20231219154340126.png",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
-      "key": "drpyS_啊哈DJ[听]",
-      "name": "啊哈DJ[听](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/啊哈DJ[听]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "啊哈DJ[听]",
-      "类型": "影视",
-      "mergeList": true,
-      "more": {
-        "mergeList": 1
-      },
-      "lang": "ds",
-      "ext": ""
-    },
-    {
-      "api": "https://360zy.tv/api.php/provide/vod/",
-      "key": "e5df2aa0492ba0d57b047c1cdf009001",
-      "name": "66-360*",
-      "quickSearch": 0,
-      "searchable": 0,
-      "type": 1
-    },
-    {
-      "key": "暴風",
-      "name": "暴風┃采集",
-      "type": 1,
-      "api": "https://bfzyapi.com/api.php/provide/vod",
-      "searchable": 1,
-      "changeable": 1
-    },
-    {
-      "key": "drpyS_爱玩音乐[听]",
-      "name": "爱玩音乐[听](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/爱玩音乐[听]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 1,
-      "quickSearch": 1,
-      "title": "爱玩音乐[听]",
-      "author": "EylinSir",
-      "类型": "音乐",
-      "logo": "https://www.22a5.com/favicon.ico",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
-      "id": "10496a01-15b0-4077-9ec1-63d022b85c9c",
-      "key": "最大资源",
-      "name": "最大资源",
-      "api": "https://api.zuidapi.com/api.php/provide/vod/",
-      "type": 2,
-      "isActive": 0,
-      "time": "2025-08-09T17:44:43.6072971+08:00",
-      "isDefault": 0,
-      "remark": "http://zuidazy.me/api.php/provide/vod/",
-      "tags": [
-        "优秀"
-      ],
-      "priority": 0,
-      "proxyMode": "none",
-      "customProxy": ""
-    },
-    {
       "key": "drpyS_七猫短剧[短]",
       "name": "七猫短剧[短](DS)",
       "type": 4,
@@ -305,6 +151,12 @@
       ]
     },
     {
+      "api": "http://www.zitv.cc/api.php/provide/vod/",
+      "key": "dcbb4b646ce9e6b0c0565925f2008037",
+      "name": "橘猫采集",
+      "type": 1
+    },
+    {
       "key": "drpyS_西饭短剧[短]",
       "name": "西饭短剧[短](DS)",
       "type": 4,
@@ -319,7 +171,7 @@
     },
     {
       "key": "360zy.com",
-      "name": "🎬360 资源",
+      "name": "360 资源",
       "type": 1,
       "api": "https://360zyzz.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -346,6 +198,22 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
+    },
+    {
+      "key": "wujin",
+      "name": "无尽",
+      "type": 1,
+      "api": "https://api.wujinapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1
+    },
+    {
+      "key": "zuida",
+      "name": "最大",
+      "type": 1,
+      "api": "http://zuidazy.me/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1
     },
     {
       "key": "jkzyuan.cc",
@@ -381,8 +249,14 @@
       "type": 1
     },
     {
+      "api": "https://zuidazy.co/api.php/provide/vod/",
+      "key": "b31acfcd3fce887b832b0c47754159b5",
+      "name": "25-最大",
+      "type": 1
+    },
+    {
       "key": "p2100.net",
-      "name": "🎬飘零资源",
+      "name": "飘零资源",
       "type": 1,
       "api": "https://p2100.net/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -403,7 +277,7 @@
     },
     {
       "key": "f0ccb025823f",
-      "name": "lovedan.net┃GH",
+      "name": "lovedan.net-GH",
       "type": 0,
       "api": "http://lovedan.net/api.php/provide/vod",
       "ext": "",
@@ -411,7 +285,7 @@
     },
     {
       "key": "www.maoyanzy.com",
-      "name": "🎬猫眼资源",
+      "name": "猫眼资源",
       "type": 1,
       "api": "https://api.maoyanapi.top/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -431,8 +305,14 @@
       ]
     },
     {
+      "api": "https://www.wyvod.com/api.php/provide/vod/",
+      "key": "130ff3134aa51648a8a5575b98b5d268",
+      "name": "无忧",
+      "type": 1
+    },
+    {
       "key": "zuida.xyz",
-      "name": "🎬最大资源",
+      "name": "最大资源",
       "type": 1,
       "api": "https://api.zuidapi.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -490,14 +370,31 @@
       "ext": ""
     },
     {
+      "id": "4aa83ed0-bce5-4d86-ae48-3524bf7fc907",
+      "key": "暴风资源",
+      "name": "暴风资源",
+      "api": "https://bfzyapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-09T17:40:23.5352433+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "代理"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
       "api": "https://www.lovedan.net/api.php/provide/vod/",
       "key": "b4d4414ba19c27a00bf907d34b47bc3d",
-      "name": "1-艾旦",
+      "name": "艾旦",
       "type": 1
     },
     {
       "key": "84e8ae98e25a",
-      "name": "360ZZ┃GH",
+      "name": "360ZZ-GH",
       "type": 0,
       "api": "https://360zyzz.com/api.php/provide/vod",
       "ext": "",
@@ -532,12 +429,31 @@
     {
       "api": "https://lovedan.net/api.php/provide/vod/",
       "key": "0ec30b843eb0dd00005239556b902374",
-      "name": "21-爱胆",
+      "name": "爱胆",
       "type": 1
     },
     {
+      "key": "drpyS_DJ音乐[听]",
+      "name": "DJ音乐[听](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/DJ音乐[听]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "DJ音乐[听]",
+      "author": "EylinSir",
+      "类型": "影视",
+      "mergeList": true,
+      "more": {
+        "mergeList": 1
+      },
+      "logo": "https://pic.289.com/up/2023-12/20231219154340126.png",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
       "key": "iqiyizyapi.com",
-      "name": "🎬-爱奇艺-",
+      "name": "爱奇艺",
       "type": 1,
       "api": "https://iqiyizyapi.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -597,6 +513,39 @@
       "ext": ""
     },
     {
+      "key": "drpyS_啊哈DJ[听]",
+      "name": "啊哈DJ[听](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/啊哈DJ[听]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "啊哈DJ[听]",
+      "类型": "影视",
+      "mergeList": true,
+      "more": {
+        "mergeList": 1
+      },
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "api": "https://360zy.tv/api.php/provide/vod/",
+      "key": "e5df2aa0492ba0d57b047c1cdf009001",
+      "name": "360*",
+      "quickSearch": 0,
+      "searchable": 0,
+      "type": 1
+    },
+    {
+      "key": "暴風",
+      "name": "暴風-采集",
+      "type": 1,
+      "api": "https://bfzyapi.com/api.php/provide/vod",
+      "searchable": 1,
+      "changeable": 1
+    },
+    {
       "key": "jinying",
       "name": "金鹰",
       "type": 1,
@@ -606,7 +555,7 @@
     },
     {
       "key": "暴风",
-      "name": "暴风┃三级(vpn)",
+      "name": "暴风-三级",
       "type": 1,
       "api": "https://bfzyapi.com/api.php/provide/vod/?ac=list",
       "searchable": 0,
@@ -619,7 +568,7 @@
     },
     {
       "key": "虎牙",
-      "name": "🐯虎牙采集",
+      "name": "虎牙采集",
       "type": 1,
       "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
       "searchable": 1,
@@ -660,7 +609,7 @@
     },
     {
       "key": "4b444a59887f",
-      "name": "️天堂┃采集┃变体",
+      "name": "天堂-采集-变体",
       "type": 0,
       "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/m3u8/",
       "ext": "",
@@ -668,7 +617,7 @@
     },
     {
       "key": "电影天堂",
-      "name": "🧞无广┃[采集]",
+      "name": "无广-[采集]",
       "type": 1,
       "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/json/?ac=list",
       "searchable": 1,
@@ -724,7 +673,7 @@
     },
     {
       "key": "6b9cc227262a",
-      "name": "非凡资源┃变体",
+      "name": "非凡资源-变体",
       "type": 0,
       "api": "http://cj.ffzyapi.com/api.php/provide/vod/from/ffm3u8/",
       "ext": "",
@@ -732,7 +681,7 @@
     },
     {
       "key": "795280eee6b8",
-      "name": "api.apibdzy.com┃GH",
+      "name": "api.apibdzy.com-GH",
       "type": 0,
       "api": "http://api.apibdzy.com/api.php/provide/vod",
       "ext": "",
@@ -792,13 +741,13 @@
     {
       "api": "https://www.mdzyapi.com/api.php/provide/vod/",
       "key": "77791ef659e8282af587e24e7b0c18a5",
-      "name": "33-墨斗",
+      "name": "墨斗",
       "type": 1
     },
     {
       "api": "https://caiji.moduapi.cc/api.php/provide/vod/",
       "key": "0be92695deec6ee83ef66a6fca1e88e4",
-      "name": "34-魔都",
+      "name": "魔都",
       "type": 1
     },
     {
@@ -812,7 +761,7 @@
     },
     {
       "key": "c1b06f719aae",
-      "name": "THZY┃GH",
+      "name": "THZY-GH",
       "type": 0,
       "api": "https://thzy1.me/api.php/provide/vod",
       "ext": "",
@@ -820,7 +769,7 @@
     },
     {
       "key": "百度",
-      "name": "百度┃采集",
+      "name": "百度-采集",
       "type": 1,
       "api": "https://api.apibdzy.com/api.php/provide/vod?ac=list",
       "searchable": 1,
@@ -844,7 +793,7 @@
     {
       "api": "https://bfzyapi.com/api.php/provide/vod/",
       "key": "740e5d81e28de3ab97eab19f0ce6cf1d",
-      "name": "5-暴风",
+      "name": "暴风",
       "type": 1
     },
     {
@@ -876,7 +825,7 @@
     },
     {
       "key": "0389103fc327",
-      "name": "DDAPI┃JSON",
+      "name": "DDAPI-JSON",
       "type": 0,
       "api": "https://api.ddapi.cc/api.php/provide/vod/at/json",
       "ext": "",
@@ -885,17 +834,32 @@
     {
       "api": "http://fhapi9.com/api.php/provide/vod/",
       "key": "39a5f7a3881f34fa6361cf1129caea4f",
-      "name": "41-番号资源",
+      "name": "番号资源",
       "type": 1
     },
     {
       "key": "处女控",
-      "name": "(vpn)CK三级片",
+      "name": "CK三级片",
       "type": 1,
       "api": "https://ckzy.me/api.php/provide/vod/",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
+    },
+    {
+      "key": "drpyS_爱玩音乐[听]",
+      "name": "爱玩音乐[听](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/爱玩音乐[听]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 1,
+      "quickSearch": 1,
+      "title": "爱玩音乐[听]",
+      "author": "EylinSir",
+      "类型": "音乐",
+      "logo": "https://www.22a5.com/favicon.ico",
+      "lang": "ds",
+      "ext": ""
     },
     {
       "id": "81dd8a62-8173-4adb-b148-5dba3d3eeb6c",
@@ -930,8 +894,25 @@
       "ext": ""
     },
     {
+      "id": "10496a01-15b0-4077-9ec1-63d022b85c9c",
+      "key": "最大资源",
+      "name": "最大资源",
+      "api": "https://api.zuidapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-09T17:44:43.6072971+08:00",
+      "isDefault": 0,
+      "remark": "http://zuidazy.me/api.php/provide/vod/",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
       "key": "www.moduzy.net",
-      "name": "🎬魔都资源",
+      "name": "魔都资源",
       "type": 1,
       "api": "https://www.mdzyapi.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -969,7 +950,7 @@
     },
     {
       "key": "c71554edd070",
-      "name": "❤光速资源┃变体",
+      "name": "光速资源-变体",
       "type": 0,
       "api": "https://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8/",
       "ext": "",
@@ -1004,7 +985,7 @@
     {
       "api": "https://cj.rycjapi.com/api.php/provide/vod/",
       "key": "7e324c0872c13fd329e818c33a659046",
-      "name": "10-如意",
+      "name": "如意",
       "type": 1
     },
     {
@@ -1053,7 +1034,7 @@
     },
     {
       "key": "caiji.moduapi.cc",
-      "name": "🎬魔都动漫",
+      "name": "魔都动漫",
       "type": 1,
       "api": "https://caiji.moduapi.cc/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -1117,7 +1098,7 @@
     },
     {
       "key": "7456b38a25b4",
-      "name": "LBAPI-9┃JSON",
+      "name": "LBAPI-9-JSON",
       "type": 0,
       "api": "https://lbapi9.com/api.php/provide/vod/at/json",
       "ext": "",
@@ -1125,7 +1106,7 @@
     },
     {
       "key": "155专场",
-      "name": "(vpn)155采集2┃<=这或主页换接口",
+      "name": "155采集2",
       "type": 1,
       "api": "https://155api.com/api.php/provide/vod/",
       "playUrl": "",
@@ -1161,7 +1142,7 @@
     },
     {
       "key": "fd005e8d67ab",
-      "name": "11BAT┃JSON",
+      "name": "11BAT-JSON",
       "type": 0,
       "api": "http://api.11bat.com/api.php/provide/vod/at/json/",
       "ext": "",
@@ -1170,7 +1151,7 @@
     {
       "api": "https://iqiyizyapi.com/api.php/provide/vod/",
       "key": "acd47931ed9a83e500f70bbb7c5c0c2b",
-      "name": "54-奇艺",
+      "name": "奇艺",
       "type": 1
     },
     {
@@ -1184,7 +1165,7 @@
     },
     {
       "key": "1e98fcaeacd9",
-      "name": "FHAPI-9┃JSON",
+      "name": "FHAPI-9-JSON",
       "type": 0,
       "api": "http://fhapi9.com/api.php/provide/vod/at/json",
       "ext": "",
@@ -1233,7 +1214,7 @@
     },
     {
       "key": "0052bf53b8d2",
-      "name": "魔都资源┃JSON",
+      "name": "魔都资源-JSON",
       "type": 0,
       "api": "https://www.mdzyapi.com/api.php/provide/vod/at/json/",
       "ext": "",
@@ -1241,7 +1222,7 @@
     },
     {
       "key": "db10746ebf01",
-      "name": "155API┃JSON",
+      "name": "155API-JSON",
       "type": 0,
       "api": "https://155api.com/api.php/provide/vod/at/json",
       "ext": "",
@@ -1277,7 +1258,7 @@
     },
     {
       "key": "360zy",
-      "name": "☀飞龙🔹秒播",
+      "name": "飞龙秒播",
       "type": 1,
       "api": "https://360zy.com/api.php/provide/vod?",
       "searchable": 1,
@@ -1319,7 +1300,7 @@
     },
     {
       "key": "2957b20edf04",
-      "name": "LBAPI-by┃JSON",
+      "name": "LBAPI-by-JSON",
       "type": 0,
       "api": "http://lbapiby.com/api.php/provide/vod/at/json",
       "ext": "",
@@ -1436,7 +1417,7 @@
     },
     {
       "key": "火狐",
-      "name": "🦊火狐采集",
+      "name": "火狐采集",
       "type": 1,
       "api": "https://hhzyapi.com/api.php/provide/vod/",
       "searchable": 1,
