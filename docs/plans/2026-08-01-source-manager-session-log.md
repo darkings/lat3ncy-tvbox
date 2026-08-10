@@ -864,3 +864,24 @@ playback 每轮每源仅 1 次采样，近 7 天成功样本 1-3 个；`latencie
 - cron 纯净环境（env -i）实测通过；**crontab 每天 08:30 CST**（避开 08:00/13:00/20:00/23:00 的 scheduler full 流水线，防 sqlite 锁冲突），日志 `/var/log/ponyo-sub-publish.log`
 
 **提交**：6d4fd6c（双脚本+gitignore）、a1e8c73（pull 前置）。当前库 12 allow，订阅 98 源（工具 3+点播 95）已在 CDN 生效。
+
+### 32. 配置中心/本地视频修复（08-10 19:00-20:40 CST）——内置 Config 类 + 自有托管
+
+**问题链**：配置中心/本地视频打开报"没有找到数据"。三层根因：
+1. 主 jar（qist spider.jar）含自杀代码被 `ProtectedInitJar` 标记 dangerous → `getSpider` 一律返回 SpiderNull（工具源被连带禁用）
+2. qist 的 `Config` 类（网盘配置面板）是给 qist App 定制的（混淆 + 环境校验 + 云端依赖），第三方 App 上 `homeContent` 抛异常被 catch 返回 `""`
+3. jsDelivr `@main` 分支缓存 purge 无效（多节点验证 + 整仓 purge 均不刷新；GitHub raw/api 均正常）
+
+**修复 1（App 端，本地验证通过）**：
+- `JarLoader.getSpider` 对 dangerous jar 放行纯工具类（Config/LocalFile）——已用 Python 解析 dex 验证这两类**无任何 killProcess 调用**（自杀仅在 Init.init，已被拦截不执行）
+- **App 内置标准 `Config` 类**（parent-first 加载优先于 jar）：ext 指向配置列表（每行 `名称,URL`），homeContent 返回配置列表
+- 配置列表数据源 `subscription/config-list.txt`（23 个经典配置）
+
+**修复 2（服务器托管，绕 jsDelivr）**：
+- children-api（FastAPI）新增 `GET /ponyo.json` 静态路由（no-store），compose 挂载 `./subscription:/app/subscription:ro`
+- **订阅主地址切换为 `https://api.ponyo.fun/ponyo.json`**（自有托管、发布即时生效、无 CDN 缓存）
+- `daily_publish.py` 双写：服务文件（api.ponyo.fun）+ git 仓库（jsDelivr 备份，仍每日 purge）
+
+**模拟器端到端验证**：改订阅地址（Hawk 加密无法直改，UI 操作：设置→配置地址→清空→输入新地址）→ 切首页源为配置中心 → 主页显示"Ponyo TV · 配置中心"+ 配置列表（王二小/饭太硬/肥猫/宝盒/快乐接口…）
+
+**提交**：f7e1694（配置列表+模板）、04537d2（98源发布）、40991f6/7841d21（托管+双写）。
