@@ -29,7 +29,10 @@ TEMPLATE = SM_DIR / "ponyo-template.json"
 GEN_SCRIPT = SM_DIR / "scripts" / "generate_temp_subscription.py"
 DB = SM_DIR / "data" / "sources.db"
 REMOTE_OUT = SM_DIR / "subscription" / "ponyo-temp.json"
-TARGET = PUBLISH_REPO / "subscription" / "ponyo.json"
+# 对外服务文件（api.ponyo.fun/ponyo.json，children-api 挂载目录，发布即时生效）
+SERVE_TARGET = SM_DIR / "subscription" / "ponyo.json"
+# git 发布仓库文件（jsDelivr 备份地址）
+GIT_TARGET = PUBLISH_REPO / "subscription" / "ponyo.json"
 LOG = PUBLISH_REPO / "subscription" / "update-log.txt"
 
 CDN_PURGE_URL = (
@@ -143,7 +146,13 @@ def main() -> None:
     )
     data = json.loads(REMOTE_OUT.read_text(encoding="utf-8"))
     desc = validate(data)
-    TARGET.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    # 同时写入对外服务文件（api.ponyo.fun 即时生效）与 git 仓库（jsDelivr 备份）
+    SERVE_TARGET.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+    GIT_TARGET.write_text(
+        json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
 
     sh(["git", "-C", str(PUBLISH_REPO), "add", "subscription/ponyo.json"])
     changed = sh(

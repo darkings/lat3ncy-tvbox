@@ -10,7 +10,11 @@ services:
       - ./config/drpy-node-env.json:/app/config/env.json:ro
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "node -e \"fetch('http://127.0.0.1:5757/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))\""]
+      test:
+        [
+          "CMD-SHELL",
+          'node -e "fetch(''http://127.0.0.1:5757/health'').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"',
+        ]
       interval: 20s
       timeout: 10s
       retries: 6
@@ -33,7 +37,8 @@ services:
       - ./reports:/app/reports
       - ./subscription:/app/subscription
     restart: "no"
-    command: ["python", "-m", "ponyo_source_manager.scheduler", "--phase", "quick"]
+    command:
+      ["python", "-m", "ponyo_source_manager.scheduler", "--phase", "quick"]
 
   ponyo-children-api:
     build:
@@ -41,6 +46,7 @@ services:
     container_name: ponyo-children-api
     volumes:
       - ./data:/app/data
+      - ./subscription:/app/subscription:ro
     ports:
       - "8000:8000"
     restart: unless-stopped
@@ -49,4 +55,12 @@ services:
       interval: 10s
       timeout: 5s
       retries: 3
-    command: ["uvicorn", "ponyo_source_manager.api.children:app", "--host", "0.0.0.0", "--port", "8000"]
+    command:
+      [
+        "uvicorn",
+        "ponyo_source_manager.api.children:app",
+        "--host",
+        "0.0.0.0",
+        "--port",
+        "8000",
+      ]
