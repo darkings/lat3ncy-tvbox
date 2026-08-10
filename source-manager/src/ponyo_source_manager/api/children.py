@@ -4,18 +4,22 @@
 数据库只保存源内 ID 和集数映射，不长期保存过期的播放 URL。
 在收到请求时，实时解析（或借助缓存）分发到各子源。
 """
-import sqlite3
+
 import json
 import re
+import sqlite3
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
-from fastapi import FastAPI, Query, HTTPException
-from fastapi.responses import FileResponse, JSONResponse
+
 import httpx
 import uvicorn
-from ponyo_source_manager.core.common import DATA_DIR, CODE_DIR
+from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import FileResponse, JSONResponse
+
+from ponyo_source_manager.core.common import CODE_DIR, DATA_DIR
+
 
 # DB 初始化：为 Children API 专门设计映射表
 def init_children_db():
@@ -37,20 +41,37 @@ def init_children_db():
     con.commit()
     con.close()
 
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_children_db()
     yield
+
 
 app = FastAPI(lifespan=lifespan, title="Ponyo Children API")
 
 SOURCES_DB = DATA_DIR / "sources.db"
 APPROVED_JAR_DIR = DATA_DIR / "approved-assets" / "jar"
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+SUB_DIR = Path("/app/subscription")
+
 
 @app.get("/healthz")
 async def healthz():
     return {"status": "ok"}
+
+
+@app.get("/ponyo.json")
+async def ponyo_subscription():
+    """TVBox 订阅发布（自有托管，无 CDN 缓存，发布即时生效）。"""
+    target = SUB_DIR / "ponyo.json"
+    if not target.is_file():
+        raise HTTPException(status_code=404, detail="subscription not found")
+    return FileResponse(
+        target,
+        media_type="application/json; charset=utf-8",
+        headers={"Cache-Control": "no-store"},
+    )
 
 
 def resolve_approved_jar(
@@ -109,21 +130,25 @@ CATEGORIES = [
     {"type_id": "3", "type_name": "儿歌童谣"},
 ]
 
+
 def _get_db():
     con = sqlite3.connect(str(DATA_DIR / "children_cache.db"))
     con.row_factory = sqlite3.Row
     return con
 
+
 @app.get("/api.php/provide/vod/")
-async def provide_vod(ac: Optional[str] = Query(None),
-                      t: Optional[str] = Query(None),
-                      pg: Optional[str] = Query("1"),
-                      wd: Optional[str] = Query(None),
-                      ids: Optional[str] = Query(None)):
-    
+async def provide_vod(
+    ac: Optional[str] = Query(None),
+    t: Optional[str] = Query(None),
+    pg: Optional[str] = Query("1"),
+    wd: Optional[str] = Query(None),
+    ids: Optional[str] = Query(None),
+):
+
     if ac == "list":
         return JSONResponse({"class": CATEGORIES, "list": []})
-        
+
     con = _get_db()
     try:
         if ac == "detail" or ids:
@@ -131,24 +156,31 @@ async def provide_vod(ac: Optional[str] = Query(None),
                 return JSONResponse({"list": []})
             id_list = ids.split(",")
             placeholders = ",".join("?" * len(id_list))
-            rows = con.execute(f"SELECT * FROM videos WHERE id IN ({placeholders})", id_list).fetchall()
-            
+            rows = con.execute(
+                f"SELECT * FROM videos WHERE id IN ({placeholders})", id_list
+            ).fetchall()
+
             result_list = []
             for r in rows:
-                from ponyo_source_manager.probes.drpy_runner import run_drpy_detail, run_drpy_episode
-                
+                from ponyo_source_manager.probes.drpy_runner import (
+                    run_drpy_detail,
+                    run_drpy_episode,
+                )
+
                 row_dict = dict(r)
                 rule_path = row_dict.get("api") or row_dict.get("ext") or ""
-                if not rule_path: continue
-                
+                if not rule_path:
+                    continue
+
                 detail_res = run_drpy_detail(rule_path, r["source_id"])
                 ep_res = run_drpy_episode(rule_path, r["source_id"])
-                
+
                 vod_play_from = "儿童专线"
                 vod_play_url = ""
-                
+
                 if ep_res["success"] and ep_res["episodes"]:
                     from ponyo_source_manager.probes.drpy_runner import run_drpy_playurl
+
                     episodes_str_list = []
                     for ep in ep_res["episodes"]:
                         title = ep.get("name", ep.get("title", ""))
@@ -156,12 +188,14 @@ async def provide_vod(ac: Optional[str] = Query(None),
                         if title and flag:
                             playurl_res = run_drpy_playurl(rule_path, flag)
                             if playurl_res["success"] and playurl_res["play_url"]:
-                                episodes_str_list.append(f"{title}${playurl_res['play_url']}")
+                                episodes_str_list.append(
+                                    f"{title}${playurl_res['play_url']}"
+                                )
                             else:
-                                episodes_str_list.append(f"{title}${flag}") # Fallback
+                                episodes_str_list.append(f"{title}${flag}")  # Fallback
                     if episodes_str_list:
                         vod_play_url = "#".join(episodes_str_list)
-                        
+
                 vod = {
                     "vod_id": r["id"],
                     "vod_name": r["name"],
@@ -169,7 +203,7 @@ async def provide_vod(ac: Optional[str] = Query(None),
                     "type_name": "儿童",
                     "vod_remarks": r["latest"],
                     "vod_play_from": vod_play_from,
-                    "vod_play_url": vod_play_url
+                    "vod_play_url": vod_play_url,
                 }
                 result_list.append(vod)
             return JSONResponse({"list": result_list})
@@ -184,7 +218,7 @@ async def provide_vod(ac: Optional[str] = Query(None),
             if wd:
                 query += " AND name LIKE ?"
                 params.append(f"%{wd}%")
-            
+
             query += " LIMIT 20"
             rows = con.execute(query, params).fetchall()
             result_list = [
@@ -192,21 +226,23 @@ async def provide_vod(ac: Optional[str] = Query(None),
                     "vod_id": r["id"],
                     "vod_name": r["name"],
                     "vod_pic": r["pic"],
-                    "vod_remarks": r["latest"]
+                    "vod_remarks": r["latest"],
                 }
                 for r in rows
             ]
-            return JSONResponse({
-                "page": int(pg),
-                "pagecount": 1,
-                "limit": 20,
-                "total": len(result_list),
-                "list": result_list
-            })
-            
+            return JSONResponse(
+                {
+                    "page": int(pg),
+                    "pagecount": 1,
+                    "limit": 20,
+                    "total": len(result_list),
+                    "list": result_list,
+                }
+            )
+
     finally:
         con.close()
-        
+
     return JSONResponse({"list": []})
 
 
