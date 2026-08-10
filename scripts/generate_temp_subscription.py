@@ -1,18 +1,45 @@
 # -*- coding: utf-8 -*-
-"""临时放宽订阅生成：allow/hard_pass 全部 + 高分 candidate 补足（默认上限 95 点播源）。
+"""临时/正式订阅生成：allow/hard_pass/candidate 混合按得分排序（默认上限 95 点播源）。
+
+- 工具源仅保留豆瓣推荐（配置中心/本地视频不可用，剔除）
+- 点播源：allow/hard_pass/candidate 全量按 total_score 降序（不分组）
+- 源名字统一清洗：去 emoji/注释/数字序号前缀，┃→-；重名时保留原名
+
 发布到与正式版相同的地址，后续源晋级后用正式 30 源版覆盖即可（连接地址不变）。
 """
 
 import argparse
 import json
+import re
 import sqlite3
 from pathlib import Path
 
-EXEMPT_KEYS = {"drpy_js_豆瓣", "配置中心", "本地"}
+EXEMPT_KEYS = {"drpy_js_豆瓣"}
+
+_EMOJI_RE = re.compile(
+    "[\U0001f000-\U0001faff\U00002600-\U000027bf\U0001f900-\U0001f9ff\U0000fe0f\U00002702-\U000027b0]"
+)
+_SEQ_RE = re.compile(r"^\d+-")
+_TRAIL_NOTE_RE = re.compile(r"<=\S+")
 
 
-def _load_sites(con, state_filter: str, limit: int) -> list:
-    """按状态+评分取源（指纹去重，primary_raw_id 对应 raw_json）。"""
+def clean_name(name: str) -> str:
+    """统一源名字：去 emoji、去 (vpn) 等前缀注释、去 <= 尾部注释、┃→-、折叠空格。"""
+    n = _EMOJI_RE.sub("", name)
+    n = n.replace("(vpn)", "")
+    n = _TRAIL_NOTE_RE.sub("", n)
+    n = re.sub(r"┃", "-", n)
+    n = re.sub(r"\s+", " ", n).strip(" -")
+    return n
+
+
+def strip_seq_prefix(name: str) -> str:
+    """去掉开头的数字序号前缀（如 40-橘猫采集 → 橘猫采集）。"""
+    return _SEQ_RE.sub("", name)
+
+
+def _load_sites(con, limit: int) -> list:
+    """三状态混合按评分降序取源（指纹去重，primary_raw_id 对应 raw_json）。"""
     rows = con.execute(
         """
         WITH LatestScores AS (
@@ -25,11 +52,10 @@ def _load_sites(con, state_filter: str, limit: int) -> list:
         JOIN dedup_group dg ON ls.fingerprint = dg.fingerprint
         JOIN raw_source r ON dg.primary_raw_id = r.id
         LEFT JOIN LatestScores s ON ls.fingerprint = s.fingerprint AND s.rn = 1
-        WHERE ls.state IN (%s)
+        WHERE ls.state IN ('allow', 'hard_pass', 'candidate')
         ORDER BY COALESCE(s.total_score, 0) DESC
         LIMIT ?
-        """
-        % state_filter,
+        """,
         (limit,),
     ).fetchall()
     sites = []
@@ -60,6 +86,17 @@ def _jar_usable(obj: dict) -> bool:
     return True
 
 
+def _assign_names(sites: list) -> None:
+    """统一命名：清洗 + 去数字前缀；重名项回退为保留前缀的清洗版（保证唯一可辨）。"""
+    cleaned = [clean_name(str(s.get("name", ""))) for s in sites]
+    stripped = [strip_seq_prefix(c) for c in cleaned]
+    counts = {}
+    for n in stripped:
+        counts[n] = counts.get(n, 0) + 1
+    for s, c, st in zip(sites, cleaned, stripped):
+        s["name"] = st if counts[st] == 1 else c
+
+
 def main() -> None:
     p = argparse.ArgumentParser()
     p.add_argument("--db", required=True)
@@ -76,30 +113,14 @@ def main() -> None:
     con = sqlite3.connect(args.db)
     con.row_factory = sqlite3.Row
 
-    # 1. 工具源（豆瓣推荐/配置中心/本地）——从模板提取
-    tool_sites = []
-    for s in template.get("sites", []):
-        k = str(s.get("key", ""))
-        api = str(s.get("api", ""))
-        if k in EXEMPT_KEYS or "csp_Config" in api or "csp_LocalFile" in api:
-            tool_sites.append(s)
+    # 1. 工具源：仅豆瓣推荐（从模板提取）
+    tool_sites = [s for s in template.get("sites", []) if s.get("key") in EXEMPT_KEYS]
 
-    # 2. 点播源：allow/hard_pass 优先，candidate 高分补足
-    vod_sites = []
-    for state in ("'allow'", "'hard_pass'"):
-        for s in _load_sites(con, state, args.limit):
-            if _jar_usable(s):
-                vod_sites.append(s)
-        if len(vod_sites) >= args.limit:
-            break
-
-    if len(vod_sites) < args.limit:
-        fill = args.limit - len(vod_sites)
-        for s in _load_sites(con, "'candidate'", fill * 3):
-            if _jar_usable(s):
-                vod_sites.append(s)
-            if len(vod_sites) >= args.limit:
-                break
+    # 2. 点播源：三状态混合按分排序，过滤本机 jar，取前 limit
+    vod_sites = [s for s in _load_sites(con, args.limit * 3) if _jar_usable(s)][
+        : args.limit
+    ]
+    _assign_names(vod_sites)
 
     # 3. 组装：顶层结构沿用模板（spider/lives/parses/hosts/flags/doh/rules/ads/wallpaper）
     result = dict(template)

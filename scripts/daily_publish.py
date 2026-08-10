@@ -56,6 +56,26 @@ def sh(argv: list, timeout: int = 300) -> str:
     return r.stdout
 
 
+def ensure_repo() -> None:
+    """发布仓库不存在时自动重建（sparse + blob:none，避免 139MB 全量）。"""
+    if (PUBLISH_REPO / ".git").exists():
+        return
+    sh(["rm", "-rf", str(PUBLISH_REPO)])
+    sh(
+        [
+            "git",
+            "clone",
+            "--depth",
+            "1",
+            "--filter=blob:none",
+            "--sparse",
+            "git@github.com:darkings/lat3ncy-tvbox.git",
+            str(PUBLISH_REPO),
+        ]
+    )
+    sh(["git", "-C", str(PUBLISH_REPO), "sparse-checkout", "set", "subscription"])
+
+
 def count_approved_vod() -> int:
     con = sqlite3.connect(DB)
     try:
@@ -97,6 +117,7 @@ def log(limit: int, desc: str, pushed: bool, changed: bool) -> None:
 def main() -> None:
     do_push = "--push" in sys.argv
     t0 = time.time()
+    ensure_repo()
     # 先同步远端（工作树干净时执行，避免后续 push 被拒）
     sh(["git", "-C", str(PUBLISH_REPO), "pull", "--ff-only", "origin", "main"])
     n = count_approved_vod()
