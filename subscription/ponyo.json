@@ -97,26 +97,6 @@
       "changeable": 0
     },
     {
-      "key": "配置中心",
-      "name": "配置中心",
-      "type": 3,
-      "api": "csp_Config",
-      "searchable": 0,
-      "changeable": 0,
-      "indexs": 0,
-      "style": {
-        "type": "rect",
-        "ratio": 1.597
-      },
-      "ext": "https://cdn.jsdelivr.net/gh/darkings/lat3ncy-tvbox@main/subscription/config-list.txt"
-    },
-    {
-      "key": "本地",
-      "name": "本地视频",
-      "type": 3,
-      "api": "csp_LocalFile"
-    },
-    {
       "key": "drpyS_七猫短剧[短]",
       "name": "七猫短剧[短](DS)",
       "type": 4,
