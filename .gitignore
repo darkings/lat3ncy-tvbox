@@ -51,3 +51,10 @@ nul
 source-manager/.tmp-test/
 source-manager/subscription/ponyo-*.json
 source-manager/subscription/manifest.json
+
+# ── 订阅发布临时产物（不入库）──
+subscription/ponyo-temp.json
+subscription/update-log.txt
+
+# ── 一次性调试脚本（不入库）──
+tools/source-screening/tmp_*.py
