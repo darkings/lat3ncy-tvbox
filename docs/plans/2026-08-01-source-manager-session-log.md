@@ -840,3 +840,27 @@ playback 每轮每源仅 1 次采样，近 7 天成功样本 1-3 个；`latencie
 **自动化固化**：`discovery_profiles.json` general 加入 2 个特征查询词（`"api.php/provide/vod" in:readme`、`"provide/vod" maccms`），max_queries_per_run 4→5——13:00 轮起自动扫描该特征，持续发现新仓库/新源。
 
 **经验**：GitHub 特征搜索命中率高（35 候选 → 18 可用 = 51%），但**成人内容占比高**（9/18 = 50%）——需内容审核环节；代理包装地址（dpdns/qzz）非真源需过滤。
+
+### 31. 订阅每日自动更新上线（08-10 16:00-16:45 CST）——服务器 cron 全链路闭环
+
+**背景**：用户确认发布方案改为**云服务器定时任务**（不依赖 Windows）；订阅地址固定 `https://cdn.jsdelivr.net/gh/darkings/lat3ncy-tvbox@main/subscription/ponyo.json`，每日自动生成发布。
+
+**Windows 版 `subscription_daily_update.py`（备用）** 修复三处：
+- ssh `-c` 引号嵌套 → 改 stdin 管道传码（修 `NameError: data`）
+- Windows GBK 解码 → `encoding="utf-8", errors="replace"`（修 commit UnicodeDecodeError）
+- 内容无变化时 `git diff --cached` 判空 → 幂等跳过（不产生空提交）
+
+**真实变更链路实测**（服务器库临时升降级）：
+- 高分 candidate（七猫短剧 98.28）升 hard_pass → 内容未变（本就在 95 内，教训：测试需选"不在订阅内"的源）
+- 最低分 allow（最大资源 82.96）降 candidate → 触发真实变更 → commit+push 成功（bb51956）
+- 全部恢复原状 → 内容回到原始版 → 幂等跳过闭环（最终 4e9bb49 内容与 6ae5cfe 一致）
+
+**jsDelivr 缓存**：`https://purge.jsdelivr.net/gh/...` **GET 方式**实测有效（POST 405），CF+FY 双提供商刷新，CDN 内容即时更新。
+
+**服务器发布链路**：
+- deploy key：服务器生成 ed25519（`~/.ssh/github_deploy`），用户已添加至仓库 Deploy keys（**Allow write access**）
+- 发布仓库 `/opt/ponyo-publish`：**sparse + blob:none shallow clone**（.git 仅 276K，避免 139MB 全量）
+- `daily_publish.py`：pull --ff-only → 查库（allow/hard_pass 计数）→ 生成订阅（<29 用临时版 limit=95，≥29 正式版 limit=29）→ 写仓库 → 无变更幂等跳过 → commit → push → purge CDN → 日志
+- cron 纯净环境（env -i）实测通过；**crontab 每天 08:30 CST**（避开 08:00/13:00/20:00/23:00 的 scheduler full 流水线，防 sqlite 锁冲突），日志 `/var/log/ponyo-sub-publish.log`
+
+**提交**：6d4fd6c（双脚本+gitignore）、a1e8c73（pull 前置）。当前库 12 allow，订阅 98 源（工具 3+点播 95）已在 CDN 生效。
