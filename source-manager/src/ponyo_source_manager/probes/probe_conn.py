@@ -196,8 +196,15 @@ def _group_urls(
     groups: dict[str, set[str]] = defaultdict(set)
     for fp, req in rows:
         for url in json.loads(req or "[]"):
-            if net.classify_url(url) == "probe":
-                groups[fp].add(approved_rewrites.get((fp, url), url))
+            if net.classify_url(url) != "probe":
+                continue
+            rewritten = approved_rewrites.get((fp, url), url)
+            # 已物化的 jar 资产由 materialize_approved_assets 每轮校验（cached+sha），
+            # 无需网络探测；探测失败反而会拖累源的多时段稳定性（曾见 7 天窗口内
+            # 一次资产 URL 失败使 stability 掉到 0.65）。
+            if rewritten.startswith(APPROVED_ASSET_BASE_URL + "/"):
+                continue
+            groups[fp].add(rewritten)
     return groups
 
 
