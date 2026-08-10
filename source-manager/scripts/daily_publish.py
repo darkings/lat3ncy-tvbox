@@ -97,6 +97,8 @@ def log(limit: int, desc: str, pushed: bool, changed: bool) -> None:
 def main() -> None:
     do_push = "--push" in sys.argv
     t0 = time.time()
+    # 先同步远端（工作树干净时执行，避免后续 push 被拒）
+    sh(["git", "-C", str(PUBLISH_REPO), "pull", "--ff-only", "origin", "main"])
     n = count_approved_vod()
     limit = TARGET_VOD if n >= TARGET_VOD else TEMP_LIMIT
     mode = "正式版" if limit == TARGET_VOD else "临时版"
