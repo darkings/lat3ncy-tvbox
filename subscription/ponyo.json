@@ -234,6 +234,23 @@
       "ext": ""
     },
     {
+      "id": "10496a01-15b0-4077-9ec1-63d022b85c9c",
+      "key": "最大资源",
+      "name": "最大资源",
+      "api": "https://api.zuidapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-09T17:44:43.6072971+08:00",
+      "isDefault": 0,
+      "remark": "http://zuidazy.me/api.php/provide/vod/",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
       "key": "drpyS_七猫短剧[短]",
       "name": "七猫短剧[短](DS)",
       "type": 4,
@@ -911,23 +928,6 @@
       "logo": "https://guaziyingshi.xxsnav.com/files/guaziyingshi.png",
       "lang": "ds",
       "ext": ""
-    },
-    {
-      "id": "10496a01-15b0-4077-9ec1-63d022b85c9c",
-      "key": "最大资源",
-      "name": "最大资源",
-      "api": "https://api.zuidapi.com/api.php/provide/vod/",
-      "type": 2,
-      "isActive": 0,
-      "time": "2025-08-09T17:44:43.6072971+08:00",
-      "isDefault": 0,
-      "remark": "http://zuidazy.me/api.php/provide/vod/",
-      "tags": [
-        "优秀"
-      ],
-      "priority": 0,
-      "proxyMode": "none",
-      "customProxy": ""
     },
     {
       "key": "www.moduzy.net",
