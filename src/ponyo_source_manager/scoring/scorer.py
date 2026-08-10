@@ -198,6 +198,7 @@ def compute_stability(con: sqlite3.Connection, fp: str, days: int = 7) -> dict:
         "SELECT timeslot,probed_at,MIN(ok) FROM conn_probe "
         "WHERE fingerprint=? "
         "AND probed_at >= datetime('now', ?) "
+        "AND target_url NOT LIKE 'https://api.ponyo.fun/assets/%' "
         "GROUP BY timeslot,probed_at",
         (fp, f"-{days} days"),
     ).fetchall()

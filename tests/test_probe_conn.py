@@ -190,10 +190,8 @@ def test_group_urls_replaces_only_the_approved_jar():
         now="2026-07-30T00:00:00+00:00",
         approved_asset_base_url="https://api.ponyo.fun/assets/jar",
     )
-    assert groups["fp1"] == {
-        f"https://api.ponyo.fun/assets/jar/{sha256}.jar",
-        api_url,
-    }
+    # 已物化的 jar 资产由 materialize 阶段保证可用，不再纳入网络探测集。
+    assert groups["fp1"] == {api_url}
 
 
 def test_file_service_is_not_in_either_trusted_drpy_scope():
