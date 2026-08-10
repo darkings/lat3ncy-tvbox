@@ -1,0 +1,24 @@
+# Ponyo TVBox 配置中心默认列表（每行一个配置，支持 名称,URL 或 名称|URL，纯 URL 亦可）
+王二小,http://tvbox.王二小放牛娃.top
+饭太硬,http://www.饭太硬.net/tv
+肥猫,http://hello.肥猫.com
+宝盒,http://宝盒接口.top
+快乐接口,http://影视仓接口.top
+天微七星,http://7337.kstore.space/qxys/禁止传播.json
+麒麟,http://cdn.qiaoji8.com/tvbox.json
+玩偶,https://gitee.com/blssss/jk/raw/api/bls.json
+蓝天,https://gitee.com/lukei7/lib/raw/Luck/自建.json
+驸马,http://fmys.top/fmys.json
+传说,https://chuanshuo.77blog.cn/tv.json
+拾光,https://4708.kstore.space/omg/hollo.json
+青龙,https://gitee.com/yiwu369/6758/raw/master/青龙/1.json
+影视仓,https://jihulab.com/mengzhu2/ysc/-/raw/main/YSC.json
+教育,https://jihulab.com/bhjk1/vip/-/raw/main/vip.json
+短剧,http://box.ufuzi.com/tv/qq/短剧频道/api.json
+喵影视,http://meowtv.cn/tv
+挺好,https://ztha.top/TVBox/thdjk.json
+西夏,https://2912.kstore.space/0506.json
+小虎斑,https://hb.xyyh.online/tvbox/
+老虎,http://tv.laohu.cool/tvbox.json
+无易4K,https://ym.wya6.cn/
+Ponyo 正式,https://cdn.jsdelivr.net/gh/darkings/lat3ncy-tvbox@main/subscription/ponyo.json
