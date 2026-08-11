@@ -187,33 +187,6 @@
       "type": 1
     },
     {
-      "key": "jkzyuan.cc",
-      "name": "爱坤资源",
-      "type": 1,
-      "api": "https://jkunzyapi.com/api.php/provide/vod",
-      "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "国产传媒",
-        "黑丝诱惑",
-        "SWAG",
-        "中文字幕",
-        "日本有码",
-        "日本无码",
-        "AV解说",
-        "cosplay",
-        "激情动漫",
-        "自拍偷拍",
-        "网红主播",
-        "探花系列",
-        "三级伦理",
-        "VR视角",
-        "素人搭讪",
-        "门事件",
-        "抖阴视频"
-      ]
-    },
-    {
       "api": "https://api.zuidapi.com/api.php/provide/vod/",
       "key": "e750d6da567daae09c179aec32891d63",
       "name": "35-最大",
@@ -368,19 +341,6 @@
       "customProxy": ""
     },
     {
-      "key": "暴风",
-      "name": "暴风-三级",
-      "type": 1,
-      "api": "https://bfzyapi.com/api.php/provide/vod/?ac=list",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "playerType": 2,
-      "categories": [
-        "福利"
-      ]
-    },
-    {
       "api": "https://www.wyvod.com/api.php/provide/vod/",
       "key": "130ff3134aa51648a8a5575b98b5d268",
       "name": "无忧",
@@ -464,15 +424,6 @@
       ]
     },
     {
-      "key": "lziapi",
-      "name": "量子资源站",
-      "type": 1,
-      "api": "https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8/at/json/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
       "key": "drpyS_短剧聚合[短]",
       "name": "短剧聚合[短](DS)",
       "type": 4,
@@ -485,6 +436,15 @@
       "类型": "短剧",
       "lang": "ds",
       "ext": ""
+    },
+    {
+      "key": "lziapi",
+      "name": "量子资源站",
+      "type": 1,
+      "api": "https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8/at/json/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
     },
     {
       "key": "drpyS_啊哈DJ[听]",
@@ -625,15 +585,6 @@
       "remark": "tvbox-suite: 直链m3u8 total=33715 响应慢"
     },
     {
-      "key": "鸡坤资源",
-      "name": "鸡坤资源",
-      "type": 1,
-      "api": "https://jkunzyapi.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
       "key": "6b9cc227262a",
       "name": "非凡资源-变体",
       "type": 0,
@@ -650,55 +601,12 @@
       "remark": "github-feature-scan 2026-08-08"
     },
     {
-      "key": "doudouzy.com",
-      "name": "豆豆资源",
-      "type": 1,
-      "api": "https://doudouzy.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "欧美精品",
-        "国产传媒",
-        "国产视频",
-        "国产探花",
-        "极品学生",
-        "野战户外",
-        "网曝黑料",
-        "日本有码",
-        "校园春色",
-        "SM虐待",
-        "巨乳系列",
-        "偷拍自拍",
-        "强奸乱伦",
-        "制服诱惑",
-        "AV解说",
-        "成人动漫",
-        "日本无码",
-        "重口猎奇",
-        "少妇人妻",
-        "角色扮演",
-        "女同性恋",
-        "中文字幕",
-        "男同性恋",
-        "反差系列"
-      ]
-    },
-    {
       "key": "baidu",
       "name": "百度",
       "type": 1,
       "api": "https://api.apibdzy.com/api.php/provide/vod/",
       "searchable": 1,
       "quickSearch": 1
-    },
-    {
-      "key": "src_301",
-      "name": "老色逼资源|AV",
-      "type": 1,
-      "api": "https://apilsbzy1.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
     },
     {
       "api": "https://www.mdzyapi.com/api.php/provide/vod/",
@@ -753,46 +661,10 @@
       "remark": "github-feature-scan 2026-08-08"
     },
     {
-      "key": "老色逼资源站",
-      "name": "老色逼资源站",
-      "type": 1,
-      "api": "https://apilsbzy1.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
       "api": "https://bfzyapi.com/api.php/provide/vod/",
       "key": "740e5d81e28de3ab97eab19f0ce6cf1d",
       "name": "暴风",
       "type": 1
-    },
-    {
-      "key": "heiliaozy.com",
-      "name": "黑料资源",
-      "type": 1,
-      "api": "https://heiliaozyapi.com/api.php/provide/vod/",
-      "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "中文字幕",
-        "国产传媒",
-        "日本有码",
-        "日本无码",
-        "AV解说",
-        "cosplay",
-        "黑丝诱惑",
-        "SWAG",
-        "自拍偷拍",
-        "激情动漫",
-        "网红主播",
-        "探花系列",
-        "三级伦理",
-        "VR视角",
-        "囊人搭讪",
-        "门事件",
-        "抖阴视频"
-      ]
     },
     {
       "key": "0389103fc327",
@@ -801,23 +673,6 @@
       "api": "https://api.ddapi.cc/api.php/provide/vod/at/json",
       "ext": "",
       "remark": "xml→json 转换 2026-08-08"
-    },
-    {
-      "id": "78142530-573f-46d8-a805-7d84baa395c5",
-      "key": "CK资源",
-      "name": "CK资源",
-      "api": "https://ckzy.me/api.php/provide/vod/",
-      "type": 2,
-      "isActive": 0,
-      "time": "2025-08-20T19:30:48.7481368+08:00",
-      "isDefault": 0,
-      "remark": "",
-      "tags": [
-        "代理"
-      ],
-      "priority": 0,
-      "proxyMode": "none",
-      "customProxy": ""
     },
     {
       "id": "81dd8a62-8173-4adb-b148-5dba3d3eeb6c",
@@ -890,12 +745,6 @@
       ]
     },
     {
-      "api": "http://fhapi9.com/api.php/provide/vod/",
-      "key": "39a5f7a3881f34fa6361cf1129caea4f",
-      "name": "番号资源",
-      "type": 1
-    },
-    {
       "key": "drpyS_爱玩音乐[听]",
       "name": "爱玩音乐[听](DS)",
       "type": 4,
@@ -909,15 +758,6 @@
       "logo": "https://www.22a5.com/favicon.ico",
       "lang": "ds",
       "ext": ""
-    },
-    {
-      "key": "处女控",
-      "name": "CK三级片",
-      "type": 1,
-      "api": "https://ckzy.me/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
     },
     {
       "key": "c71554edd070",
@@ -935,32 +775,6 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
-    },
-    {
-      "key": "lebozy.com",
-      "name": "乐播资源",
-      "type": 1,
-      "api": "https://lbapi9.com/api.php/provide/vod/",
-      "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "无码专区",
-        "欧美性爱",
-        "中文字幕",
-        "亚洲情色",
-        "国产主播",
-        "国产自拍",
-        "熟女人妻",
-        "强奸乱伦",
-        "巨乳美乳",
-        "制服诱惑",
-        "女同性恋",
-        "卡通动画",
-        "视频伦理",
-        "少女萝莉",
-        "重口色情",
-        "人兽性交"
-      ]
     },
     {
       "api": "https://cj.rycjapi.com/api.php/provide/vod/",
@@ -1040,85 +854,6 @@
       ]
     },
     {
-      "key": "155专场",
-      "name": "155采集2",
-      "type": 1,
-      "api": "https://155api.com/api.php/provide/vod/",
-      "playUrl": "",
-      "searchable": 0,
-      "quickSearch": 0,
-      "filterable": 1,
-      "categories": [
-        "无码专区",
-        "麻豆传媒",
-        "制服诱惑",
-        "三级伦理",
-        "AI换脸",
-        "中文字幕",
-        "卡通动漫",
-        "欧美系列",
-        "美女主播",
-        "国产自拍",
-        "熟女人妻",
-        "萝莉少女",
-        "女同性爱",
-        "多人群交",
-        "美乳巨乳",
-        "强奸乱伦",
-        "抖音视频",
-        "韩国主播",
-        "网红头条",
-        "网爆黑料",
-        "欧美无码",
-        "女优明星",
-        "SM调教",
-        "AV解说"
-      ]
-    },
-    {
-      "key": "xjzyapi.xyz",
-      "name": "小鸡资源",
-      "type": 1,
-      "api": "https://api.xjzyapi.xyz/provide/vod",
-      "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "欧美精选",
-        "日韩精选",
-        "国产精选",
-        "VR专区",
-        "性感网红",
-        "重口调教",
-        "厂牌经典",
-        "人兽",
-        "其他",
-        "强奸迷奸",
-        "网曝黑料",
-        "国产厂牌",
-        "丝袜制服",
-        "主播网红",
-        "AI换脸",
-        "乱伦",
-        "SM调教",
-        "群交多P",
-        "学生萝莉",
-        "自拍偷拍",
-        "口交自慰",
-        "国产三级",
-        "日韩AV",
-        "素人特摄",
-        "无码高清",
-        "经典有码",
-        "中文字幕",
-        "日韩三级",
-        "东南亚",
-        "阿拉伯",
-        "印巴拉丁",
-        "激情H漫",
-        "3D"
-      ]
-    },
-    {
       "key": "drpyS_集百动漫[漫]",
       "name": "集百动漫[漫](DS)",
       "type": 4,
@@ -1131,39 +866,6 @@
       "类型": "影视",
       "lang": "ds",
       "ext": ""
-    },
-    {
-      "key": "7456b38a25b4",
-      "name": "LBAPI-9-JSON",
-      "type": 0,
-      "api": "https://lbapi9.com/api.php/provide/vod/at/json",
-      "ext": "",
-      "remark": "xml→json 转换 2026-08-08"
-    },
-    {
-      "key": "fd005e8d67ab",
-      "name": "11BAT-JSON",
-      "type": 0,
-      "api": "http://api.11bat.com/api.php/provide/vod/at/json/",
-      "ext": "",
-      "remark": "xml→json 转换 2026-08-08"
-    },
-    {
-      "key": "1e98fcaeacd9",
-      "name": "FHAPI-9-JSON",
-      "type": 0,
-      "api": "http://fhapi9.com/api.php/provide/vod/at/json",
-      "ext": "",
-      "remark": "xml→json 转换 2026-08-08"
-    },
-    {
-      "key": "9d8974ba-ddfc-5e53-b008-29f37e5fc88b",
-      "name": "155",
-      "type": 1,
-      "api": "https://155api.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
     },
     {
       "key": "drpyS_小苹果[优]",
@@ -1202,23 +904,6 @@
       "remark": "xml→json 转换 2026-08-08"
     },
     {
-      "key": "db10746ebf01",
-      "name": "155API-JSON",
-      "type": 0,
-      "api": "https://155api.com/api.php/provide/vod/at/json",
-      "ext": "",
-      "remark": "xml→json 转换 2026-08-08"
-    },
-    {
-      "key": "src_76",
-      "name": "AIvin",
-      "type": 1,
-      "api": "http://lbapiby.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
       "key": "drpyS_3Q影视[优]",
       "name": "3Q影视[优](DS)",
       "type": 4,
@@ -1228,19 +913,6 @@
       "quickSearch": 0,
       "title": "3Q影视[优]",
       "author": "EylinSir",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
-      "key": "drpyS_永乐视频[优]",
-      "name": "永乐视频[优](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/永乐视频[优]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 1,
-      "quickSearch": 1,
-      "title": "永乐视频[优]",
       "类型": "影视",
       "lang": "ds",
       "ext": ""
@@ -1288,6 +960,19 @@
       ]
     },
     {
+      "key": "drpyS_永乐视频[优]",
+      "name": "永乐视频[优](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/永乐视频[优]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 1,
+      "quickSearch": 1,
+      "title": "永乐视频[优]",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
       "key": "drpyS_热播影视[优]",
       "name": "热播影视[优](DS)",
       "type": 4,
@@ -1311,12 +996,18 @@
       "filterable": 1
     },
     {
-      "key": "2957b20edf04",
-      "name": "LBAPI-by-JSON",
-      "type": 0,
-      "api": "http://lbapiby.com/api.php/provide/vod/at/json",
-      "ext": "",
-      "remark": "xml→json 转换 2026-08-08"
+      "key": "drpyS_飞牛影视",
+      "name": "飞牛影视(DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/飞牛影视?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 1,
+      "quickSearch": 1,
+      "title": "飞牛影视",
+      "author": "EylinSir",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": ""
     },
     {
       "key": "drpyS_短剧视频库",
@@ -1328,20 +1019,6 @@
       "quickSearch": 1,
       "title": "短剧视频库",
       "author": "251208_DS",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
-      "key": "drpyS_飞牛影视",
-      "name": "飞牛影视(DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/飞牛影视?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 1,
-      "quickSearch": 1,
-      "title": "飞牛影视",
-      "author": "EylinSir",
       "类型": "影视",
       "lang": "ds",
       "ext": ""
@@ -1396,15 +1073,6 @@
       "ext": ""
     },
     {
-      "key": "aivin_av_44",
-      "name": "AIvin|AV",
-      "type": 1,
-      "api": "http://lbapiby.com/api.php/provide/vod/at/json",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
       "key": "drpyS_247看",
       "name": "247看(DS)",
       "type": 4,
@@ -1450,6 +1118,315 @@
         "日本动漫",
         "欧美动漫"
       ]
+    },
+    {
+      "key": "drpyS_毒舌影视[优]",
+      "name": "毒舌影视[优](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/毒舌影视[优]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "毒舌影视[优]",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "key": "drpyS_电影港[磁]",
+      "name": "电影港[磁](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/电影港[磁]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "电影港[磁]",
+      "author": "EylinSir",
+      "类型": "影视",
+      "logo": "https://www.dyg123.net/favicon.ico",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "key": "drpyS_牛牛短剧[短]",
+      "name": "牛牛短剧[短](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/牛牛短剧[短]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "牛牛短剧[短]",
+      "类型": "短剧",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "key": "drpyS_阅读助手[书]",
+      "name": "阅读助手[书](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/阅读助手[书]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "阅读助手[书]",
+      "author": "EylinSir",
+      "类型": "小说",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "key": "drpyS_TG搜[搜]",
+      "name": "TG搜[搜](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/TG搜[搜]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 0,
+      "quickSearch": 1,
+      "title": "TG搜[搜]",
+      "author": "EylinSir",
+      "类型": "搜索",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "key": "liangzi",
+      "name": "量子",
+      "type": 1,
+      "api": "https://cj.lziapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1
+    },
+    {
+      "key": "feifan",
+      "name": "非凡",
+      "type": 1,
+      "api": "http://cj.ffzyapi.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1
+    },
+    {
+      "key": "yinghua",
+      "name": "樱花",
+      "type": 1,
+      "api": "https://m3u8.apiyhzy.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1
+    },
+    {
+      "key": "subo",
+      "name": "速博",
+      "type": 1,
+      "api": "https://subocaiji.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1
+    },
+    {
+      "id": "9fc5bb9a-7890-4ac9-aa7d-b77f5f88b345",
+      "key": "豪华资源",
+      "name": "豪华资源",
+      "api": "https://hhzyapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 1,
+      "time": "2025-08-20T19:28:39.7276357+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 1,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
+      "id": "cabdc4c4-854f-4d1c-a7b6-958ea873a67d",
+      "key": "影视工厂",
+      "name": "影视工厂",
+      "api": "https://cj.lziapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-20T20:23:47.7171282+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
+      "id": "9c3bab8d-99c1-4c72-8771-cef896b3c56a",
+      "key": "红牛资源",
+      "name": "红牛资源",
+      "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-20T19:32:09.6476237+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
+      "id": "a57bbfa1-283d-4068-8b43-c32a34302e8b",
+      "key": "新浪点播",
+      "name": "新浪点播",
+      "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-20T19:31:45.2241586+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
+      "id": "6298b26c-085e-4bb5-9618-f8991c548b24",
+      "key": "光速资源",
+      "name": "光速资源",
+      "api": "https://api.guangsuapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-20T19:31:33.3969745+08:00",
+      "isDefault": 0,
+      "remark": "搜索没用",
+      "tags": [
+        "无法搜索",
+        "差"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
+      "id": "84faf82b-60de-41fe-a2a8-97a7705a8b2a",
+      "key": "金鹰资源",
+      "name": "金鹰资源",
+      "api": "https://jyzyapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-20T19:29:57.0619237+08:00",
+      "isDefault": 0,
+      "remark": "https://jinyingzy.com/api.php/provide/vod/",
+      "tags": [
+        "搜索混乱",
+        "差"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
+      "id": "81f0049f-8b0b-449d-b994-b1b5aa499a1c",
+      "key": "虎牙资源",
+      "name": "虎牙资源",
+      "api": "https://www.huyaapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-20T19:29:31.2557659+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "搜索混乱",
+        "差"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
+      "id": "28553132-27bb-4f47-8e97-d6adf0b71285",
+      "key": "速播资源",
+      "name": "速播资源",
+      "api": "https://subocaiji.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-20T19:28:53.7913327+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
+      "id": "2632a81e-a88f-4978-a81a-142f1a9a662d",
+      "key": "樱花资源",
+      "name": "樱花资源",
+      "api": "https://m3u8.apiyhzy.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-09T17:45:05.8249361+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "无法搜索",
+        "差"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
+      "id": "544141d9-fe7a-454b-b03f-534361d5b85b",
+      "key": "电影天堂资源",
+      "name": "电影天堂资源",
+      "api": "https://caiji.dyttzyapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 1,
+      "time": "2025-08-09T17:39:58.5822762+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "builtin",
+      "customProxy": ""
+    },
+    {
+      "id": "8f871502-8ccb-4435-8fb1-06c742874340",
+      "key": "极速资源",
+      "name": "极速资源",
+      "api": "https://jszyapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-08T23:42:50.8818559+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "代理"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
+    },
+    {
+      "id": "9fe61825-ed0f-4965-9d30-57fb2d147aea",
+      "key": "非凡影视",
+      "name": "非凡影视",
+      "api": "http://ffzy5.tv/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 1,
+      "time": "2025-08-08T23:02:01.8733113+08:00",
+      "isDefault": 0,
+      "remark": "https://api.ffzyapi.com/api.php/provide/vod/",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": ""
     }
   ],
   "parses": [
