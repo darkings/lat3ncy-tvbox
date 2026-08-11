@@ -331,6 +331,35 @@
       "type": 1
     },
     {
+      "key": "drpyS_央视大全[官]",
+      "name": "央视大全[官](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/央视大全[官]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "央视大全[官]",
+      "lang": "ds",
+      "isProxyPath": true,
+      "more": {
+        "parseApi": [
+          {
+            "host": "cctv://(.+)",
+            "flag": "CCTV"
+          },
+          {
+            "host": "cctv4k://(.+)",
+            "flag": "CCTV4K"
+          },
+          {
+            "host": "cctvlive://(.+)",
+            "flag": "CCTV直播"
+          }
+        ]
+      },
+      "ext": ""
+    },
+    {
       "key": "zuida.xyz",
       "name": "最大资源",
       "type": 1,
@@ -359,35 +388,6 @@
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1
-    },
-    {
-      "key": "drpyS_央视大全[官]",
-      "name": "央视大全[官](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/央视大全[官]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "央视大全[官]",
-      "lang": "ds",
-      "isProxyPath": true,
-      "more": {
-        "parseApi": [
-          {
-            "host": "cctv://(.+)",
-            "flag": "CCTV"
-          },
-          {
-            "host": "cctv4k://(.+)",
-            "flag": "CCTV4K"
-          },
-          {
-            "host": "cctvlive://(.+)",
-            "flag": "CCTV直播"
-          }
-        ]
-      },
-      "ext": ""
     },
     {
       "id": "4aa83ed0-bce5-4d86-ae48-3524bf7fc907",
@@ -566,14 +566,6 @@
       "changeable": 1
     },
     {
-      "key": "jinying",
-      "name": "金鹰",
-      "type": 1,
-      "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
-      "searchable": 1,
-      "quickSearch": 1
-    },
-    {
       "key": "暴风",
       "name": "暴风-三级",
       "type": 1,
@@ -585,6 +577,14 @@
       "categories": [
         "福利"
       ]
+    },
+    {
+      "key": "jinying",
+      "name": "金鹰",
+      "type": 1,
+      "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
+      "searchable": 1,
+      "quickSearch": 1
     },
     {
       "key": "虎牙",
@@ -683,15 +683,6 @@
       "remark": "tvbox-suite: 直链m3u8 total=33715 响应慢"
     },
     {
-      "key": "滴滴资源",
-      "name": "滴滴资源",
-      "type": 1,
-      "api": "https://api.ddapi.cc/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
       "key": "6b9cc227262a",
       "name": "非凡资源-变体",
       "type": 0,
@@ -771,13 +762,13 @@
       "type": 1
     },
     {
-      "key": "老色逼资源站",
-      "name": "老色逼资源站",
+      "key": "滴滴资源",
+      "name": "滴滴资源",
       "type": 1,
-      "api": "https://apilsbzy1.com/api.php/provide/vod/?ac=list",
+      "api": "https://api.ddapi.cc/api.php/provide/vod/?ac=list",
       "searchable": 1,
       "quickSearch": 1,
-      "filterable": 1
+      "filterable": 0
     },
     {
       "key": "c1b06f719aae",
@@ -786,6 +777,15 @@
       "api": "https://thzy1.me/api.php/provide/vod",
       "ext": "",
       "remark": "github-feature-scan 2026-08-08"
+    },
+    {
+      "key": "老色逼资源站",
+      "name": "老色逼资源站",
+      "type": 1,
+      "api": "https://apilsbzy1.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1
     },
     {
       "key": "百度",
@@ -867,21 +867,6 @@
       "filterable": 1
     },
     {
-      "key": "drpyS_爱玩音乐[听]",
-      "name": "爱玩音乐[听](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/爱玩音乐[听]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 1,
-      "quickSearch": 1,
-      "title": "爱玩音乐[听]",
-      "author": "EylinSir",
-      "类型": "音乐",
-      "logo": "https://www.22a5.com/favicon.ico",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
       "id": "81dd8a62-8173-4adb-b148-5dba3d3eeb6c",
       "key": "百度云资源",
       "name": "百度云资源",
@@ -897,6 +882,21 @@
       "priority": 0,
       "proxyMode": "none",
       "customProxy": ""
+    },
+    {
+      "key": "drpyS_爱玩音乐[听]",
+      "name": "爱玩音乐[听](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/爱玩音乐[听]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 1,
+      "quickSearch": 1,
+      "title": "爱玩音乐[听]",
+      "author": "EylinSir",
+      "类型": "音乐",
+      "logo": "https://www.22a5.com/favicon.ico",
+      "lang": "ds",
+      "ext": ""
     },
     {
       "key": "drpyS_瓜子[优]",
@@ -1009,6 +1009,19 @@
       "type": 1
     },
     {
+      "key": "drpyS_米兔音乐[听]",
+      "name": "米兔音乐[听](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/米兔音乐[听]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "米兔音乐[听]",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
       "key": "drpyS_独播库[优]",
       "name": "独播库[优](DS)",
       "type": 4,
@@ -1018,19 +1031,6 @@
       "quickSearch": 0,
       "title": "独播库[优]",
       "author": "EylinSir",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
-      "key": "drpyS_米兔音乐[听]",
-      "name": "米兔音乐[听](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/米兔音乐[听]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "米兔音乐[听]",
       "类型": "影视",
       "lang": "ds",
       "ext": ""
@@ -1220,19 +1220,6 @@
       "ext": ""
     },
     {
-      "key": "drpyS_永乐视频[优]",
-      "name": "永乐视频[优](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/永乐视频[优]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 1,
-      "quickSearch": 1,
-      "title": "永乐视频[优]",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
       "key": "0052bf53b8d2",
       "name": "魔都资源-JSON",
       "type": 0,
@@ -1249,15 +1236,14 @@
       "remark": "xml→json 转换 2026-08-08"
     },
     {
-      "key": "drpyS_集百动漫[漫]",
-      "name": "集百动漫[漫](DS)",
+      "key": "drpyS_永乐视频[优]",
+      "name": "永乐视频[优](DS)",
       "type": 4,
-      "api": "http://127.0.0.1:5757/api/集百动漫[漫]?pwd=ponyo-local-drpy",
+      "api": "http://127.0.0.1:5757/api/永乐视频[优]?pwd=ponyo-local-drpy",
       "searchable": 1,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "集百动漫[漫]",
-      "author": "EylinSir",
+      "filterable": 1,
+      "quickSearch": 1,
+      "title": "永乐视频[优]",
       "类型": "影视",
       "lang": "ds",
       "ext": ""
@@ -1271,6 +1257,20 @@
       "filterable": 1,
       "quickSearch": 0,
       "title": "3Q影视[优]",
+      "author": "EylinSir",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "key": "drpyS_集百动漫[漫]",
+      "name": "集百动漫[漫](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/集百动漫[漫]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "集百动漫[漫]",
       "author": "EylinSir",
       "类型": "影视",
       "lang": "ds",
@@ -1319,14 +1319,6 @@
       ]
     },
     {
-      "key": "2957b20edf04",
-      "name": "LBAPI-by-JSON",
-      "type": 0,
-      "api": "http://lbapiby.com/api.php/provide/vod/at/json",
-      "ext": "",
-      "remark": "xml→json 转换 2026-08-08"
-    },
-    {
       "key": "drpyS_热播影视[优]",
       "name": "热播影视[优](DS)",
       "type": 4,
@@ -1339,6 +1331,14 @@
       "类型": "影视",
       "lang": "ds",
       "ext": ""
+    },
+    {
+      "key": "2957b20edf04",
+      "name": "LBAPI-by-JSON",
+      "type": 0,
+      "api": "http://lbapiby.com/api.php/provide/vod/at/json",
+      "ext": "",
+      "remark": "xml→json 转换 2026-08-08"
     },
     {
       "key": "drpyS_短剧视频库",
@@ -1470,21 +1470,6 @@
       ]
     },
     {
-      "key": "drpyS_番茄小说[书]",
-      "name": "番茄小说[书](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/番茄小说[书]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "番茄小说[书]",
-      "author": "道长",
-      "类型": "小说",
-      "logo": "https://www.18zf.net/d/file/p/2023/1107/3ty5orktxrc.jpg",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
       "key": "drpyS_毒舌影视[优]",
       "name": "毒舌影视[优](DS)",
       "type": 4,
@@ -1494,6 +1479,21 @@
       "quickSearch": 0,
       "title": "毒舌影视[优]",
       "类型": "影视",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "key": "drpyS_电影港[磁]",
+      "name": "电影港[磁](DS)",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/电影港[磁]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "电影港[磁]",
+      "author": "EylinSir",
+      "类型": "影视",
+      "logo": "https://www.dyg123.net/favicon.ico",
       "lang": "ds",
       "ext": ""
     }
