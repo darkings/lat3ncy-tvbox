@@ -136,19 +136,6 @@
       "type": 1
     },
     {
-      "key": "drpyS_西饭短剧[短]",
-      "name": "西饭短剧[短](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/西饭短剧[短]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "西饭短剧[短]",
-      "类型": "短剧",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
       "key": "360zy.com",
       "name": "360 资源",
       "type": 1,
@@ -422,20 +409,6 @@
         "香港剧",
         "短剧"
       ]
-    },
-    {
-      "key": "drpyS_短剧聚合[短]",
-      "name": "短剧聚合[短](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/短剧聚合[短]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 1,
-      "quickSearch": 1,
-      "title": "短剧聚合[短]",
-      "author": "EylinSir",
-      "类型": "短剧",
-      "lang": "ds",
-      "ext": ""
     },
     {
       "key": "lziapi",
@@ -965,20 +938,6 @@
       "ext": ""
     },
     {
-      "key": "drpyS_短剧视频库",
-      "name": "短剧视频库(DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/短剧视频库?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 1,
-      "quickSearch": 1,
-      "title": "短剧视频库",
-      "author": "251208_DS",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
       "key": "src_36",
       "name": "飘零影院",
       "type": 1,
@@ -1099,19 +1058,6 @@
       "author": "EylinSir",
       "类型": "影视",
       "logo": "https://www.dyg123.net/favicon.ico",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
-      "key": "drpyS_牛牛短剧[短]",
-      "name": "牛牛短剧[短](DS)",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/牛牛短剧[短]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "牛牛短剧[短]",
-      "类型": "短剧",
       "lang": "ds",
       "ext": ""
     },
@@ -1405,6 +1351,30 @@
       "api": "http://cj.ffzyapi.com//api.php/provide/vod/",
       "key": "730acd683fc317fa1a584e5613e727f0",
       "name": "2-非凡",
+      "type": 1
+    },
+    {
+      "api": "https://api.ffzyapi.com/api.php/provide/vod/",
+      "key": "08770a213d5c282a0fe20bf7648a9aba",
+      "name": "3-非凡",
+      "type": 1
+    },
+    {
+      "api": "https://cj.ffzyapi.com/api.php/provide/vod/",
+      "key": "7b1d09368af7a13806e1a8e1e43850e5",
+      "name": "4-非凡",
+      "type": 1
+    },
+    {
+      "api": "http://ffzy3.tv/api.php/provide/vod/",
+      "key": "73b5c89acc8a7c24118857fc514e9218",
+      "name": "6-非凡",
+      "type": 1
+    },
+    {
+      "api": "http://ffzy4.tv/api.php/provide/vod/",
+      "key": "ad1116ca9a9b3057570066086c9c9698",
+      "name": "7-非凡",
       "type": 1
     }
   ],
