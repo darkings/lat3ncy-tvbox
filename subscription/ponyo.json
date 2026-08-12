@@ -117,6 +117,12 @@
       "api": "csp_LocalFile"
     },
     {
+      "api": "http://www.zitv.cc/api.php/provide/vod/",
+      "key": "dcbb4b646ce9e6b0c0565925f2008037",
+      "name": "橘猫",
+      "type": 1
+    },
+    {
       "key": "drpyS_七猫短剧[短]",
       "name": "七猫短剧",
       "type": 4,
@@ -128,12 +134,6 @@
       "类型": "短剧",
       "lang": "ds",
       "ext": ""
-    },
-    {
-      "api": "http://www.zitv.cc/api.php/provide/vod/",
-      "key": "dcbb4b646ce9e6b0c0565925f2008037",
-      "name": "橘猫",
-      "type": 1
     },
     {
       "key": "360zy.com",
@@ -193,14 +193,6 @@
       ]
     },
     {
-      "key": "f0ccb025823f",
-      "name": "艾旦",
-      "type": 0,
-      "api": "http://lovedan.net/api.php/provide/vod",
-      "ext": "",
-      "remark": "github-feature-scan 2026-08-08"
-    },
-    {
       "key": "drpyS_央视大全[官]",
       "name": "央视大全",
       "type": 4,
@@ -228,6 +220,14 @@
         ]
       },
       "ext": ""
+    },
+    {
+      "key": "4b444a59887f",
+      "name": "天堂",
+      "type": 0,
+      "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/m3u8/",
+      "ext": "",
+      "remark": "addr-audit 2026-08-08 [tvbox_configs/___maccms.json]"
     },
     {
       "key": "www.maoyanzy.com",
@@ -263,6 +263,55 @@
       "key": "130ff3134aa51648a8a5575b98b5d268",
       "name": "无忧",
       "type": 1
+    },
+    {
+      "key": "6b9cc227262a",
+      "name": "非凡",
+      "type": 0,
+      "api": "http://cj.ffzyapi.com/api.php/provide/vod/from/ffm3u8/",
+      "ext": "",
+      "remark": "addr-audit 2026-08-08 [tvbox-suite]"
+    },
+    {
+      "key": "虎牙",
+      "name": "虎牙",
+      "type": 1,
+      "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
+      "searchable": 1,
+      "quickSearch": 1,
+      "categories": [
+        "内地剧",
+        "动作片",
+        "科幻片",
+        "战争片",
+        "喜剧片",
+        "爱情片",
+        "恐怖片",
+        "犯罪片",
+        "剧情片",
+        "冒险片",
+        "记录片",
+        "韩剧",
+        "香港剧",
+        "台湾剧",
+        "欧美剧",
+        "日剧",
+        "马泰剧",
+        "体育赛事",
+        "综艺",
+        "动画片",
+        "中国动漫",
+        "日本动漫",
+        "欧美动漫"
+      ]
+    },
+    {
+      "key": "jinying",
+      "name": "金鹰",
+      "type": 1,
+      "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
+      "searchable": 1,
+      "quickSearch": 1
     },
     {
       "key": "drpyS_DJ音乐[听]",
@@ -322,90 +371,18 @@
       "changeable": 1
     },
     {
-      "key": "jinying",
-      "name": "金鹰",
-      "type": 1,
-      "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
-      "searchable": 1,
-      "quickSearch": 1
-    },
-    {
-      "key": "虎牙",
-      "name": "虎牙",
-      "type": 1,
-      "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
-      "searchable": 1,
-      "quickSearch": 1,
-      "categories": [
-        "内地剧",
-        "动作片",
-        "科幻片",
-        "战争片",
-        "喜剧片",
-        "爱情片",
-        "恐怖片",
-        "犯罪片",
-        "剧情片",
-        "冒险片",
-        "记录片",
-        "韩剧",
-        "香港剧",
-        "台湾剧",
-        "欧美剧",
-        "日剧",
-        "马泰剧",
-        "体育赛事",
-        "综艺",
-        "动画片",
-        "中国动漫",
-        "日本动漫",
-        "欧美动漫"
-      ]
-    },
-    {
-      "key": "4b444a59887f",
-      "name": "天堂",
+      "key": "c71554edd070",
+      "name": "光速",
       "type": 0,
-      "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/m3u8/",
+      "api": "https://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8/",
       "ext": "",
-      "remark": "addr-audit 2026-08-08 [tvbox_configs/___maccms.json]"
-    },
-    {
-      "key": "6b9cc227262a",
-      "name": "非凡",
-      "type": 0,
-      "api": "http://cj.ffzyapi.com/api.php/provide/vod/from/ffm3u8/",
-      "ext": "",
-      "remark": "addr-audit 2026-08-08 [tvbox-suite]"
+      "remark": "addr-audit 2026-08-08 [tvbox_configs/xpg_yw_maccms.json]"
     },
     {
       "key": "795280eee6b8",
       "name": "百度",
       "type": 0,
       "api": "http://api.apibdzy.com/api.php/provide/vod",
-      "ext": "",
-      "remark": "github-feature-scan 2026-08-08"
-    },
-    {
-      "api": "https://www.mdzyapi.com/api.php/provide/vod/",
-      "key": "77791ef659e8282af587e24e7b0c18a5",
-      "name": "墨斗",
-      "type": 1
-    },
-    {
-      "key": "滴滴资源",
-      "name": "滴滴",
-      "type": 1,
-      "api": "https://api.ddapi.cc/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0
-    },
-    {
-      "key": "c1b06f719aae",
-      "name": "THZY",
-      "type": 0,
-      "api": "https://thzy1.me/api.php/provide/vod",
       "ext": "",
       "remark": "github-feature-scan 2026-08-08"
     },
@@ -423,14 +400,6 @@
       "logo": "https://guaziyingshi.xxsnav.com/files/guaziyingshi.png",
       "lang": "ds",
       "ext": ""
-    },
-    {
-      "key": "c71554edd070",
-      "name": "光速",
-      "type": 0,
-      "api": "https://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8/",
-      "ext": "",
-      "remark": "addr-audit 2026-08-08 [tvbox_configs/xpg_yw_maccms.json]"
     },
     {
       "key": "如意资源",
@@ -456,20 +425,6 @@
       "ext": ""
     },
     {
-      "key": "drpyS_集百动漫[漫]",
-      "name": "集百动漫",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/集百动漫[漫]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "集百动漫[漫]",
-      "author": "EylinSir",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
       "key": "drpyS_小苹果[优]",
       "name": "小苹果",
       "type": 4,
@@ -478,6 +433,20 @@
       "filterable": 1,
       "quickSearch": 0,
       "title": "小苹果[优]",
+      "author": "EylinSir",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "key": "drpyS_集百动漫[漫]",
+      "name": "集百动漫",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/集百动漫[漫]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "集百动漫[漫]",
       "author": "EylinSir",
       "类型": "影视",
       "lang": "ds",
@@ -820,6 +789,19 @@
       "ext": ""
     },
     {
+      "key": "drpyS_优酷[官]",
+      "name": "优酷",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/优酷[官]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "优酷[官]",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
       "key": "drpyS_动漫啦[画]",
       "name": "动漫啦",
       "type": 4,
@@ -835,15 +817,17 @@
       "ext": ""
     },
     {
-      "key": "drpyS_优酷[官]",
-      "name": "优酷",
+      "key": "drpyS_光社漫画[画]",
+      "name": "光社漫画",
       "type": 4,
-      "api": "http://127.0.0.1:5757/api/优酷[官]?pwd=ponyo-local-drpy",
+      "api": "http://127.0.0.1:5757/api/光社漫画[画]?pwd=ponyo-local-drpy",
       "searchable": 2,
-      "filterable": 1,
+      "filterable": 0,
       "quickSearch": 0,
-      "title": "优酷[官]",
-      "类型": "影视",
+      "title": "光社漫画[画]",
+      "author": "EylinSir",
+      "类型": "漫画",
+      "logo": "https://m.g-mh.org/favicon.ico",
       "lang": "ds",
       "ext": ""
     },
@@ -858,21 +842,6 @@
       "title": "包子漫画[画]",
       "类型": "漫画",
       "logo": "https://cn.czmanga.com/favicon.ico",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
-      "key": "drpyS_光社漫画[画]",
-      "name": "光社漫画",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/光社漫画[画]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "光社漫画[画]",
-      "author": "EylinSir",
-      "类型": "漫画",
-      "logo": "https://m.g-mh.org/favicon.ico",
       "lang": "ds",
       "ext": ""
     },
@@ -1035,18 +1004,6 @@
       "ext": ""
     },
     {
-      "key": "drpyS_腾云驾雾[官]",
-      "name": "腾云驾雾",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/腾云驾雾[官]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "腾云驾雾[官]",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
       "key": "drpyS_漫画大全[画]",
       "name": "漫画大全",
       "type": 4,
@@ -1069,6 +1026,18 @@
       "quickSearch": 1,
       "title": "兄弟盘[搜]",
       "类型": "搜索",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "key": "drpyS_腾云驾雾[官]",
+      "name": "腾云驾雾",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/腾云驾雾[官]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "腾云驾雾[官]",
       "lang": "ds",
       "ext": ""
     },
@@ -1294,6 +1263,152 @@
       "playerType": "2",
       "api": "./libs/js/drpy2.min.js",
       "ext": "./libs/js/奇优.js"
+    },
+    {
+      "key": "csp_SNzy",
+      "name": "索尼-高清",
+      "type": 1,
+      "api": "https://suoniapi.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "categories": [
+        "动作片",
+        "喜剧片",
+        "科幻片",
+        "恐怖片",
+        "爱情片",
+        "剧情片",
+        "战争片",
+        "记录片",
+        "国产剧",
+        "欧美剧",
+        "香港剧",
+        "韩国剧",
+        "台湾剧",
+        "日本剧",
+        "海外剧",
+        "泰国剧",
+        "国产动漫",
+        "日韩动漫",
+        "欧美动漫",
+        "港台动漫",
+        "海外动漫",
+        "大陆综艺",
+        "港台综艺",
+        "日韩综艺",
+        "欧美综艺"
+      ]
+    },
+    {
+      "key": "taopian",
+      "name": "淘片",
+      "type": 1,
+      "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
+      "searchable": 1,
+      "filterable": 0,
+      "categories": [
+        "动漫/国产动漫",
+        "动漫/日本动漫",
+        "动漫/欧美动漫",
+        "动漫/海外动漫",
+        "综艺/大陆综艺",
+        "综艺/港台综艺",
+        "综艺/日韩综艺",
+        "综艺/欧美综艺",
+        "综艺/海外综艺",
+        "电视剧/国产剧",
+        "电视剧/香港剧",
+        "电视剧/欧美剧",
+        "电视剧/海外剧",
+        "电视剧/韩国剧",
+        "电视剧/日本剧",
+        "电视剧/泰国剧",
+        "电视剧/台湾剧",
+        "电影/战争片",
+        "电影/科幻片",
+        "电影/奇幻片",
+        "电影/冒险片",
+        "电影/动画片",
+        "电影/喜剧片",
+        "电影/动作片",
+        "电影/爱情片",
+        "电影/恐怖片",
+        "电影/惊悚片",
+        "电影/剧情片",
+        "电影/悬疑片",
+        "电影/纪录片"
+      ]
+    },
+    {
+      "key": "量子资源",
+      "name": "量子-资源",
+      "type": 1,
+      "api": "https://lzizy1.com/api.php/provide/vod/",
+      "playurl": "json:http://jx.84jia.com/m3u8ts.php?url=",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "categories": [
+        "国产剧",
+        "国产动漫",
+        "泰国剧",
+        "台湾剧",
+        "香港剧",
+        "欧美剧",
+        "韩国剧",
+        "日本剧",
+        "动漫",
+        "体育",
+        "剧情片",
+        "动作片",
+        "爱情片",
+        "喜剧片"
+      ]
+    },
+    {
+      "key": "49zy",
+      "name": "四九",
+      "type": 1,
+      "api": "https://49zy1.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "categories": [
+        "国产剧",
+        "纪录片",
+        "欧美剧",
+        "香港剧",
+        "动作片",
+        "爱情片",
+        "科幻片",
+        "恐怖片",
+        "剧情片",
+        "战争片",
+        "喜剧片",
+        "动画片",
+        "犯罪片",
+        "韩国剧",
+        "动漫",
+        "电影",
+        "大陆综艺",
+        "港台综艺",
+        "日韩综艺",
+        "欧美综艺",
+        "台湾剧",
+        "国产动漫",
+        "日本动漫",
+        "欧美动漫",
+        "泰国剧",
+        "日剧",
+        "电影解说",
+        "奇幻片",
+        "灾难片",
+        "悬疑片",
+        "其他片",
+        "体育赛事",
+        "海外剧"
+      ]
     }
   ],
   "parses": [
