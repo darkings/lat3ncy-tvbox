@@ -157,23 +157,6 @@
       ]
     },
     {
-      "key": "360",
-      "name": "360资源",
-      "type": 1,
-      "api": "https://360zyzz.com/api.php/provide/vod/from/360m3u8/at/json/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
-    },
-    {
-      "api": "https://360zy.tv/api.php/provide/vod/",
-      "key": "e5df2aa0492ba0d57b047c1cdf009001",
-      "name": "360*",
-      "quickSearch": 0,
-      "searchable": 0,
-      "type": 1
-    },
-    {
       "api": "https://api.zuidapi.com/api.php/provide/vod/",
       "key": "e750d6da567daae09c179aec32891d63",
       "name": "35-最大",
@@ -311,35 +294,10 @@
       "type": 1
     },
     {
-      "id": "8895dfb9-2437-47d7-aa40-85ec9f0aaeee",
-      "key": "360资源",
-      "name": "360资源",
-      "api": "https://360zy.com/api.php/provide/vod/",
-      "type": 2,
-      "isActive": 0,
-      "time": "2025-08-09T17:41:44.7307216+08:00",
-      "isDefault": 0,
-      "remark": "",
-      "tags": [
-        "优秀"
-      ],
-      "priority": 0,
-      "proxyMode": "none",
-      "customProxy": ""
-    },
-    {
       "api": "https://www.wyvod.com/api.php/provide/vod/",
       "key": "130ff3134aa51648a8a5575b98b5d268",
       "name": "无忧",
       "type": 1
-    },
-    {
-      "key": "84e8ae98e25a",
-      "name": "360ZZ-GH",
-      "type": 0,
-      "api": "https://360zyzz.com/api.php/provide/vod",
-      "ext": "",
-      "remark": "github-feature-scan 2026-08-08"
     },
     {
       "api": "https://zuidazy.co/api.php/provide/vod/",
@@ -846,48 +804,6 @@
       "ext": ""
     },
     {
-      "key": "360zy",
-      "name": "飞龙秒播",
-      "type": 1,
-      "api": "https://360zy.com/api.php/provide/vod?",
-      "searchable": 1,
-      "changeable": 1,
-      "categories": [
-        "动作片",
-        "喜剧片",
-        "爱情片",
-        "科幻片",
-        "恐怖片",
-        "剧情片",
-        "战争片",
-        "古装片",
-        "悬疑片",
-        "犯罪片",
-        "灾难片",
-        "国产剧",
-        "香港剧",
-        "韩国剧",
-        "欧美剧",
-        "台湾剧",
-        "日本剧",
-        "海外剧",
-        "泰国剧",
-        "大陆综艺",
-        "港台综艺",
-        "日韩综艺",
-        "欧美综艺",
-        "国产动漫",
-        "欧美动漫",
-        "日韩动漫",
-        "现代都市",
-        "脑洞悬疑",
-        "年代穿越",
-        "古装仙侠",
-        "女频恋爱",
-        "成长逆袭"
-      ]
-    },
-    {
       "key": "drpyS_永乐视频[优]",
       "name": "永乐视频[优](DS)",
       "type": 4,
@@ -913,15 +829,6 @@
       "类型": "影视",
       "lang": "ds",
       "ext": ""
-    },
-    {
-      "key": "src_277",
-      "name": "360",
-      "type": 1,
-      "api": "https://360zy.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1
     },
     {
       "key": "drpyS_飞牛影视",
@@ -1375,6 +1282,42 @@
       "api": "http://ffzy4.tv/api.php/provide/vod/",
       "key": "ad1116ca9a9b3057570066086c9c9698",
       "name": "7-非凡",
+      "type": 1
+    },
+    {
+      "api": "http://ffzy.tv/api.php/provide/vod/",
+      "key": "4d6422f0a2bc81fc9606ecc2d97208eb",
+      "name": "8-非凡",
+      "type": 1
+    },
+    {
+      "api": "http://www.ffzy.tv/api.php/provide/vod/",
+      "key": "a794df941b177a5eb1e4e991fb5eaccb",
+      "name": "9-非凡",
+      "type": 1
+    },
+    {
+      "api": "http://ffzy5.tv/api.php/provide/vod/",
+      "key": "c175280641d5263f0d0d9cbfab0162c3",
+      "name": "13-非凡",
+      "type": 1
+    },
+    {
+      "api": "https://api.apiyhzy.com/api.php/provide/vod/",
+      "key": "30e07a544ffe9b6069a1ba66d6442ca9",
+      "name": "24-樱花",
+      "type": 1
+    },
+    {
+      "api": "https://www.hongniuzy3.com/api.php/provide/vod/",
+      "key": "2db4768781aebc9d0dd0de88a838ceb8",
+      "name": "26-红牛",
+      "type": 1
+    },
+    {
+      "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
+      "key": "b76a940e9785b5348840472552e70374",
+      "name": "32-红牛",
       "type": 1
     }
   ],
