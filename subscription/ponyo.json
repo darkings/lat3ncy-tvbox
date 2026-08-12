@@ -118,7 +118,7 @@
     },
     {
       "key": "drpyS_七猫短剧[短]",
-      "name": "七猫短剧[短](DS)",
+      "name": "七猫短剧",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/七猫短剧[短]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -132,12 +132,12 @@
     {
       "api": "http://www.zitv.cc/api.php/provide/vod/",
       "key": "dcbb4b646ce9e6b0c0565925f2008037",
-      "name": "橘猫采集",
+      "name": "橘猫",
       "type": 1
     },
     {
       "key": "360zy.com",
-      "name": "360 资源",
+      "name": "360",
       "type": 1,
       "api": "https://360zyzz.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -159,12 +159,12 @@
     {
       "api": "https://api.zuidapi.com/api.php/provide/vod/",
       "key": "e750d6da567daae09c179aec32891d63",
-      "name": "35-最大",
+      "name": "最大",
       "type": 1
     },
     {
       "key": "jisuzy",
-      "name": "极速资源站",
+      "name": "极速",
       "type": 1,
       "api": "https://jszyapi.com/api.php/provide/vod/from/jsm3u8/at/json/",
       "searchable": 1,
@@ -173,7 +173,7 @@
     },
     {
       "key": "p2100.net",
-      "name": "飘零资源",
+      "name": "飘零",
       "type": 1,
       "api": "https://p2100.net/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -194,7 +194,7 @@
     },
     {
       "key": "f0ccb025823f",
-      "name": "lovedan.net-GH",
+      "name": "艾旦",
       "type": 0,
       "api": "http://lovedan.net/api.php/provide/vod",
       "ext": "",
@@ -202,7 +202,7 @@
     },
     {
       "key": "drpyS_央视大全[官]",
-      "name": "央视大全[官](DS)",
+      "name": "央视大全",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/央视大全[官]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -231,7 +231,7 @@
     },
     {
       "key": "www.maoyanzy.com",
-      "name": "猫眼资源",
+      "name": "猫眼",
       "type": 1,
       "api": "https://api.maoyanapi.top/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -266,7 +266,7 @@
     },
     {
       "key": "drpyS_DJ音乐[听]",
-      "name": "DJ音乐[听](DS)",
+      "name": "DJ音乐",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/DJ音乐[听]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -306,7 +306,7 @@
     },
     {
       "key": "lziapi",
-      "name": "量子资源站",
+      "name": "量子",
       "type": 1,
       "api": "https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8/at/json/",
       "searchable": 1,
@@ -315,7 +315,7 @@
     },
     {
       "key": "暴風",
-      "name": "暴風-采集",
+      "name": "暴风",
       "type": 1,
       "api": "https://bfzyapi.com/api.php/provide/vod",
       "searchable": 1,
@@ -331,7 +331,7 @@
     },
     {
       "key": "虎牙",
-      "name": "虎牙采集",
+      "name": "虎牙",
       "type": 1,
       "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
       "searchable": 1,
@@ -364,7 +364,7 @@
     },
     {
       "key": "4b444a59887f",
-      "name": "天堂-采集-变体",
+      "name": "天堂",
       "type": 0,
       "api": "http://caiji.dyttzyapi.com/api.php/provide/vod/from/dyttm3u8/at/m3u8/",
       "ext": "",
@@ -372,7 +372,7 @@
     },
     {
       "key": "6b9cc227262a",
-      "name": "非凡资源-变体",
+      "name": "非凡",
       "type": 0,
       "api": "http://cj.ffzyapi.com/api.php/provide/vod/from/ffm3u8/",
       "ext": "",
@@ -380,7 +380,7 @@
     },
     {
       "key": "795280eee6b8",
-      "name": "api.apibdzy.com-GH",
+      "name": "百度",
       "type": 0,
       "api": "http://api.apibdzy.com/api.php/provide/vod",
       "ext": "",
@@ -394,7 +394,7 @@
     },
     {
       "key": "滴滴资源",
-      "name": "滴滴资源",
+      "name": "滴滴",
       "type": 1,
       "api": "https://api.ddapi.cc/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -403,7 +403,7 @@
     },
     {
       "key": "c1b06f719aae",
-      "name": "THZY-GH",
+      "name": "THZY",
       "type": 0,
       "api": "https://thzy1.me/api.php/provide/vod",
       "ext": "",
@@ -411,7 +411,7 @@
     },
     {
       "key": "drpyS_瓜子[优]",
-      "name": "瓜子[优](DS)",
+      "name": "瓜子",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/瓜子[优]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -426,7 +426,7 @@
     },
     {
       "key": "c71554edd070",
-      "name": "光速资源-变体",
+      "name": "光速",
       "type": 0,
       "api": "https://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8/",
       "ext": "",
@@ -434,7 +434,7 @@
     },
     {
       "key": "如意资源",
-      "name": "如意资源",
+      "name": "如意",
       "type": 0,
       "api": "https://cj.rycjapi.com/api.php/provide/vod/?ac=list",
       "searchable": 1,
@@ -443,7 +443,7 @@
     },
     {
       "key": "drpyS_独播库[优]",
-      "name": "独播库[优](DS)",
+      "name": "独播库",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/独播库[优]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -457,7 +457,7 @@
     },
     {
       "key": "drpyS_集百动漫[漫]",
-      "name": "集百动漫[漫](DS)",
+      "name": "集百动漫",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/集百动漫[漫]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -471,7 +471,7 @@
     },
     {
       "key": "drpyS_小苹果[优]",
-      "name": "小苹果[优](DS)",
+      "name": "小苹果",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/小苹果[优]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -485,7 +485,7 @@
     },
     {
       "key": "drpyS_泥视频[优]",
-      "name": "泥视频[优](DS)",
+      "name": "泥视频",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/泥视频[优]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -499,7 +499,7 @@
     },
     {
       "key": "drpyS_3Q影视[优]",
-      "name": "3Q影视[优](DS)",
+      "name": "3Q影视",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/3Q影视[优]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -513,7 +513,7 @@
     },
     {
       "key": "drpyS_永乐视频[优]",
-      "name": "永乐视频[优](DS)",
+      "name": "永乐",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/永乐视频[优]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -526,7 +526,7 @@
     },
     {
       "key": "drpyS_热播影视[优]",
-      "name": "热播影视[优](DS)",
+      "name": "热播",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/热播影视[优]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -540,7 +540,7 @@
     },
     {
       "key": "drpyS_飞牛影视",
-      "name": "飞牛影视(DS)",
+      "name": "飞牛",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/飞牛影视?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -554,7 +554,7 @@
     },
     {
       "key": "drpyS_动漫豆[漫]",
-      "name": "动漫豆[漫](DS)",
+      "name": "动漫豆",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/动漫豆[漫]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -568,7 +568,7 @@
     },
     {
       "key": "drpyS_非凡采集[采]",
-      "name": "非凡采集[采](DS)",
+      "name": "非凡采集",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/非凡采集[采]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -581,7 +581,7 @@
     },
     {
       "key": "drpyS_枫林影视",
-      "name": "枫林影视(DS)",
+      "name": "枫林",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/枫林影视?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -594,7 +594,7 @@
     },
     {
       "key": "drpyS_247看",
-      "name": "247看(DS)",
+      "name": "247看",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/247看?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -607,7 +607,7 @@
     },
     {
       "key": "火狐",
-      "name": "火狐采集",
+      "name": "火狐",
       "type": 1,
       "api": "https://hhzyapi.com/api.php/provide/vod/",
       "searchable": 1,
@@ -641,7 +641,7 @@
     },
     {
       "key": "drpyS_毒舌影视[优]",
-      "name": "毒舌影视[优](DS)",
+      "name": "毒舌",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/毒舌影视[优]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -654,7 +654,7 @@
     },
     {
       "key": "drpyS_电影港[磁]",
-      "name": "电影港[磁](DS)",
+      "name": "电影港",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/电影港[磁]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -669,7 +669,7 @@
     },
     {
       "key": "drpyS_阅读助手[书]",
-      "name": "阅读助手[书](DS)",
+      "name": "阅读助手",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/阅读助手[书]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -683,7 +683,7 @@
     },
     {
       "key": "drpyS_TG搜[搜]",
-      "name": "TG搜[搜](DS)",
+      "name": "TG搜",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/TG搜[搜]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -714,7 +714,7 @@
     {
       "id": "9c3bab8d-99c1-4c72-8771-cef896b3c56a",
       "key": "红牛资源",
-      "name": "红牛资源",
+      "name": "红牛",
       "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
       "type": 2,
       "isActive": 0,
@@ -731,7 +731,7 @@
     {
       "id": "a57bbfa1-283d-4068-8b43-c32a34302e8b",
       "key": "新浪点播",
-      "name": "新浪点播",
+      "name": "新浪",
       "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
       "type": 2,
       "isActive": 0,
@@ -746,45 +746,9 @@
       "customProxy": ""
     },
     {
-      "api": "http://ffzy3.tv/api.php/provide/vod/",
-      "key": "73b5c89acc8a7c24118857fc514e9218",
-      "name": "6-非凡",
-      "type": 1
-    },
-    {
-      "api": "http://ffzy4.tv/api.php/provide/vod/",
-      "key": "ad1116ca9a9b3057570066086c9c9698",
-      "name": "7-非凡",
-      "type": 1
-    },
-    {
-      "api": "https://api.apiyhzy.com/api.php/provide/vod/",
-      "key": "30e07a544ffe9b6069a1ba66d6442ca9",
-      "name": "24-樱花",
-      "type": 1
-    },
-    {
-      "api": "https://www.hongniuzy3.com/api.php/provide/vod/",
-      "key": "2db4768781aebc9d0dd0de88a838ceb8",
-      "name": "红牛",
-      "type": 1
-    },
-    {
-      "api": "https://www.haohuazy.com/api.php/provide/vod/",
-      "key": "e743537b66dc4d8932f3a3800fdb7477",
-      "name": "豪华",
-      "type": 1
-    },
-    {
       "api": "https://api.ukuapi88.com/api.php/provide/vod/",
       "key": "3b413ffe4c72f0b8f99ca6a868075d99",
       "name": "U酷",
-      "type": 1
-    },
-    {
-      "api": "https://91av.cyou/api.php/provide/vod/",
-      "key": "041c843aea19129a4716a6db4ab444ff",
-      "name": "91视频",
       "type": 1
     },
     {
@@ -795,31 +759,15 @@
     },
     {
       "key": "官采",
-      "name": "官采-[采集]",
+      "name": "官采",
       "type": 1,
       "api": "https://cj.jusj.top/api.php/provide/vod/?ac=list",
       "searchable": 1,
       "changeable": 1
     },
     {
-      "key": "yhzy.cc",
-      "name": "樱花资源2",
-      "type": 0,
-      "api": "https://yhzy.cc/api.php/provide/vod/",
-      "ext": "",
-      "remark": "tvbox-suite: 直链m3u8 total=101526"
-    },
-    {
-      "key": "suboziyuan.net",
-      "name": "速播",
-      "type": 0,
-      "api": "http://suboziyuan.net/api.php/provide/vod/",
-      "ext": "",
-      "remark": "tvbox-suite: 直链m3u8 total=110045"
-    },
-    {
       "key": "drpyS_番茄小说[书]",
-      "name": "番茄小说[书](DS)",
+      "name": "番茄小说",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/番茄小说[书]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -834,7 +782,7 @@
     },
     {
       "key": "drpyS_360影视[官]",
-      "name": "360影视[官](DS)",
+      "name": "360影视",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/360影视[官]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -847,7 +795,7 @@
     },
     {
       "key": "drpyS_剧圈圈",
-      "name": "剧圈圈(DS)",
+      "name": "剧圈圈",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/剧圈圈?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -860,7 +808,7 @@
     },
     {
       "key": "drpyS_映像星球",
-      "name": "映像星球(DS)",
+      "name": "映像星球",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/映像星球?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -873,7 +821,7 @@
     },
     {
       "key": "drpyS_动漫啦[画]",
-      "name": "动漫啦[画](DS)",
+      "name": "动漫啦",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/动漫啦[画]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -888,7 +836,7 @@
     },
     {
       "key": "drpyS_优酷[官]",
-      "name": "优酷[官](DS)",
+      "name": "优酷",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/优酷[官]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -901,7 +849,7 @@
     },
     {
       "key": "drpyS_包子漫画[画]",
-      "name": "包子漫画[画](DS)",
+      "name": "包子漫画",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/包子漫画[画]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -915,7 +863,7 @@
     },
     {
       "key": "drpyS_光社漫画[画]",
-      "name": "光社漫画[画](DS)",
+      "name": "光社漫画",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/光社漫画[画]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -930,7 +878,7 @@
     },
     {
       "key": "drpyS_去读书[书]",
-      "name": "去读书[书](DS)",
+      "name": "去读书",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/去读书[书]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -945,7 +893,7 @@
     },
     {
       "key": "drpyS_菜狗[官]",
-      "name": "菜狗[官](DS)",
+      "name": "菜狗",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/菜狗[官]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -958,7 +906,7 @@
     },
     {
       "key": "drpyS_漫神[画]",
-      "name": "漫神[画](DS)",
+      "name": "漫神",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/漫神[画]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -977,7 +925,7 @@
     },
     {
       "key": "drpyS_努努书坊[书]",
-      "name": "努努书坊[书](DS)",
+      "name": "努努书坊",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/努努书坊[书]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -992,7 +940,7 @@
     },
     {
       "key": "drpyS_点歌欢唱[B]",
-      "name": "点歌欢唱[B](DS)",
+      "name": "点歌欢唱",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/点歌欢唱[B]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -1005,7 +953,7 @@
     },
     {
       "key": "drpyS_爱推图[画]",
-      "name": "爱推图[画](DS)",
+      "name": "爱推图",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/爱推图[画]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -1022,7 +970,7 @@
     },
     {
       "key": "drpyS_橘子动漫",
-      "name": "橘子动漫(DS)",
+      "name": "橘子动漫",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/橘子动漫?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -1035,7 +983,7 @@
     },
     {
       "key": "drpyS_荐片[优]",
-      "name": "荐片[优](DS)",
+      "name": "荐片",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/荐片[优]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -1048,7 +996,7 @@
     },
     {
       "key": "drpyS_奇珍异兽[官]",
-      "name": "奇珍异兽[官](DS)",
+      "name": "奇珍异兽",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/奇珍异兽[官]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -1059,8 +1007,21 @@
       "ext": ""
     },
     {
+      "key": "drpyS_酷我听书[听]",
+      "name": "酷我听书",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/酷我听书[听]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "酷我听书[听]",
+      "类型": "听书",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
       "key": "drpyS_七猫小说[书]",
-      "name": "七猫小说[书](DS)",
+      "name": "七猫小说",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/七猫小说[书]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -1075,7 +1036,7 @@
     },
     {
       "key": "drpyS_腾云驾雾[官]",
-      "name": "腾云驾雾[官](DS)",
+      "name": "腾云驾雾",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/腾云驾雾[官]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -1087,7 +1048,7 @@
     },
     {
       "key": "drpyS_漫画大全[画]",
-      "name": "漫画大全[画](DS)",
+      "name": "漫画大全",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/漫画大全[画]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -1100,7 +1061,7 @@
     },
     {
       "key": "drpyS_兄弟盘[搜]",
-      "name": "兄弟盘[搜](DS)",
+      "name": "兄弟盘",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/兄弟盘[搜]?pwd=ponyo-local-drpy",
       "searchable": 1,
@@ -1122,7 +1083,7 @@
     },
     {
       "key": "直播转点播",
-      "name": "︎-电视-点播",
+      "name": "电视-点播",
       "playerType": 1,
       "type": 3,
       "api": "./libs/tv/zb.min.js",
@@ -1270,6 +1231,69 @@
       "quickSearch": 1,
       "changeable": 1,
       "ext": "https://auete.pro/"
+    },
+    {
+      "key": "新6V",
+      "name": "新6V-磁力",
+      "type": 3,
+      "api": "csp_SixV",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 0,
+      "ext": "https://www.xb6v.com/"
+    },
+    {
+      "key": "csp_Ysj",
+      "name": "异界-动漫",
+      "type": 3,
+      "api": "csp_Ysj",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1
+    },
+    {
+      "key": "csp_Dm84",
+      "name": "动漫-巴士",
+      "type": 3,
+      "api": "csp_Dm84",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1
+    },
+    {
+      "key": "csp_Anime1",
+      "name": "日本-动漫",
+      "type": 3,
+      "api": "csp_Anime1",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1
+    },
+    {
+      "key": "csp_Ying",
+      "name": "樱花-动漫",
+      "type": 3,
+      "api": "csp_Ying",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1
+    },
+    {
+      "key": "csp_Nbys",
+      "name": "泥巴-飞",
+      "type": 3,
+      "api": "csp_NiNi",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1
+    },
+    {
+      "key": "奇优",
+      "name": "奇优-影视",
+      "type": 3,
+      "playerType": "2",
+      "api": "./libs/js/drpy2.min.js",
+      "ext": "./libs/js/奇优.js"
     }
   ],
   "parses": [
