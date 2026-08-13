@@ -117,20 +117,6 @@
       "api": "csp_LocalFile"
     },
     {
-      "api": "http://www.zitv.cc/api.php/provide/vod/",
-      "key": "dcbb4b646ce9e6b0c0565925f2008037",
-      "name": "橘猫",
-      "type": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "动漫",
-        "综艺",
-        "短剧",
-        "漫剧"
-      ]
-    },
-    {
       "key": "drpyS_七猫短剧[短]",
       "name": "七猫短剧",
       "type": 4,
@@ -144,13 +130,12 @@
       "ext": ""
     },
     {
-      "key": "360zy.com",
-      "name": "360",
+      "api": "https://360zy.tv/api.php/provide/vod/",
+      "key": "e5df2aa0492ba0d57b047c1cdf009001",
+      "name": "360*",
+      "quickSearch": 0,
+      "searchable": 0,
       "type": 1,
-      "api": "https://360zyzz.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
       "categories": [
         "电影",
         "连续剧",
@@ -230,24 +215,6 @@
       ]
     },
     {
-      "key": "p2100.net",
-      "name": "飘零",
-      "type": 1,
-      "api": "https://p2100.net/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "categories": [
-        "电影",
-        "连续剧",
-        "综艺",
-        "动漫",
-        "短剧",
-        "邵氏大片",
-        "动漫电影"
-      ]
-    },
-    {
       "key": "drpyS_央视大全[官]",
       "name": "央视大全",
       "type": 4,
@@ -277,6 +244,18 @@
       "ext": ""
     },
     {
+      "api": "http://www.zitv.cc/api.php/provide/vod/",
+      "key": "dcbb4b646ce9e6b0c0565925f2008037",
+      "name": "橘猫",
+      "type": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "短剧",
+        "漫剧"
+      ]
+    },
+    {
       "key": "4b444a59887f",
       "name": "天堂",
       "type": 0,
@@ -291,10 +270,10 @@
       ]
     },
     {
-      "key": "www.maoyanzy.com",
-      "name": "猫眼",
+      "key": "p2100.net",
+      "name": "飘零",
       "type": 1,
-      "api": "https://api.maoyanapi.top/api.php/provide/vod/?ac=list",
+      "api": "https://p2100.net/api.php/provide/vod/?ac=list",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
@@ -303,8 +282,9 @@
         "连续剧",
         "综艺",
         "动漫",
-        "体育",
-        "爽文短剧"
+        "短剧",
+        "邵氏大片",
+        "动漫电影"
       ]
     },
     {
@@ -493,6 +473,23 @@
       ]
     },
     {
+      "key": "www.maoyanzy.com",
+      "name": "猫眼",
+      "type": 1,
+      "api": "https://api.maoyanapi.top/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "categories": [
+        "电影",
+        "连续剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "爽文短剧"
+      ]
+    },
+    {
       "key": "795280eee6b8",
       "name": "百度",
       "type": 0,
@@ -507,6 +504,21 @@
         "动画电影",
         "体育赛事"
       ]
+    },
+    {
+      "key": "drpyS_瓜子[优]",
+      "name": "瓜子",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/瓜子[优]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "瓜子[优]",
+      "author": "EylinSir",
+      "类型": "影视",
+      "logo": "https://guaziyingshi.xxsnav.com/files/guaziyingshi.png",
+      "lang": "ds",
+      "ext": ""
     },
     {
       "api": "https://www.mdzyapi.com/api.php/provide/vod/",
@@ -525,21 +537,6 @@
         "体育",
         "AI漫剧"
       ]
-    },
-    {
-      "key": "drpyS_瓜子[优]",
-      "name": "瓜子",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/瓜子[优]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "瓜子[优]",
-      "author": "EylinSir",
-      "类型": "影视",
-      "logo": "https://guaziyingshi.xxsnav.com/files/guaziyingshi.png",
-      "lang": "ds",
-      "ext": ""
     },
     {
       "key": "如意资源",
@@ -697,6 +694,19 @@
       "ext": ""
     },
     {
+      "api": "https://api.apiyhzy.com/api.php/provide/vod/",
+      "key": "30e07a544ffe9b6069a1ba66d6442ca9",
+      "name": "樱花",
+      "type": 1,
+      "categories": [
+        "电影",
+        "连续剧",
+        "综艺",
+        "动漫",
+        "动画电影"
+      ]
+    },
+    {
       "key": "drpyS_枫林影视",
       "name": "枫林",
       "type": 4,
@@ -795,21 +805,6 @@
       "类型": "搜索",
       "lang": "ds",
       "ext": ""
-    },
-    {
-      "key": "yinghua",
-      "name": "樱花",
-      "type": 1,
-      "api": "https://m3u8.apiyhzy.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "categories": [
-        "电影",
-        "连续剧",
-        "综艺",
-        "动漫",
-        "动画电影"
-      ]
     },
     {
       "key": "subo",
@@ -936,23 +931,8 @@
       ]
     },
     {
-      "key": "drpyS_番茄小说[书]",
-      "name": "番茄小说",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/番茄小说[书]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "番茄小说[书]",
-      "author": "道长",
-      "类型": "小说",
-      "logo": "https://www.18zf.net/d/file/p/2023/1107/3ty5orktxrc.jpg",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
       "key": "drpyS_360影视[官]",
-      "name": "360影视",
+      "name": "360",
       "type": 4,
       "api": "http://127.0.0.1:5757/api/360影视[官]?pwd=ponyo-local-drpy",
       "searchable": 2,
@@ -1005,6 +985,20 @@
       "ext": ""
     },
     {
+      "key": "drpyS_包子漫画[画]",
+      "name": "包子漫画",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/包子漫画[画]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "包子漫画[画]",
+      "类型": "漫画",
+      "logo": "https://cn.czmanga.com/favicon.ico",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
       "key": "drpyS_优酷[官]",
       "name": "优酷",
       "type": 4,
@@ -1033,16 +1027,17 @@
       "ext": ""
     },
     {
-      "key": "drpyS_包子漫画[画]",
-      "name": "包子漫画",
+      "key": "drpyS_番茄小说[书]",
+      "name": "番茄小说",
       "type": 4,
-      "api": "http://127.0.0.1:5757/api/包子漫画[画]?pwd=ponyo-local-drpy",
+      "api": "http://127.0.0.1:5757/api/番茄小说[书]?pwd=ponyo-local-drpy",
       "searchable": 2,
-      "filterable": 0,
+      "filterable": 1,
       "quickSearch": 0,
-      "title": "包子漫画[画]",
-      "类型": "漫画",
-      "logo": "https://cn.czmanga.com/favicon.ico",
+      "title": "番茄小说[书]",
+      "author": "道长",
+      "类型": "小说",
+      "logo": "https://www.18zf.net/d/file/p/2023/1107/3ty5orktxrc.jpg",
       "lang": "ds",
       "ext": ""
     },
@@ -1159,19 +1154,6 @@
       "ext": ""
     },
     {
-      "key": "drpyS_荐片[优]",
-      "name": "荐片",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/荐片[优]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "荐片[优]",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": ""
-    },
-    {
       "key": "drpyS_奇珍异兽[官]",
       "name": "奇珍异兽",
       "type": 4,
@@ -1208,6 +1190,19 @@
       "logo": "https://cdn-front.qimao.com/global/static/images/favicon2022.ico",
       "author": "道长",
       "类型": "小说",
+      "lang": "ds",
+      "ext": ""
+    },
+    {
+      "key": "drpyS_荐片[优]",
+      "name": "荐片",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/荐片[优]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "荐片[优]",
+      "类型": "影视",
       "lang": "ds",
       "ext": ""
     },
