@@ -275,8 +275,7 @@
         "综艺",
         "动漫",
         "短剧",
-        "纪录片",
-        "邵氏大片"
+        "纪录片"
       ],
       "category_provenance": "detected"
     },
@@ -848,8 +847,7 @@
         "纪录片",
         "短剧",
         "其他",
-        "体育",
-        "台球"
+        "体育"
       ],
       "category_provenance": "detected"
     },
