@@ -250,7 +250,7 @@
         "短剧",
         "少儿"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "cache"
     },
     {
       "api": "https://www.wyvod.com/api.php/provide/vod/",
@@ -1735,6 +1735,15 @@
       },
       "platforms": [
         "mgtv"
+      ]
+    },
+    {
+      "name": "咸鱼优酷",
+      "type": 0,
+      "url": "https://jx.xymp4.cc/?url=",
+      "ext": {},
+      "platforms": [
+        "youku"
       ]
     }
   ],
