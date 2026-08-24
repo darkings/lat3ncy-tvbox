@@ -225,9 +225,12 @@
       "filterable": 1,
       "categories": [
         "电影",
-        "电视剧"
+        "电视剧",
+        "动漫",
+        "综艺",
+        "短剧"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "cache"
     },
     {
       "key": "刺桐资源",
