@@ -1,0 +1,13 @@
+#EXTM3U x-tvg-url="http://epg.51zmt.top:8000/api/diyp/"
+#EXTINF:-1 tvg-name="CCTV1" tvg-logo="https://logo.wyfc.qzz.io/cctv1.png" group-title="央视",CCTV1
+http://74.91.26.218:82/live/cctv1hd.m3u8
+#EXTINF:-1 tvg-name="CCTV3" tvg-logo="https://logo.wyfc.qzz.io/cctv3.png" group-title="央视",CCTV3
+http://74.91.26.218:82/live/cctv3hd.m3u8
+#EXTINF:-1 tvg-name="CCTV9" tvg-logo="https://logo.wyfc.qzz.io/cctv9.png" group-title="央视",CCTV9
+https://xykt-fix.github.io/Y77.m3u8
+#EXTINF:-1 tvg-name="CCTV12" tvg-logo="https://logo.wyfc.qzz.io/cctv12.png" group-title="央视",CCTV12
+http://74.91.26.218:82/live/cctv12hd.m3u8
+#EXTINF:-1 tvg-name="CCTV13" tvg-logo="https://logo.wyfc.qzz.io/cctv13.png" group-title="央视",CCTV13
+http://go.bkpcp.top/mg/cctv13
+#EXTINF:-1 tvg-name="CCTV15" tvg-logo="https://logo.wyfc.qzz.io/cctv15.png" group-title="央视",CCTV15
+https://xykt-fix.github.io/play/a02e/index.m3u8
