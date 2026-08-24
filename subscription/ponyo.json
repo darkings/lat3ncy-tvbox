@@ -225,12 +225,9 @@
       "filterable": 1,
       "categories": [
         "电影",
-        "电视剧",
-        "动漫",
-        "综艺",
-        "短剧"
+        "电视剧"
       ],
-      "category_provenance": "cache"
+      "category_provenance": "detected"
     },
     {
       "key": "刺桐资源",
@@ -1792,7 +1789,7 @@
         "动漫",
         "少儿",
         "短剧",
-        "记录",
+        "纪录片",
         "学习"
       ],
       "category_provenance": "detected"
@@ -1900,158 +1897,6 @@
         "动漫"
       ],
       "category_provenance": "default_drpy"
-    },
-    {
-      "key": "直播转点播",
-      "name": "电视-点播",
-      "playerType": 1,
-      "type": 3,
-      "api": "./libs/tv/zb.min.js",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 0,
-      "ext": "./libs/tv/zb.json",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "南瓜",
-      "name": "南瓜-多线",
-      "type": 3,
-      "api": "csp_NanGua",
-      "timeout": 15,
-      "playerType": 2,
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "Auete",
-      "name": "Aue-无广",
-      "type": 3,
-      "api": "csp_Auete",
-      "timeout": 15,
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "ext": "https://auete.pro/",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "csp_Ysj",
-      "name": "异界-动漫",
-      "type": 3,
-      "api": "csp_Ysj",
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "csp_Dm84",
-      "name": "动漫-巴士",
-      "type": 3,
-      "api": "csp_Dm84",
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "csp_MeiJu69",
-      "name": "六九-美剧",
-      "type": 3,
-      "api": "csp_AppYsV2",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": "https://www.69mj.com/xgapp.php/v2/",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "奇优",
-      "name": "奇优-影视",
-      "type": 3,
-      "playerType": "2",
-      "api": "./libs/js/drpy2.min.js",
-      "ext": "./libs/js/奇优.js",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "csp_SNzy",
-      "name": "索尼-高清",
-      "type": 1,
-      "api": "https://suoniapi.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "纪录片",
-        "体育",
-        "其他",
-        "短剧",
-        "少儿"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "taopian",
-      "name": "淘片",
-      "type": 1,
-      "api": "https://taopianapi.com/cjapi/mc/vod/json.html",
-      "searchable": 1,
-      "filterable": 0,
-      "categories": [
-        "动漫",
-        "纪录片"
-      ],
-      "category_provenance": "detected"
     }
   ],
   "parses": [
