@@ -35,6 +35,78 @@ HARD_THRESHOLDS = {
     "max_first_frame_ms": 5000,  # 首帧中位时间 < 5s
 }
 
+# --- 直播源预检过滤（任务 4） ---
+# 域名黑名单：主播直播/轮播房间聚合，非电视台信号，禁止成为正式源
+BLACKLIST_DOMAINS = (
+    "huya.com",
+    "douyu.com",
+    "bilibili.com",
+    "bili.com",
+    "yy.com",
+    "douyin.com",
+    "kuaishou.com",
+)
+
+# 名称关键词黑名单：配置名/源名包含这些词时直接标记为轮播
+BLACKLIST_NAME_KEYWORDS = ("轮播", "一起看", "虎牙", "斗鱼", "B站直播", "YY")
+
+# 测试频道里必须命中的"电视台"正则（CCTV/卫视/纪实/教育等），用于识别轮播房间源
+_TV_CHANNEL_PATTERN = re.compile(
+    r"(CCTV|CETV|CGTN|卫视|电视台|纪实|科教|教育|新闻综合)", re.IGNORECASE
+)
+
+
+def _classify_live_source(name: str, url: str, content: str | None) -> str | None:
+    """对候选直播源做准入预检，返回拒绝原因；None 表示通过。
+
+    拒绝原因（reason 会写入报告，便于观测）：
+      - ipv6_only      : 全部线路为 IPv6 地址，无 IPv4 兜底
+      - carousel_rooms : 主播直播/轮播房间聚合，非电视台信号
+      - private_ip     : 全部线路为运营商内网 IP，公网不可达
+      - fetch_failed   : 列表下载失败
+    """
+    # 1) 域名黑名单：虎牙/斗鱼/B站/YY 等轮播房间
+    lowered_url = (url or "").lower()
+    if any(domain in lowered_url for domain in BLACKLIST_DOMAINS):
+        return "carousel_rooms"
+
+    # 2) 名称关键词黑名单：配置里写明的轮播源
+    lowered_name = (name or "").lower()
+    if any(kw.lower() in lowered_name for kw in BLACKLIST_NAME_KEYWORDS):
+        return "carousel_rooms"
+
+    # 3) 列表拉取失败
+    if content is None:
+        return "fetch_failed"
+
+    # 4) 提取全部 URL，判断 IPv6-only / 内网 IP-only
+    urls = re.findall(r"https?://[^\s\"'<>]+", content)
+    if not urls:
+        return "fetch_failed"
+
+    ipv6_count = sum(1 for u in urls if re.search(r"https?://\[[0-9a-fA-F:]+\]", u))
+    private_count = sum(
+        1
+        for u in urls
+        if re.search(r"https?://(10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.|222\.214\.)", u)
+    )
+    total = len(urls)
+    if ipv6_count / total >= 0.95:
+        return "ipv6_only"
+    # 内网 IP 不直接拒绝，标记后在评分阶段降权（运营商 IPTV 对同网用户可用）
+    if private_count / total >= 0.95:
+        return "private_ip"
+
+    # 5) 轮播房间识别：归一化后的频道名几乎不匹配"电视台"特征
+    routes = parse_live_channel_routes(content)
+    channel_names = [n for n in routes.keys() if n]
+    if channel_names:
+        tv_hits = sum(1 for n in channel_names if _TV_CHANNEL_PATTERN.search(n))
+        if tv_hits / len(channel_names) < 0.05:
+            return "carousel_rooms"
+
+    return None
+
 
 def _now() -> str:
     return datetime.now(timezone.utc).isoformat()
@@ -62,8 +134,12 @@ def probe_live_channel(
 
 
 def parse_live_channels(content: str) -> dict[str, str]:
-    """支持解析 TVBox TXT 格式和标准 M3U 格式，提取频道名到 URL 的映射。"""
-    mapping = {}
+    """支持解析 TVBox TXT 格式和标准 M3U 格式，提取频道名到 URL 的映射。
+
+    任务5：归一化后去重——同一频道只保留第一条线路，后续重复条目被跳过。
+    """
+    mapping: dict[str, str] = {}
+    seen: set[str] = set()
     lines = content.splitlines()
     if content.strip().startswith("#EXTM3U"):
         current_name = None
@@ -73,8 +149,11 @@ def parse_live_channels(content: str) -> dict[str, str]:
                 parts = line.split(",")
                 current_name = parts[-1].strip()
             elif line.startswith(("http://", "https://")) and current_name:
-                mapping.setdefault(current_name, line)
-                mapping.setdefault(_normalize_channel_name(current_name), line)
+                norm = _normalize_channel_name(current_name)
+                if norm not in seen:
+                    seen.add(norm)
+                    mapping[current_name] = line
+                    mapping.setdefault(norm, line)
                 current_name = None
     else:
         for line in lines:
@@ -84,14 +163,21 @@ def parse_live_channels(content: str) -> dict[str, str]:
                 name = parts[0].strip()
                 url = parts[1].strip()
                 if name and url.startswith(("http://", "https://")):
-                    mapping.setdefault(name, url)
-                    mapping.setdefault(_normalize_channel_name(name), url)
+                    norm = _normalize_channel_name(name)
+                    if norm not in seen:
+                        seen.add(norm)
+                        mapping[name] = url
+                        mapping.setdefault(norm, url)
     return mapping
 
 
 def parse_live_channel_routes(content: str) -> dict[str, list[str]]:
-    """解析频道到多线路 URL 列表（M3U 连续 URL 行 / TXT 多行同频道）。"""
+    """解析频道到多线路 URL 列表（M3U 连续 URL 行 / TXT 多行同频道）。
+
+    任务5：归一化后去重——同一频道只保留第一条线路，后续重复条目被跳过。
+    """
     routes: dict[str, list[str]] = {}
+    seen: set[str] = set()
     lines = content.splitlines()
     if content.strip().startswith("#EXTM3U"):
         current_name = None
@@ -101,10 +187,11 @@ def parse_live_channel_routes(content: str) -> dict[str, list[str]]:
                 parts = line.split(",")
                 current_name = parts[-1].strip()
             elif line.startswith(("http://", "https://")) and current_name:
-                routes.setdefault(current_name, []).append(line)
-                routes.setdefault(_normalize_channel_name(current_name), []).append(
-                    line
-                )
+                norm = _normalize_channel_name(current_name)
+                if norm not in seen:
+                    seen.add(norm)
+                    routes[current_name] = [line]
+                    routes.setdefault(norm, []).append(line)
                 # 同一条目可有多条线路（如咪咕），下一条 #EXTINF 才切换频道
     else:
         for line in lines:
@@ -114,8 +201,11 @@ def parse_live_channel_routes(content: str) -> dict[str, list[str]]:
                 name = parts[0].strip()
                 url = parts[1].strip()
                 if name and url.startswith(("http://", "https://")):
-                    routes.setdefault(name, []).append(url)
-                    routes.setdefault(_normalize_channel_name(name), []).append(url)
+                    norm = _normalize_channel_name(name)
+                    if norm not in seen:
+                        seen.add(norm)
+                        routes[name] = [url]
+                        routes.setdefault(norm, []).append(url)
     # 去重保序
     return {k: list(dict.fromkeys(v)) for k, v in routes.items()}
 
@@ -153,13 +243,30 @@ def inspect_live_metadata(content: str) -> dict:
 
 
 def _normalize_channel_name(name: str) -> str:
-    """Normalize common CCTV/satellite naming variants for deterministic probes."""
+    """Normalize common CCTV/satellite naming variants for deterministic probes.
+
+    覆盖国内公开源的常见命名噪音：
+      - 品质前缀：[BD]/[HD]/[4K]（epg.pw 格式）
+      - 分辨率/地理后缀：(1080p)、(720p)、[Geo-blocked]、{HD}
+      - CCTV 变体：CCTV-1、CCTV1、CCTV-1高清 -> CCTV1；CCTV5+/CCTV-5+ -> CCTV5P
+    """
     value = re.sub(r"[\s_\-—]+", "", name or "").upper()
     value = value.replace("中央电视台", "CCTV").replace("央视", "CCTV")
-    cctv_match = re.match(r"^CCTV0*(\d+)", value)
+    # 品质前缀 [BD]/[HD]/[4K]/[FHD]（必须在中括号内容清除之前处理，
+    # 否则 [HD]cctv1 会被整个抹掉）
+    value = re.sub(r"^\[(BD|HD|FHD|UHD|4K|SD)\]", "", value)
+    # 括号/方括号内的分辨率或地理标记
+    value = re.sub(r"[\(\[\{][^\)\]\}]*[\)\]\}]", "", value)
+    # 行尾分辨率/清晰度标记
+    value = re.sub(r"(1080P|720P|576I|576P|4K|8K|FHD|UHD|HD|SD)$", "", value)
+    # CCTV5+ 特例：+ 号在数字后保留为 P（避免被当成后缀误删）
+    value = value.replace("CCTV5+", "CCTV5P")
+    # CCTV 前缀匹配：数字后的业务后缀（电影/戏曲/科教/新闻/少儿等）全部归并到主台号
+    cctv_match = re.match(r"^CCTV0*(\d+)(P?)", value)
     if cctv_match:
-        return f"CCTV{int(cctv_match.group(1))}"
-    value = re.sub(r"(综合|频道|高清|HD|超高清|4K)$", "", value)
+        suffix = "P" if cctv_match.group(2) == "P" else ""
+        return f"CCTV{int(cctv_match.group(1))}{suffix}"
+    value = re.sub(r"(综合|频道|高清|超高清)$", "", value)
     return value
 
 
@@ -192,15 +299,23 @@ def evaluate_live_source(
         "channel_count": 0,
     }
 
+    reject_reason: str | None = None
     try:
         # 候选列表是可信配置（4 个/轮），绕过 A24 限流器——
         # 同一 host（如 cdn.jsdelivr.net）可能已被 pipeline 前期阶段限流，
         # 导致列表下载失败进而所有频道误判为不可用。
         content = net.fetch_text(live_url, timeout=10, limiter=None)
-        mapping = parse_live_channels(content)
-        routes = parse_live_channel_routes(content)
-        metadata = inspect_live_metadata(content)
+        # 任务4：准入预检——IPv6-only / 轮播房间直接拒绝；内网 IP 标记后仍测速
+        reject_reason = _classify_live_source(source_key, live_url, content)
+        if reject_reason in ("ipv6_only", "carousel_rooms"):
+            mapping = {}
+            routes = {}
+        else:
+            mapping = parse_live_channels(content)
+            routes = parse_live_channel_routes(content)
+            metadata = inspect_live_metadata(content)
     except Exception as e:
+        reject_reason = "fetch_failed"
         mapping = {}
         routes = {}
 
@@ -256,9 +371,16 @@ def evaluate_live_source(
     total_score = round(
         score_validity + score_stability + score_speed + score_clarity + score_meta, 2
     )
-    hard_pass = (validity_rate >= HARD_THRESHOLDS["channel_validity"]) and (
-        avg_latency <= HARD_THRESHOLDS["max_first_frame_ms"]
-    )
+    # 任务4：被预检拒绝的源直接 hard_pass=False，不得成为正式源
+    # private_ip 源（如运营商 IPTV）虽然服务器测速可能通，但公网用户无法播放，同样排除
+    if reject_reason is not None:
+        hard_pass = False
+        total_score = 0.0
+    else:
+        hard_pass = (
+            validity_rate >= HARD_THRESHOLDS["channel_validity"]
+            and avg_latency <= HARD_THRESHOLDS["max_first_frame_ms"]
+        )
 
     return {
         "key": source_key,
@@ -267,6 +389,7 @@ def evaluate_live_source(
         "validity_rate": round(validity_rate, 4),
         "avg_latency_ms": int(avg_latency),
         "hard_pass": hard_pass,
+        "reject_reason": reject_reason,
         "metadata": metadata,
         "probed_channels": probed_channels,
     }
