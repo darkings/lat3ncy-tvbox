@@ -4,7 +4,7 @@
     {
       "name": "聚合直播",
       "type": 0,
-      "url": "https://cdn.jsdelivr.net/gh/darkings/lat3ncy-tvbox@main/subscription/aggregated-live.m3u",
+      "url": "https://api.ponyo.fun/aggregated-live.m3u",
       "playerType": 1,
       "epg": "http://epg.51zmt.top:8000/api/diyp/"
     },
@@ -621,7 +621,7 @@
         "体育",
         "短剧"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "cache"
     },
     {
       "key": "php_新浪资源",
@@ -862,7 +862,7 @@
         "体育",
         "短剧"
       ],
-      "category_provenance": "cache"
+      "category_provenance": "detected"
     },
     {
       "key": "drpyS_girigiri愛動漫",
@@ -945,7 +945,7 @@
         "体育",
         "短剧"
       ],
-      "category_provenance": "cache"
+      "category_provenance": "detected"
     },
     {
       "key": "795280eee6b8",
