@@ -247,7 +247,7 @@
         "综艺",
         "短剧"
       ],
-      "category_provenance": "cache"
+      "category_provenance": "detected"
     },
     {
       "api": "http://ffzy3.tv/api.php/provide/vod/",
@@ -295,7 +295,7 @@
         "综艺",
         "短剧"
       ],
-      "category_provenance": "cache"
+      "category_provenance": "detected"
     },
     {
       "key": "csp_tt",
@@ -1842,7 +1842,7 @@
       "key": "Ponyo_Children",
       "name": "儿童动画",
       "type": 1,
-      "api": "https://api.ponyo.fun",
+      "api": "https://api.ponyo.fun/api.php/provide/vod/",
       "searchable": 1,
       "quickSearch": 1,
       "filterable": 1,
