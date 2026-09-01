@@ -732,7 +732,7 @@
         "短剧",
         "少儿"
       ],
-      "category_provenance": "detected+site_override"
+      "category_provenance": "cache+site_override"
     },
     {
       "key": "drpyS_瓜子[优]",
@@ -792,7 +792,7 @@
         "短剧",
         "少儿"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "cache"
     },
     {
       "key": "drpyS_爱壹帆",
