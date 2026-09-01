@@ -66,6 +66,20 @@
       "api": "csp_LocalFile"
     },
     {
+      "key": "Ponyo_Children",
+      "name": "儿童动画",
+      "type": 1,
+      "api": "https://api.ponyo.fun/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "ext": "",
+      "categories": [
+        "少儿"
+      ],
+      "category_provenance": "children_aggregate"
+    },
+    {
       "key": "drpyS_奇珍异兽[官]",
       "name": "奇珍异兽",
       "type": 4,
@@ -456,7 +470,7 @@
         "体育",
         "短剧"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "cache"
     },
     {
       "key": "php_猫眼资源",
@@ -880,7 +894,7 @@
         "纪录片",
         "短剧"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "cache"
     },
     {
       "key": "drpyS_爱壹帆",
@@ -935,7 +949,7 @@
         "纪录片",
         "短剧"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "cache"
     },
     {
       "key": "source_01",
@@ -953,7 +967,7 @@
         "体育",
         "短剧"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "cache"
     },
     {
       "api": "https://www.haohuazy.com/api.php/provide/vod/",
@@ -1809,16 +1823,6 @@
         "动漫"
       ],
       "category_provenance": "default_drpy"
-    },
-    {
-      "key": "Ponyo_Children",
-      "name": "儿童动画",
-      "type": 1,
-      "api": "https://api.ponyo.fun/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "ext": ""
     }
   ],
   "parses": [
