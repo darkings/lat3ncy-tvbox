@@ -77,7 +77,8 @@ def norm_ep_number(ep_name):
 # 带后缀的 title 比采集站名更长，三档匹配（精确/前缀/包含）全部落空 -> miss。
 # 处理策略：先剥离语言后缀再匹配，同时保留语言标记用于感知比对（防串台）。
 _LANG_TOKEN = (
-    r'普通话版?|国语版?|国语中字|粤语版?|粤语中字|'      # 中文系
+    r'普通话版?|国语版?|国语中字|中文版?|中文|'          # 中文系（含 B站"（中文）"写法）
+    r'粤语版?|粤语中字|'
     r'英文版?|英语版?|原声版?|原版|'                    # 英文/原声系
     r'日语版?|日语中字|台配版?|台语版?|配音版?|中配版?'
 )
@@ -88,7 +89,7 @@ _LANG_BRACKET_RE = re.compile(r'[\[【（(]\s*(' + _LANG_TOKEN + r')\s*[\]】)�
 _LANG_TAIL_RE = re.compile(r'[\s·\-]+\s*(' + _LANG_TOKEN + r')\s*$')
 # 语言标记归一化：把各种写法收敛到语义桶，供感知比对
 _LANG_BUCKET = {
-    "普通话": "mandarin", "国语": "mandarin", "中配": "mandarin", "配音": "mandarin", "台配": "mandarin", "台语": "mandarin",
+    "普通话": "mandarin", "国语": "mandarin", "中文": "mandarin", "中配": "mandarin", "配音": "mandarin", "台配": "mandarin", "台语": "mandarin",
     "粤语": "cantonese",
     "英文": "english", "英语": "english", "原声": "english", "原版": "english",
     "日语": "japanese",
