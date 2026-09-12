@@ -57,6 +57,10 @@ git branch --set-upstream-to=origin/server-source-manager-sync main
 | 直连 `git fetch origin` | 完整历史 | 低（常超时） |
 | bundle 传输 | **约 1.8 MB** | 高（推荐） |
 
+本地推送同样受此影响：单次推送超过约 20 MB 时，HTTPS 通道会返回 HTTP 408 或 curl 55 Connection was reset。
+**本地 origin 已切换为 SSH**（git@github.com:darkings/lat3ncy-tvbox.git），推送大体积提交时优先使用 SSH。
+若仍需走 HTTPS，先执行 git gc --prune=now 清理垃圾对象，并避免单次提交包含超过 20 MB 的二进制文件。
+
 ### 2.4 标准同步流程
 
 **本地 → 服务器**（服务器需要拉取最新代码时）：
@@ -260,4 +264,6 @@ python .\source-manager\scripts\check_syntax.py
 | GitHub | `https://github.com/darkings/lat3ncy-tvbox.git` |
 | 服务器路径 | `/opt/ponyo-source-manager` |
 | SSH 别名 | `jie`（实际为 root） |
-| Git 代理 | `http://127.0.0.1:7890`（已全局配置） |
+| Git 代理 | `http://127.0.0.1:7890`（HTTPS 通道使用） |
+| Git remote | `git@github.com:darkings/lat3ncy-tvbox.git`（SSH，推送大提交用） |
+| 文档索引 | `docs/README.md` |
