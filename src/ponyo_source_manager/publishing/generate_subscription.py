@@ -27,6 +27,8 @@ from typing import Any
 
 from ponyo_source_manager.core.common import CODE_DIR, DATA_DIR, PONYO_ROOT
 from ponyo_source_manager.publishing.category_taxonomy import (
+    apply_site_category_overrides,
+    ensure_official_platform_categories,
     is_top_name,
     load_host_whitelist,
     load_taxonomy,
@@ -280,6 +282,30 @@ def _fetch_json(url: str, timeout: int = 5) -> dict[str, Any] | None:
         return None
 
 
+# 记录被判定为"纯色情整源剔除"的 api（供 temp 脚本区分"色情剔除"与"接口故障"）。
+# _detect_top_categories 命中纯色情占比时把 api 加入此集合；调用方据此整源剔除。
+PURE_ADULT_APIS: set[str] = set()
+
+
+def _is_pure_adult_categories(
+    raw_names: list[str], deny_tokens: list[str], threshold: float = 0.5
+) -> bool:
+    """判断一组"原始分类名"是否整站为成人内容（命中成人词占比 ≥ threshold）。
+
+    用于整源剔除名字干净的纯色情站(如"森林" slapibf.com)：这类站的分类几乎
+    全是成人词；而主流采集站(天堂/爱奇艺)即便夹带个别"伦理片"，干净分类仍占
+    多数，占比远低于阈值，不会被误杀。
+    """
+    if not raw_names:
+        return False
+    hits = 0
+    for n in raw_names:
+        low = n.lower()
+        if any(t.lower() in low for t in deny_tokens):
+            hits += 1
+    return (hits / len(raw_names)) >= threshold
+
+
 def _is_sub_name(name: str, tx: dict[str, Any]) -> bool:
     """无 type_pid 时判断分类是否为二级（动作片/地区剧/地区综艺等）。"""
     if is_top_name(name, tx):
@@ -291,7 +317,13 @@ def _is_sub_name(name: str, tx: dict[str, Any]) -> bool:
 
 
 def _detect_top_categories(api: str) -> list[str] | None:
-    """检测源顶级分类：成人/无效剔除、父子折叠、空壳剔除、统一归一化。"""
+    """检测源顶级分类：成人/无效剔除、父子折叠、空壳剔除、统一归一化。
+
+    纯色情源整源剔除（2026-08-27）：名字干净的纯色情站(如"森林" slapibf.com)
+    其全部分类都是成人词，源名级过滤(_is_adult_source)抓不到。此处统计原始
+    分类命中 adult_deny 的占比，若 ≥ 阈值(默认50%) 说明整站为色情内容，
+    直接返回 None 整源剔除；否则正常逐分类剥离(主流源夹带的"伦理片"等仍被剔除)。
+    """
     tx = load_taxonomy()
     base = api.rstrip("/") + ("&" if "?" in api else "?")
     data = _fetch_json(base + "ac=list")
@@ -304,6 +336,16 @@ def _detect_top_categories(api: str) -> list[str] | None:
     ]
     if not classes:
         return None
+
+    # ---- 纯色情源整源剔除：按原始分类命中成人词占比判定 ----
+    # 用 adult_deny 词表逐个比对"原始分类名"（未归一化前，含"巨乳美乳"等）。
+    # 主流源即便夹带个别成人分类，干净分类仍占多数，占比远低于阈值，不会误杀。
+    deny_tokens = [str(k) for k in tx.get("adult_deny", [])]
+    raw_names = [str(c["type_name"]).strip() for c in classes if str(c["type_name"]).strip()]
+    if raw_names and _is_pure_adult_categories(raw_names, deny_tokens):
+        PURE_ADULT_APIS.add(api)  # 标记为纯色情剔除（区别于接口故障的 None）
+        return None
+
     has_pid = any(c.get("type_pid") is not None for c in classes)
     tops: list[dict[str, Any]] = []
     subs: list[dict[str, Any]] = []
@@ -469,6 +511,52 @@ def _host_of(api: str) -> str | None:
     return m.group(1).lower().removeprefix("www.") if m else None
 
 
+# ---- 源级成人内容过滤（2026-08-27 新增）----
+# 背景: adult_deny 黑名单原本只作用在源「内部分类」归一化(_detect_top_categories),
+# 只过滤源内的成人分类, 不剔除源本身。而 ponyo-full/candidates 的收录条件只有
+# state != 'deny', 导致整站为成人内容的 candidate 源(麻豆/骚火/萝莉屋/三级片等)
+# 仍然进入对外订阅。此处补齐源级过滤: 命中成人词的源直接不进 full/candidates。
+#
+# 「AV」特殊处理: WebDAV 网盘源名字含 "AV"(WebDAV), 纯属误判, 必须豁免;
+# 但 18av/321AV/黄AV/JAV/MISSAV/黄瓜资源|AV 等是真成人站, 不能因 AV 一词漏网。
+# 故仅当名字整体明确是 WebDAV 网盘(含 webdav/dav 且不含其他成人词)时才豁免 AV。
+_WEBDAV_HINT = re.compile(r"web\s*dav|webdav|dav\.|davcom|网盘|云盘|云盤|\[盘\]|\[盤\]", re.I)
+
+
+def _is_adult_source(name: str, key: str, deny_tokens: list[str], api: str = "") -> bool:
+    """判断源是否成人内容。命中 adult_deny 词即视为成人, 但豁免 WebDAV/dav 网盘的 AV 误判。"""
+    text = f"{name or ''} {key or ''}"
+    lowered = text.lower()
+    matched = [t for t in deny_tokens if t.lower() in lowered]
+    if not matched:
+        return False
+    # 仅命中「AV」且整体是网盘/dav 站 → 误判, 放行。
+    # 网盘特征看 name+key, 另结合 api 域名里的 dav 特征(如 888dav.com 采集站)。
+    non_av = [t for t in matched if t.lower() != "av"]
+    if not non_av and (_WEBDAV_HINT.search(text) or _WEBDAV_HINT.search(api or "")):
+        return False
+    return True
+
+
+def _filter_adult_sites(
+    sites: list[dict[str, Any]], deny_tokens: list[str]
+) -> tuple[list[dict[str, Any]], list[str]]:
+    """从站点列表剔除成人源, 返回 (保留列表, 被剔除源名列表)。"""
+    kept: list[dict[str, Any]] = []
+    dropped: list[str] = []
+    for s in sites:
+        if _is_adult_source(
+            str(s.get("name", "") or ""),
+            str(s.get("key", "") or ""),
+            deny_tokens,
+            str(s.get("api", "") or ""),
+        ):
+            dropped.append(str(s.get("name", "") or s.get("key", "")))
+            continue
+        kept.append(s)
+    return kept, dropped
+
+
 def _apply_site_dedup(sites: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """同站点多入口去重：SITE_GROUPS 每组只保留评分降序中的第一个。"""
     seen: set[tuple[str, ...]] = set()
@@ -583,6 +671,11 @@ def generate_all_subscriptions(
     # 暂不收录：央视大全（drpyS WASM 签名规则，详情/播放依赖 WebAssembly，App 端 QuickJS 不支持）
     BLOCKED_KEYS = {"drpyS_央视大全[官]"}
     vod_sites = [s for s in vod_sites if s.get("key") not in BLOCKED_KEYS]
+    # 源级成人过滤(防御): allow 源虽经审核, 仍兜底剔除名字命中成人词的漏网之鱼
+    _lite_tokens = [str(k) for k in load_taxonomy().get("adult_deny", [])]
+    vod_sites, _lite_dropped = _filter_adult_sites(vod_sites, _lite_tokens)
+    if _lite_dropped:
+        print(f"[adult-filter] 精选源剔除 {len(_lite_dropped)} 个成人源: {_lite_dropped}")
     # 命名规范化（纯短名；重名回退，无序号）
     _assign_names(vod_sites)
     # 分类归一化（所有采集站源）：检测成功写入签名缓存，失败按签名回退；
@@ -618,6 +711,13 @@ def generate_all_subscriptions(
                 s["categories"] = list(entry)
                 s["category_provenance"] = "cache-legacy"
     _save_cache(cache)
+    # 站点级分类覆盖（config/site-category-overrides.json）：官源等无法 ac=list 检测的源补少儿等分类
+    _override_n = apply_site_category_overrides(vod_sites)
+    if _override_n:
+        print(f"[category-override] 应用站点分类覆盖: {_override_n} 个")
+    _official_n = ensure_official_platform_categories(vod_sites)
+    if _official_n:
+        print(f"[category-override] 官源纪录片/少儿兜底: {_official_n} 个")
     # 类别配额：每类只保留最高分源（正式版同样生效）
     vod_sites = _apply_category_quota(vod_sites)[:29]
     # 同站点去重：每站只保留最高分入口（正式版同样生效）
@@ -695,7 +795,7 @@ def generate_all_subscriptions(
     children_bytes = children_str.encode("utf-8")
     (out_path / "ponyo-children.json").write_bytes(children_bytes)
 
-    # 3. 生成 ponyo-full.json (所有未被 deny 的源)
+    # 3. 生成 ponyo-full.json (所有未被 deny 的源, 且剔除成人源)
     rows_full = con.execute("""
         SELECT r.raw_json, dg.fingerprint
         FROM dedup_group dg
@@ -704,6 +804,8 @@ def generate_all_subscriptions(
         WHERE COALESCE(ls.state, 'candidate') != 'deny'
     """).fetchall()
 
+    # 源级成人过滤: candidate 源此前仅靠 state 过滤, 成人站会漏进订阅
+    _adult_tokens = [str(k) for k in load_taxonomy().get("adult_deny", [])]
     full_sites = []
     for r in rows_full:
         try:
@@ -716,6 +818,10 @@ def generate_all_subscriptions(
             )
         except Exception:
             pass
+    full_sites, full_dropped = _filter_adult_sites(full_sites, _adult_tokens)
+    if full_dropped:
+        print(f"[adult-filter] ponyo-full 剔除 {len(full_dropped)} 个成人源: "
+              f"{full_dropped[:10]}{'...' if len(full_dropped) > 10 else ''}")
 
     full_config = base_config.copy()
     full_config["sites"] = full_sites
@@ -744,6 +850,10 @@ def generate_all_subscriptions(
             )
         except Exception:
             pass
+    # 候选文件同样剔除成人源, 避免内部评审/误发布带入
+    cand_sites, cand_dropped = _filter_adult_sites(cand_sites, _adult_tokens)
+    if cand_dropped:
+        print(f"[adult-filter] ponyo-candidates 剔除 {len(cand_dropped)} 个成人源")
     cand_config = base_config.copy()
     cand_config["sites"] = cand_sites
     cand_str = json.dumps(cand_config, ensure_ascii=False, indent=2) + "\n"

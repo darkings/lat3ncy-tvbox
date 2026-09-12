@@ -51,15 +51,16 @@ PLATFORM_PAGE_HOSTS = {
 DRPY_EXECUTION_ROUTE = "drpy_vod"
 
 DEFAULT_KEYWORD_PROFILES = {
-    "general": ["庆余年", "长相思", "流浪地球"],
-    "children": ["熊出没", "小猪佩奇", "汪汪队立大功"],
-    "animation": ["名侦探柯南", "斗罗大陆", "海贼王"],
+    # 方向B(2026-08-27): 每泳道词池扩充, 测试时随机抽3个, 多天铺开清晰度样本
+    "general": ["庆余年", "长相思", "流浪地球", "狂飙", "甄嬛传", "三体", "繁花", "漫长的季节"],
+    "children": ["熊出没", "小猪佩奇", "汪汪队立大功", "超级飞侠", "喜羊羊", "奥特曼"],
+    "animation": ["名侦探柯南", "斗罗大陆", "海贼王", "火影忍者", "鬼灭之刃", "咒术回战"],
     # 实测短剧源对具体剧名几乎全空，通用题材词（逆袭/重生/闪婚）稳定有结果
-    "short_drama": ["逆袭", "重生", "闪婚"],
-    "books_audio": ["斗破苍穹", "凡人修仙传", "诡秘之主"],
+    "short_drama": ["逆袭", "重生", "闪婚", "总裁", "赘婿", "穿越"],
+    "books_audio": ["斗破苍穹", "凡人修仙传", "诡秘之主", "雪中悍刀行", "全职法师", "遮天"],
     # 部分听书源对「周杰伦」常空，歌名词覆盖更稳
-    "audio_music": ["海阔天空", "后来", "夜曲"],
-    "documentary": ["蓝色星球", "航拍中国", "地球脉动"],
+    "audio_music": ["海阔天空", "后来", "夜曲", "青花瓷", "平凡之路", "晴天"],
+    "documentary": ["蓝色星球", "航拍中国", "地球脉动", "舌尖上的中国", "人生七年"],
 }
 
 
@@ -107,9 +108,15 @@ def load_keyword_profiles(path: str | Path) -> dict[str, list[str]]:
         if not isinstance(values, list):
             raise ValueError(f"keyword profile {lane} must be a list")
         keywords = [str(value).strip() for value in values if str(value).strip()]
-        if len(keywords) < 3 or len(set(keywords[:3])) != 3:
-            raise ValueError(f"keyword profile {lane} needs three distinct keywords")
-        profiles[lane] = keywords[:3]
+        # 方向B(2026-08-27): 放开「只取前3」限制, 允许每泳道配置 >3 个关键词作为词池。
+        # 每源测试时由 run_batch_test 从词池随机抽 3 个跑, 不同轮次命中不同节目,
+        # 多天累积铺开清晰度样本覆盖, 避免永远只测固定那几个节目。
+        if len(keywords) < 3 or len(set(keywords)) != len(keywords):
+            raise ValueError(
+                f"keyword profile {lane} needs at least 3 distinct keywords "
+                f"(got {len(keywords)}, unique {len(set(keywords))})"
+            )
+        profiles[lane] = keywords  # 保留完整词池, 不再截断为前3
     return profiles
 
 
@@ -268,6 +275,14 @@ def _evidence_json(result: dict) -> str:
         "result_count",
         "failure_signature",
         "failure_disposition",
+        # 方向②: playback 解析出的清晰度证据, 透传存档便于审计与回填
+        "video_width",
+        "video_height",
+        "video_codec",
+        "m3u8_width",
+        "m3u8_height",
+        "resolution",
+        "bandwidth",
     )
     evidence = {key: result.get(key) for key in allowed if key in result}
     if str(result.get("test_type") or "") == "playurl":
@@ -424,8 +439,11 @@ from ponyo_source_manager.probes import media_quality, playback
 def run_full_chain(
     rule_path: str, keyword: str, db_path: str = "", fp: str = "", *, runner=_run_drpy
 ) -> list[dict]:
-    """完整功能链测试：搜索 → 详情 → 选集 → 播放地址 → HLS验证 → ffprobe。
-    任一环节失败即停止后续测试。
+    """完整功能链测试：搜索 → 详情 → 选集 → 播放地址 → ffprobe + 真实播放。
+
+    搜索/详情/选集/播放地址任一失败即停止后续；ffprobe（媒体质量）在拿到可播
+    地址后即执行，与真实播放验证相互独立（解耦），避免高清/时长证据被播放验证
+    结果卡死，提升 media_probe 覆盖。
     """
     results = []
 
@@ -477,13 +495,39 @@ def run_full_chain(
     if not playurl["success"] or not url:
         return results
 
-    # 5. 真实播放测试
+    play_headers = playurl.get("header", {})
+    if not isinstance(play_headers, dict):
+        play_headers = {}
+
+    # 5. ffprobe 媒体质量测试（解耦：有可播地址即测，不依赖真实播放验证成功）
+    if db_path and fp:
+        type_info = media_quality.infer_content_type(
+            item.get("vod_name", item.get("name", keyword)),
+            detail.get("detail", {}),
+            episode_count=len(episodes_list),
+            source_hint=rule_path,
+        )
+        mq = media_quality.probe_and_save(
+            db_path,
+            fp,
+            url,
+            keyword,
+            request_headers=play_headers or None,
+            content_type=type_info["content_type"],
+        )
+        mq["content_type_confidence"] = type_info["confidence"]
+        mq["content_type_evidence"] = type_info["evidence"]
+        mq["test_type"] = "ffprobe"
+        mq["keyword"] = keyword
+        classify_failure_stage(mq)
+        results.append(mq)
+
+    # 6. 真实播放测试（独立于 ffprobe）
     t0 = time.monotonic()
     ext_str = item.get("ext", "")
     if not isinstance(ext_str, str):
         ext_str = json.dumps(ext_str)
-    play_headers = playurl.get("header", {})
-    if isinstance(play_headers, dict) and play_headers:
+    if play_headers:
         try:
             ext_data = json.loads(ext_str) if ext_str.startswith("{") else {}
         except json.JSONDecodeError:
@@ -496,30 +540,103 @@ def run_full_chain(
     classify_failure_stage(pb_res)
     results.append(pb_res)
 
-    # 6. ffprobe 媒体质量测试
-    if pb_res["success"] and db_path and fp:
-        type_info = media_quality.infer_content_type(
-            item.get("vod_name", item.get("name", keyword)),
-            detail.get("detail", {}),
-            episode_count=len(episodes_list),
-            source_hint=rule_path,
+    # 方向②: playback 在 deep 模式已用 ffprobe 解析出清晰度(width/height/codec)，
+    # 但此前只存 ffprobe_valid 布尔。现把清晰度证据落进 media_probe，
+    # 让通过播放验证的源即使第5步 ffprobe 未命中也能参与 hard_pass 画质门禁。
+    # 仅当第5步未产出清晰度(ffprobe 失败/超时)时才回填, 避免重复计数。
+    if db_path and fp and pb_res.get("success"):
+        # type_info 在第5步 if db_path and fp 块内定义, 此处同条件必然已存在,
+        # 但用 locals().get 防御未来条件变更导致的 NameError
+        _maybe_save_playback_quality(
+            db_path, fp, url, keyword, pb_res, locals().get("type_info")
         )
-        mq = media_quality.probe_and_save(
-            db_path,
-            fp,
-            url,
-            keyword,
-            request_headers=play_headers if isinstance(play_headers, dict) else None,
-            content_type=type_info["content_type"],
-        )
-        mq["content_type_confidence"] = type_info["confidence"]
-        mq["content_type_evidence"] = type_info["evidence"]
-        mq["test_type"] = "ffprobe"
-        mq["keyword"] = keyword
-        classify_failure_stage(mq)
-        results.append(mq)
 
     return results
+
+
+def _maybe_save_playback_quality(
+    db_path: str,
+    fp: str,
+    url: str,
+    keyword: str,
+    pb_res: dict,
+    type_info: dict | None,
+) -> None:
+    """把 playback 验证中解析出的清晰度写入 media_probe（补充画质证据）。
+
+    数据来源优先级: ffprobe 实测(video_width/height) > m3u8 自标(m3u8_width/height)。
+    用 media_quality.classify_quality 做方向无关分档(正确处理竖屏/宽幅)。
+
+    时长门禁说明(2026-08-27 修正): playback 仅验证 1~3 个分片可读, 不验证总时长,
+    无法判断是否为短流。此前武断设 duration_pass=1 会掩盖专项探测发现的真实短流,
+    抬高 duration_pass_rate 造成误放行。现改为 duration_pass=NULL(不计入时长统计),
+    compute_quality 已同步排除 duration_pass IS NULL 的记录——时长门禁完全由
+    run_full_chain 第5步的专项时长探测(save_media_probe)负责, 回填只补清晰度。
+    """
+    # 同一 (fp,url) 若已有近1天的清晰度证据则跳过, 避免重复计数
+    try:
+        con = sqlite3.connect(str(db_path))
+        has = con.execute(
+            "SELECT 1 FROM media_probe WHERE fingerprint=? AND play_url=? "
+            "AND quality_tier IS NOT NULL AND quality_tier != '' "
+            "AND probed_at >= datetime('now','-1 day') LIMIT 1",
+            (fp, url),
+        ).fetchone()
+        con.close()
+        if has:
+            return
+    except Exception:
+        pass
+
+    # 取清晰度: 优先 ffprobe 实测, 其次 m3u8 自标
+    width = pb_res.get("video_width") or pb_res.get("m3u8_width") or 0
+    height = pb_res.get("video_height") or pb_res.get("m3u8_height") or 0
+    codec = pb_res.get("video_codec")
+    if not (width and height):
+        return  # 无清晰度信息, 不写
+
+    source_kind = "ffprobe" if pb_res.get("video_width") else "m3u8_label"
+    tier = media_quality.classify_quality(int(height), 0, width=int(width))
+    content_type = (type_info or {}).get("content_type", "unknown")
+    now = time.strftime("%Y-%m-%dT%H:%M:%S", time.gmtime())
+
+    try:
+        con = sqlite3.connect(str(db_path))
+        con.execute(
+            "INSERT INTO media_probe"
+            "(fingerprint,content_title,play_url,width,height,video_codec,"
+            "video_bitrate,audio_codec,frame_rate,duration_s,quality_tier,"
+            "success,error,probed_at,content_type,min_duration_s,duration_pass,"
+            "duration_reason,ffprobe_success)"
+            " VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+            (
+                fp,
+                keyword,
+                url,
+                int(width),
+                int(height),
+                codec,
+                pb_res.get("bandwidth") or None,  # 用 m3u8 带宽近似码率
+                None,   # audio_codec 未知
+                None,   # frame_rate 未知
+                None,   # duration_s 由专项时长探测负责
+                tier,
+                1,      # success: playback 已验证可播
+                f"via_playback_{source_kind}",  # error 字段标记来源, 便于审计
+                now,
+                content_type,
+                0,      # min_duration_s: 回填不测时长
+                0,      # duration_pass: 占位0, 因 NOT NULL 约束不能写 NULL。
+                        # 该记录 error='via_playback_*', compute_quality 在时长统计时
+                        # 按此前缀排除, 故不参与 duration_pass_rate, 不会放行短流。
+                f"playback_{source_kind}_quality",
+                int(bool(pb_res.get("ffprobe_valid"))),
+            ),
+        )
+        con.commit()
+        con.close()
+    except Exception:
+        pass  # 清晰度回填失败不影响主流程
 
 
 def save_results(
@@ -707,6 +824,10 @@ def run_batch_test(
             )
             continue
         test_keywords = keyword_profiles.get(content_lane, keyword_profiles["general"])
+        # 方向B: 词池 >3 时每源随机抽 3 个跑(保持单源测试成本不变),
+        # 不同轮次命中不同节目, 多天累积铺开清晰度样本。词池=3 时全取。
+        if len(test_keywords) > 3:
+            test_keywords = random.sample(test_keywords, 3)
         all_chain_results = []
         source_success = True
 

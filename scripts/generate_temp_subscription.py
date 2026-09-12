@@ -19,13 +19,17 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 from typing import Any
 from ponyo_source_manager.publishing.category_taxonomy import (
+    apply_site_category_overrides,
+    ensure_official_platform_categories,
     load_host_whitelist,
     load_taxonomy,
     normalize_categories,
 )
 from ponyo_source_manager.publishing.generate_subscription import (
     _detect_top_categories as _detect_top_categories,
+    _is_pure_adult_categories as _is_pure_adult_categories,
 )
+from ponyo_source_manager.publishing import generate_subscription as _gs
 
 
 # 分类检测结果缓存：接口临时故障时回退到上次成功结果，避免分类栏退回“接口全显示”
@@ -93,6 +97,40 @@ PLATFORM_VIDEO = [
     ("腾讯", "qq", None, "drpyS_腾云驾雾[官]"),
     ("芒果", "mgtv", "芒果资源", "drpyS_百忙无果[官]"),
     ("优酷", "youku", None, "drpyS_优酷[官]"),
+]
+
+# 固定置顶源：不参与评分/探测，直接注入（本地 drpyS 规则 + 自带 jar 的网盘源）
+PINNED_SITES = [
+    {
+        "key": "drpyS_哔哩影视[官]",
+        "name": "哔哩影视",
+        "type": 4,
+        "api": "http://127.0.0.1:5757/api/哔哩影视[官]?pwd=ponyo-local-drpy",
+        "searchable": 1,
+        "quickSearch": 1,
+        "filterable": 1
+    },
+    {
+        "key": "玩偶",
+        "name": "玩偶┃免扫",
+        "type": 3,
+        "api": "csp_Wogg",
+        "searchable": 1,
+        "quickSearch": 1,
+        "filterable": 1,
+        "changeable": 1,
+        "ext": {
+            "site": [
+                "https://www.wogg.live",
+                "https://woggpan.888484.xyz",
+                "https://wogg.xxooo.cf",
+                "https://woggpan.xxooo.cf"
+            ],
+            "drives": ["夸克", "UC", "百度"]
+        },
+        "timeout": 90,
+        "jar": "https://api.ponyo.fun/assets/jar/fbdcac52a20116db49ec1c664641c439c7afdcca4eaef6d0e6a9e1a05ed5f49e.jar;md5;a108d5e5b4588a469116d1fa5b9cdeca"
+    }
 ]
 
 
@@ -547,9 +585,14 @@ def _assign_names(sites: list[dict[str, Any]]) -> None:
     """命名规范化 + 重名回退：
     简短名唯一直接用；简短名冲突时回退到保留词尾版；仍冲突用基础清洗名。
     不引入数字序号前缀。
+    PINNED_SITES 固定源保留原名（品牌名如 玩偶┃免扫，不参与清洗）。
     """
+    _pinned_keys = {p["key"] for p in PINNED_SITES}
     normalized = []
     for s in sites:
+        if s.get("key") in _pinned_keys:
+            normalized.append((str(s.get("name", "") or ""), str(s.get("name", "") or "")))
+            continue
         api = str(s.get("api", "") or "")
         is_builtin = api.startswith("csp_") or api.startswith("./")
         normalized.append(normalize_name(str(s.get("name", "") or ""), is_builtin))
@@ -595,7 +638,7 @@ def main() -> None:
         : args.limit * 2
     ]
     # 发布层规则：4 平台视频源(官源优先/采集兜底) 置顶 → 按 key 去重 → 同站点去重 → 命名规范化 → 类别配额 → 取前 limit
-    vod_sites = _load_platform_video(con) + vod_sites
+    vod_sites = _load_platform_video(con) + PINNED_SITES + vod_sites
     _seen_keys: set[str] = set()
     _deduped: list[dict[str, Any]] = []
     for _s in vod_sites:
@@ -621,6 +664,8 @@ def main() -> None:
                 s["category_provenance"] = "default_drpy"
 
     cache = _load_cache()
+    _adult_tokens = [str(k) for k in load_taxonomy().get("adult_deny", [])]
+    _pure_adult_keys: set[str] = set()  # 被判定为纯色情站的源 key（整源剔除）
     with ThreadPoolExecutor(max_workers=4) as ex:
         futs = {
             ex.submit(_detect_top_categories, str(s.get("api", "") or "")): s
@@ -638,13 +683,52 @@ def main() -> None:
                 s["categories"] = cats
                 s["category_provenance"] = "detected"
                 cache[api] = {"sig": "", "at": "", "cats": cats}
-            elif isinstance(entry, dict):
+                continue
+            # cats 为 None：区分「纯色情整源剔除」与「接口故障/无分类」。
+            # _detect_top_categories 命中纯色情占比时会把 api 记入 PURE_ADULT_APIS；
+            # 此外兜底复核该源已声明分类(raw_json categories)/缓存分类的占比，
+            # 防止缓存里残留旧词表探测到的色情分类(如"森林")被回退填回。
+            declared_names = [
+                str(x) for x in (s.get("categories") or []) if str(x).strip()
+            ]
+            if not declared_names and isinstance(entry, dict):
+                declared_names = [str(x) for x in (entry.get("cats") or [])]
+            elif not declared_names and isinstance(entry, list):
+                declared_names = [str(x) for x in entry]
+            is_pure_adult = (api in _gs.PURE_ADULT_APIS) or (
+                declared_names
+                and _is_pure_adult_categories(declared_names, _adult_tokens)
+            )
+            if is_pure_adult:
+                _pure_adult_keys.add(str(s.get("key", "")))
+                cache.pop(api, None)  # 清掉色情缓存，防止回退
+                continue
+            # 接口故障/无分类：回退缓存保持可用
+            if isinstance(entry, dict):
                 s["categories"] = list(entry.get("cats") or [])
                 s["category_provenance"] = "cache"
             elif isinstance(entry, list):
                 s["categories"] = list(entry)
                 s["category_provenance"] = "cache-legacy"
+    # 整源剔除纯色情站（名字干净但分类全为成人内容，如"森林" slapibf.com）
+    if _pure_adult_keys:
+        before = len(vod_sites)
+        vod_sites = [s for s in vod_sites if str(s.get("key", "")) not in _pure_adult_keys]
+        print(f"[adult-filter] 剔除 {before - len(vod_sites)} 个纯色情源: {sorted(_pure_adult_keys)}")
+    # 名字级成人过滤：兜住走 DRPy 本地兜底分类(未被分类占比命中)的名字级成人站，
+    # 如"麻豆社[密]"(logo=madou.club, csp_madou 麻豆传媒爬虫)。复用 publishing 的
+    # _filter_adult_sites(命中 adult_deny 词即剔除, 自动豁免 WebDAV 网盘的 AV 误判)。
+    vod_sites, _name_dropped = _gs._filter_adult_sites(vod_sites, _adult_tokens)
+    if _name_dropped:
+        print(f"[adult-filter] 名字级剔除 {len(_name_dropped)} 个成人源: {_name_dropped}")
     _save_cache(cache)
+    # 站点级分类覆盖（config/site-category-overrides.json）：官源等无法 ac=list 检测的源补少儿等分类
+    _override_n = apply_site_category_overrides(vod_sites)
+    if _override_n:
+        print(f"[category-override] 应用站点分类覆盖: {_override_n} 个")
+    _official_n = ensure_official_platform_categories(vod_sites)
+    if _official_n:
+        print(f"[category-override] 官源纪录片/少儿兜底: {_official_n} 个")
     vod_sites = _apply_category_quota(vod_sites)[: args.limit]
 
     # 3. 组装：顶层结构沿用模板（spider/lives/parses/hosts/flags/doh/rules/ads/wallpaper）
@@ -653,7 +737,7 @@ def main() -> None:
 
     # 注入直播源：聚合 M3U 优先，其次 live-report.json 的 official_url
     agg_m3u = Path("/opt/ponyo-source-manager/src/subscription/aggregated-live.m3u")
-    agg_cdn_url = "https://cdn.jsdelivr.net/gh/darkings/lat3ncy-tvbox@main/subscription/aggregated-live.m3u"
+    agg_cdn_url = "https://api.ponyo.fun/aggregated-live.m3u"
     live_report_path = Path(args.db).resolve().parent.parent / "reports" / "live-report.json"
     if not live_report_path.exists():
         live_report_path = Path("/opt/ponyo-source-manager/reports/live-report.json")
@@ -691,6 +775,40 @@ def main() -> None:
                 result["lives"] = [live_entry] + [l for l in existing_lives if l.get("url") != official_url]
         except Exception as e:
             print(f"Warning: failed to inject live source: {e}")
+
+    # 儿童聚合源（方向1）：ready 时把「儿童动画」站点并入主订阅，并输出 ponyo-children.json
+    os.environ.setdefault("CHILDREN_API_URL", "https://api.ponyo.fun")
+    try:
+        from ponyo_source_manager.publishing import children_aggregate as _children_agg
+        _children_res = _children_agg.aggregate_children_sources(args.db)
+        _children_site = _children_res.get("tvbox_site")
+        if _children_site:
+            # 静态分类兜底：App 预读站点时即可识别为少儿频道
+            _children_site.setdefault("categories", ["少儿"])
+            # 儿童站插到工具源之后(索引=len(tool_sites))，避免沉到列表末尾
+            _insert_at = len(tool_sites)
+            result["sites"] = (result["sites"][:_insert_at]
+                               + [_children_site]
+                               + result["sites"][_insert_at:])
+            _children_config = dict(template)
+            _children_config["sites"] = [_children_site]
+            _children_config["lives"] = []
+            _children_out = Path(args.output).parent / "ponyo-children.json"
+            _children_out.write_text(
+                json.dumps(_children_config, ensure_ascii=False, indent=2) + "\n",
+                encoding="utf-8",
+            )
+            print(
+                "[children] 儿童聚合源 ready，已并入订阅: "
+                + str(_children_res.get("primary_names"))
+            )
+        else:
+            print(
+                "[children] 儿童聚合源未 ready（主力 %d）: %s"
+                % (_children_res.get("primary", 0), _children_res.get("primary_names"))
+            )
+    except Exception as _e:
+        print(f"[children] 儿童聚合失败（不影响主订阅）: {_e}")
 
     Path(args.output).parent.mkdir(parents=True, exist_ok=True)
     Path(args.output).write_text(

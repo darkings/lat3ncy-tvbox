@@ -44,9 +44,14 @@ services:
     build:
       context: .
     container_name: ponyo-children-api
+    environment:
+      DRPY2_ADAPTER: /app/drpy2/drpys-http-adapter.js
+      DRPY2_BASE_URL: http://ponyo-drpy-node:5757
+      DRPY2_CONFIG_URL: http://ponyo-drpy-node:5757/config/1?pwd=ponyo-local-drpy
     volumes:
       - ./data:/app/data
       - ./subscription:/app/subscription:ro
+      - ./drpys:/app/drpys:ro
     ports:
       - "8000:8000"
     restart: unless-stopped

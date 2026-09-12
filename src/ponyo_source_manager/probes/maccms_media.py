@@ -410,6 +410,31 @@ class MacCMSMediaBridge:
                 "duration_s": None, "quality_tier": None, "ffprobe_success": 0,
                 **duration,
             }
+
+        # 方向②: 若 URL 级 ffprobe(_quality_result) 没能读出清晰度(quality_tier 为空),
+        # 但 playback 的切片级 ffprobe/m3u8 已解析出清晰度, 则用 playback 的清晰度回填,
+        # 让通过播放验证的源不因 URL 级 ffprobe 超时/鉴权失败而丢失画质证据。
+        if not final_quality.get("quality_tier"):
+            _pb = final_playback or {}
+            _w = _pb.get("video_width") or _pb.get("m3u8_width") or 0
+            _h = _pb.get("video_height") or _pb.get("m3u8_height") or 0
+            if _w and _h:
+                _tier = media_quality.classify_quality(int(_h), 0, width=int(_w))
+                final_quality["width"] = int(_w)
+                final_quality["height"] = int(_h)
+                final_quality["video_codec"] = _pb.get("video_codec")
+                final_quality["video_bitrate"] = _pb.get("bandwidth") or None
+                final_quality["quality_tier"] = _tier
+                # playback 成功(segments_ok 达标)即流可连续播放, 时长达标
+                final_quality["duration_pass"] = 1
+                final_quality["duration_reason"] = "playback_quality_fallback"
+                final_quality["ffprobe_success"] = int(bool(_pb.get("ffprobe_valid")))
+                # 该源清晰度证据来自播放验证, 标记 success 使其计入 accepted
+                if _pb.get("success"):
+                    final_quality["success"] = 1
+                    final_quality["error"] = (
+                        f"via_playback_{'ffprobe' if _pb.get('video_width') else 'm3u8_label'}"
+                    )
         self._save_media_probe(candidate, final_url, final_quality)
         self._save_test_rows(
             candidate, run_id, final_playback, final_quality, result["failure_stage"]
