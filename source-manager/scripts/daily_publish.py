@@ -15,6 +15,7 @@
 """
 
 import json
+import shutil
 import sqlite3
 import subprocess
 import sys
@@ -31,6 +32,9 @@ DB = SM_DIR / "data" / "sources.db"
 REMOTE_OUT = SM_DIR / "subscription" / "ponyo-temp.json"
 # 对外服务文件（api.ponyo.fun/ponyo.json，children-api 挂载目录，发布即时生效）
 SERVE_TARGET = SM_DIR / "subscription" / "ponyo.json"
+# 聚合直播 M3U 源文件（测速优先生成，随发布一并推到对外目录）
+AGG_M3U_SRC = SM_DIR / "src" / "subscription" / "aggregated-live.m3u"
+AGG_M3U_SERVE = SM_DIR / "subscription" / "aggregated-live.m3u"
 # git 发布仓库文件（jsDelivr 备份地址）
 GIT_TARGET = PUBLISH_REPO / "subscription" / "ponyo.json"
 LOG = PUBLISH_REPO / "subscription" / "update-log.txt"
@@ -150,11 +154,25 @@ def main() -> None:
     SERVE_TARGET.write_text(
         json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
     )
+    # 同步聚合直播 M3U 到对外目录（api.ponyo.fun/aggregated-live.m3u 即时生效）
+    if AGG_M3U_SRC.is_file() and AGG_M3U_SRC.stat().st_size > 100:
+        shutil.copyfile(AGG_M3U_SRC, AGG_M3U_SERVE)
     GIT_TARGET.write_text(
         json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8"
     )
 
-    sh(["git", "-C", str(PUBLISH_REPO), "add", "subscription/ponyo.json"])
+    # 方案1：下载订阅中相对路径的 api/ext 依赖到发布仓库，保持相对路径可用
+    materialize_script = SM_DIR / "scripts" / "materialize_relative_assets.py"
+    sh([
+        str(SM_DIR / ".venv/bin/python"),
+        str(materialize_script),
+        "--subscription", str(GIT_TARGET),
+        "--db", str(DB),
+        "--output", str(PUBLISH_REPO / "subscription"),
+    ], timeout=600)
+
+    # 把依赖文件一并加入 git（subscription 目录下所有变化）
+    sh(["git", "-C", str(PUBLISH_REPO), "add", "subscription/"])
     changed = sh(
         ["git", "-C", str(PUBLISH_REPO), "diff", "--cached", "--name-only"]
     ).strip()

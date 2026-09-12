@@ -52,6 +52,13 @@ _EP_NUM_RE = re.compile(r"(\d+)")
 # share 页内嵌 m3u8 引用：匹配 /path/index.m3u8?sign=xxx 这类相对/绝对地址
 _M3U8_REF_RE = re.compile(r"""["']([^"']*?\.m3u8[^"']*)["']""")
 
+# 非正片衍生条目：预告/花絮/解说等。命中后分数清零，避免被前缀匹配当成正片。
+# MV 只在独立 token 时命中，避免误伤片名里偶然出现的连续字母。
+_NON_FEATURE_RE = re.compile(
+    r"预告|花絮|片花|特辑|电影解说|解说|短评|幕后|采访|(?<![A-Za-z])MV(?![A-Za-z])",
+    re.I,
+)
+
 
 # ---------------------------------------------------------------------------
 # 工具函数
@@ -180,6 +187,27 @@ def norm_name_for_cmp(name):
     s = re.sub(r'第([一二三四五六七八九十百零]+)([季部])', _rep, s)
     return s.strip()
 
+def _non_feature_haystack(vod):
+    """片名/类型/分类/备注拼成一段文本，供非正片关键词扫描。"""
+    if not vod:
+        return ""
+    return " ".join(
+        str(vod.get(k) or "")
+        for k in ("vod_name", "type_name", "vod_class", "vod_remarks")
+    )
+
+
+def is_non_feature(vod, title=None):
+    """True=预告/花絮/解说等衍生条目。
+
+    请求本身带这些词时放行（用户就是要预告）。否则只要候选名、类型、
+    分类或备注命中关键词，就视为非正片。
+    """
+    if title and _NON_FEATURE_RE.search(str(title)):
+        return False
+    return bool(_NON_FEATURE_RE.search(_non_feature_haystack(vod)))
+
+
 def _candidate_score(vod, title, lang_bucket=None):
     """
     单条候选打分（rank_candidates 与 direct_resolve 过滤共用同一套分数）。
@@ -195,6 +223,8 @@ def _candidate_score(vod, title, lang_bucket=None):
     """
     name = (vod.get("vod_name") or "").strip()
     if not name:
+        return 0
+    if is_non_feature(vod, title):
         return 0
     norm_t, lang_t, season = norm_title(title)
     cmp_t = norm_name_for_cmp(norm_t)
@@ -235,6 +265,8 @@ def pick_episode(play_url, ep_index):
 
     vod_play_url 格式（苹果 CMS 标准）：
         "第01集$URL1#第02集$URL2#...$$$另一线路第01集$URL..."
+    返回 (url, ep_label)：ep_label 是命中的集名/资源标签（如 "HD中字"），
+    供调用方做语言标注判断（普通话请求 vs 原声中字资源）。
     - '#' 分隔同一线路的集
     - '$' 分隔 集名 与 地址
     - '$$$' 分隔多线路（只取第一条线路，与 children.py MAX_PLAY_LINES=1 约定一致）
@@ -245,26 +277,28 @@ def pick_episode(play_url, ep_index):
     3. 单集影片（电影）-> 直接取第一条
     """
     if not play_url:
-        return None
+        return None, None
     # 只取第一条线路
     first_line = play_url.split("$$$")[0]
     eps = [e for e in first_line.split("#") if "$" in e]
     if not eps:
-        return None
+        return None, None
 
     # 单集（电影/综艺单期）：直接返回第一条
     if len(eps) == 1:
-        return eps[0].split("$", 1)[1]
+        name, _, url = eps[0].partition("$")
+        return url, name
 
     if ep_index is not None:
         # 先按集名数字精确匹配
         for e in eps:
             name, _, url = e.partition("$")
             if norm_ep_number(name) == ep_index:
-                return url
+                return url, name
         # 匹配不到：集数越界（上游只有 39 集而客户端要第 40 集）-> 取最后一集兜底
-        return eps[-1].partition("$")[2]
-    return None
+        name, _, url = eps[-1].partition("$")
+        return url, name
+    return None, None
 
 
 async def resolve_share_link(client, url):
@@ -326,24 +360,53 @@ def _season_of_name(name):
     return int(m.group(1)) if m else 0
 
 
-async def _try_ranked(client, ranked, ep_index, req_season=None):
+# 中文配音标记：集名/资源标签里出现这些词，才认为该资源真的有中文配音音轨。
+# 注意 "中字"（中文字幕）不算配音 —— 原声中字是"原声对白 + 中文字幕"。
+_DUB_MARKERS = ("国语", "普通话", "中文配音", "中配", "台配", "国配", "配音版")
+# 原声标记：出现这些词可确定资源是原声对白（即使带中文字幕也不是中文配音）
+_ORIG_MARKERS = ("原声", "原版", "英文", "英语", "日语", "粤语")
+
+
+def _dub_state(ep_label, vod_name=""):
+    """
+    判断命中资源是否为中文配音版。
+    返回 "dub"（有配音标记）/ "orig"（有原声标记）/ "unknown"（无任何标记）。
+    检查顺序：集名标签优先（资源粒度），其次候选片名（条目粒度）。
+    """
+    text = f"{ep_label or ''} {vod_name or ''}"
+    if any(m in text for m in _DUB_MARKERS):
+        return "dub"
+    if any(m in text for m in _ORIG_MARKERS):
+        return "orig"
+    return "unknown"
+
+
+async def _try_ranked(client, ranked, ep_index, req_season=None, lang_bucket=None):
     """
     逐候选尝试出流：拉详情 -> 选集 -> share 解析，直到成功（最多前 5 个）。
     req_season: 请求季数（R2 系列兜底时传入）。命中候选季数 != 请求季数时
     jxFrom 加"~近似季"标注（App 端 Toast 显示"解析来自: direct:xxx~近似季"，
     用户可感知内容差异）；季数恰好一致（如采集站最新季==请求季）则视为精确命中不标注。
+    lang_bucket: 请求语言桶（mandarin 等）。请求普通话但命中资源无中文配音标记
+    （"HD中字"/"高清"等原声中字资源）时，jxFrom 加"~原声中字"标注，
+    让用户知道当前流是原声对白+中文字幕，不是中文配音。
     """
     for vod, src in ranked[:5]:
         detail = await fetch_detail(client, src["api"], vod.get("vod_id"))
         if not detail:
             continue
-        raw_url = pick_episode(detail.get("vod_play_url", ""), ep_index)
+        raw_url, ep_label = pick_episode(detail.get("vod_play_url", ""), ep_index)
         if not raw_url:
             continue
         m3u8 = await resolve_share_link(client, raw_url)
         if m3u8:
             approx = req_season is not None and _season_of_name(vod.get("vod_name") or "") != req_season
             tag = "direct:" + src["name"] + ("~近似季" if approx else "")
+            # 语言标注：请求普通话，但资源实际是原声中字（无配音标记）-> 提示用户
+            if lang_bucket == "mandarin":
+                dub = _dub_state(ep_label, vod.get("vod_name") or "")
+                if dub != "dub":
+                    tag += "~原声中字"
             return {"url": m3u8, "parse": 0, "jxFrom": tag}
     return None
 
@@ -382,8 +445,10 @@ async def direct_resolve(title, ep_name=None, ep_index=None, lang=None):
             for vod in rank_candidates(norm_t, items):
                 # 只收包含档(2.0)及以上；系列档(1.0)留给 R2 显式兜底
                 if _candidate_score(vod, norm_t, lang_bucket) >= 2.0:
+                    if is_non_feature(vod, norm_t):
+                        continue
                     ranked.append((vod, src))
-        hit = await _try_ranked(client, ranked, ep_index)
+        hit = await _try_ranked(client, ranked, ep_index, lang_bucket=lang_bucket)
         if hit:
             return hit
 
@@ -400,11 +465,14 @@ async def direct_resolve(title, ep_name=None, ep_index=None, lang=None):
                     for vod in rank_candidates(series_key, items):
                         # 系列档(1.0)也收：同系列不同季正是 R2 的目标场景
                         if _candidate_score(vod, series_key, lang_bucket) >= 1.0:
+                            if is_non_feature(vod, series_key):
+                                continue
                             ranked2.append((vod, src))
                 if ranked2:
                     # 同系列多季时取"最新季"：按候选名里的季数取最大
                     ranked2.sort(key=lambda vs: _season_of_name(vs[0].get("vod_name") or ""), reverse=True)
-                    hit = await _try_ranked(client, ranked2, ep_index, req_season=season)
+                    hit = await _try_ranked(client, ranked2, ep_index, req_season=season,
+                                            lang_bucket=lang_bucket)
                     if hit:
                         return hit
     return None

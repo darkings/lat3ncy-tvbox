@@ -23,9 +23,6 @@ https://cvat.ponyo.fun {
 }
 
 https://api.ponyo.fun {
-    # Cloudflare terminates the public trusted certificate. In Full mode it
-    # accepts this private origin certificate while keeping the origin hop TLS.
-    tls internal
     encode zstd gzip
     reverse_proxy http://host.docker.internal:8000 {
         header_up X-Forwarded-Proto https

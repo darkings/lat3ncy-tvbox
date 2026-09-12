@@ -16,5 +16,23 @@
     "url": "https://agit.ai/Yoursmile7/TVBox/raw/branch/master/XC.json",
     "trust_level": "public",
     "enabled": true
+  },
+  {
+    "name": "影视仓 YSC",
+    "url": "https://jihulab.com/mengzhu2/ysc/-/raw/main/YSC.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "麒麟 qiaoji8",
+    "url": "http://cdn.qiaoji8.com/tvbox.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "玩偶 blssss",
+    "url": "https://gitee.com/blssss/jk/raw/api/bls.json",
+    "trust_level": "public",
+    "enabled": true
   }
 ]

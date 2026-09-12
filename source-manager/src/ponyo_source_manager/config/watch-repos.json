@@ -3,6 +3,42 @@
     "repo": "Yoursmile7/TVBox",
     "branch": "master",
     "paths": ["XC.json", "config.json"],
+    "provider": "jsdelivr",
+    "enabled": true
+  },
+  {
+    "repo": "gaotianliuyun/gao",
+    "branch": "master",
+    "paths": ["js.json", "0821.json", "0827.json"],
+    "provider": "jsdelivr",
+    "enabled": true
+  },
+  {
+    "repo": "FongMi/CatVodSpider",
+    "branch": "main",
+    "paths": ["json/config.json"],
+    "provider": "jsdelivr",
+    "enabled": true
+  },
+  {
+    "repo": "q215613905/TVBoxOS",
+    "branch": "main",
+    "paths": ["tv.json"],
+    "provider": "jsdelivr",
+    "enabled": true
+  },
+  {
+    "repo": "liu673cn/box",
+    "branch": "main",
+    "paths": ["m.json"],
+    "provider": "jsdelivr",
+    "enabled": true
+  },
+  {
+    "repo": "PizazzGY/TVBox",
+    "branch": "main",
+    "paths": ["api.json"],
+    "provider": "jsdelivr",
     "enabled": true
   }
 ]

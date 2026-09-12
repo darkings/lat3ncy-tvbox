@@ -119,17 +119,52 @@ def load_test_channels(path: str | None = None) -> list[str]:
     return ["CCTV-1", "CCTV-5", "CCTV-6", "CCTV-8", "CCTV-13", "CCTV-14"]
 
 
+def _ffprobe_height(channel_url: str, timeout: int = 4) -> int:
+    """ffprobe 兜底探测视频流真实高度(分辨率)。失败/超时返回 0。
+
+    用于单变体 media playlist / 直链等 m3u8 清单不含 RESOLUTION 的场景。
+    """
+    import re as _re
+    import subprocess as _sp
+
+    try:
+        r = _sp.run(
+            ["ffprobe", "-v", "error", "-select_streams", "v:0",
+             "-show_entries", "stream=width,height", "-of", "csv=p=0", channel_url],
+            capture_output=True, text=True, timeout=timeout,
+        )
+        m = _re.search(r"(\d{3,4}),(\d{3,4})", r.stdout or "")
+        return int(m.group(2)) if m else 0
+    except (_sp.TimeoutExpired, OSError, ValueError):
+        return 0
+
+
 def probe_live_channel(
-    channel_url: str, *, timeout: int = 8, probe_fn=net.probe
+    channel_url: str, *, timeout: int = 8, probe_fn=net.probe,
+    probe_resolution: bool = True,
 ) -> dict:
-    """测试单个直播频道的 HLS 连通性和首帧响应。"""
+    """测试单个直播频道的 HLS 连通性和首帧响应，并尽力探测分辨率。
+
+    分辨率来源优先级: master m3u8 清单 RESOLUTION > ffprobe 实测视频流。
+    probe_resolution=False 可关闭 ffprobe 兜底(节省耗时)。
+    """
     res = playback.verify_playback(channel_url)
+    height = res.get("height", 0)
+    resolution = res.get("resolution", "")
+    # m3u8 清单没给到分辨率且连通正常时, 用 ffprobe 兜底实测
+    if probe_resolution and res.get("success") == 1 and not height:
+        h = _ffprobe_height(channel_url, timeout=min(4, timeout))
+        if h > 0:
+            height = h
+            resolution = f"?x{h}"
     return {
         "url": channel_url,
         "ok": res.get("success", 0),
         "status": 200 if res.get("success") else 500,
         "latency_ms": res.get("latency_ms", 9999),
         "err": res.get("error"),
+        "resolution": resolution,
+        "height": height,
     }
 
 
@@ -341,6 +376,7 @@ def evaluate_live_source(
                     "routes": (ch_routes or [target_url])[:3],
                     "ok": res["ok"],
                     "latency_ms": res["latency_ms"],
+                    "height": res.get("height", 0),
                 }
             )
         else:
@@ -362,7 +398,26 @@ def evaluate_live_source(
     score_validity = validity_rate * WEIGHTS["channel_validity"]
     score_stability = validity_rate * WEIGHTS["stability"]  # 简化计算
     score_speed = max(0, (5000 - avg_latency) / 5000) * WEIGHTS["first_frame"]
-    score_clarity = 8  # 默认高清给 8 分
+    # 清晰度分：按可播频道的实测分辨率加权(满分 WEIGHTS["clarity"]=10)。
+    # 高度档位: >=2000->4K, >=1000->1080p, >=700->720p, >0->576p, 0/未知->按720p兜底。
+    # 无法实测分辨率时回退到原默认 8 分，保证旧行为兼容。
+    def _height_to_frac(h: int) -> float:
+        if h >= 2000:
+            return 1.0
+        if h >= 1000:
+            return 0.9
+        if h >= 700:
+            return 0.7
+        if h > 0:
+            return 0.4
+        return 0.7  # 未知按 720p 计
+
+    measured = [c["height"] for c in probed_channels if c["ok"] == 1]
+    if any(h > 0 for h in measured):
+        avg_frac = sum(_height_to_frac(h) for h in measured) / len(measured)
+        score_clarity = round(avg_frac * WEIGHTS["clarity"], 2)
+    else:
+        score_clarity = 8  # 无实测分辨率时回退默认
     # 元数据分：EPG 数据源 + 台标真实存在才给满分（不再无条件默认）
     score_meta = (
         WEIGHTS["metadata"] if metadata["has_epg"] and metadata["logo_count"] > 0 else 0
