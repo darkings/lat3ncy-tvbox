@@ -40,7 +40,7 @@ __pycache__/
 
 # ── 不入库的生成物 ──
 subscription/reports/
-/subscription/README.md
+# /subscription/README.md 已入库，见 subscription/README.md
 .github/
 
 # ── 部署产物 / 打包 ──
@@ -66,6 +66,7 @@ nul
 
 # ── source-manager 运行时/测试产物 ──
 source-manager/.tmp-test/
+source-manager/**/.staging/
 source-manager/subscription/ponyo-*.json
 source-manager/subscription/manifest.json
 source-manager/_tmp_*
@@ -76,15 +77,19 @@ source-manager/scripts/_*.sh
 subscription/ponyo-temp.json
 subscription/update-log.txt
 
-# ── 一次性调试脚本（不入库）──
-tools/source-screening/tmp_*.py
+# ── source-screening 工具脚本已入库，见 tools/source-screening/README.md ──
+# tools/source-screening/tmp_*.py 不再忽略
 
 # ══════════════════════════════════════════════════════════════
 #  调试 / 审计产物（大量临时文件，不入库）
 # ══════════════════════════════════════════════════════════════
 
-# ── UI 审计产物（截图 + uiautomator dump + 临时脚本）──
-docs/ui-audit/
+# ── UI 审计过程产物（保留 2026-08-10 交付包）──
+docs/ui-audit/*/
+!docs/ui-audit/2026-08-10/
+docs/ui-audit/2026-08-10/*/
+!docs/ui-audit/2026-08-10/实施记录/
+!docs/ui-audit/2026-08-10/materials/
 docs/apk-audit/
 docs/morph-verify/
 docs/assets/
@@ -94,7 +99,8 @@ docs/assets/
 /server-edit/
 
 # ── tools 下的临时调试脚本与 UI dump ──
-tools/md3_res/
+tools/md3_res/_*
+tools/md3_res/MaterialSymbolsRounded.ttf
 tools/*.xml
 tools/_*.py
 tools/*.png

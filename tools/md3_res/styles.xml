@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme · MD3 "Warm Sea" dark mapping -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- MD3 roles -->
+        <item name="colorPrimary">@color/md3_primary</item>
+        <item name="colorPrimaryDark">@color/md3_surface</item>
+        <item name="colorAccent">@color/md3_tertiary</item>
+        <item name="android:colorAccent">@color/md3_primary</item>
+        <item name="android:colorControlHighlight">@color/md3_focus_fill_soft</item>
+        <item name="android:navigationBarColor">@color/md3_surface</item>
+        <item name="android:statusBarColor">@color/md3_surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowBackground">@drawable/app_bg_layer</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:keepScreenOn">true</item>
+        <item name="android:windowBackground">@drawable/app_bg_layer</item>
+    </style>
+    <style name="PonyoSplashTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/ponyo_splash_window</item>
+        <item name="android:windowDisablePreview">false</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+    <!-- 自定义dialog样式 -->
+    <style name="CustomDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="CustomDialogStyleDim" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="epg_window_btn">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/item_bg_selector_right</item>
+        <item name="android:paddingLeft">0dip</item>
+        <item name="android:paddingRight">0dip</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:clickable">true</item>
+        <item name="android:drawablePadding">10.0dip</item>
+        <item name="android:radius">10dp</item>
+    </style>
+    <!-- Filter panel open/close animation (MD3 emphasized motion) -->
+    <style name="FilterDialogAnim">
+        <item name="android:windowEnterAnimation">@anim/filter_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/filter_dialog_out</item>
+    </style>
+</resources>

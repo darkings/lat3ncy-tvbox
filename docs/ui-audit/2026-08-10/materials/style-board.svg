@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Ponyo TV 暖海夜航视觉板</title>
+  <desc id="desc">Ponyo TV 的颜色、字体层级、按钮、焦点和海报卡视觉规范。</desc>
+
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#17120F"/>
+      <stop offset="0.62" stop-color="#241719"/>
+      <stop offset="1" stop-color="#3A2628"/>
+    </linearGradient>
+    <linearGradient id="poster" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8FCFFC"/>
+      <stop offset="0.48" stop-color="#4F7186"/>
+      <stop offset="1" stop-color="#17120F"/>
+    </linearGradient>
+    <linearGradient id="posterScrim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#00000000"/>
+      <stop offset="1" stop-color="#E6000000"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#000000" flood-opacity="0.32"/>
+    </filter>
+    <style>
+      .font { font-family: "Noto Sans CJK SC", "Microsoft YaHei", sans-serif; }
+      .caption { font-size: 16px; fill: #D6C2BC; }
+      .label { font-size: 20px; fill: #F0DED9; }
+      .body { font-size: 22px; fill: #F0DED9; }
+      .title { font-size: 24px; font-weight: 600; fill: #F0DED9; }
+      .section { font-size: 28px; font-weight: 700; fill: #F0DED9; }
+      .page { font-size: 34px; font-weight: 700; fill: #F0DED9; }
+      .display { font-size: 40px; font-weight: 700; fill: #F0DED9; }
+      .on-primary { fill: #561E14; }
+      .on-primary-container { fill: #FFDBD2; }
+    </style>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#background)"/>
+
+  <g class="font">
+    <text x="72" y="72" class="display">Ponyo TV · 暖海夜航</text>
+    <text x="72" y="108" class="body" fill="#D6C2BC">内容优先 · 焦点清晰 · 温暖但不喧闹</text>
+
+    <text x="72" y="170" class="section">颜色角色</text>
+
+    <g transform="translate(72 194)">
+      <rect width="150" height="96" rx="16" fill="#17120F" stroke="#52433F"/>
+      <text x="16" y="122" class="label">Background</text>
+      <text x="16" y="148" class="caption">#17120F</text>
+    </g>
+    <g transform="translate(246 194)">
+      <rect width="150" height="96" rx="16" fill="#241E1A" stroke="#52433F"/>
+      <text x="16" y="122" class="label">Surface</text>
+      <text x="16" y="148" class="caption">#241E1A</text>
+    </g>
+    <g transform="translate(420 194)">
+      <rect width="150" height="96" rx="16" fill="#2F2824" stroke="#52433F"/>
+      <text x="16" y="122" class="label">Surface high</text>
+      <text x="16" y="148" class="caption">#2F2824</text>
+    </g>
+    <g transform="translate(594 194)">
+      <rect width="150" height="96" rx="16" fill="#F1A494"/>
+      <text x="16" y="122" class="label">Primary</text>
+      <text x="16" y="148" class="caption">#F1A494</text>
+    </g>
+    <g transform="translate(768 194)">
+      <rect width="150" height="96" rx="16" fill="#743B30"/>
+      <text x="16" y="122" class="label">Focus fill</text>
+      <text x="16" y="148" class="caption">#743B30</text>
+    </g>
+    <g transform="translate(942 194)">
+      <rect width="150" height="96" rx="16" fill="#8FCFFC"/>
+      <text x="16" y="122" class="label">Tertiary</text>
+      <text x="16" y="148" class="caption">#8FCFFC</text>
+    </g>
+    <g transform="translate(1116 194)">
+      <rect width="150" height="96" rx="16" fill="#F0DED9"/>
+      <text x="16" y="122" class="label">Text</text>
+      <text x="16" y="148" class="caption">#F0DED9</text>
+    </g>
+    <g transform="translate(1290 194)">
+      <rect width="150" height="96" rx="16" fill="#FFB4AB"/>
+      <text x="16" y="122" class="label">Error</text>
+      <text x="16" y="148" class="caption">#FFB4AB</text>
+    </g>
+
+    <line x1="72" y1="380" x2="1528" y2="380" stroke="#52433F"/>
+
+    <text x="72" y="430" class="section">字体层级</text>
+    <text x="72" y="490" class="display">今晚，选一部好片</text>
+    <text x="72" y="540" class="page">历史记录</text>
+    <text x="72" y="584" class="section">继续观看</text>
+    <text x="72" y="624" class="title">鬼玩人 6：炼狱</text>
+    <text x="72" y="662" class="body">美国 · 2026 · 恐怖片</text>
+    <text x="72" y="696" class="label" fill="#D6C2BC">看到第 8 集 · 32:14</text>
+    <text x="72" y="726" class="caption">次级信息不承担主操作</text>
+
+    <text x="590" y="430" class="section">控件与焦点</text>
+
+    <g transform="translate(590 466)">
+      <rect width="220" height="64" rx="32" fill="#F1A494"/>
+      <text x="110" y="42" text-anchor="middle" class="title on-primary">播放</text>
+    </g>
+
+    <g transform="translate(834 466)">
+      <rect width="220" height="64" rx="16" fill="#241E1A" stroke="#52433F"/>
+      <text x="110" y="42" text-anchor="middle" class="title">快速搜索</text>
+    </g>
+
+    <g transform="translate(590 560)" filter="url(#softShadow)">
+      <rect x="-3" y="-3" width="226" height="70" rx="19" fill="#743B30" stroke="#F8BBAE" stroke-width="6"/>
+      <text x="110" y="42" text-anchor="middle" class="title on-primary-container">当前焦点</text>
+    </g>
+
+    <g transform="translate(834 560)">
+      <rect width="220" height="64" rx="16" fill="#402A25" stroke="#F1A494" stroke-width="2"/>
+      <rect x="14" y="18" width="6" height="28" rx="3" fill="#F1A494"/>
+      <text x="118" y="42" text-anchor="middle" class="title">已选</text>
+    </g>
+
+    <g transform="translate(590 654)">
+      <rect width="148" height="52" rx="26" fill="#241E1A" stroke="#52433F"/>
+      <text x="74" y="34" text-anchor="middle" class="label">类型</text>
+    </g>
+
+    <g transform="translate(754 654)">
+      <rect width="148" height="52" rx="26" fill="#743B30" stroke="#F8BBAE" stroke-width="3"/>
+      <text x="74" y="34" text-anchor="middle" class="label on-primary-container">恐怖片</text>
+    </g>
+
+    <text x="1138" y="430" class="section">海报卡</text>
+
+    <g transform="translate(1140 462)" filter="url(#softShadow)">
+      <rect width="240" height="360" rx="16" fill="url(#poster)" stroke="#F8BBAE" stroke-width="5"/>
+      <rect x="16" y="16" width="60" height="38" rx="10" fill="#241E1A" opacity="0.92"/>
+      <text x="46" y="43" text-anchor="middle" class="label">HD</text>
+      <rect x="164" y="16" width="60" height="38" rx="10" fill="#241E1A" opacity="0.92"/>
+      <text x="194" y="43" text-anchor="middle" class="label">7.6</text>
+      <rect y="270" width="240" height="90" rx="0" fill="url(#posterScrim)"/>
+      <text x="18" y="318" class="title">鬼玩人 6：炼狱</text>
+      <text x="18" y="348" class="caption">2026 · 美国</text>
+    </g>
+
+    <text x="1138" y="854" class="caption">2:3 · 一项质量 badge · 一项评分 · 两行以内标题</text>
+  </g>
+</svg>

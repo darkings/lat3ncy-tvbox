@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <shape>
+            <corners android:radius="@dimen/md3_corner_full" />
+            <stroke android:width="@dimen/md3_focus_stroke_width" android:color="@color/md3_primary" />
+            <solid android:color="@color/md3_focus_fill" />
+        </shape>
+    </item>
+    <item android:state_selected="true">
+        <shape>
+            <corners android:radius="@dimen/md3_corner_full" />
+            <stroke android:width="@dimen/md3_outline_stroke_width" android:color="@color/md3_primary" />
+            <solid android:color="@color/md3_primary_container" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <corners android:radius="@dimen/md3_corner_full" />
+            <solid android:color="@color/md3_surface_container" />
+        </shape>
+    </item>
+</selector>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:topLeftRadius="@dimen/md3_corner_lg"
+        android:topRightRadius="@dimen/md3_corner_lg" />
+    <gradient
+        android:angle="270"
+        android:startColor="#0017120F"
+        android:centerColor="#CC17120F"
+        android:endColor="#F0241E1A" />
+    <stroke
+        android:width="@dimen/md3_outline_stroke_width"
+        android:color="@color/md3_outline_variant" />
+</shape>

@@ -1,0 +1,80 @@
+package com.github.tvbox.osc.callback;
+
+import android.content.Context;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.github.tvbox.osc.R;
+import com.kingja.loadsir.callback.Callback;
+
+import java.util.WeakHashMap;
+
+/**
+ * 三阶段 Loading：300ms 内不闪烁；3s 显示慢网说明；8s 提供重试（页面需 bindRetry）。
+ * 注意：Callback.copy() 会序列化深拷贝，状态与回调一律走静态注册表。
+ */
+public class LoadingCallback extends Callback {
+
+    private static final long SHOW_DELAY_MS = 300;
+    private static final long SLOW_NET_DELAY_MS = 3000;
+    private static final long RETRY_DELAY_MS = 8000;
+    private static final WeakHashMap<Context, Runnable> RETRY_LISTENERS = new WeakHashMap<>();
+
+    public static void bindRetry(Context context, Runnable retry) {
+        if (retry != null) {
+            RETRY_LISTENERS.put(context, retry);
+        }
+    }
+
+    @Override
+    protected int onCreateView() {
+        return R.layout.loadsir_loading_layout;
+    }
+
+    @Override
+    protected void onViewCreate(Context context, View view) {
+        super.onViewCreate(context, view);
+        final LinearLayout content = view.findViewById(R.id.llLoadingContent);
+        final TextView tvSlow = view.findViewById(R.id.tvLoadingSlow);
+        final TextView btnRetry = view.findViewById(R.id.btnLoadingRetry);
+        final Runnable retry = RETRY_LISTENERS.get(context);
+
+        if (content != null) {
+            // 0-300ms 不闪烁：先隐藏内容，延迟显示
+            content.setVisibility(View.INVISIBLE);
+            view.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    if (content.getVisibility() == View.INVISIBLE) {
+                        content.setVisibility(View.VISIBLE);
+                    }
+                }
+            }, SHOW_DELAY_MS);
+        }
+        // 3s 仍未完成则显示慢网说明
+        if (tvSlow != null) {
+            view.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    tvSlow.setVisibility(View.VISIBLE);
+                }
+            }, SLOW_NET_DELAY_MS);
+        }
+        // 8s 仍未完成则提供重试退路（页面 bindRetry 后生效）
+        if (btnRetry != null && retry != null) {
+            view.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    btnRetry.setVisibility(View.VISIBLE);
+                    btnRetry.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            retry.run();
+                        }
+                    });
+                }
+            }, RETRY_DELAY_MS);
+        }
+    }
+}

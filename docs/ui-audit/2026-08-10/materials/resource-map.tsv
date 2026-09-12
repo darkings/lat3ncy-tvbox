@@ -1,0 +1,41 @@
+范围	入口类	当前布局/资源	重点元素	建议资料
+全局	App、BaseActivity	values/colors.xml; values/dimens.xml; values/styles.xml; drawable/app_bg_layer.xml	主题、AutoSize、窗口背景、全局状态	design-tokens.json; style-board.svg; qa-checklist.md
+启动	SplashActivity	layout/activity_splash.xml; drawable/ponyo_splash_background.xml; drawable/ponyo_splash_window.xml	品牌图标、Ponyo TV、副标题、系统预览	motion-spec.json; brand-assets.md; copy-deck.json
+首页	HomeActivity	layout/activity_home.xml; layout/item_home_sort.xml	品牌栏、日期、分类、ViewPager、角色	design-tokens.json; copy-deck.json; tools/md3_res/activity_home.xml
+首页主页	UserFragment	layout/fragment_user.xml; layout/item_user_hot_vod.xml	历史、直播、搜索、推送、收藏、设置、推荐海报	tools/md3_res/fragment_user.xml; icon_history.xml; icon_live.xml; icon_search.xml; icon_push.xml; icon_collect.xml; icon_setting.xml
+内容网格	GridFragment	layout/fragment_grid.xml; layout/item_grid.xml	筛选、5 列海报、评分、标题、加载更多	design-tokens.json; tools/md3_res/item_grid_filter.xml; tools/md3_res/item_grid_filter_value.xml
+筛选	GridFilterDialog	layout/dialog_grid_filter.xml; layout/item_grid_filter.xml; layout/item_grid_filter_value.xml	筛选组、筛选值、重置、应用	tools/md3_res/dialog_grid_filter.xml; filter_dialog_in.xml; filter_dialog_out.xml
+详情	DetailActivity	layout/activity_detail.xml; layout/item_series.xml; layout/item_series_flag.xml; layout/item_series_group.xml	预览、片名、元数据、简介、播放、线路、选集	design-tokens.json; copy-deck.json; tools/md3_res/shape_detail_thumb_bg.xml; button_detail_play.xml
+点播播放	PlayFragment	layout/activity_play.xml; layout/player_vod_control_view.xml; layout/box_vod_control_view.xml	标题、技术状态、进度、播放操作、字幕、弹幕、投屏	copy-deck.json; motion-spec.json; tools/md3_res/seekbar_style.xml; shape_play_bottom.xml; box_controller_top_bg.xml
+搜索	SearchActivity	layout/activity_search.xml; layout/layout_keyborad.xml; layout/item_search_normal.xml; layout/item_search_lite.xml; layout/item_search_word_hot.xml	搜索范围、输入、键盘、热词、历史、结果	design-tokens.json; copy-deck.json; tools/md3_res/input_search.xml; shape_user_search.xml
+聚合搜索	FastSearchActivity	layout/activity_fast_search.xml; layout/item_quick_search_lite.xml	关键词、搜源进度、来源筛选、结果	copy-deck.json; tools/md3_res/bg_fast_search_status.xml; bg_fast_search_word.xml; bg_fast_site_word.xml
+历史	HistoryActivity	layout/activity_history.xml; layout/item_grid.xml	标题、编辑、删除、清空、观看进度	copy-deck.json; icon_history.xml; icon_delete.xml; icon_clear.xml
+收藏	CollectActivity	layout/activity_collect.xml; layout/item_grid.xml	标题、编辑、删除、清空、空状态	copy-deck.json; icon_collect.xml; icon_delete.xml; icon_clear.xml
+直播	LivePlayActivity	layout/activity_live_play.xml; layout/item_live_channel_group.xml; layout/item_live_channel.xml; layout/item_live_setting_group.xml; layout/item_live_setting.xml; layout/epglist_item.xml	视频、换台提示、频道组、频道、EPG、线路和设置	copy-deck.json; motion-spec.json; tools/md3_res/bg_channel_list.xml; shape_live_channel_num.xml; icon_live.xml
+直播控制	LiveController	layout/player_live_control_view.xml	暂停、快进/快退、加载	motion-spec.json; tools/md3_res/shape_play_mobile_center.xml
+手机推送	PushActivity	layout/activity_push.xml	QR、地址、局域网说明、剪贴板推送	copy-deck.json; design-tokens.json
+设置	SettingActivity	layout/activity_setting.xml; layout/item_setting_menu.xml	分组导航、ViewPager、设置面板	design-tokens.json; copy-deck.json; tools/md3_res/ponyo_panel.xml
+设置内容	ModelSettingFragment	layout/fragment_model.xml	通用、内容、播放、网络、外观、数据与关于	design-tokens.json; qa-checklist.md; shape_user_focus.xml
+本地文件	LocalFileActivity	layout/activity_local_file.xml; layout/item_local_file.xml	标题、路径、上级目录、文件列表、权限与空状态	copy-deck.json; icon_video.xml; icon_back.xml; icon_empty.xml
+加载	LoadSir	layout/loadsir_loading_layout.xml; drawable/anim_loading.xml; drawable/icon_loading.xml	延迟加载、慢网说明、上下文	copy-deck.json; motion-spec.json; icon_loading.xml
+空状态	LoadSir	layout/loadsir_empty_layout.xml; drawable/icon_empty.xml	图标、标题、说明、主操作	copy-deck.json; icon_empty.xml
+错误状态	各 Activity	drawable/icon_error.xml	错误原因、重试、退路、技术详情	copy-deck.json; icon_error.xml
+选择弹窗	SelectDialog	layout/dialog_select.xml; layout/item_dialog_select.xml	标题、列表、已选、焦点	design-tokens.json; tools/md3_res/bg_dialog_rounded.xml
+配置地址	ApiDialog	layout/dialog_api.xml	QR、配置地址、直播地址、历史、确认	copy-deck.json; design-tokens.json; tools/md3_res/button_dialog_main.xml
+配置历史	ApiHistoryDialog	layout/dialog_api_history.xml; layout/item_dialog_api_history.xml	历史地址、当前值、删除/选择	design-tokens.json; icon_delete.xml
+备份恢复	BackupDialog	layout/dialog_backup.xml; layout/item_dialog_backup.xml	立即备份、权限、备份列表、恢复	copy-deck.json; design-tokens.json
+投屏	CastDeviceDialog	layout/dialog_cast.xml; layout/item_cast_device.xml	扫描说明、设备列表、刷新、取消	copy-deck.json; icon_loading.xml
+确认清空	ConfirmClearDialog	layout/dialog_confirm.xml	标题、危险确认、取消	copy-deck.json; design-tokens.json
+弹幕地址	DanmuApiDialog	layout/dialog_danmu_api.xml	输入、恢复默认、确定	copy-deck.json; design-tokens.json
+弹幕设置	DanmuSettingDialog	layout/dialog_danmu_setting.xml	开关、颜色、速度、大小、行数、透明度	design-tokens.json; tools/md3_res/button_dialog_main.xml
+简介	DescDialog	layout/dialog_desc.xml	长文本、滚动、关闭	design-tokens.json
+直播密码	LivePasswordDialog	layout/dialog_live_password.xml	密码输入、确认	copy-deck.json; design-tokens.json
+快速搜索	QuickSearchDialog	layout/dialog_quick_search.xml	搜索词与快捷操作	copy-deck.json; design-tokens.json
+远程控制	RemoteDialog	layout/dialog_remote.xml	QR、地址	copy-deck.json; design-tokens.json
+搜索来源	SearchCheckboxDialog	layout/dialog_checkbox_search.xml; layout/item_dialog_checkbox_search.xml	全选、全不选、来源列表	design-tokens.json; copy-deck.json
+附近 TVBox	SearchRemoteTvDialog	layout/dialog_search_remotetv.xml	设备列表、选择	design-tokens.json; copy-deck.json
+搜索字幕	SearchSubtitleDialog	layout/dialog_search_subtitle.xml; layout/item_search_subtitle_result.xml	关键词、搜索、加载、字幕结果	copy-deck.json; motion-spec.json
+字幕设置	SubtitleDialog	layout/dialog_subtitle.xml	内置、本地、远程、字号、样式、时间偏移	design-tokens.json; copy-deck.json
+提示	TipDialog	layout/dialog_tip.xml	说明、主次操作	copy-deck.json; design-tokens.json
+关于	AboutDialog	layout/dialog_about.xml	应用名、版本、开源、隐私、来源	brand-assets.md; qa-checklist.md
+XWalk 初始化	XWalkInitDialog	layout/dialog_xwalk.xml	架构说明、组件下载、进度	copy-deck.json; motion-spec.json

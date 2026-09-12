@@ -1,0 +1,436 @@
+{
+  "meta": {
+    "name": "Ponyo TV UI copy deck",
+    "version": "1.1.0",
+    "locale": "zh-CN",
+    "style": [
+      "先说明当前状态，再提供可执行操作",
+      "避免技术缩写成为主文案",
+      "不使用责备用户的表达",
+      "同一动作在全 App 保持同名"
+    ]
+  },
+  "navigation": {
+    "home": "首页",
+    "search": "搜索",
+    "live": "直播",
+    "history": "历史",
+    "collection": "收藏",
+    "mobilePush": "手机推送",
+    "settings": "设置",
+    "more": "更多"
+  },
+  "global": {
+    "retry": "重试",
+    "back": "返回",
+    "cancel": "取消",
+    "confirm": "确定",
+    "close": "关闭",
+    "done": "完成",
+    "reset": "重置",
+    "apply": "应用",
+    "clearAll": "清除全部",
+    "technicalDetails": "技术信息"
+  },
+  "splash": {
+    "brand": "Ponyo TV",
+    "tagline": "今晚，选一部好片"
+  },
+  "home": {
+    "loading": {
+      "title": "正在准备首页",
+      "slowBody": "网络较慢，仍在读取内容",
+      "secondaryAction": "更换来源"
+    },
+    "empty": {
+      "title": "当前来源暂无推荐",
+      "body": "可以更换来源，或直接搜索想看的影片",
+      "primaryAction": "更换来源",
+      "secondaryAction": "搜索"
+    },
+    "error": {
+      "title": "首页内容加载失败",
+      "body": "没有成功读取当前来源",
+      "primaryAction": "重试",
+      "secondaryAction": "更换来源"
+    },
+    "sourceDialogTitle": "选择首页来源",
+    "sourceToolsTitle": "工具"
+  },
+  "grid": {
+    "loading": {
+      "title": "正在读取内容"
+    },
+    "empty": {
+      "title": "这里暂时没有影片",
+      "body": "试试调整筛选条件或切换分类",
+      "primaryAction": "清除筛选",
+      "secondaryAction": "返回首页"
+    },
+    "error": {
+      "title": "内容加载失败",
+      "body": "当前来源暂时不可用",
+      "primaryAction": "重试",
+      "secondaryAction": "更换来源"
+    },
+    "filterButton": "筛选",
+    "filterActiveFormat": "筛选 · %d",
+    "resultCountFormat": "共 %d 部"
+  },
+  "detail": {
+    "loading": {
+      "title": "正在读取影片详情"
+    },
+    "previewLoading": {
+      "title": "正在加载预览",
+      "slowBody": "预览加载较慢，不影响查看影片信息"
+    },
+    "previewFailed": {
+      "title": "预览暂时不可用",
+      "body": "仍可选择线路并播放正片"
+    },
+    "noPlaylist": {
+      "title": "当前来源没有可播放线路",
+      "body": "可以搜索其他来源",
+      "primaryAction": "快速搜索",
+      "secondaryAction": "返回详情"
+    },
+    "play": "播放",
+    "continuePlay": "继续播放",
+    "episodesAndSources": "选集与线路",
+    "quickSearch": "快速搜索",
+    "addCollection": "收藏",
+    "removeCollection": "取消收藏",
+    "openPreviewFullscreen": "确定键全屏"
+  },
+  "player": {
+    "buffering": {
+      "title": "正在缓冲",
+      "slowBody": "网络较慢，仍在连接当前线路"
+    },
+    "lineFailed": {
+      "title": "当前线路无法播放",
+      "body": "可以换一条线路继续尝试",
+      "primaryAction": "换一条线路",
+      "secondaryAction": "返回详情"
+    },
+    "networkLost": {
+      "title": "网络连接已中断",
+      "body": "检查网络后再试一次",
+      "primaryAction": "重试",
+      "secondaryAction": "返回详情"
+    },
+    "unsupported": {
+      "title": "暂不支持这个视频格式",
+      "body": "可以尝试切换播放器或线路",
+      "primaryAction": "切换播放器",
+      "secondaryAction": "换一条线路"
+    },
+    "nextEpisode": "下一集",
+    "previousEpisode": "上一集",
+    "episodes": "选集",
+    "speed": "倍速",
+    "subtitle": "字幕",
+    "more": "更多",
+    "unlockHint": "长按确定键解锁"
+  },
+  "search": {
+    "title": "搜索",
+    "range": "搜索范围",
+    "allSources": "全部来源",
+    "inputHint": "输入片名、演员或导演",
+    "mobileInput": "手机输入",
+    "hot": "热搜",
+    "recent": "最近搜索",
+    "deleteHistory": "删除历史",
+    "emptyQuery": {
+      "title": "想看什么？",
+      "body": "输入片名、演员或导演开始搜索"
+    },
+    "noResult": {
+      "title": "没有找到相关影片",
+      "bodyFormat": "换个关键词，或为“%s”搜索更多来源",
+      "primaryAction": "搜索更多来源",
+      "secondaryAction": "修改关键词"
+    },
+    "error": {
+      "title": "搜索失败",
+      "body": "没有成功连接搜索来源",
+      "primaryAction": "重试",
+      "secondaryAction": "修改关键词"
+    }
+  },
+  "fastSearch": {
+    "preparing": "正在准备搜索",
+    "progressTitleFormat": "正在为《%s》搜索更多来源",
+    "progressFormat": "已完成 %d/%d · 找到 %d 个结果",
+    "all": "全部",
+    "playable": "可播放",
+    "processing": "处理中",
+    "failed": "失败",
+    "noResult": {
+      "title": "没有找到其他来源",
+      "body": "可以换个关键词再试一次",
+      "primaryAction": "修改关键词",
+      "secondaryAction": "返回详情"
+    }
+  },
+  "history": {
+    "title": "历史记录",
+    "edit": "编辑",
+    "deleteSelected": "删除所选",
+    "clearHistory": "清空历史",
+    "empty": {
+      "title": "还没有观看记录",
+      "body": "看过的影片会自动出现在这里",
+      "primaryAction": "去首页看看",
+      "secondaryAction": "搜索影片"
+    },
+    "progressEpisodeFormat": "看到第 %s 集",
+    "progressTimeFormat": "看到 %s"
+  },
+  "collection": {
+    "title": "收藏",
+    "edit": "编辑",
+    "deleteSelected": "删除所选",
+    "clearCollection": "清空收藏",
+    "empty": {
+      "title": "还没有收藏",
+      "body": "在详情页选择收藏，影片会出现在这里",
+      "primaryAction": "去首页看看",
+      "secondaryAction": "搜索影片"
+    }
+  },
+  "live": {
+    "loading": {
+      "titleFormat": "正在连接 %s",
+      "slowBody": "正在尝试其他直播线路"
+    },
+    "noEpg": "暂无节目单",
+    "lineFormat": "线路 %d/%d",
+    "error": {
+      "title": "直播暂时无法播放",
+      "body": "当前频道的线路都没有成功连接",
+      "primaryAction": "重试",
+      "secondaryAction": "选择其他频道"
+    }
+  },
+  "push": {
+    "title": "手机推送",
+    "subtitle": "让手机与电视连接同一 Wi‑Fi",
+    "step1": "1. 用手机扫描二维码",
+    "step2": "2. 在浏览器中打开推送页面",
+    "step3": "3. 选择链接或文件发送到电视",
+    "localOnly": "仅局域网可访问",
+    "copyAddress": "复制地址",
+    "pushClipboard": "推送剪贴板内容",
+    "serviceError": {
+      "title": "推送服务未启动",
+      "body": "请检查网络连接后重新启动",
+      "primaryAction": "重新启动服务",
+      "secondaryAction": "返回"
+    }
+  },
+  "localFile": {
+    "title": "本地文件",
+    "up": "返回上一级",
+    "empty": {
+      "title": "这个文件夹里没有可播放的视频",
+      "primaryAction": "返回上一级"
+    },
+    "permission": {
+      "title": "需要访问本地文件",
+      "body": "授权后才能读取电视上的视频和配置文件",
+      "primaryAction": "授权访问",
+      "secondaryAction": "返回"
+    }
+  },
+  "settings": {
+    "title": "设置",
+    "groups": {
+      "general": "通用",
+      "content": "内容",
+      "playback": "播放",
+      "network": "网络",
+      "appearance": "外观",
+      "dataAndAbout": "数据与关于"
+    },
+    "saved": "设置已保存",
+    "clearCacheDone": "缓存已清空",
+    "backupDone": "数据已备份",
+    "restoreDone": "数据已恢复"
+  },
+  "dialogs": {
+    "select": {
+      "titleFormat": "选择%s",
+      "searchHint": "搜索选项",
+      "selected": "已选",
+      "empty": "没有可选项目",
+      "confirm": "确定"
+    },
+    "apiHistory": {
+      "title": "配置历史",
+      "current": "当前使用",
+      "use": "使用这个地址",
+      "delete": "删除记录",
+      "empty": "还没有使用过的配置地址"
+    },
+    "searchRemoteTv": {
+      "title": "附近的 TVBox",
+      "scanning": "正在搜索同一网络中的设备",
+      "refresh": "重新搜索",
+      "empty": "没有发现可连接的设备",
+      "unavailable": "设备暂时无法连接",
+      "select": "连接"
+    },
+    "searchCheckbox": {
+      "title": "选择搜索来源",
+      "selectAll": "全选",
+      "selectNone": "全不选",
+      "selectedCountFormat": "已选 %d 个来源",
+      "confirm": "应用"
+    },
+    "gridFilter": {
+      "title": "筛选影片",
+      "reset": "重置",
+      "apply": "应用筛选",
+      "resultCountFormat": "预计显示 %d 部"
+    },
+    "api": {
+      "title": "配置地址",
+      "configAddressLabel": "影视配置地址",
+      "liveAddressLabel": "直播地址",
+      "configAddressHint": "输入 http:// 或 https:// 地址",
+      "liveAddressHint": "可选；留空时使用配置中的直播源",
+      "scanQr": "手机扫码输入",
+      "history": "历史地址",
+      "invalidAddress": "请输入有效的 http:// 或 https:// 地址",
+      "save": "保存并加载"
+    },
+    "danmuApi": {
+      "title": "弹幕接口",
+      "addressLabel": "接口地址",
+      "addressHint": "输入弹幕服务地址",
+      "restoreDefault": "恢复默认",
+      "invalidAddress": "请输入有效的接口地址",
+      "save": "保存"
+    },
+    "livePassword": {
+      "title": "输入直播密码",
+      "inputHint": "密码",
+      "wrong": "密码不正确，请重新输入",
+      "confirm": "解锁"
+    },
+    "searchSubtitle": {
+      "title": "搜索字幕",
+      "inputHint": "输入影片名或字幕关键词",
+      "search": "搜索",
+      "searching": "正在搜索字幕",
+      "empty": "没有找到匹配的字幕",
+      "use": "使用字幕"
+    },
+    "tip": {
+      "title": "提示",
+      "acknowledge": "知道了"
+    },
+    "confirmClear": {
+      "title": "确认清除？",
+      "body": "清除后无法恢复",
+      "cancel": "取消",
+      "confirm": "清除"
+    },
+    "desc": {
+      "title": "影片简介",
+      "close": "关闭"
+    },
+    "about": {
+      "title": "关于 Ponyo TV",
+      "versionFormat": "版本 %s",
+      "buildFormat": "构建 %s",
+      "openSource": "开源许可",
+      "privacy": "隐私与安全",
+      "sourceNotice": "影片信息和播放地址由当前内容源提供",
+      "close": "关闭"
+    },
+    "xWalkInit": {
+      "title": "正在准备网页播放组件",
+      "body": "首次使用需要下载与当前设备架构匹配的组件",
+      "progressFormat": "已下载 %d%%",
+      "failed": "组件下载失败",
+      "retry": "重试",
+      "cancel": "稍后再试"
+    },
+    "subtitle": {
+      "title": "字幕设置",
+      "builtIn": "内置字幕",
+      "local": "本地字幕",
+      "remote": "远程字幕",
+      "textSize": "字号",
+      "style": "样式",
+      "timeOffset": "时间偏移",
+      "reset": "恢复默认",
+      "done": "完成"
+    },
+    "danmuSetting": {
+      "title": "弹幕设置",
+      "enabled": "显示弹幕",
+      "color": "颜色",
+      "speed": "速度",
+      "size": "字号",
+      "lines": "显示行数",
+      "opacity": "透明度",
+      "reset": "恢复默认",
+      "done": "完成"
+    },
+    "castDevice": {
+      "title": "选择投屏设备",
+      "scanning": "正在搜索同一网络中的设备",
+      "refresh": "重新搜索",
+      "empty": "没有发现可投屏的设备",
+      "connect": "开始投屏",
+      "cancel": "取消"
+    },
+    "quickSearch": {
+      "title": "快速搜索",
+      "keywordLabel": "搜索关键词",
+      "allSources": "搜索全部来源",
+      "search": "开始搜索"
+    },
+    "remote": {
+      "title": "手机遥控",
+      "subtitle": "让手机与电视连接同一 Wi‑Fi 后扫码打开",
+      "localOnly": "仅局域网可访问",
+      "copyAddress": "复制地址",
+      "close": "关闭"
+    },
+    "backup": {
+      "title": "备份与恢复",
+      "create": "立即备份",
+      "permission": "需要文件访问权限才能保存备份",
+      "empty": "还没有本地备份",
+      "itemFormat": "%s · %s",
+      "restore": "恢复此备份",
+      "delete": "删除备份",
+      "restoreConfirm": "恢复后将覆盖当前设置，是否继续？"
+    }
+  },
+  "confirm": {
+    "clearHistory": {
+      "title": "清空全部历史记录？",
+      "body": "清空后无法恢复",
+      "confirm": "清空",
+      "cancel": "取消"
+    },
+    "clearCollection": {
+      "title": "清空全部收藏？",
+      "body": "清空后无法恢复",
+      "confirm": "清空",
+      "cancel": "取消"
+    },
+    "deleteSelected": {
+      "titleFormat": "删除选中的 %d 项？",
+      "confirm": "删除",
+      "cancel": "取消"
+    }
+  }
+}

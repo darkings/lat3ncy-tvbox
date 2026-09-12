@@ -1,0 +1,95 @@
+package com.github.tvbox.osc.callback;
+
+import android.app.Activity;
+import android.content.Context;
+import android.view.View;
+import android.widget.TextView;
+
+import com.github.tvbox.osc.R;
+import com.kingja.loadsir.callback.Callback;
+
+import java.util.WeakHashMap;
+
+/**
+ * 统一空状态组件：title / body / primaryAction / secondaryAction，
+ * 页面通过 bind() 传入文案与动作；未绑定页面保持默认“暂无内容 / 返回”。
+ */
+public class EmptyCallback extends Callback {
+
+    public interface EmptyActionListener {
+        void onPrimary();
+
+        void onSecondary();
+    }
+
+    private static final WeakHashMap<Context, EmptyState> STATES = new WeakHashMap<>();
+    private static final WeakHashMap<Context, EmptyActionListener> ACTIONS = new WeakHashMap<>();
+
+    private static class EmptyState {
+        String title;
+        String body;
+        String primaryAction;
+        String secondaryAction;
+    }
+
+    public static void bind(Context context, String title, String body, String primaryAction,
+                            String secondaryAction, EmptyActionListener listener) {
+        EmptyState state = new EmptyState();
+        state.title = title;
+        state.body = body;
+        state.primaryAction = primaryAction;
+        state.secondaryAction = secondaryAction;
+        STATES.put(context, state);
+        if (listener != null) {
+            ACTIONS.put(context, listener);
+        }
+    }
+
+    @Override
+    protected int onCreateView() {
+        return R.layout.loadsir_empty_layout;
+    }
+
+    @Override
+    protected void onViewCreate(Context context, View view) {
+        super.onViewCreate(context, view);
+        final EmptyState state = STATES.get(context);
+        final EmptyActionListener listener = ACTIONS.get(context);
+
+        TextView tvTitle = view.findViewById(R.id.tvEmptyTitle);
+        TextView tvBody = view.findViewById(R.id.tvEmptyBody);
+        TextView btnPrimary = view.findViewById(R.id.btnEmptyPrimary);
+        TextView btnSecondary = view.findViewById(R.id.btnEmptySecondary);
+
+        if (state != null) {
+            tvTitle.setText(state.title);
+            tvBody.setText(state.body);
+            btnPrimary.setText(state.primaryAction);
+            if (state.secondaryAction != null && !state.secondaryAction.trim().isEmpty()) {
+                btnSecondary.setVisibility(View.VISIBLE);
+                btnSecondary.setText(state.secondaryAction);
+            } else {
+                btnSecondary.setVisibility(View.GONE);
+            }
+        }
+
+        btnPrimary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onPrimary();
+                } else if (v.getContext() instanceof Activity) {
+                    ((Activity) v.getContext()).onBackPressed();
+                }
+            }
+        });
+        btnSecondary.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onSecondary();
+                }
+            }
+        });
+    }
+}

@@ -1,0 +1,204 @@
+{
+  "meta": {
+    "name": "Ponyo TV Warm Sea",
+    "version": "1.0.0",
+    "designCanvas": {
+      "width": 1280,
+      "height": 720
+    },
+    "unit": "design-mm",
+    "unitNote": "用于当前 AndroidAutoSize Subunits.MM 配置，不表示屏幕上的物理毫米。",
+    "reference1080pScale": 1.5
+  },
+  "color": {
+    "background": "#17120F",
+    "surfaceLow": "#201A16",
+    "surface": "#241E1A",
+    "surfaceHigh": "#2F2824",
+    "surfaceHighest": "#3A322E",
+    "primary": "#F1A494",
+    "onPrimary": "#561E14",
+    "primaryBright": "#F8BBAE",
+    "primaryContainer": "#743B30",
+    "onPrimaryContainer": "#FFDBD2",
+    "tertiary": "#8FCFFC",
+    "onTertiary": "#00344F",
+    "tertiaryContainer": "#004C70",
+    "onTertiaryContainer": "#C8E6FF",
+    "textPrimary": "#F0DED9",
+    "textSecondary": "#D6C2BC",
+    "textDisabled": "#8B7973",
+    "outline": "#9F8B85",
+    "outlineSubtle": "#52433F",
+    "error": "#FFB4AB",
+    "onError": "#690005",
+    "errorContainer": "#93000A",
+    "onErrorContainer": "#FFDAD6",
+    "scrim60": "#99000000",
+    "videoScrimStart": "#00000000",
+    "videoScrimEnd": "#E6000000"
+  },
+  "spacing": {
+    "xs": 4,
+    "sm": 8,
+    "md": 12,
+    "lg": 16,
+    "xl": 24,
+    "xxl": 32,
+    "xxxl": 48,
+    "safe": 64
+  },
+  "shape": {
+    "badge": 8,
+    "card": 12,
+    "control": 12,
+    "panel": 16,
+    "dialog": 24,
+    "pill": 999
+  },
+  "type": {
+    "display": {
+      "size": 40,
+      "weight": 700,
+      "maxLines": 1
+    },
+    "pageTitle": {
+      "size": 34,
+      "weight": 700,
+      "maxLines": 1
+    },
+    "sectionTitle": {
+      "size": 28,
+      "weight": 700,
+      "maxLines": 1
+    },
+    "title": {
+      "size": 24,
+      "weight": 600,
+      "maxLines": 2
+    },
+    "body": {
+      "size": 22,
+      "weight": 400,
+      "lineHeightMultiplier": 1.3
+    },
+    "label": {
+      "size": 20,
+      "weight": 500,
+      "maxLines": 1
+    },
+    "supporting": {
+      "size": 18,
+      "weight": 400,
+      "lineHeightMultiplier": 1.25
+    },
+    "caption": {
+      "size": 16,
+      "weight": 400,
+      "maxLines": 1
+    }
+  },
+  "layout": {
+    "safeInsetX": 64,
+    "safeInsetY": 32,
+    "topBarHeight": 56,
+    "tabBarHeight": 48,
+    "actionRowHeight": 56,
+    "settingNavWidth": 220,
+    "searchInputColumnWidth": 360,
+    "searchSuggestionColumnWidth": 240,
+    "liveDrawerWidthPercent": 44,
+    "liveGroupColumnPercent": 30,
+    "detailHeroLeftColumns": 5,
+    "detailHeroRightColumns": 7,
+    "dialogMinWidth": 720,
+    "dialogMaxWidth": 880,
+    "dialogMaxHeight": 600
+  },
+  "focus": {
+    "strokeWidth": 3,
+    "scale": 1.06,
+    "durationMs": 120,
+    "focusedFill": "#743B30",
+    "focusedStroke": "#F8BBAE",
+    "focusedContent": "#FFDBD2",
+    "selectedFillAlphaPercent": 32,
+    "pressedScale": 1.0,
+    "disabledContentAlphaPercent": 38,
+    "disabledContainerAlphaPercent": 12
+  },
+  "component": {
+    "primaryButton": {
+      "height": 56,
+      "minWidth": 128,
+      "horizontalPadding": 24,
+      "iconSize": 24,
+      "iconGap": 12
+    },
+    "secondaryButton": {
+      "height": 56,
+      "minWidth": 112,
+      "horizontalPadding": 20,
+      "iconSize": 24,
+      "iconGap": 12
+    },
+    "iconButton": {
+      "size": 52,
+      "iconSize": 24
+    },
+    "tab": {
+      "height": 48,
+      "horizontalPadding": 20,
+      "indicatorHeight": 3
+    },
+    "filterChip": {
+      "height": 44,
+      "horizontalPadding": 16,
+      "gap": 8
+    },
+    "poster": {
+      "width": 200,
+      "height": 300,
+      "aspectRatio": "2:3",
+      "columnCount": 5,
+      "columnGap": 16,
+      "rowGap": 20,
+      "badgeHeight": 32,
+      "titleScrimMaxPercent": 24
+    },
+    "textRow": {
+      "minHeight": 56,
+      "preferredHeight": 64,
+      "horizontalPadding": 20
+    },
+    "settingRow": {
+      "height": 64,
+      "columnCount": 2,
+      "columnGap": 12,
+      "rowGap": 12
+    },
+    "episodeButton": {
+      "minWidth": 96,
+      "height": 48,
+      "horizontalPadding": 16
+    },
+    "qrCode": {
+      "preferredSize": 288,
+      "quietZoneColor": "#FFFFFFFF"
+    },
+    "loadingIndicator": {
+      "size": 48,
+      "showDelayMs": 300,
+      "slowNetworkMessageMs": 3000
+    }
+  },
+  "accessibility": {
+    "minimumBodyContrast": 4.5,
+    "minimumLargeTextContrast": 3.0,
+    "minimumNonTextFocusContrast": 3.0,
+    "minimumBodySize": 20,
+    "focusResponseMaximumMs": 150,
+    "criticalContentSafeInsetX": 64,
+    "criticalContentSafeInsetY": 32
+  }
+}

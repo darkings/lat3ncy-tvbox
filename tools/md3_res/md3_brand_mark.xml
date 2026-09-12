@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/md3_corner_md" />
+    <gradient
+        android:angle="45"
+        android:startColor="@color/md3_primary_container"
+        android:endColor="@color/md3_primary" />
+</shape>

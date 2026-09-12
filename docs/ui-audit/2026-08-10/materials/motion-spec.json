@@ -1,0 +1,161 @@
+{
+  "meta": {
+    "name": "Ponyo TV motion specification",
+    "version": "1.0.0",
+    "timeUnit": "ms"
+  },
+  "easing": {
+    "standard": "cubic-bezier(0.2, 0.0, 0.0, 1.0)",
+    "emphasized": "cubic-bezier(0.2, 0.0, 0.0, 1.0)",
+    "exit": "cubic-bezier(0.4, 0.0, 1.0, 1.0)"
+  },
+  "transition": {
+    "focusEnter": {
+      "duration": 120,
+      "easing": "emphasized",
+      "scaleFrom": 1.0,
+      "scaleTo": 1.06
+    },
+    "focusExit": {
+      "duration": 100,
+      "easing": "standard",
+      "scaleFrom": 1.06,
+      "scaleTo": 1.0
+    },
+    "pressed": {
+      "duration": 80,
+      "scaleTo": 1.0
+    },
+    "tabIndicator": {
+      "duration": 160,
+      "easing": "standard"
+    },
+    "dialogEnter": {
+      "duration": 180,
+      "easing": "emphasized",
+      "alphaFrom": 0.0,
+      "alphaTo": 1.0,
+      "scaleFrom": 0.96,
+      "scaleTo": 1.0
+    },
+    "dialogExit": {
+      "duration": 140,
+      "easing": "exit",
+      "alphaFrom": 1.0,
+      "alphaTo": 0.0
+    },
+    "pageCrossfade": {
+      "duration": 220,
+      "easing": "standard"
+    },
+    "sideSheet": {
+      "duration": 220,
+      "easing": "emphasized"
+    },
+    "zappingToast": {
+      "enterDuration": 160,
+      "holdDuration": 1800,
+      "exitDuration": 140
+    },
+    "skeletonPulse": {
+      "duration": 1200,
+      "alphaFrom": 0.55,
+      "alphaTo": 0.78,
+      "repeatMode": "reverse"
+    },
+    "loading": {
+      "showDelay": 300,
+      "slowNetworkMessageDelay": 3000
+    }
+  },
+  "mascot": {
+    "atlasPath": "android/app/src/main/res/drawable-nodpi/ponyo_spritesheet.webp",
+    "columns": 8,
+    "rows": 9,
+    "states": {
+      "IDLE": {
+        "row": 0,
+        "frames": 6,
+        "frameDelay": 280,
+        "loop": true
+      },
+      "RUNNING_RIGHT": {
+        "row": 1,
+        "frames": 8,
+        "frameDelay": 140,
+        "loop": true
+      },
+      "RUNNING_LEFT": {
+        "row": 2,
+        "frames": 8,
+        "frameDelay": 140,
+        "loop": true
+      },
+      "WAVING": {
+        "row": 3,
+        "frames": 4,
+        "frameDelay": 170,
+        "loop": false,
+        "fallback": "IDLE"
+      },
+      "JUMPING": {
+        "row": 4,
+        "frames": 5,
+        "frameDelay": 150,
+        "loop": false,
+        "fallback": "IDLE"
+      },
+      "FAILED": {
+        "row": 5,
+        "frames": 8,
+        "frameDelay": 220,
+        "loop": false,
+        "fallback": "WAITING"
+      },
+      "WAITING": {
+        "row": 6,
+        "frames": 6,
+        "frameDelay": 240,
+        "loop": true
+      },
+      "RUNNING": {
+        "row": 7,
+        "frames": 6,
+        "frameDelay": 240,
+        "loop": true
+      },
+      "REVIEW": {
+        "row": 8,
+        "frames": 6,
+        "frameDelay": 220,
+        "loop": true
+      }
+    },
+    "allowedSurfaces": [
+      "splash",
+      "homeWelcome",
+      "homeLongLoading",
+      "emptyHistory",
+      "emptyCollection",
+      "recoverableError"
+    ],
+    "forbiddenSurfaces": [
+      "videoPlayback",
+      "liveVideo",
+      "channelLogo",
+      "posterPlaceholder",
+      "settingsGrid",
+      "ordinaryDialog"
+    ],
+    "homePreferredWidth": 80,
+    "homeMaximumWidth": 88,
+    "stopWhenNotVisible": true
+  },
+  "reducedMotion": {
+    "focusScale": 1.0,
+    "colorTransitionDuration": 80,
+    "disableMascotFrames": true,
+    "disableSkeletonPulse": true,
+    "pageCrossfadeDuration": 100
+  }
+}
