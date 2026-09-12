@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  方块整体 alpha 呼吸: 1.0 -> 0.55, 800ms + reverse = 1600ms 周期.
+  作用于 block group (VGroup.ALPHA), 等价于 HTML cube 的 opacity 关键帧.
+  不再使用 path 级 strokeAlpha, 规避 AnimatedVectorDrawable target 查找失败.
+-->
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:propertyName="alpha"
+    android:valueFrom="1.0"
+    android:valueTo="0.55"
+    android:duration="800"
+    android:interpolator="@interpolator/md3_emphasized"
+    android:repeatCount="infinite"
+    android:repeatMode="reverse" />

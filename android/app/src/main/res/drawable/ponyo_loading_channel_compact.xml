@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Compact 32mm · 信号塔 cell_tower · stroke 2.0 -->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ponyo_loading_channel_vector_compact">
+    <target android:name="blockPath" android:animation="@animator/ponyo_shape_morph" />
+    <target android:name="block" android:animation="@animator/ponyo_breath_block" />
+    <target android:name="icon" android:animation="@animator/ponyo_breath_icon_counter" />
+</animated-vector>

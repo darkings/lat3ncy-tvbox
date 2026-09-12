@@ -1,0 +1,114 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. See https://docs.gradle.org/7.5/userguide/gradle_daemon.html#sec:disabling_the_daemon.
+Daemon will be stopped at the end of the build 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preJava64DebugBuild UP-TO-DATE
+> Task :app:mergeJava64DebugNativeDebugMetadata NO-SOURCE
+> Task :player:preBuild UP-TO-DATE
+> Task :player:preDebugBuild UP-TO-DATE
+> Task :player:compileDebugAidl NO-SOURCE
+> Task :quickjs:preBuild UP-TO-DATE
+> Task :quickjs:preDebugBuild UP-TO-DATE
+> Task :quickjs:compileDebugAidl NO-SOURCE
+> Task :app:compileJava64DebugAidl NO-SOURCE
+> Task :player:packageDebugRenderscript NO-SOURCE
+> Task :quickjs:packageDebugRenderscript NO-SOURCE
+> Task :app:compileJava64DebugRenderscript NO-SOURCE
+> Task :app:generateJava64DebugBuildConfig UP-TO-DATE
+> Task :app:javaPreCompileJava64Debug UP-TO-DATE
+> Task :player:writeDebugAarMetadata UP-TO-DATE
+> Task :quickjs:writeDebugAarMetadata UP-TO-DATE
+> Task :app:checkJava64DebugAarMetadata UP-TO-DATE
+> Task :app:generateJava64DebugResValues UP-TO-DATE
+> Task :app:generateJava64DebugResources UP-TO-DATE
+> Task :player:compileDebugRenderscript NO-SOURCE
+> Task :player:generateDebugResValues UP-TO-DATE
+> Task :player:generateDebugResources UP-TO-DATE
+> Task :player:packageDebugResources UP-TO-DATE
+> Task :quickjs:compileDebugRenderscript NO-SOURCE
+> Task :quickjs:generateDebugResValues UP-TO-DATE
+> Task :quickjs:generateDebugResources UP-TO-DATE
+> Task :quickjs:packageDebugResources UP-TO-DATE
+> Task :app:createJava64DebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksJava64Debug UP-TO-DATE
+> Task :player:extractDeepLinksDebug UP-TO-DATE
+> Task :player:processDebugManifest UP-TO-DATE
+> Task :quickjs:extractDeepLinksDebug UP-TO-DATE
+> Task :quickjs:processDebugManifest UP-TO-DATE
+> Task :app:processJava64DebugMainManifest UP-TO-DATE
+> Task :app:processJava64DebugManifest UP-TO-DATE
+> Task :app:processJava64DebugManifestForPackage UP-TO-DATE
+> Task :player:compileDebugLibraryResources UP-TO-DATE
+> Task :player:parseDebugLocalResources UP-TO-DATE
+> Task :player:generateDebugRFile UP-TO-DATE
+> Task :quickjs:compileDebugLibraryResources UP-TO-DATE
+> Task :quickjs:parseDebugLocalResources UP-TO-DATE
+> Task :quickjs:generateDebugRFile UP-TO-DATE
+> Task :player:generateDebugBuildConfig UP-TO-DATE
+> Task :player:javaPreCompileDebug UP-TO-DATE
+> Task :player:compileDebugJavaWithJavac UP-TO-DATE
+> Task :player:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :quickjs:javaPreCompileDebug UP-TO-DATE
+> Task :quickjs:compileDebugJavaWithJavac UP-TO-DATE
+> Task :quickjs:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :app:mergeJava64DebugShaders UP-TO-DATE
+> Task :app:compileJava64DebugShaders NO-SOURCE
+> Task :app:generateJava64DebugAssets UP-TO-DATE
+> Task :player:mergeDebugShaders UP-TO-DATE
+> Task :player:compileDebugShaders NO-SOURCE
+> Task :player:generateDebugAssets UP-TO-DATE
+> Task :player:packageDebugAssets UP-TO-DATE
+> Task :quickjs:mergeDebugShaders UP-TO-DATE
+> Task :quickjs:compileDebugShaders NO-SOURCE
+> Task :quickjs:generateDebugAssets UP-TO-DATE
+> Task :quickjs:packageDebugAssets UP-TO-DATE
+> Task :app:mergeJava64DebugResources
+> Task :app:mergeJava64DebugAssets UP-TO-DATE
+> Task :app:mapJava64DebugSourceSetPaths UP-TO-DATE
+> Task :app:compressJava64DebugAssets UP-TO-DATE
+> Task :app:checkJava64DebugDuplicateClasses UP-TO-DATE
+> Task :app:desugarJava64DebugFileDependencies UP-TO-DATE
+> Task :app:processJava64DebugJavaRes NO-SOURCE
+> Task :player:processDebugJavaRes NO-SOURCE
+> Task :player:bundleLibResDebug NO-SOURCE
+> Task :quickjs:processDebugJavaRes NO-SOURCE
+> Task :quickjs:bundleLibResDebug NO-SOURCE
+> Task :player:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :quickjs:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :app:mergeJava64DebugJniLibFolders UP-TO-DATE
+> Task :player:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeLibDexJava64Debug UP-TO-DATE
+> Task :player:mergeDebugNativeLibs UP-TO-DATE
+> Task :player:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :quickjs:mergeDebugJniLibFolders UP-TO-DATE
+> Task :quickjs:mergeDebugNativeLibs NO-SOURCE
+> Task :quickjs:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :app:mergeJava64DebugNativeLibs UP-TO-DATE
+> Task :app:stripJava64DebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningJava64Debug UP-TO-DATE
+> Task :app:writeJava64DebugAppMetadata UP-TO-DATE
+> Task :app:writeJava64DebugSigningConfigVersions UP-TO-DATE
+> Task :app:processJava64DebugResources
+> Task :app:mergeExtDexJava64Debug
+
+> Task :app:compileJava64DebugJavaWithJavac
+注: [1] Wrote GeneratedAppGlideModule with: []
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+
+> Task :app:mergeJava64DebugJavaResource
+> Task :app:dexBuilderJava64Debug
+> Task :app:mergeProjectDexJava64Debug
+> Task :app:packageJava64Debug
+> Task :app:createJava64DebugApkListingFileRedirect
+> Task :app:assembleJava64Debug
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.5/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 1m
+65 actionable tasks: 9 executed, 56 up-to-date

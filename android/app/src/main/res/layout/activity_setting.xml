@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md3_surface"
+    android:clipChildren="true"
+    android:clipToPadding="true"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/md3_setting_nav_width"
+        android:layout_height="match_parent"
+        android:background="@color/md3_surface_container_low"
+        android:clipChildren="true"
+        android:clipToPadding="true"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/md3_space_4"
+        android:paddingTop="@dimen/md3_space_5"
+        android:paddingEnd="@dimen/md3_space_4"
+        android:paddingBottom="@dimen/md3_space_5">
+
+        <com.owen.tvrecyclerview.widget.TvRecyclerView
+            android:id="@+id/mGridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="true"
+            android:clipToPadding="true"
+            android:nextFocusRight="@id/mViewPager"
+            android:paddingTop="@dimen/md3_space_2"
+            android:paddingBottom="@dimen/md3_space_2" />
+    </LinearLayout>
+
+    <com.github.tvbox.osc.ui.tv.widget.NoScrollViewPager
+        android:id="@+id/mViewPager"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginStart="@dimen/md3_space_4"
+        android:layout_marginTop="@dimen/md3_space_4"
+        android:layout_marginEnd="@dimen/md3_space_5"
+        android:layout_marginBottom="@dimen/md3_space_4"
+        android:background="@android:color/transparent"
+        android:clipChildren="true"
+        android:clipToPadding="true"
+        android:nextFocusLeft="@id/mGridView" />
+</LinearLayout>

@@ -1,0 +1,24 @@
+<resources>
+    <!--  app名称   -->
+    <string name="app_name">Ponyo TV</string>
+    <string name="splash_tagline">今夜，选一部好片</string>
+    <string name="_00_00_00_00">00:00 | 00:00</string>
+    <string name="_1024_x_768">[ 1024 x 768 ]</string>
+    <string name="http">http://</string>
+    <string name="_00_00_00">00:00:00</string>
+    <string name="_0kb_s">0Kb/s</string>
+    <string name="_more_">更 多</string>
+    <string name="_00_00">00:00</string>
+    <!-- 缓冲慢网提示：超过 3s 仍在缓冲时显示（令牌 slowNetworkMessageMs=3000） -->
+    <string name="loading_slow_network">网络较慢，仍在努力加载…</string>
+    <!-- 直播场景慢网提示：叠加换源语义（QA 清单第 12 节"加载超过 3s 显示线路尝试状态"） -->
+    <string name="loading_slow_network_live">网络较慢，正在切换线路…</string>
+    <!-- EPG 把手无障碍描述：展开/收起节目面板 -->
+    <string name="cd_expand_epg">展开节目信息</string>
+    <string name="cd_collapse_epg">收起节目信息</string>
+    <!-- EPG 把手竖排提示文案（收起态/展开态） -->
+    <string name="_epg_label_">节 目</string>
+    <string name="_epg_collapse_">收 起</string>
+    <!-- 详情页海报无障碍描述 -->
+    <string name="cd_poster">影片海报</string>
+</resources>

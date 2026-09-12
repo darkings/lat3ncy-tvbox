@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Ponyo TV 缓冲涟漪 · 动画组装（资源名保持不变，全部引用点零改动生效）
+  目标分组见 drawable/ponyo_loading_ripple_vector.xml
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ponyo_loading_ripple_vector">
+    <target
+        android:name="core"
+        android:animation="@animator/ponyo_ripple_core" />
+    <target
+        android:name="ringA"
+        android:animation="@animator/ponyo_ripple_ring_a" />
+    <target
+        android:name="ringB"
+        android:animation="@animator/ponyo_ripple_ring_b" />
+    <target
+        android:name="ringC"
+        android:animation="@animator/ponyo_ripple_ring_c" />
+</animated-vector>

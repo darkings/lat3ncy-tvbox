@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base application theme · MD3 "Warm Sea" dark mapping -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- MD3 roles -->
+        <item name="colorPrimary">@color/md3_primary</item>
+        <item name="colorPrimaryDark">@color/md3_surface</item>
+        <item name="colorAccent">@color/md3_tertiary</item>
+        <item name="android:colorAccent">@color/md3_primary</item>
+        <item name="android:colorControlHighlight">@color/md3_focus_fill_soft</item>
+        <item name="android:navigationBarColor">@color/md3_surface</item>
+        <item name="android:statusBarColor">@color/md3_surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="android:windowBackground">@drawable/app_bg_layer</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:keepScreenOn">true</item>
+        <item name="android:windowBackground">@drawable/app_bg_layer</item>
+    </style>
+    <style name="PonyoSplashTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/ponyo_splash_window</item>
+        <!-- Pre-Android 12: keep the launcher visible until the poster is ready,
+             avoiding a separate blank starting-window phase. -->
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+    <!-- 自定义dialog样式 -->
+    <style name="CustomDialogStyle" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="CustomDialogStyleDim" parent="@android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="epg_window_btn">
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/shape_live_focus</item>
+        <item name="android:paddingLeft">0dip</item>
+        <item name="android:paddingRight">0dip</item>
+        <item name="android:clickable">true</item>
+        <item name="android:drawablePadding">10.0dip</item>
+        <item name="android:radius">10dp</item>
+    </style>
+    <!-- Filter panel open/close animation (MD3 emphasized motion) -->
+    <style name="FilterDialogAnim">
+        <item name="android:windowEnterAnimation">@anim/filter_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/filter_dialog_out</item>
+    </style>
+
+    <!-- ============================================================
+         Ponyo TV · 缓冲加载指示器统一样式
+         视觉：@drawable/ponyo_loading_ripple（珊瑚三环涟漪，AVD）
+         尺寸档位见 dimens.xml md3_loading_size_*，勿再引用 md3_space_* 当尺寸。
+         ============================================================ -->
+    <style name="PonyoLoading">
+        <item name="android:indeterminate">true</item>
+        <item name="android:indeterminateOnly">true</item>
+        <item name="android:indeterminateBehavior">repeat</item>
+        <item name="android:indeterminateDrawable">@drawable/ponyo_loading_ripple</item>
+    </style>
+
+    <!-- 播放画面内嵌缓冲：直播控制条 / 点播控制器 / 点播页 -->
+    <style name="PonyoLoading.Inline" parent="PonyoLoading">
+        <item name="android:layout_width">@dimen/md3_loading_size_inline</item>
+        <item name="android:layout_height">@dimen/md3_loading_size_inline</item>
+    </style>
+
+    <!-- 角落徽标缓冲：直播右上角换台提示等 -->
+    <style name="PonyoLoading.Compact" parent="PonyoLoading">
+        <item name="android:layout_width">@dimen/md3_loading_size_compact</item>
+        <item name="android:layout_height">@dimen/md3_loading_size_compact</item>
+    </style>
+
+    <!-- 整页加载：LoadSir 及同量级空/错误页 -->
+    <style name="PonyoLoading.Page" parent="PonyoLoading">
+        <item name="android:layout_width">@dimen/md3_loading_size_page</item>
+        <item name="android:layout_height">@dimen/md3_loading_size_page</item>
+    </style>
+    <!-- ========== 呼吸圆角块变体（按加载类型分图标） ========== -->
+
+    <!-- A. 媒体播放缓冲（点播/直播控制器）：播放三角 -->
+    <style name="PonyoLoading.Play" parent="PonyoLoading.Inline">
+        <item name="android:indeterminateDrawable">@drawable/ponyo_loading_play</item>
+    </style>
+
+    <!-- B. 直播换台：信号塔。Compact=角标，Inline=画面中心 -->
+    <style name="PonyoLoading.Channel" parent="PonyoLoading.Compact">
+        <item name="android:indeterminateDrawable">@drawable/ponyo_loading_channel_compact</item>
+    </style>
+    <style name="PonyoLoading.Channel.Inline" parent="PonyoLoading.Inline">
+        <item name="android:indeterminateDrawable">@drawable/ponyo_loading_channel</item>
+    </style>
+
+    <!-- C. 内容/页面加载（整页+加载更多）：Ponyo 鱼 -->
+    <style name="PonyoLoading.Content" parent="PonyoLoading.Page">
+        <item name="android:indeterminateDrawable">@drawable/ponyo_loading_content_page</item>
+    </style>
+
+    <!-- D. 内容搜索（字幕/全局搜索）：manage_search -->
+    <style name="PonyoLoading.Search" parent="PonyoLoading.Compact">
+        <item name="android:indeterminateDrawable">@drawable/ponyo_loading_search_compact</item>
+    </style>
+    <!-- D2. 全局搜索整页加载：manage_search 图标 + Page 尺寸 -->
+    <style name="PonyoLoading.Search.Page" parent="PonyoLoading.Page">
+        <item name="android:indeterminateDrawable">@drawable/ponyo_loading_search</item>
+    </style>
+    <!-- E. 投屏搜设备：cast -->
+    <style name="PonyoLoading.Cast" parent="PonyoLoading.Compact">
+        <item name="android:indeterminateDrawable">@drawable/ponyo_loading_cast_compact</item>
+    </style>
+    <!-- C2. 加载更多（Compact 尺寸 + Content 图标） -->
+    <style name="PonyoLoading.Content.Compact" parent="PonyoLoading.Compact">
+        <item name="android:indeterminateDrawable">@drawable/ponyo_loading_content_compact</item>
+    </style>
+</resources>

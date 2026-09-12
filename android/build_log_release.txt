@@ -1,0 +1,253 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. See https://docs.gradle.org/7.5/userguide/gradle_daemon.html#sec:disabling_the_daemon.
+Daemon will be stopped at the end of the build 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preJava64ReleaseBuild UP-TO-DATE
+> Task :app:mergeJava64ReleaseJniLibFolders UP-TO-DATE
+> Task :player:preBuild UP-TO-DATE
+> Task :player:preReleaseBuild UP-TO-DATE
+> Task :player:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :player:mergeReleaseNativeLibs UP-TO-DATE
+> Task :player:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :quickjs:preBuild UP-TO-DATE
+> Task :quickjs:preReleaseBuild UP-TO-DATE
+> Task :quickjs:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :quickjs:mergeReleaseNativeLibs NO-SOURCE
+> Task :quickjs:copyReleaseJniLibsProjectOnly UP-TO-DATE
+> Task :app:mergeJava64ReleaseNativeLibs UP-TO-DATE
+> Task :app:stripJava64ReleaseDebugSymbols UP-TO-DATE
+> Task :app:extractJava64ReleaseNativeSymbolTables UP-TO-DATE
+> Task :app:mergeJava64ReleaseNativeDebugMetadata NO-SOURCE
+> Task :player:prepareReleaseArtProfile UP-TO-DATE
+> Task :quickjs:prepareReleaseArtProfile UP-TO-DATE
+> Task :app:mergeJava64ReleaseArtProfile UP-TO-DATE
+> Task :app:checkJava64ReleaseDuplicateClasses UP-TO-DATE
+> Task :player:compileReleaseAidl NO-SOURCE
+> Task :player:compileReleaseRenderscript NO-SOURCE
+> Task :player:generateReleaseBuildConfig UP-TO-DATE
+> Task :player:generateReleaseResValues UP-TO-DATE
+> Task :player:generateReleaseResources UP-TO-DATE
+> Task :player:packageReleaseResources UP-TO-DATE
+> Task :player:parseReleaseLocalResources UP-TO-DATE
+> Task :player:processReleaseManifest UP-TO-DATE
+> Task :player:generateReleaseRFile UP-TO-DATE
+> Task :player:javaPreCompileRelease UP-TO-DATE
+> Task :player:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :player:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :player:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :quickjs:compileReleaseAidl NO-SOURCE
+> Task :quickjs:compileReleaseRenderscript NO-SOURCE
+> Task :quickjs:generateReleaseResValues UP-TO-DATE
+> Task :quickjs:generateReleaseResources UP-TO-DATE
+> Task :quickjs:packageReleaseResources UP-TO-DATE
+> Task :quickjs:parseReleaseLocalResources UP-TO-DATE
+> Task :quickjs:processReleaseManifest UP-TO-DATE
+> Task :quickjs:generateReleaseRFile UP-TO-DATE
+> Task :quickjs:javaPreCompileRelease UP-TO-DATE
+> Task :quickjs:compileReleaseJavaWithJavac UP-TO-DATE
+> Task :quickjs:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :quickjs:exportReleaseConsumerProguardFiles UP-TO-DATE
+> Task :app:compileJava64ReleaseAidl NO-SOURCE
+> Task :player:packageReleaseRenderscript NO-SOURCE
+> Task :quickjs:packageReleaseRenderscript NO-SOURCE
+> Task :app:compileJava64ReleaseRenderscript NO-SOURCE
+> Task :app:generateJava64ReleaseBuildConfig UP-TO-DATE
+> Task :app:javaPreCompileJava64Release UP-TO-DATE
+> Task :player:writeReleaseAarMetadata UP-TO-DATE
+> Task :quickjs:writeReleaseAarMetadata UP-TO-DATE
+> Task :app:checkJava64ReleaseAarMetadata UP-TO-DATE
+> Task :app:generateJava64ReleaseResValues UP-TO-DATE
+> Task :app:generateJava64ReleaseResources UP-TO-DATE
+> Task :app:createJava64ReleaseCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksJava64Release UP-TO-DATE
+> Task :player:extractDeepLinksRelease UP-TO-DATE
+> Task :quickjs:extractDeepLinksRelease UP-TO-DATE
+> Task :app:processJava64ReleaseMainManifest UP-TO-DATE
+> Task :app:processJava64ReleaseManifest UP-TO-DATE
+> Task :app:processJava64ReleaseManifestForPackage UP-TO-DATE
+> Task :player:compileReleaseLibraryResources UP-TO-DATE
+> Task :quickjs:compileReleaseLibraryResources UP-TO-DATE
+> Task :player:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :quickjs:bundleLibCompileToJarRelease UP-TO-DATE
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :app:processJava64ReleaseJavaRes NO-SOURCE
+> Task :player:processReleaseJavaRes NO-SOURCE
+> Task :player:bundleLibResRelease NO-SOURCE
+> Task :quickjs:processReleaseJavaRes NO-SOURCE
+> Task :quickjs:bundleLibResRelease NO-SOURCE
+> Task :player:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :quickjs:bundleLibRuntimeToJarRelease UP-TO-DATE
+> Task :app:mergeJava64ReleaseShaders UP-TO-DATE
+> Task :app:compileJava64ReleaseShaders NO-SOURCE
+> Task :app:generateJava64ReleaseAssets UP-TO-DATE
+> Task :player:mergeReleaseShaders UP-TO-DATE
+> Task :player:compileReleaseShaders NO-SOURCE
+> Task :player:generateReleaseAssets UP-TO-DATE
+> Task :player:packageReleaseAssets UP-TO-DATE
+> Task :quickjs:mergeReleaseShaders UP-TO-DATE
+> Task :quickjs:compileReleaseShaders NO-SOURCE
+> Task :quickjs:generateReleaseAssets UP-TO-DATE
+> Task :quickjs:packageReleaseAssets UP-TO-DATE
+> Task :app:mergeJava64ReleaseAssets UP-TO-DATE
+> Task :app:compressJava64ReleaseAssets UP-TO-DATE
+> Task :app:collectJava64ReleaseDependencies UP-TO-DATE
+> Task :app:sdkJava64ReleaseDependencyData UP-TO-DATE
+> Task :app:validateSigningJava64Release UP-TO-DATE
+> Task :app:writeJava64ReleaseAppMetadata UP-TO-DATE
+> Task :app:writeJava64ReleaseSigningConfigVersions UP-TO-DATE
+> Task :app:mergeJava64ReleaseResources
+> Task :app:mapJava64ReleaseSourceSetPaths UP-TO-DATE
+> Task :app:processJava64ReleaseResources
+> Task :app:compileJava64ReleaseJavaWithJavac
+注: [1] Wrote GeneratedAppGlideModule with: []
+注: 某些输入文件使用或覆盖了已过时的 API。
+注: 有关详细信息, 请使用 -Xlint:deprecation 重新编译。
+注: 某些输入文件使用了未经检查或不安全的操作。
+注: 有关详细信息, 请使用 -Xlint:unchecked 重新编译。
+
+> Task :app:mergeJava64ReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :app:mergeJava64ReleaseJavaResource UP-TO-DATE
+
+> Task :app:minifyJava64ReleaseWithR8
+WARNING:C:\Users\Jie\Projects\lat3ncy-tvbox\android\app\proguard-rules.pro:25:1-18: R8: Option -repackageclasses overrides -flattenpackagehierarchy
+WARNING:C:\Users\Jie\Projects\lat3ncy-tvbox\android\app\proguard-rules.pro:28:1-27: R8: Ignoring option: -useuniqueclassmembernames
+WARNING:C:\Users\Jie\Projects\lat3ncy-tvbox\android\app\build\intermediates\merged_java_res\java64Release\base.jar: R8: Unexpected reference to missing service implementation class in META-INF/services/org.xmlpull.v1.XmlPullParserFactory: org.xmlpull.mxp1.MXParser,org.xmlpull.mxp1_serializer.MXSerializer.
+WARNING:R8: Library class android.content.res.XmlResourceParser implements program class org.xmlpull.v1.XmlPullParser
+WARNING:Missing classes detected while running R8. Please add the missing classes or apply additional keep rules that are generated in C:\Users\Jie\Projects\lat3ncy-tvbox\android\app\build\outputs\mapping\java64Release\missing_rules.txt.
+
+WARNING:R8: Missing class com.bea.xml.stream.MXParserFactory (referenced from: javax.xml.stream.XMLInputFactory com.thoughtworks.xstream.io.xml.BEAStaxDriver.createInputFactory())
+Missing class com.bea.xml.stream.XMLOutputFactoryBase (referenced from: javax.xml.stream.XMLOutputFactory com.thoughtworks.xstream.io.xml.BEAStaxDriver.createOutputFactory())
+Missing class com.ctc.wstx.stax.WstxInputFactory (referenced from: javax.xml.stream.XMLInputFactory com.thoughtworks.xstream.io.xml.WstxDriver.createInputFactory())
+Missing class com.ctc.wstx.stax.WstxOutputFactory (referenced from: javax.xml.stream.XMLOutputFactory com.thoughtworks.xstream.io.xml.WstxDriver.createOutputFactory())
+Missing class java.awt.BorderLayout (referenced from: void org.seamless.swing.logging.LogCategorySelector.addLogCategory(org.seamless.swing.logging.LogCategory) and 1 other context)
+Missing class java.awt.Color (referenced from: void com.thoughtworks.xstream.converters.extended.ColorConverter.marshal(java.lang.Object, com.thoughtworks.xstream.io.HierarchicalStreamWriter, com.thoughtworks.xstream.converters.MarshallingContext) and 1 other context)
+Missing class java.awt.Component (referenced from: void org.seamless.swing.logging.LogCategorySelector.<init>(java.util.List) and 5 other contexts)
+Missing class java.awt.Container (referenced from: java.awt.Container org.seamless.swing.AbstractController.view and 6 other contexts)
+Missing class java.awt.Dimension (referenced from: java.awt.Window org.seamless.swing.Application.center(java.awt.Window) and 4 other contexts)
+Missing class java.awt.Font (referenced from: void com.thoughtworks.xstream.converters.extended.FontConverter.marshal(java.lang.Object, com.thoughtworks.xstream.io.HierarchicalStreamWriter, com.thoughtworks.xstream.converters.MarshallingContext) and 1 other context)
+Missing class java.awt.Frame (referenced from: java.awt.Frame org.seamless.swing.logging.LogController.getParentWindow())
+Missing class java.awt.LayoutManager (referenced from: void org.seamless.swing.logging.LogCategorySelector.<init>(java.util.List) and 3 other contexts)
+Missing class java.awt.Rectangle (referenced from: void org.seamless.swing.logging.LogController$3.run())
+Missing class java.awt.Toolkit (referenced from: java.awt.Window org.seamless.swing.Application.center(java.awt.Window) and 1 other context)
+Missing class java.awt.Window (referenced from: java.awt.Window org.seamless.swing.Application.center(java.awt.Window) and 1 other context)
+Missing class java.awt.datatransfer.Clipboard (referenced from: void org.seamless.swing.Application.copyToClipboard(java.lang.String))
+Missing class java.awt.datatransfer.ClipboardOwner (referenced from: void org.seamless.swing.Application.copyToClipboard(java.lang.String))
+Missing class java.awt.datatransfer.StringSelection (referenced from: void org.seamless.swing.Application.copyToClipboard(java.lang.String))
+Missing class java.awt.datatransfer.Transferable (referenced from: void org.seamless.swing.Application.copyToClipboard(java.lang.String))
+Missing class java.awt.event.ActionEvent (referenced from: void org.seamless.swing.AbstractController.actionPerformed(java.awt.event.ActionEvent) and 1 other context)
+Missing class java.awt.event.ActionListener (referenced from: void org.seamless.swing.AbstractController.registerAction(javax.swing.AbstractButton, org.seamless.swing.DefaultAction) and 11 other contexts)
+Missing class java.awt.event.ItemListener (referenced from: void org.seamless.swing.logging.LogCategorySelector.addLoggerGroups(org.seamless.swing.logging.LogCategory, javax.swing.JPanel) and 1 other context)
+Missing class java.awt.event.WindowEvent (referenced from: void org.seamless.swing.AbstractController.windowActivated(java.awt.event.WindowEvent) and 6 other contexts)
+Missing class java.awt.event.WindowListener (referenced from: org.seamless.swing.Controller)
+Missing class java.beans.BeanInfo (referenced from: java.util.Map com.thoughtworks.xstream.converters.javabean.PropertyDictionary.buildMap(java.lang.Class))
+Missing class java.beans.IntrospectionException (referenced from: java.util.Map com.thoughtworks.xstream.converters.javabean.PropertyDictionary.buildMap(java.lang.Class))
+Missing class java.beans.Introspector (referenced from: java.util.Map com.thoughtworks.xstream.converters.javabean.PropertyDictionary.buildMap(java.lang.Class))
+Missing class java.beans.PropertyDescriptor (referenced from: boolean com.thoughtworks.xstream.converters.javabean.BeanProvider.canStreamProperty(java.beans.PropertyDescriptor) and 11 other contexts)
+Missing class java.beans.PropertyEditor (referenced from: java.beans.PropertyEditor com.thoughtworks.xstream.core.util.ThreadSafePropertyEditor.fetchFromPool() and 2 other contexts)
+Missing class javax.activation.ActivationDataFlavor (referenced from: void com.thoughtworks.xstream.converters.extended.ActivationDataFlavorConverter.marshal(java.lang.Object, com.thoughtworks.xstream.io.HierarchicalStreamWriter, com.thoughtworks.xstream.converters.MarshallingContext) and 1 other context)
+Missing class javax.swing.AbstractAction (referenced from: void org.seamless.swing.DefaultAction.<init>() and 1 other context)
+Missing class javax.swing.AbstractButton (referenced from: void org.seamless.swing.AbstractController.actionPerformed(java.awt.event.ActionEvent) and 2 other contexts)
+Missing class javax.swing.BorderFactory (referenced from: void org.seamless.swing.logging.LogCategorySelector.<init>(java.util.List) and 2 other contexts)
+Missing class javax.swing.Box (referenced from: void org.seamless.swing.logging.LogController.initializeToolBar(org.seamless.swing.logging.LogController$Expiration))
+Missing class javax.swing.BoxLayout (referenced from: void org.seamless.swing.logging.LogCategorySelector.<init>(java.util.List) and 1 other context)
+Missing class javax.swing.Icon (referenced from: javax.swing.JButton org.seamless.swing.logging.LogController.createClearButton() and 5 other contexts)
+Missing class javax.swing.ImageIcon (referenced from: javax.swing.ImageIcon org.seamless.swing.Application.createImageIcon(java.lang.Class, java.lang.String) and 18 other contexts)
+Missing class javax.swing.JButton (referenced from: javax.swing.JButton org.seamless.swing.logging.LogController.clearButton and 13 other contexts)
+Missing class javax.swing.JCheckBox (referenced from: void org.seamless.swing.logging.LogCategorySelector.addLoggerGroups(org.seamless.swing.logging.LogCategory, javax.swing.JPanel))
+Missing class javax.swing.JComboBox (referenced from: javax.swing.JComboBox org.seamless.swing.logging.LogController.expirationComboBox and 2 other contexts)
+Missing class javax.swing.JDialog (referenced from: void org.seamless.swing.logging.LogCategorySelector.<init>(java.util.List) and 1 other context)
+Missing class javax.swing.JFrame (referenced from: void org.seamless.swing.AbstractController.windowClosing(java.awt.event.WindowEvent))
+Missing class javax.swing.JLabel (referenced from: javax.swing.JLabel org.seamless.swing.logging.LogController.pauseLabel and 4 other contexts)
+Missing class javax.swing.JPanel (referenced from: javax.swing.JPanel org.seamless.swing.logging.LogCategorySelector$2.val$categoryPanel and 8 other contexts)
+Missing class javax.swing.JScrollPane (referenced from: void org.seamless.swing.logging.LogCategorySelector.<init>(java.util.List) and 1 other context)
+Missing class javax.swing.JTable (referenced from: javax.swing.JTable org.seamless.swing.logging.LogController.logTable and 6 other contexts)
+Missing class javax.swing.JToolBar (referenced from: javax.swing.JToolBar org.seamless.swing.logging.LogController.toolBar and 3 other contexts)
+Missing class javax.swing.ListSelectionModel (referenced from: void org.seamless.swing.logging.LogController.<init>(org.seamless.swing.Controller, org.seamless.swing.logging.LogController$Expiration, java.util.List))
+Missing class javax.swing.SwingUtilities (referenced from: void org.seamless.swing.logging.LogController.pushMessage(org.seamless.swing.logging.LogMessage))
+Missing class javax.swing.border.Border (referenced from: void org.seamless.swing.logging.LogCategorySelector.<init>(java.util.List) and 2 other contexts)
+Missing class javax.swing.border.TitledBorder (referenced from: void org.seamless.swing.logging.LogCategorySelector.addLogCategory(org.seamless.swing.logging.LogCategory))
+Missing class javax.swing.event.ListSelectionListener (referenced from: void org.seamless.swing.logging.LogController.<init>(org.seamless.swing.Controller, org.seamless.swing.logging.LogController$Expiration, java.util.List) and 1 other context)
+Missing class javax.swing.plaf.FontUIResource (referenced from: java.lang.Object com.thoughtworks.xstream.converters.extended.FontConverter.unmarshal(com.thoughtworks.xstream.io.HierarchicalStreamReader, com.thoughtworks.xstream.converters.UnmarshallingContext))
+Missing class javax.swing.table.AbstractTableModel (referenced from: void org.seamless.swing.logging.LogTableModel.<init>(int) and 1 other context)
+Missing class javax.swing.table.DefaultTableCellRenderer (referenced from: void org.seamless.swing.logging.LogTableCellRenderer.<init>() and 2 other contexts)
+Missing class javax.swing.table.JTableHeader (referenced from: void org.seamless.swing.logging.LogController.adjustTableUI())
+Missing class javax.swing.table.TableCellRenderer (referenced from: void org.seamless.swing.logging.LogController.<init>(org.seamless.swing.Controller, org.seamless.swing.logging.LogController$Expiration, java.util.List))
+Missing class javax.swing.table.TableColumn (referenced from: void org.seamless.swing.logging.LogController.adjustTableUI())
+Missing class javax.swing.table.TableColumnModel (referenced from: void org.seamless.swing.logging.LogController.adjustTableUI())
+Missing class javax.swing.table.TableModel (referenced from: void org.seamless.swing.logging.LogController.<init>(org.seamless.swing.Controller, org.seamless.swing.logging.LogController$Expiration, java.util.List))
+Missing class javax.xml.bind.DatatypeConverter (referenced from: byte[] com.thoughtworks.xstream.core.util.Base64JAXBCodec.decode(java.lang.String) and 1 other context)
+Missing class javax.xml.stream.Location (referenced from: void com.thoughtworks.xstream.io.xml.StaxReader.appendErrors(com.thoughtworks.xstream.converters.ErrorWriter))
+Missing class javax.xml.stream.XMLInputFactory (referenced from: javax.xml.stream.XMLInputFactory com.thoughtworks.xstream.io.xml.StaxDriver.inputFactory and 9 other contexts)
+Missing class javax.xml.stream.XMLOutputFactory (referenced from: javax.xml.stream.XMLOutputFactory com.thoughtworks.xstream.io.xml.StaxDriver.outputFactory and 10 other contexts)
+Missing class javax.xml.stream.XMLStreamException (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver.createReader(java.io.File) and 19 other contexts)
+Missing class javax.xml.stream.XMLStreamReader (referenced from: javax.xml.stream.XMLStreamReader com.thoughtworks.xstream.io.xml.StaxReader.in and 20 other contexts)
+Missing class javax.xml.stream.XMLStreamWriter (referenced from: javax.xml.stream.XMLStreamWriter com.thoughtworks.xstream.io.xml.StaxWriter.out and 23 other contexts)
+Missing class net.sf.cglib.proxy.Callback (referenced from: java.lang.Object com.thoughtworks.xstream.converters.reflection.CGLIBEnhancedConverter.create(net.sf.cglib.proxy.Enhancer, java.util.List, boolean) and 6 other contexts)
+Missing class net.sf.cglib.proxy.CallbackFilter (referenced from: java.lang.Object com.thoughtworks.xstream.converters.reflection.CGLIBEnhancedConverter.unmarshal(com.thoughtworks.xstream.io.HierarchicalStreamReader, com.thoughtworks.xstream.converters.UnmarshallingContext) and 1 other context)
+Missing class net.sf.cglib.proxy.Enhancer (referenced from: boolean com.thoughtworks.xstream.converters.reflection.CGLIBEnhancedConverter.canConvert(java.lang.Class) and 3 other contexts)
+Missing class net.sf.cglib.proxy.Factory (referenced from: java.lang.Object com.thoughtworks.xstream.converters.reflection.CGLIBEnhancedConverter.create(net.sf.cglib.proxy.Enhancer, java.util.List, boolean) and 2 other contexts)
+Missing class net.sf.cglib.proxy.NoOp (referenced from: void com.thoughtworks.xstream.converters.reflection.CGLIBEnhancedConverter.readCallback(com.thoughtworks.xstream.io.HierarchicalStreamReader, com.thoughtworks.xstream.converters.UnmarshallingContext, java.util.List, java.util.List))
+Missing class net.sf.cglib.proxy.Proxy (referenced from: boolean com.thoughtworks.xstream.security.CGLIBProxyTypePermission.allows(java.lang.Class))
+Missing class nu.xom.Attribute (referenced from: java.lang.String com.thoughtworks.xstream.io.xml.XomReader.getAttribute(int) and 2 other contexts)
+Missing class nu.xom.Builder (referenced from: nu.xom.Builder com.thoughtworks.xstream.io.xml.XomDriver.builder and 9 other contexts)
+Missing class nu.xom.Document (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.xml.XomDriver.createReader(java.io.File) and 6 other contexts)
+Missing class nu.xom.Element (referenced from: nu.xom.Element com.thoughtworks.xstream.io.xml.XomReader.currentElement and 24 other contexts)
+Missing class nu.xom.Elements (referenced from: java.lang.Object com.thoughtworks.xstream.io.xml.XomReader.getChild(int) and 2 other contexts)
+Missing class nu.xom.Node (referenced from: java.lang.String com.thoughtworks.xstream.io.xml.XomReader.getValue() and 1 other context)
+Missing class nu.xom.ParentNode (referenced from: java.lang.Object com.thoughtworks.xstream.io.xml.XomReader.getParent())
+Missing class nu.xom.ParsingException (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.xml.XomDriver.createReader(java.io.File) and 3 other contexts)
+Missing class nu.xom.Text (referenced from: java.lang.String com.thoughtworks.xstream.io.xml.XomReader.getValue())
+Missing class nu.xom.ValidityException (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.xml.XomDriver.createReader(java.io.File) and 3 other contexts)
+Missing class org.codehaus.jettison.AbstractXMLStreamWriter (referenced from: void com.thoughtworks.xstream.io.json.JettisonStaxWriter.endNode() and 1 other context)
+Missing class org.codehaus.jettison.mapped.Configuration (referenced from: void com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver.<init>(org.codehaus.jettison.mapped.Configuration) and 1 other context)
+Missing class org.codehaus.jettison.mapped.MappedNamespaceConvention (referenced from: org.codehaus.jettison.mapped.MappedNamespaceConvention com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver.convention and 8 other contexts)
+Missing class org.codehaus.jettison.mapped.MappedXMLInputFactory (referenced from: org.codehaus.jettison.mapped.MappedXMLInputFactory com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver.mif and 5 other contexts)
+Missing class org.codehaus.jettison.mapped.MappedXMLOutputFactory (referenced from: org.codehaus.jettison.mapped.MappedXMLOutputFactory com.thoughtworks.xstream.io.json.JettisonMappedXmlDriver.mof and 3 other contexts)
+Missing class org.dom4j.Attribute (referenced from: java.lang.String com.thoughtworks.xstream.io.xml.Dom4JReader.getAttribute(int) and 1 other context)
+Missing class org.dom4j.Branch (referenced from: void com.thoughtworks.xstream.io.xml.Dom4JReader.<init>(org.dom4j.Branch) and 8 other contexts)
+Missing class org.dom4j.Document (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.xml.Dom4JDriver.createReader(java.io.File) and 7 other contexts)
+Missing class org.dom4j.DocumentException (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.xml.Dom4JDriver.createReader(java.io.File) and 4 other contexts)
+Missing class org.dom4j.DocumentFactory (referenced from: org.dom4j.DocumentFactory com.thoughtworks.xstream.io.xml.Dom4JDriver.documentFactory and 17 other contexts)
+Missing class org.dom4j.Element (referenced from: org.dom4j.Element com.thoughtworks.xstream.io.xml.Dom4JReader.currentElement and 22 other contexts)
+Missing class org.dom4j.io.OutputFormat (referenced from: org.dom4j.io.OutputFormat com.thoughtworks.xstream.io.xml.Dom4JDriver.outputFormat and 8 other contexts)
+Missing class org.dom4j.io.SAXReader (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.xml.Dom4JDriver.createReader(java.io.File) and 4 other contexts)
+Missing class org.dom4j.io.XMLWriter (referenced from: org.dom4j.io.XMLWriter com.thoughtworks.xstream.io.xml.Dom4JXmlWriter.writer and 9 other contexts)
+Missing class org.dom4j.tree.DefaultElement (referenced from: void com.thoughtworks.xstream.io.xml.Dom4JXmlWriter.endNode())
+Missing class org.jdom.Attribute (referenced from: java.lang.String com.thoughtworks.xstream.io.xml.JDomReader.getAttribute(int) and 2 other contexts)
+Missing class org.jdom.Content (referenced from: java.lang.Object com.thoughtworks.xstream.io.xml.JDomWriter.createNode(java.lang.String) and 1 other context)
+Missing class org.jdom.DefaultJDOMFactory (referenced from: void com.thoughtworks.xstream.io.xml.JDomWriter.<init>() and 3 other contexts)
+Missing class org.jdom.Document (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.xml.JDomDriver.createReader(java.io.File) and 6 other contexts)
+Missing class org.jdom.Element (referenced from: org.jdom.Element com.thoughtworks.xstream.io.xml.JDomReader.currentElement and 27 other contexts)
+Missing class org.jdom.JDOMException (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.xml.JDomDriver.createReader(java.io.File) and 3 other contexts)
+Missing class org.jdom.JDOMFactory (referenced from: org.jdom.JDOMFactory com.thoughtworks.xstream.io.xml.JDomWriter.documentFactory and 9 other contexts)
+Missing class org.jdom.Text (referenced from: void com.thoughtworks.xstream.io.xml.JDomWriter.setValue(java.lang.String))
+Missing class org.jdom.input.SAXBuilder (referenced from: org.jdom.input.SAXBuilder com.thoughtworks.xstream.io.xml.JDomDriver.createBuilder() and 4 other contexts)
+Missing class org.jdom2.Attribute (referenced from: java.lang.String com.thoughtworks.xstream.io.xml.JDom2Reader.getAttribute(int) and 2 other contexts)
+Missing class org.jdom2.Content (referenced from: java.lang.Object com.thoughtworks.xstream.io.xml.JDom2Writer.createNode(java.lang.String) and 1 other context)
+Missing class org.jdom2.DefaultJDOMFactory (referenced from: void com.thoughtworks.xstream.io.xml.JDom2Writer.<init>() and 2 other contexts)
+Missing class org.jdom2.Document (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.xml.JDom2Driver.createReader(java.io.File) and 5 other contexts)
+Missing class org.jdom2.Element (referenced from: org.jdom2.Element com.thoughtworks.xstream.io.xml.JDom2Reader.currentElement and 23 other contexts)
+Missing class org.jdom2.JDOMException (referenced from: com.thoughtworks.xstream.io.HierarchicalStreamReader com.thoughtworks.xstream.io.xml.JDom2Driver.createReader(java.io.File) and 3 other contexts)
+Missing class org.jdom2.JDOMFactory (referenced from: org.jdom2.JDOMFactory com.thoughtworks.xstream.io.xml.JDom2Writer.documentFactory and 7 other contexts)
+Missing class org.jdom2.Text (referenced from: void com.thoughtworks.xstream.io.xml.JDom2Writer.setValue(java.lang.String))
+Missing class org.jdom2.input.SAXBuilder (referenced from: org.jdom2.input.SAXBuilder com.thoughtworks.xstream.io.xml.JDom2Driver.createBuilder() and 4 other contexts)
+Missing class org.joda.time.DateTime (referenced from: java.lang.Object com.thoughtworks.xstream.core.util.ISO8601JodaTimeConverter.fromString(java.lang.String) and 1 other context)
+Missing class org.joda.time.DateTimeZone (referenced from: java.lang.Object com.thoughtworks.xstream.core.util.ISO8601JodaTimeConverter.fromString(java.lang.String))
+Missing class org.joda.time.format.DateTimeFormatter (referenced from: org.joda.time.format.DateTimeFormatter[] com.thoughtworks.xstream.core.util.ISO8601JodaTimeConverter.formattersNoUTC and 4 other contexts)
+Missing class org.joda.time.format.ISODateTimeFormat (referenced from: void com.thoughtworks.xstream.core.util.ISO8601JodaTimeConverter.<clinit>())
+Missing class org.kxml2.io.KXmlParser (referenced from: org.xmlpull.v1.XmlPullParser com.thoughtworks.xstream.io.xml.KXml2DomDriver.createParser() and 1 other context)
+Missing class org.xmlpull.mxp1.MXParser,org.xmlpull.mxp1_serializer.MXSerializer (referenced from: java.util.List kotlinx.coroutines.internal.FastServiceLoader.load(java.lang.Class, java.lang.ClassLoader))
+
+> Task :app:optimizeJava64ReleaseResources
+> Task :app:compileJava64ReleaseArtProfile
+> Task :app:packageJava64Release
+> Task :app:createJava64ReleaseApkListingFileRedirect
+> Task :app:assembleJava64Release
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.5/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 5m 27s
+75 actionable tasks: 8 executed, 67 up-to-date

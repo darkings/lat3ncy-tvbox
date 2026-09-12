@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/vs_8"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:focusable="false"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/md3_space_2"
+    android:paddingRight="@dimen/md3_space_2">
+
+    <TextView
+        android:id="@+id/filterName"
+        android:layout_width="@dimen/vs_100"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/vs_10"
+        android:layout_marginRight="@dimen/vs_10"
+        android:ellipsize="end"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_vertical|start"
+        android:singleLine="true"
+        android:textAlignment="gravity"
+        android:textColor="@color/md3_on_surface_variant"
+        android:textSize="@dimen/ts_20"
+        android:contentDescription="筛选分组"
+        tools:text="类型" />
+
+    <com.owen.tvrecyclerview.widget.TvRecyclerView
+        android:id="@+id/mFilterKv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        app:tv_horizontalSpacingWithMargins="@dimen/md3_filter_chip_gap"
+        app:tv_selectedItemIsCentered="true"
+        app:tv_verticalSpacingWithMargins="@dimen/md3_filter_chip_gap" />
+
+</LinearLayout>

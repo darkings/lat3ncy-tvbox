@@ -1,7 +1,21 @@
+# ══════════════════════════════════════════════════════════════
+#  lat3ncy-tvbox / Ponyo TV  .gitignore
+#  原则：源码与配置入库；构建产物、调试脚本、截图、密钥不入库
+# ══════════════════════════════════════════════════════════════
+
 # ── Android Gradle 生成物（源码保持可见）──
 /android/.gradle/
+/android/.gradle_home/
 /android/*/build/
 /android/build/
+/android/app/schemas/
+/android/backups/
+/android/toast-backup-*/
+
+# ── 签名密钥（严禁入库）──
+*.keystore
+*.jks
+debug.keystore
 
 # ── 系统 / IDE / 工具 ──
 *.apk
@@ -13,6 +27,7 @@
 *.hprof
 *.iml
 *.log
+*.idsig
 .idea/
 .gradle/
 .DS_Store
@@ -53,6 +68,9 @@ nul
 source-manager/.tmp-test/
 source-manager/subscription/ponyo-*.json
 source-manager/subscription/manifest.json
+source-manager/_tmp_*
+source-manager/scripts/_*.py
+source-manager/scripts/_*.sh
 
 # ── 订阅发布临时产物（不入库）──
 subscription/ponyo-temp.json
@@ -60,3 +78,60 @@ subscription/update-log.txt
 
 # ── 一次性调试脚本（不入库）──
 tools/source-screening/tmp_*.py
+
+# ══════════════════════════════════════════════════════════════
+#  调试 / 审计产物（大量临时文件，不入库）
+# ══════════════════════════════════════════════════════════════
+
+# ── UI 审计产物（截图 + uiautomator dump + 临时脚本）──
+docs/ui-audit/
+docs/apk-audit/
+docs/morph-verify/
+docs/assets/
+
+# ── 本地工作区（补丁、备份、临时分析）──
+/work/
+/server-edit/
+
+# ── tools 下的临时调试脚本与 UI dump ──
+tools/md3_res/
+tools/*.xml
+tools/_*.py
+tools/*.png
+
+# ── 根目录临时脚本与截图 ──
+/*.png
+/*.py
+/patch_*.py
+/fix_*.py
+/tmp_*.py
+/verify_*.py
+/replace_*.py
+/_*.txt
+/findings.md
+/progress.md
+/task_plan.md
+/codex-retry.ps1
+/.codex-retry-thread-id
+
+# ── 备份文件（任意位置）──
+*.bak
+*.bak-*
+*.bak_*
+*.orig
+*.rej
+
+# ── 补充：日志与二进制依赖 ──
+live_log.txt
+*.jar
+tools/_apk_inspect/
+tools/source-screening/*.jar
+tools/source-screening/dexdump.txt
+
+# ── 订阅产物（自动生成）──
+source-manager/adult-subscription.json
+source-manager/zyplayer-subscription.json
+# ── 例外：android 依赖库必须入库（否则无法构建）──
+!android/app/libs/
+!android/app/libs/*.jar
+!android/app/libs/*.aar

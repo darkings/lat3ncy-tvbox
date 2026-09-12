@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tvHeader"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/vs_14"
+    android:paddingBottom="@dimen/vs_4"
+    android:textColor="@color/md3_on_surface_variant"
+    android:textSize="@dimen/ts_16"
+    tools:text="默认解析器" />

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:topLeftRadius="@dimen/md3_corner_lg"
+        android:topRightRadius="@dimen/md3_corner_lg" />
+    <gradient
+        android:angle="270"
+        android:startColor="@color/md3_poster_scrim_start"
+        android:centerColor="@color/md3_brand_gradient_mid"
+        android:endColor="@color/md3_surface_container" />
+</shape>

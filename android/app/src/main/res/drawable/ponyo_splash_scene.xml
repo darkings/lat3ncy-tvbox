@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="0"
+        android:startColor="@color/ponyo_splash_base"
+        android:centerColor="@color/ponyo_splash_gradient_mid"
+        android:endColor="@color/ponyo_splash_gradient_end" />
+</shape>

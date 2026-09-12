@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/md3_space_2"
+    android:layout_marginTop="@dimen/md3_space_1"
+    android:layout_marginEnd="@dimen/md3_space_2"
+    android:layout_marginBottom="@dimen/md3_space_1"
+    android:background="@drawable/shape_live_focus"
+    android:focusable="true"
+    android:focusableInTouchMode="false"
+    >
+
+    <TextView
+        android:id="@+id/tvChannelGroupName"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/md3_button_height"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:singleLine="true"
+        android:textColor="@color/md3_on_surface"
+        android:textSize="@dimen/ts_20" />
+
+    <View
+        android:id="@+id/stateRail"
+        android:layout_width="@dimen/md3_state_rail_width"
+        android:layout_height="@dimen/md3_state_rail_height"
+        android:layout_gravity="start|center_vertical"
+        android:layout_marginStart="@dimen/md3_state_rail_inset_start"
+        android:background="@drawable/state_rail_primary"
+        android:visibility="invisible" />
+</FrameLayout>

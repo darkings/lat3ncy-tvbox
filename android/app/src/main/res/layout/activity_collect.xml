@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md3_surface"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/md3_space_8"
+        android:paddingTop="@dimen/md3_space_4"
+        android:paddingRight="@dimen/md3_space_8"
+        android:paddingBottom="@dimen/md3_space_4">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/md3_button_height"
+            android:gravity="center"
+            android:text="收藏"
+            android:textColor="@color/md3_on_surface"
+            android:textSize="@dimen/ts_28"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/md3_button_height"
+            android:background="@drawable/button_search_secondary"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:minWidth="@dimen/md3_button_secondary_min_width"
+            android:paddingLeft="@dimen/md3_space_5"
+            android:paddingRight="@dimen/md3_space_5"
+            android:text="编辑"
+            android:textColor="@color/md3_on_surface"
+            android:textSize="@dimen/ts_24" />
+
+        <TextView
+            android:id="@+id/tvDeleteSelected"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/md3_button_height"
+            android:layout_marginLeft="@dimen/md3_space_3"
+            android:background="@drawable/button_danger_secondary"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:minWidth="@dimen/md3_button_primary_min_width"
+            android:paddingLeft="@dimen/md3_space_5"
+            android:paddingRight="@dimen/md3_space_5"
+            android:text="删除所选"
+            android:textColor="@color/danger_action_text"
+            android:textSize="@dimen/ts_24"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvClear"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/md3_button_height"
+            android:layout_marginLeft="@dimen/md3_space_3"
+            android:background="@drawable/button_danger_secondary"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:minWidth="@dimen/md3_button_secondary_min_width"
+            android:paddingLeft="@dimen/md3_space_5"
+            android:paddingRight="@dimen/md3_space_5"
+            android:text="清空"
+            android:textColor="@color/danger_action_text"
+            android:textSize="@dimen/ts_24" />
+
+        <TextView
+            android:id="@+id/tvDone"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/md3_button_height"
+            android:layout_marginLeft="@dimen/md3_space_3"
+            android:background="@drawable/button_search_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:minWidth="@dimen/md3_button_primary_min_width"
+            android:paddingLeft="@dimen/md3_space_5"
+            android:paddingRight="@dimen/md3_space_5"
+            android:text="完成"
+            android:textColor="@color/md3_on_primary"
+            android:textSize="@dimen/ts_24"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <com.owen.tvrecyclerview.widget.TvRecyclerView
+            android:id="@+id/mGridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingLeft="@dimen/md3_space_8"
+            android:paddingTop="@dimen/md3_space_2"
+            android:paddingRight="@dimen/md3_space_8"
+            android:paddingBottom="@dimen/md3_space_2"
+            android:descendantFocusability="afterDescendants"
+            app:tv_horizontalSpacingWithMargins="@dimen/md3_space_4"
+            app:tv_selectedItemIsCentered="true"
+            app:tv_verticalSpacingWithMargins="@dimen/md3_space_5" />
+
+        <include
+            android:id="@+id/emptyState"
+            layout="@layout/layout_library_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </FrameLayout>
+</LinearLayout>

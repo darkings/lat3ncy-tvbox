@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="1920dp"
+    android:height="1080dp"
+    android:viewportWidth="1920"
+    android:viewportHeight="1080">
+
+    <!-- A restrained projector beam crossing from Ponyo toward the copy. -->
+    <path
+        android:fillColor="#12F29A87"
+        android:pathData="M1810,90 L360,286 L360,794 L1810,990 Z" />
+    <path
+        android:fillColor="#08FFF1EC"
+        android:pathData="M1710,188 L520,350 L520,730 L1710,892 Z" />
+
+    <!-- Warm Sea brand waves; vector strokes stay crisp on 4K panels. -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M-80,842 C230,728 382,982 690,858 C1002,732 1154,950 1484,834 C1670,768 1812,790 2010,874"
+        android:strokeColor="#22F8BBAE"
+        android:strokeLineCap="round"
+        android:strokeWidth="3" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:pathData="M-90,920 C206,808 390,1040 708,926 C1026,812 1196,1002 1510,904 C1718,840 1850,862 2018,930"
+        android:strokeColor="#14E8B86A"
+        android:strokeLineCap="round"
+        android:strokeWidth="2" />
+</vector>

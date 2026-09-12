@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  呼吸圆角块 · 投屏 cast
+  图标来自 Material Symbols Rounded（预览页 ponyo-loading-icons-preview.html）。
+  图标嵌在 block 内：跟随呼吸缩放/旋转，再由 icon group 反向转正。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:name="ponyoLoadingCastRoot"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <group
+        android:name="block"
+        android:pivotX="24"
+        android:pivotY="24">
+        <path
+            android:name="blockPath"
+            android:pathData="M24,6 C33.94,6 42,14.06 42,24 C42,33.94 33.94,42 24,42 C14.06,42 6,33.94 6,24 C6,14.06 14.06,6 24,6 Z"
+            android:strokeColor="@color/md3_primary_bright"
+            android:strokeWidth="2.0"
+            android:strokeLineCap="round"
+            android:strokeLineJoin="round"
+            android:fillColor="@color/md3_surface_container_high" />
+        <group
+            android:name="icon"
+            android:pivotX="24"
+            android:pivotY="24">
+            <group
+                android:name="iconGlyph"
+                android:pivotX="12"
+                android:pivotY="12"
+                android:scaleX="0.75"
+                android:scaleY="0.75"
+                android:translateX="12"
+                android:translateY="12">
+                <path
+                    android:name="iconPath"
+                    android:pathData="M14.33 18.55Q13.79 14.3 10.8 11.28Q7.81 8.27 3.55 7.72V6.41Q3.55 6.41 3.55 6.41Q3.55 6.41 3.55 6.41H19.54Q19.54 6.41 19.54 6.41Q19.54 6.41 19.54 6.41V18.55Q19.54 18.55 19.54 18.55Q19.54 18.55 19.54 18.55ZM21.44 6.34V18.62Q21.44 19.38 20.9 19.91Q20.37 20.44 19.6 20.44H15.37Q15 20.44 14.75 20.19Q14.5 19.95 14.49 19.58Q14.47 19.32 14.49 19.08Q14.51 18.83 14.51 18.62H19.6Q19.6 18.62 19.6 18.62Q19.6 18.62 19.6 18.62V6.34Q19.6 6.34 19.6 6.34Q19.6 6.34 19.6 6.34H3.48Q3.48 6.34 3.48 6.34Q3.48 6.34 3.48 6.34V7.83Q3.28 7.83 3.05 7.85Q2.82 7.88 2.57 7.85Q2.18 7.82 1.92 7.54Q1.66 7.26 1.66 6.88V6.28Q1.66 5.54 2.18 5.02Q2.7 4.51 3.44 4.51H19.6Q20.37 4.51 20.9 5.04Q21.44 5.57 21.44 6.34ZM7.37 20.44Q7.06 20.44 6.83 20.26Q6.59 20.08 6.54 19.76Q6.31 18.07 5.15 16.88Q3.99 15.7 2.33 15.46Q2.05 15.41 1.85 15.18Q1.66 14.94 1.66 14.64Q1.66 14.32 1.85 14.09Q2.03 13.86 2.32 13.88Q4.63 14.11 6.26 15.77Q7.89 17.42 8.14 19.73Q8.17 20.04 7.93 20.24Q7.69 20.44 7.37 20.44ZM11.35 20.44Q11.04 20.44 10.8 20.24Q10.56 20.04 10.54 19.74Q10.27 16.45 8 14.11Q5.73 11.77 2.46 11.48Q2.13 11.46 1.9 11.23Q1.66 10.99 1.66 10.67Q1.66 10.34 1.95 10.11Q2.23 9.88 2.6 9.92Q6.44 10.26 9.12 13.01Q11.81 15.76 12.1 19.62Q12.12 19.97 11.9 20.2Q11.68 20.44 11.35 20.44ZM2.63 20.44Q2.21 20.44 1.91 20.14Q1.62 19.84 1.62 19.42Q1.62 18.99 1.91 18.69Q2.21 18.39 2.65 18.39Q3.07 18.39 3.37 18.69Q3.67 19 3.67 19.42Q3.67 19.84 3.36 20.14Q3.06 20.44 2.63 20.44Z"
+                    android:fillColor="@color/md3_primary" />
+            </group>
+        </group>
+    </group>
+</vector>

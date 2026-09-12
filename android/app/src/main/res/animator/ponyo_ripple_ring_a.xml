@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  涟漪环 A：scale 1.0 → 2.0（半径 10 → 20）并同步淡出，周期 1200ms。
+  只动 group 的 scale/alpha（RenderNode 变换），不做 pathData 形变。
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="together">
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="1.0"
+        android:valueTo="2.0"
+        android:duration="1200"
+        android:interpolator="@interpolator/md3_emphasized"
+        android:repeatCount="infinite" />
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="1.0"
+        android:valueTo="2.0"
+        android:duration="1200"
+        android:interpolator="@interpolator/md3_emphasized"
+        android:repeatCount="infinite" />
+    <objectAnimator
+        android:propertyName="alpha"
+        android:valueFrom="1.0"
+        android:valueTo="0.0"
+        android:duration="1200"
+        android:interpolator="@interpolator/md3_emphasized"
+        android:repeatCount="infinite" />
+</set>

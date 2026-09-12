@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="PonyoSplashTheme" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/ponyo_splash_window</item>
+        <item name="android:windowSplashScreenBackground">@color/ponyo_splash_base</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/ponyo_splash_mark</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@android:color/transparent</item>
+        <item name="android:windowSplashScreenAnimationDuration">0</item>
+        <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+    </style>
+</resources>

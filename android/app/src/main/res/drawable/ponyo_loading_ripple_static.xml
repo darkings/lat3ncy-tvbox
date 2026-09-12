@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  缓冲涟漪 · 静态降级版（减少动态效果 / reduced-motion 场景）
+  与 ponyo_loading_ripple 视觉同源：实心核 + 两圈低透明度静态环，无动画。
+  由 LoadingViews 在检测到系统动画比例关闭时替换引用。
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- 外圈（对应扩散终态，最淡） -->
+    <path
+        android:pathData="M24,4 a20,20 0 1,1 0,40 a20,20 0 1,1 0,-40"
+        android:strokeColor="@color/md3_primary_bright"
+        android:strokeWidth="2"
+        android:strokeAlpha="0.18"
+        android:fillColor="@android:color/transparent" />
+
+    <!-- 中圈 -->
+    <path
+        android:pathData="M24,14 a10,10 0 1,1 0,20 a10,10 0 1,1 0,-20"
+        android:strokeColor="@color/md3_primary_bright"
+        android:strokeWidth="2.5"
+        android:strokeAlpha="0.35"
+        android:fillColor="@android:color/transparent" />
+
+    <!-- 中心核 -->
+    <path
+        android:pathData="M24,21 a3,3 0 1,1 0,6 a3,3 0 1,1 0,-6"
+        android:fillColor="@color/md3_primary"
+        android:fillAlpha="0.9" />
+</vector>

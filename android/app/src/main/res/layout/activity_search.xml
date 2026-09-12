@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md3_surface"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/md3_search_panel_width"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/md3_search_content_gap">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/md3_search_action_gap"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSearchCheckboxBtn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_search_section_height"
+                android:background="@drawable/shape_search_row"
+                android:focusable="true"
+                android:nextFocusDown="@id/etSearch"
+                android:gravity="center"
+                android:text="指定搜索源"
+                android:textColor="@color/md3_action_text"
+                android:textSize="@dimen/ts_20" />
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_button_height"
+                android:layout_marginTop="@dimen/md3_search_action_gap"
+                android:background="@drawable/input_search"
+                android:hint="请输入要搜索的内容"
+                android:inputType="text"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:nextFocusDown="@id/tvSearch"
+                android:nextFocusUp="@id/tvSearchCheckboxBtn"
+                android:paddingLeft="@dimen/md3_space_3"
+                android:paddingRight="@dimen/md3_space_3"
+                android:textColor="@color/md3_on_surface"
+                android:textColorHint="@color/md3_on_surface_variant"
+                android:textSize="@dimen/ts_20" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_button_height"
+                android:layout_marginTop="@dimen/md3_search_action_gap"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/md3_button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_search_primary"
+                    android:focusable="true"
+                    android:nextFocusDown="@id/keyBoardRoot"
+                    android:nextFocusRight="@id/tvClear"
+                    android:nextFocusUp="@id/etSearch"
+                    android:gravity="center"
+                    android:text="搜索"
+                    android:textColor="@color/md3_on_primary"
+                    android:textSize="@dimen/ts_20" />
+
+                <Space
+                    android:layout_width="@dimen/md3_search_action_gap"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/tvClear"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/md3_button_height"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_search_secondary"
+                    android:focusable="true"
+                    android:nextFocusLeft="@id/tvSearch"
+                    android:nextFocusUp="@id/etSearch"
+                    android:gravity="center"
+                    android:text="清空"
+                    android:textColor="@color/md3_on_surface"
+                    android:textSize="@dimen/ts_20" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.github.tvbox.osc.ui.tv.widget.SearchKeyboard
+            android:id="@+id/keyBoardRoot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/remoteRoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/md3_search_content_gap"
+                android:gravity="center_horizontal"
+                android:lineSpacingMultiplier="1.4"
+                android:textColor="@color/md3_on_surface"
+                android:textSize="@dimen/ts_20" />
+
+            <ImageView
+                android:id="@+id/ivQRCode"
+                android:layout_width="@dimen/md3_search_qr_size"
+                android:layout_height="@dimen/md3_search_qr_size"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/md3_search_qr_margin"
+                tools:ignore="InOrMmUsage" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llWord"
+        android:layout_width="@dimen/md3_search_word_panel_width"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/md3_search_content_gap"
+        android:paddingBottom="@dimen/md3_search_content_gap">
+
+        <TextView
+            android:id="@+id/wordSwitch"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md3_search_section_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/md3_search_action_gap"
+            android:background="@drawable/shape_search_row"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="热词 | 历史"
+            android:textColor="@color/md3_action_text"
+            android:textSize="@dimen/ts_20"
+            android:textStyle="normal" />
+
+        <com.owen.tvrecyclerview.widget.TvRecyclerView
+            android:id="@+id/mGridViewWord"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:tv_horizontalSpacingWithMargins="@dimen/md3_search_grid_gap"
+            app:tv_selectedItemIsCentered="true"
+            app:tv_verticalSpacingWithMargins="@dimen/md3_search_word_gap" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llHistoryWord"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/md3_search_history_offset"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/md3_search_content_gap"
+        android:paddingBottom="@dimen/md3_search_content_gap"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md3_button_height"
+            android:gravity="top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvHistoryTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/md3_search_section_height"
+                android:gravity="center_vertical"
+                android:letterSpacing="0.08"
+                android:text="历  史"
+                android:textColor="@color/md3_on_surface"
+                android:textSize="@dimen/ts_22"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/tvHistoryClear"
+                android:layout_width="@dimen/md3_search_icon_button_size"
+                android:layout_height="@dimen/md3_search_icon_button_size"
+                android:layout_marginRight="@dimen/md3_search_content_gap"
+                android:background="@drawable/button_search_secondary"
+                android:focusable="true"
+                android:padding="@dimen/md3_space_1"
+                android:src="@drawable/icon_delete"
+                android:tint="@color/md3_icon_tint" />
+        </LinearLayout>
+
+        <GridLayout
+            android:id="@+id/historyWordGrid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/md3_search_action_gap"
+            android:columnCount="3"
+            android:clipChildren="false"
+            android:clipToPadding="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/md3_search_action_gap"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/md3_search_action_gap"
+        android:paddingRight="@dimen/md3_search_content_gap"
+        android:paddingBottom="@dimen/md3_search_action_gap">
+
+        <com.owen.tvrecyclerview.widget.TvRecyclerView
+            android:id="@+id/mGridView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingRight="@dimen/md3_search_content_gap"
+            android:visibility="invisible"
+            app:tv_horizontalSpacingWithMargins="@dimen/md3_search_grid_gap"
+            app:tv_selectedItemIsCentered="true"
+            app:tv_verticalSpacingWithMargins="@dimen/md3_search_grid_gap" />
+    </LinearLayout>
+</LinearLayout>

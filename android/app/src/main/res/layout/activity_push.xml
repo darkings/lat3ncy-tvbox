@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/g6_tool_page"
+    android:padding="@dimen/md3_space_5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/g6_tool_panel"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="手机推送"
+            android:textColor="@color/md3_on_surface"
+            android:textSize="@dimen/ts_34"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/md3_space_2"
+            android:gravity="center"
+            android:text="请确认手机与电视连接同一 Wi‑Fi，仅局域网可访问"
+            android:textColor="@color/md3_on_surface_variant"
+            android:textSize="@dimen/ts_20" />
+
+        <ImageView
+            android:id="@+id/ivQRCode"
+            android:layout_width="@dimen/vs_300"
+            android:layout_height="@dimen/vs_300"
+            android:layout_marginTop="@dimen/md3_space_5"
+            android:layout_gravity="center"
+            android:background="@drawable/g6_qr_surface"
+            android:contentDescription="手机推送二维码" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/vs_20"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.5"
+            android:textAlignment="gravity"
+            android:contentDescription="手机推送访问地址"
+            android:textColor="@color/md3_on_surface_variant"
+            android:textSize="@dimen/ts_24"
+            tools:text="1111111111111111111111111111111111111111111111111111" />
+
+        <TextView
+            android:id="@+id/pushLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/vs_20"
+            android:background="@drawable/button_search_primary"
+            android:contentDescription="推送剪贴板内容"
+            android:focusable="true"
+            android:gravity="center"
+            android:minHeight="@dimen/md3_button_height"
+            android:minWidth="@dimen/md3_button_primary_min_width"
+            android:padding="@dimen/vs_10"
+            android:text="推送剪贴板内容"
+            android:textColor="@color/md3_on_primary"
+            android:textSize="@dimen/ts_24" />
+    </LinearLayout>
+</FrameLayout>

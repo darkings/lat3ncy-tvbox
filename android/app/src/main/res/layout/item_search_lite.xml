@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/md3_search_result_row_height"
+    android:background="@drawable/shape_search_row"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/md3_space_4"
+        android:paddingEnd="@dimen/md3_space_4">
+
+        <TextView
+            android:id="@+id/tvSearchSource"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/md3_tertiary"
+            android:textSize="@dimen/ts_14" />
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/md3_space_1"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/md3_on_surface"
+            android:textSize="@dimen/ts_20"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSearchMeta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/md3_space_1"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/md3_on_surface_variant"
+            android:textSize="@dimen/ts_16"
+            android:visibility="gone" />
+    </LinearLayout>
+</FrameLayout>

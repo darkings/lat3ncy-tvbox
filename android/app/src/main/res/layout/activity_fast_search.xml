@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 左侧源列表按设置页左边栏整栏来：全高导航底 + 等宽菜单项，右侧才是状态和结果 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md3_surface"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="horizontal">
+
+    <!--
+      与设置页左边栏同宽同色。
+      左侧多留一档边距，把等宽源列表整体往右推，利用栏内右侧空位，
+      同时给 3dp 焦点描边留出绘制空间，避免贴边被切掉。
+    -->
+    <LinearLayout
+        android:id="@+id/llWord"
+        android:layout_width="@dimen/md3_setting_nav_width"
+        android:layout_height="match_parent"
+        android:background="@color/md3_surface_container_low"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/md3_space_6"
+        android:paddingTop="@dimen/md3_space_5"
+        android:paddingEnd="@dimen/md3_space_3"
+        android:paddingBottom="@dimen/md3_space_5">
+
+        <com.owen.tvrecyclerview.widget.TvRecyclerView
+            android:id="@+id/mGridViewWord"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:focusable="true"
+            android:nextFocusRight="@id/llLayout"
+            android:paddingTop="@dimen/md3_space_2"
+            android:paddingBottom="@dimen/md3_space_2" />
+    </LinearLayout>
+
+    <!-- 右侧内容区：顶部状态/分词，下面才是结果网格（LoadSir 仍只盖结果） -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/md3_space_4"
+        android:paddingTop="@dimen/md3_space_4"
+        android:paddingEnd="@dimen/md3_space_5"
+        android:paddingBottom="@dimen/md3_space_4">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/md3_button_height"
+            android:layout_marginBottom="@dimen/md3_space_2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mSearchTitle"
+                android:layout_width="@dimen/md3_fast_status_width"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/md3_fast_status_gap"
+                android:background="@drawable/bg_fast_search_status"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:lines="2"
+                android:maxLines="2"
+                android:text="&#x51C6;&#x5907;&#x641C;&#x7D22;&#10;&#x7ED3;&#x679C; 0"
+                android:textColor="@color/md3_on_surface"
+                android:textSize="@dimen/ts_16" />
+
+            <com.owen.tvrecyclerview.widget.TvRecyclerView
+                android:id="@+id/mGridViewWordFenci"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_button_height"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                app:tv_horizontalSpacingWithMargins="@dimen/md3_search_grid_gap"
+                app:tv_selectedItemIsCentered="true"
+                app:tv_verticalSpacingWithMargins="@dimen/md3_search_grid_gap" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            tools:ignore="InOrMmUsage">
+
+            <com.owen.tvrecyclerview.widget.TvRecyclerView
+                android:id="@+id/mGridView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:nextFocusLeft="@id/mGridViewWord"
+                android:paddingTop="@dimen/md3_space_2"
+                android:paddingBottom="@dimen/md3_space_2"
+                android:visibility="invisible"
+                app:tv_horizontalSpacingWithMargins="@dimen/md3_search_content_gap"
+                app:tv_selectedItemIsCentered="true"
+                app:tv_verticalSpacingWithMargins="@dimen/md3_search_content_gap" />
+
+            <com.owen.tvrecyclerview.widget.TvRecyclerView
+                android:id="@+id/mGridViewFilter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:nextFocusLeft="@id/mGridViewWord"
+                android:paddingTop="@dimen/md3_space_2"
+                android:paddingBottom="@dimen/md3_space_2"
+                android:visibility="invisible"
+                app:tv_horizontalSpacingWithMargins="@dimen/md3_search_grid_gap"
+                app:tv_selectedItemIsCentered="true"
+                app:tv_verticalSpacingWithMargins="@dimen/md3_search_grid_gap" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

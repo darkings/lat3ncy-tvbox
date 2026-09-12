@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 统一 Toast 背景（普通提示）
+     设计令牌: design-tokens.json
+       容器色   = color.surfaceHigh      (#2F2824) -> md3_surface_container_high
+       描边     = color.outlineSubtle    (#52433F) -> md3_outline_variant, 1dp
+       圆角     = shape.control          (12)      -> md3_corner_md
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/md3_surface_container_high" />
+    <corners android:radius="@dimen/md3_corner_md" />
+    <stroke
+        android:width="@dimen/md3_outline_stroke_width"
+        android:color="@color/md3_outline_variant" />
+</shape>

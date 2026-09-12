@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <!-- 断点续播提示背景：md3_surface_container 90% 透明度 -->
+    <solid android:color="@color/playback_tip_bg" />
+    <!-- 全圆角胶囊 -->
+    <corners android:radius="999mm" />
+    <!-- 描边：md3_outline_variant -->
+    <stroke
+        android:width="1mm"
+        android:color="@color/md3_outline_variant" />
+</shape>

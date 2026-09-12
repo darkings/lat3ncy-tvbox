@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="@dimen/vs_600"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/g6_dialog_panel"
+        android:elevation="@dimen/md3_elevation_3"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/vs_36"
+        android:paddingTop="@dimen/vs_30"
+        android:paddingRight="@dimen/vs_36"
+        android:paddingBottom="@dimen/vs_30">
+
+        <TextView
+            android:id="@+id/aboutTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="关于 Ponyo TV"
+            android:textColor="@color/md3_on_surface"
+            android:textSize="@dimen/ts_28"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/aboutVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vs_12"
+            android:gravity="center"
+            android:textColor="@color/dialog_text_hint"
+            android:textSize="@dimen/ts_22" />
+
+        <TextView
+            android:id="@+id/aboutDedication"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vs_24"
+            android:gravity="center"
+            android:lineSpacingExtra="@dimen/md3_space_1"
+            android:text="♥ 献给最爱的女儿小波妞 ♥"
+            android:textColor="@color/md3_primary_bright"
+            android:textSize="@dimen/ts_26"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/aboutNotice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/vs_24"
+            android:lineSpacingExtra="@dimen/md3_space_1"
+            android:text="本软件仅提供聚合展示功能，所有资源来自网络，不参与任何制作、上传、储存、下载等内容。软件仅供学习参考，请于安装后 24 小时内删除。\n\n打包分发请保留出处：\nhttps://github.com/CatVodTVOfficial/TVBoxOSC\nhttps://github.com/q215613905/TVBoxOS"
+            android:textColor="@color/dialog_text_primary"
+            android:textSize="@dimen/ts_22" />
+
+        <TextView
+            android:id="@+id/aboutClose"
+            android:layout_width="@dimen/vs_200"
+            android:layout_height="@dimen/vs_60"
+            android:layout_marginTop="@dimen/vs_28"
+            android:background="@drawable/g6_dialog_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:text="关闭"
+            android:textColor="@color/md3_on_primary_container"
+            android:textSize="@dimen/ts_24" />
+
+    </LinearLayout>
+
+</FrameLayout>

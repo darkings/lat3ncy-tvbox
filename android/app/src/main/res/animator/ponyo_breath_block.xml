@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  呼吸圆角块 - 外层 group(block):
+  对齐 HTML @keyframes cube 1.6s:
+    scale 0.7↔1.0, rotation 0→180, opacity 0.55↔1.0
+  图标必须嵌在 block 内, 再单独反转角度.
+-->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:ordering="together">
+
+    <objectAnimator
+        android:propertyName="scaleX"
+        android:valueFrom="0.7"
+        android:valueTo="1.0"
+        android:duration="800"
+        android:interpolator="@interpolator/md3_emphasized"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse" />
+    <objectAnimator
+        android:propertyName="scaleY"
+        android:valueFrom="0.7"
+        android:valueTo="1.0"
+        android:duration="800"
+        android:interpolator="@interpolator/md3_emphasized"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse" />
+    <objectAnimator
+        android:propertyName="rotation"
+        android:valueFrom="0"
+        android:valueTo="180"
+        android:duration="1600"
+        android:interpolator="@interpolator/md3_emphasized"
+        android:repeatCount="infinite"
+        android:repeatMode="restart" />
+    <objectAnimator
+        android:propertyName="alpha"
+        android:valueFrom="0.55"
+        android:valueTo="1.0"
+        android:duration="800"
+        android:interpolator="@interpolator/md3_emphasized"
+        android:repeatCount="infinite"
+        android:repeatMode="reverse" />
+</set>

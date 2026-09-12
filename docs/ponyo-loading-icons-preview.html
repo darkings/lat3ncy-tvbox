@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Ponyo TV Loading · 5 个图标变体</title>
+  <style>
+    @font-face {
+      font-family: "Material Symbols Rounded";
+      src: url("../tools/md3_res/MaterialSymbolsRounded.ttf") format("truetype");
+      font-display: block;
+    }
+
+    :root {
+      --bg: #17120f;
+      --bg-glow: #2d1b16;
+      --surface: #211b18;
+      --surface-high: #342c28;
+      --surface-highest: #3a322e;
+      --line: #544640;
+      --coral: #f1a494;
+      --coral-bright: #f8bbae;
+      --text: #f4e7e2;
+      --muted: #cbb8b1;
+      --quiet: #9f8d87;
+      --motion: 1.6s;
+      --ease: cubic-bezier(.3, 0, .2, 1);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      padding: clamp(28px, 5vw, 64px);
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(241, 164, 148, .09), transparent 30rem),
+        radial-gradient(circle at 88% 100%, rgba(241, 164, 148, .05), transparent 34rem),
+        var(--bg);
+      font-family: "Segoe UI", "Microsoft YaHei UI", system-ui, sans-serif;
+    }
+
+    .page {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: clamp(28px, 4vw, 44px);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--coral-bright);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.08;
+      letter-spacing: -.035em;
+    }
+
+    h1 span { color: var(--coral); }
+
+    .intro {
+      max-width: 630px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .motion-toggle {
+      min-width: 118px;
+      padding: 10px 15px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(52, 44, 40, .78);
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+      transition: border-color .2s ease, background-color .2s ease, transform .2s ease;
+    }
+
+    .motion-toggle:hover,
+    .motion-toggle:focus-visible {
+      border-color: var(--coral);
+      background: var(--surface-highest);
+      outline: none;
+    }
+
+    .motion-toggle:active { transform: scale(.97); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      min-height: 322px;
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 24px;
+      border: 1px solid rgba(84, 70, 64, .86);
+      border-radius: 24px;
+      background:
+        linear-gradient(145deg, rgba(58, 50, 46, .78), rgba(33, 27, 24, .94)),
+        var(--surface);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, .16);
+      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease;
+    }
+
+    .card::before {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 48%, rgba(241, 164, 148, .10), transparent 34%);
+      content: "";
+      pointer-events: none;
+    }
+
+    .card:hover {
+      border-color: rgba(241, 164, 148, .7);
+      box-shadow: 0 22px 54px rgba(0, 0, 0, .24);
+      transform: translateY(-3px);
+    }
+
+    .card-head,
+    .loader-stage,
+    .card-foot { position: relative; z-index: 1; }
+
+    .card-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.3;
+    }
+
+    .card h2 span {
+      margin-left: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .index {
+      color: var(--quiet);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+    .loader-stage {
+      display: grid;
+      min-height: 188px;
+      place-items: center;
+    }
+
+    .breathing-block {
+      width: 92px;
+      height: 92px;
+      display: grid;
+      place-items: center;
+      border: 6px solid var(--coral-bright);
+      border-radius: 24px;
+      background: rgba(58, 50, 46, .76);
+      box-shadow:
+        0 0 0 1px rgba(248, 187, 174, .05) inset,
+        0 10px 34px rgba(241, 164, 148, .08);
+      animation: block-breathe var(--motion) var(--ease) infinite alternate both;
+      backface-visibility: hidden;
+      transform-origin: center;
+      will-change: transform, border-radius, opacity;
+    }
+
+    .symbol {
+      color: var(--coral);
+      font-family: "Material Symbols Rounded";
+      font-size: 46px;
+      font-style: normal;
+      font-weight: normal;
+      font-feature-settings: "liga";
+      font-variation-settings: "FILL" 1, "wght" 570, "GRAD" 0, "opsz" 48;
+      line-height: 1;
+      text-rendering: optimizeLegibility;
+      white-space: nowrap;
+      animation: symbol-counter-rotate var(--motion) var(--ease) infinite alternate both;
+      backface-visibility: hidden;
+      transform-origin: center;
+      will-change: transform;
+    }
+
+    .card[data-kind="play"] .symbol {
+      font-size: 52px;
+      --optical-x: 2px;
+    }
+
+    .card[data-kind="channel"] .symbol { font-size: 44px; }
+    .card[data-kind="source"] .symbol { font-size: 48px; }
+    .card[data-kind="search"] .symbol { font-size: 45px; }
+    .card[data-kind="cast"] .symbol { font-size: 46px; }
+
+    .card-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 15px;
+      border-top: 1px solid rgba(84, 70, 64, .58);
+    }
+
+    .purpose {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .purpose strong {
+      display: block;
+      margin-bottom: 2px;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    .glyph-name {
+      flex: 0 0 auto;
+      padding: 5px 9px;
+      border-radius: 8px;
+      color: var(--quiet);
+      background: rgba(23, 18, 15, .58);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 10px;
+    }
+
+    .spec {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 15px 18px;
+      border: 1px solid rgba(84, 70, 64, .62);
+      border-radius: 16px;
+      color: var(--muted);
+      background: rgba(33, 27, 24, .66);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .spec::before {
+      width: 8px;
+      height: 8px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--coral);
+      box-shadow: 0 0 0 5px rgba(241, 164, 148, .11);
+      content: "";
+    }
+
+    @keyframes block-breathe {
+      0% {
+        opacity: .56;
+        border-radius: 50%;
+        transform: scale(.72) rotate(0deg);
+      }
+      50% {
+        opacity: 1;
+        border-radius: 24px;
+        transform: scale(1) rotate(90deg);
+      }
+      100% {
+        opacity: .56;
+        border-radius: 50%;
+        transform: scale(.72) rotate(180deg);
+      }
+    }
+
+    @keyframes symbol-counter-rotate {
+      0% { transform: translateX(var(--optical-x, 0)) rotate(0deg); }
+      50% { transform: translateX(var(--optical-x, 0)) rotate(-90deg); }
+      100% { transform: translateX(var(--optical-x, 0)) rotate(-180deg); }
+    }
+
+    .is-paused .breathing-block,
+    .is-paused .symbol { animation-play-state: paused; }
+
+    @media (max-width: 760px) {
+      body { padding: 28px 18px; }
+      .hero { align-items: flex-start; flex-direction: column; }
+      .grid { grid-template-columns: 1fr; }
+      .card { min-height: 300px; }
+    }
+
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Ponyo TV · 加载动效系统</p>
+        <h1>呼吸圆角块 <span>· 5 个图标变体</span></h1>
+        <p class="intro">沿用原预览页的圆形↔圆角方块、缩放与 180° 旋转动效；图标同步反向旋转，在外框运动时始终保持正向。</p>
+      </div>
+      <button class="motion-toggle" type="button" aria-pressed="false">暂停动画</button>
+    </header>
+
+    <section class="grid" aria-label="五种加载图标预览">
+      <article class="card" data-kind="play">
+        <div class="card-head">
+          <h2>播放 <span>点播缓冲</span></h2>
+          <span class="index">01</span>
+        </div>
+        <div class="loader-stage">
+          <div class="breathing-block" role="img" aria-label="播放加载图标">
+            <span class="symbol" aria-hidden="true">&#xE037;</span>
+          </div>
+        </div>
+        <div class="card-foot">
+          <p class="purpose"><strong>播放语义</strong>放大并向右进行光学校正</p>
+          <span class="glyph-name">播放状态</span>
+        </div>
+      </article>
+
+      <article class="card" data-kind="channel">
+        <div class="card-head">
+          <h2>频道 <span>直播换台</span></h2>
+          <span class="index">02</span>
+        </div>
+        <div class="loader-stage">
+          <div class="breathing-block" role="img" aria-label="直播频道加载图标">
+            <span class="symbol" aria-hidden="true">&#xEBBA;</span>
+          </div>
+        </div>
+        <div class="card-foot">
+          <p class="purpose"><strong>直播语义</strong>简化塔架，保留无线电波</p>
+          <span class="glyph-name">直播状态</span>
+        </div>
+      </article>
+
+      <article class="card" data-kind="source">
+        <div class="card-head">
+          <h2>切换片源 <span>整页切源</span></h2>
+          <span class="index">03</span>
+        </div>
+        <div class="loader-stage">
+            <div class="breathing-block" role="img" aria-label="切换视频源加载图标">
+            <span class="symbol" aria-hidden="true">video_library</span>
+          </div>
+        </div>
+        <div class="card-foot">
+          <p class="purpose"><strong>切源语义</strong>用视频片源库表达整页切换</p>
+          <span class="glyph-name">切源状态</span>
+        </div>
+      </article>
+
+      <article class="card" data-kind="search">
+        <div class="card-head">
+          <h2>搜索 <span>搜索内容</span></h2>
+          <span class="index">04</span>
+        </div>
+        <div class="loader-stage">
+          <div class="breathing-block" role="img" aria-label="搜索内容加载图标">
+            <span class="symbol" aria-hidden="true">&#xF02F;</span>
+          </div>
+        </div>
+        <div class="card-foot">
+          <p class="purpose"><strong>搜索语义</strong>列表与放大镜组合，强调内容检索</p>
+          <span class="glyph-name">搜索状态</span>
+        </div>
+      </article>
+
+      <article class="card" data-kind="cast">
+        <div class="card-head">
+          <h2>投屏 <span>搜索设备</span></h2>
+          <span class="index">05</span>
+        </div>
+        <div class="loader-stage">
+          <div class="breathing-block" role="img" aria-label="搜索并连接投屏设备加载图标">
+            <span class="symbol" aria-hidden="true">&#xE308;</span>
+          </div>
+        </div>
+        <div class="card-foot">
+          <p class="purpose"><strong>投屏语义</strong>屏幕与无线波纹直接表达设备连接</p>
+          <span class="glyph-name">投屏状态</span>
+        </div>
+      </article>
+    </section>
+
+    <p class="spec">统一规格：92px 动画容器、6px 圆角描边、44–52px 光学图标尺寸、1.6s MD3 emphasized 缓动。</p>
+  </main>
+
+  <script>
+    const toggle = document.querySelector(".motion-toggle");
+
+    toggle.addEventListener("click", () => {
+      const paused = document.body.classList.toggle("is-paused");
+      toggle.setAttribute("aria-pressed", String(paused));
+      toggle.textContent = paused ? "继续动画" : "暂停动画";
+    });
+  </script>
+</body>
+</html>

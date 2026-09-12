@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+      angle=90: startColor 在底部，endColor 在顶部。
+      RGB 始终是纯黑 #000000，只改变 alpha：底部不透明 → 顶部全透明。
+    -->
+    <gradient
+        android:angle="90"
+        android:centerColor="@color/md3_poster_scrim_mid"
+        android:endColor="@color/md3_poster_scrim_top"
+        android:startColor="@color/md3_poster_scrim_bottom"
+        android:type="linear" />
+    <corners
+        android:bottomLeftRadius="@dimen/md3_corner_md"
+        android:bottomRightRadius="@dimen/md3_corner_md" />
+</shape>

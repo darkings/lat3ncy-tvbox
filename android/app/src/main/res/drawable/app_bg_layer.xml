@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/app_bg" />
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="@color/md3_brand_gradient_start"
+                android:endColor="@color/md3_brand_gradient_end"
+                android:centerColor="@color/md3_brand_gradient_mid" />
+        </shape>
+    </item>
+</layer-list>

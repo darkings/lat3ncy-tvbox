@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ============================================================
+         Ponyo TV · Material Design 3 color system ("Warm Sea")
+         Seed: #D97C72 (ponyo coral) · Dark scheme (TV-first)
+         Roles follow MD3 tokens: primary/secondary/tertiary/neutral
+         ============================================================ -->
+
+    <!-- MD3 · Primary (coral) -->
+    <color name="md3_primary">#F1A494</color>
+    <color name="md3_on_primary">#561E14</color>
+    <color name="md3_primary_container">#743B30</color>
+    <color name="md3_on_primary_container">#FFDBD2</color>
+    <color name="md3_primary_bright">#F8BBAE</color>
+
+    <!-- MD3 · Secondary (warm brown) -->
+    <color name="md3_secondary">#E7BDB4</color>
+    <color name="md3_on_secondary">#442921</color>
+    <color name="md3_secondary_container">#5D3F37</color>
+    <color name="md3_on_secondary_container">#FFDBD2</color>
+
+    <!-- MD3 · Tertiary (sea blue, Ponyo's dress) -->
+    <color name="md3_tertiary">#8FCFFC</color>
+    <color name="md3_on_tertiary">#00344F</color>
+    <color name="md3_tertiary_container">#004C70</color>
+    <color name="md3_on_tertiary_container">#C8E6FF</color>
+
+    <!-- MD3 · Surface (deep cocoa) -->
+    <color name="md3_surface">#17120F</color>
+    <color name="md3_on_surface">#F0DED9</color>
+    <color name="md3_on_surface_variant">#D6C2BC</color>
+    <color name="md3_poster_text_shadow">#99000000</color>
+    <color name="md3_surface_variant">#52433F</color>
+    <color name="md3_surface_container_lowest">#120D0A</color>
+    <color name="md3_surface_container_low">#201A16</color>
+    <color name="md3_surface_container">#241E1A</color>
+    <color name="md3_surface_container_high">#2F2824</color>
+    <color name="md3_surface_container_highest">#3A322E</color>
+    <color name="md3_surface_dim">#17120F</color>
+    <color name="md3_surface_bright">#3E322D</color>
+    <color name="md3_inverse_surface">#F0DED9</color>
+    <color name="md3_inverse_on_surface">#382A26</color>
+    <color name="md3_inverse_primary">#8F4E40</color>
+
+    <!-- MD3 · Outline -->
+    <color name="md3_outline">#9F8B85</color>
+    <color name="md3_outline_variant">#52433F</color>
+
+    <!-- MD3 · Error -->
+    <color name="md3_error">#FFB4AB</color>
+    <color name="md3_on_error">#690005</color>
+    <color name="md3_error_container">#93000A</color>
+    <color name="md3_on_error_container">#FFDAD6</color>
+
+    <!-- MD3 · Scrim -->
+    <color name="md3_scrim">#000000</color>
+    <!-- Poster title scrim: black only, alpha fades from opaque bottom to transparent top. -->
+    <color name="md3_poster_scrim_bottom">#FF000000</color>
+    <color name="md3_poster_scrim_mid">#80000000</color>
+    <color name="md3_poster_scrim_top">#00000000</color>
+    <!-- Legacy aliases kept for live/video overlays that still reference the old names. -->
+    <color name="md3_poster_scrim_start">#00000000</color>
+    <color name="md3_poster_scrim_end">#FF000000</color>
+    <color name="md3_video_scrim_mid">#80000000</color>
+    <color name="md3_video_scrim_end">#E6000000</color>
+
+    <!-- MD3 · Focus states (TV): focused = primary-container fill + primary outline -->
+    <color name="md3_focus_fill">@color/md3_primary_container</color>
+    <color name="md3_focus_stroke">@color/md3_primary</color>
+    <color name="md3_focus_fill_soft">#52743B30</color>
+    <color name="md3_focus_text">@color/md3_on_primary_container</color>
+    <color name="md3_video_control_text">@color/md3_on_surface</color>
+    <color name="md3_video_control_secondary">@color/md3_on_surface_variant</color>
+    <!-- 当前已选分类：与焦点态分离，保留轻量暖色底和主色描边。 -->
+    <color name="md3_selected_fill">#402A25</color>
+    <color name="md3_selected_stroke">@color/md3_primary</color>
+
+    <!-- MD3 · Brand accents -->
+    <color name="md3_brand_gradient_start">#2F1B17</color>
+    <color name="md3_brand_gradient_mid">#B317120F</color>
+    <color name="md3_brand_gradient_end">#1A120F</color>
+    <color name="md3_brand_glow">#338FCFFC</color>
+
+    <!-- Ponyo TV · 4K splash poster ("Midnight Cinema") -->
+    <color name="ponyo_splash_base">#160F10</color>
+    <color name="ponyo_splash_gradient_mid">#211315</color>
+    <color name="ponyo_splash_gradient_end">#2B1719</color>
+    <color name="ponyo_splash_title">#FFF1EC</color>
+    <color name="ponyo_splash_tagline">#FFB5A6</color>
+    <color name="ponyo_splash_gold">#E8B86A</color>
+
+    <!-- ============================================================
+         Legacy palette (aliases to MD3 roles, kept for references)
+         ============================================================ -->
+    <color name="color_6200EE">@color/md3_primary</color>
+    <color name="color_3700B3">@color/md3_on_primary</color>
+    <color name="color_03DAC5">@color/md3_tertiary</color>
+    <color name="title_fouse_n">@color/md3_primary</color>
+    <color name="color_1890FF">@color/md3_primary</color>
+    <color name="color_FFB800">@color/md3_tertiary_container</color>
+    <color name="color_00FF0A">@color/md3_primary</color>
+    <color name="color_CBF46A">@color/md3_tertiary</color>
+    <color name="color_FF90CA09">@color/md3_primary_container</color>
+    <color name="color_BD0CADE2">@color/md3_primary_container</color>
+    <color name="color_FF0057">@color/md3_tertiary_container</color>
+    <color name="color_FF5F00">@color/md3_primary</color>
+    <color name="color_FFB6C1">@color/md3_primary_bright</color>
+    <color name="color_3D3D3D">@color/md3_surface_container_high</color>
+    <color name="color_32364E">@color/md3_surface_container</color>
+    <color name="color_6632364E">#66241E1A</color>
+    <color name="color_CCFFFFFF">#BBFFFFFF</color>
+    <color name="color_0CADE2">#E9A18F</color>
+    <color name="color_6CFFFFFF">#6CFFFFFF</color>
+    <color name="color_66000000">#66000000</color>
+    <color name="color_99000000">#99000000</color>
+    <color name="color_FFFFFF_50">#80FFFFFF</color>
+    <color name="color_CC000000">#CC000000</color>
+    <color name="color_000000_30">#48000000</color>
+    <color name="color_02F8E1">@color/md3_tertiary</color>
+    <color name="color_353744">@color/md3_surface_container_high</color>
+    <color name="color_CC353744">#CC2F2824</color>
+    <color name="color_6C3D3D3D">#6c3d3d3d</color>
+    <color name="color_BBFFFFFF">#bbffffff</color>
+    <color name="color_FFFFFF">#ffffffff</color>
+    <color name="color_33FFFFFF">#33ffffff</color>
+    <color name="color_99FFFFFF">#4D000000</color>
+    <color name="color_59353744">#592F2824</color>
+    <color name="color_80FF0057">@color/md3_focus_fill_soft</color>
+    <color name="color_000000_60">@color/md3_scrim_60</color>
+    <color name="color_dialog_bg">#E62A1F26</color>
+    <color name="color_scrollview_bg">#44000000</color>
+    <color name="color_text_primary">@color/md3_on_surface</color>
+
+    <!-- Ponyo TV brand (aliases to MD3 roles) -->
+    <color name="ponyo_peach">@color/md3_primary_container</color>
+    <color name="ponyo_coral">@color/md3_primary</color>
+    <color name="ponyo_coral_bright">#F8BBAE</color>
+    <!-- 断点续播提示背景：surface_container 90% 透明度 -->
+    <color name="playback_tip_bg">#E6241E1A</color>
+    <color name="ponyo_cream">@color/md3_on_surface</color>
+    <color name="ponyo_cocoa">@color/md3_surface_container</color>
+    <color name="ponyo_surface">@color/md3_surface_container_low</color>
+    <color name="ponyo_surface_soft">#993D2D34</color>
+    <color name="ponyo_focus_fill">@color/md3_focus_fill</color>
+    <color name="ponyo_focus_stroke">@color/md3_focus_stroke</color>
+
+    <!-- Unified dialog palette (aliases to MD3 roles) -->
+    <color name="dialog_panel_bg">@color/md3_surface_container_high</color>
+    <color name="dialog_panel_stroke">@color/md3_outline_variant</color>
+    <color name="dialog_control_bg">@color/md3_surface_container</color>
+    <color name="dialog_control_bg_focused">@color/md3_focus_fill</color>
+    <color name="dialog_control_stroke">@color/md3_outline_variant</color>
+    <color name="dialog_control_stroke_focused">@color/md3_focus_stroke</color>
+    <color name="dialog_input_bg">@color/md3_surface_container</color>
+    <color name="dialog_text_primary">@color/md3_on_surface</color>
+    <color name="dialog_text_hint">@color/md3_on_surface_variant</color>
+
+    <!-- MD3 scrim for dialog dim -->
+    <color name="md3_scrim_60">#99000000</color>
+</resources>

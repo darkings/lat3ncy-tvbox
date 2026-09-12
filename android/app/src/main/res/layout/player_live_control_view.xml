@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/tv_pause_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="vod_control_pause"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="@dimen/vs_200"
+            android:layout_height="@dimen/vs_140"
+            android:layout_gravity="center"
+            android:background="@drawable/player_state_panel"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="@dimen/vs_60"
+                android:layout_height="@dimen/vs_60"
+                android:layout_gravity="center"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:src="@drawable/icon_play" />
+
+            <TextView
+                android:id="@+id/tv_pause_progress_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/vs_20"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:tag="vod_control_pause_t"
+                android:visibility="gone"
+                android:textColor="@color/md3_video_control_text"
+                android:textSize="@dimen/ts_30"
+                tools:text="100" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_slide_progress_text"
+        android:layout_width="@dimen/vs_200"
+        android:layout_height="@dimen/vs_100"
+        android:layout_gravity="center"
+        android:background="@drawable/player_state_panel"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:tag="vod_control_slide_info"
+        android:textAlignment="gravity"
+        android:textColor="@color/md3_video_control_text"
+        android:textSize="@dimen/ts_30"
+        android:visibility="gone"
+        tools:text="100" />
+
+    <!-- 直播控制条缓冲指示区：48mm 涟漪 + 慢网/换源提示文案（默认隐藏，由 LoadingIndicator 调度） -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ProgressBar
+            style="@style/PonyoLoading.Channel.Inline"
+            android:layout_gravity="center_horizontal"
+            android:tag="vod_control_loading" />
+
+        <!-- 超过 3s 仍在缓冲时显示；文案由控制器按"缓冲中/正在切换线路"场景填充 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/md3_space_3"
+            android:background="@drawable/live_status_badge"
+            android:paddingLeft="@dimen/md3_space_4"
+            android:paddingTop="@dimen/md3_space_2"
+            android:paddingRight="@dimen/md3_space_4"
+            android:paddingBottom="@dimen/md3_space_2"
+            android:tag="vod_control_loading_hint"
+            android:textColor="@color/md3_video_control_text"
+            android:textSize="@dimen/ts_18"
+            android:visibility="gone"
+            tools:text="网络较慢，正在切换线路…"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+</FrameLayout>
+

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md3_surface"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/md3_space_8"
+    android:paddingRight="@dimen/md3_space_8"
+    android:paddingTop="@dimen/md3_space_6"
+    android:paddingBottom="@dimen/md3_space_6"
+    android:focusable="false"
+    android:focusableInTouchMode="false"
+    android:descendantFocusability="afterDescendants">
+
+    <ImageView
+        android:layout_width="@dimen/md3_empty_icon_size"
+        android:layout_height="@dimen/md3_empty_icon_size"
+        android:alpha="0.72"
+        android:contentDescription="@null"
+        android:src="@drawable/icon_empty" />
+
+    <TextView
+        android:id="@+id/emptyTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/md3_space_4"
+        android:gravity="center"
+        android:textColor="@color/md3_on_surface"
+        android:textSize="@dimen/ts_28"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/emptyBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/md3_space_2"
+        android:gravity="center"
+        android:textColor="@color/md3_on_surface_variant"
+        android:textSize="@dimen/ts_22" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/md3_space_5"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/emptyPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/md3_button_height"
+            android:background="@drawable/button_search_primary"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:minWidth="@dimen/md3_button_primary_min_width"
+            android:paddingLeft="@dimen/md3_space_5"
+            android:paddingRight="@dimen/md3_space_5"
+            android:textColor="@color/md3_on_primary"
+            android:textSize="@dimen/ts_24" />
+
+        <TextView
+            android:id="@+id/emptySecondary"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/md3_button_height"
+            android:layout_marginLeft="@dimen/md3_space_4"
+            android:background="@drawable/button_detail_secondary"
+            android:clickable="true"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:minWidth="@dimen/md3_button_secondary_min_width"
+            android:paddingLeft="@dimen/md3_space_5"
+            android:paddingRight="@dimen/md3_space_5"
+            android:textColor="@color/md3_on_surface"
+            android:textSize="@dimen/ts_24" />
+    </LinearLayout>
+</LinearLayout>

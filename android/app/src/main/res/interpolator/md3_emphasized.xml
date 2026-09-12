@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  MD3 Emphasized 曲线（emphasizedAccelerate 近似），用于加载涟漪扩散。
+  与 docs/ui-audit/2026-08-10/materials/motion-spec.json 的 easing.emphasized 对应：
+  cubic-bezier(0.2, 0.0, 0.0, 1.0) → pathData M0,0 C0.2,0 0,1 1,1
+-->
+<pathInterpolator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:pathData="M0,0 C0.2,0 0,1 1,1" />

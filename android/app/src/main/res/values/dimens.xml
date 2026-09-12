@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="ts_10">10mm</dimen>
+    <dimen name="ts_14">14mm</dimen>
+    <dimen name="ts_16">16mm</dimen>
+    <dimen name="ts_18">18mm</dimen>
+    <dimen name="ts_20">20mm</dimen>
+    <dimen name="ts_22">22mm</dimen>
+    <dimen name="ts_24">24mm</dimen>
+    <dimen name="ts_26">26mm</dimen>
+    <dimen name="ts_28">28mm</dimen>
+    <dimen name="ts_30">30mm</dimen>
+    <dimen name="ts_34">34mm</dimen>
+    <dimen name="ts_40">40mm</dimen>
+    <dimen name="ts_50">50mm</dimen>
+    <dimen name="ts_100">100mm</dimen>
+
+    <dimen name="focus_border_1">1mm</dimen>
+    <dimen name="focus_border_2">2mm</dimen>
+    <dimen name="radius_5">5mm</dimen>
+    <dimen name="radius_10">8mm</dimen>
+    <dimen name="radius_20">20mm</dimen>
+    <dimen name="preview_player_radius">14mm</dimen>
+
+    <dimen name="vs_4_">-4mm</dimen>
+    <dimen name="vs_20_">-20mm</dimen>
+    <dimen name="vs_25_">-25mm</dimen>
+    <dimen name="vs_60_">-60mm</dimen>
+
+    <dimen name="vs_0">0mm</dimen>
+    <dimen name="vs_1">1mm</dimen>
+    <dimen name="vs_2">2mm</dimen>
+    <dimen name="vs_3">3mm</dimen>
+    <dimen name="vs_4">4mm</dimen>
+    <dimen name="vs_5">5mm</dimen>
+    <dimen name="vs_6">6mm</dimen>
+    <dimen name="vs_7">7mm</dimen>
+    <dimen name="vs_8">8mm</dimen>
+    <dimen name="vs_10">10mm</dimen>
+    <dimen name="vs_12">12mm</dimen>
+    <dimen name="vs_14">14mm</dimen>
+    <dimen name="vs_15">15mm</dimen>
+    <dimen name="vs_16">16mm</dimen>
+    <dimen name="vs_38">38mm</dimen>
+    <dimen name="vs_56">56mm</dimen>
+
+
+    <dimen name="vs_20">20mm</dimen>
+    <dimen name="vs_22">22mm</dimen>
+    <dimen name="vs_24">24mm</dimen>
+    <dimen name="vs_26">26mm</dimen>
+    <dimen name="vs_28">28mm</dimen>
+    <dimen name="vs_30">30mm</dimen>
+    <dimen name="vs_32">32mm</dimen>
+    <dimen name="vs_64">64mm</dimen>
+    <dimen name="vs_34">34mm</dimen>
+    <dimen name="vs_35">35mm</dimen>
+    <dimen name="vs_36">36mm</dimen>
+    <dimen name="vs_40">40mm</dimen>
+    <dimen name="vs_44">44mm</dimen>
+    <dimen name="vs_45">45mm</dimen>
+    <dimen name="vs_48">48mm</dimen>
+    <dimen name="vs_50">50mm</dimen>
+    <dimen name="vs_54">54mm</dimen>
+    <dimen name="vs_60">60mm</dimen>
+    <dimen name="vs_70">70mm</dimen>
+    <dimen name="vs_78">78mm</dimen>
+    <dimen name="vs_76">76mm</dimen>
+    <dimen name="vs_80">80mm</dimen>
+    <dimen name="vs_90">90mm</dimen>
+    <dimen name="vs_100">100mm</dimen>
+    <dimen name="vs_108">108mm</dimen>
+    <dimen name="vs_120">120mm</dimen>
+    <dimen name="vs_128">128mm</dimen>
+    <dimen name="vs_130">130mm</dimen>
+    <dimen name="vs_140">140mm</dimen>
+    <dimen name="vs_150">150mm</dimen>
+    <dimen name="vs_160">160mm</dimen>
+    <dimen name="vs_162">162mm</dimen>
+    <dimen name="vs_165">165mm</dimen>
+    <dimen name="vs_170">170mm</dimen>
+    <dimen name="vs_180">180mm</dimen>
+    <dimen name="vs_190">190mm</dimen>
+    <dimen name="vs_200">200mm</dimen>
+    <dimen name="vs_214">214mm</dimen>
+    <dimen name="vs_204">204mm</dimen>
+    <dimen name="vs_220">220mm</dimen>
+    <dimen name="vs_230">230mm</dimen>
+    <!-- 详情页海报：严格 2:3 避免 centerCrop 裁切（设计令牌 200×300，按 TV 密度等比放大到 mm） -->
+    <dimen name="poster_w">200mm</dimen>
+    <dimen name="vs_240">240mm</dimen>
+    <dimen name="vs_250">250mm</dimen>
+    <dimen name="vs_270">270mm</dimen>
+    <dimen name="vs_272">272mm</dimen>
+    <dimen name="vs_280">280mm</dimen>
+    <dimen name="vs_300">300mm</dimen>
+    <dimen name="vs_320">320mm</dimen>
+    <dimen name="vs_330">330mm</dimen>
+    <dimen name="vs_340">340mm</dimen>
+    <dimen name="vs_360">360mm</dimen>
+    <dimen name="vs_390">390mm</dimen>
+    <dimen name="vs_400">400mm</dimen>
+    <dimen name="vs_420">420mm</dimen>
+    <dimen name="vs_440">440mm</dimen>
+    <dimen name="vs_410">410mm</dimen>
+    <dimen name="vs_470">470mm</dimen>
+    <dimen name="vs_480">480mm</dimen>
+    <dimen name="vs_520">540mm</dimen>
+    <dimen name="vs_600">600mm</dimen>
+    <dimen name="vs_610">610mm</dimen>
+    <dimen name="vs_640">640mm</dimen>
+    <dimen name="vs_720">720mm</dimen>
+    <dimen name="vs_960">960mm</dimen>
+
+    <!-- ============================================================
+         MD3 · Shape tokens (dp)
+         ============================================================ -->
+    <dimen name="md3_corner_none">0dp</dimen>
+    <dimen name="md3_corner_xs">4dp</dimen>
+    <dimen name="md3_corner_sm">8dp</dimen>
+    <dimen name="md3_corner_md">12dp</dimen>
+    <dimen name="md3_corner_lg">16dp</dimen>
+    <dimen name="md3_corner_xl">28dp</dimen>
+    <dimen name="md3_corner_full">999dp</dimen>
+
+    <!-- MD3 · Focus stroke -->
+    <dimen name="md3_focus_stroke_width">3dp</dimen>
+    <dimen name="md3_outline_stroke_width">1dp</dimen>
+
+    <!-- MD3 · TV control geometry (design-mm subunits) -->
+    <dimen name="md3_button_height">56mm</dimen>
+    <dimen name="md3_button_primary_min_width">128mm</dimen>
+    <dimen name="md3_button_secondary_min_width">112mm</dimen>
+    <dimen name="md3_episode_height">48mm</dimen>
+    <dimen name="md3_episode_min_width">96mm</dimen>
+    <dimen name="md3_route_height">64mm</dimen>
+    <dimen name="md3_group_height">56mm</dimen>
+    <dimen name="md3_setting_nav_width">220mm</dimen>
+    <dimen name="md3_setting_row_height">64mm</dimen>
+    <dimen name="md3_setting_row_gap">12mm</dimen>
+    <dimen name="md3_setting_switch_width">52mm</dimen>
+    <dimen name="md3_setting_switch_height">32mm</dimen>
+    <dimen name="md3_setting_switch_thumb_size">24mm</dimen>
+    <dimen name="md3_filter_chip_height">44mm</dimen>
+    <dimen name="md3_filter_chip_padding_h">16mm</dimen>
+    <dimen name="md3_filter_chip_gap">8mm</dimen>
+    <dimen name="md3_filter_row_gap">12mm</dimen>
+    <dimen name="md3_filter_panel_max_height">324mm</dimen>
+    <dimen name="md3_panel_corner">16mm</dimen>
+    <dimen name="md3_dialog_max_width">880mm</dimen>
+    <dimen name="md3_empty_icon_size">96dp</dimen>
+
+    <!-- MD3 · Search layout geometry (design-mm, matching the TV canvas scale). -->
+    <dimen name="md3_search_panel_width">420mm</dimen>
+    <dimen name="md3_search_word_panel_width">240mm</dimen>
+    <dimen name="md3_search_history_offset">20mm</dimen>
+    <dimen name="md3_search_qr_size">300mm</dimen>
+    <dimen name="md3_search_qr_margin">20mm</dimen>
+    <dimen name="md3_search_action_gap">10mm</dimen>
+    <dimen name="md3_search_grid_gap">5mm</dimen>
+    <dimen name="md3_search_word_gap">10mm</dimen>
+    <dimen name="md3_search_content_gap">20mm</dimen>
+    <dimen name="md3_search_history_icon_size">50mm</dimen>
+    <dimen name="md3_search_history_title_height">28mm</dimen>
+    <dimen name="md3_search_section_height">44mm</dimen>
+    <dimen name="md3_search_icon_button_size">52mm</dimen>
+    <dimen name="md3_search_result_row_height">72mm</dimen>
+    <dimen name="md3_fast_status_width">220mm</dimen>
+    <dimen name="md3_fast_status_gap">24mm</dimen>
+    <dimen name="md3_fast_word_panel_width">240mm</dimen>
+
+    <!-- Poster token mapping: design-mm values are consumed by AutoSize's MM subunit. -->
+    <dimen name="md3_poster_width">200mm</dimen>
+    <dimen name="md3_poster_height">300mm</dimen>
+    <!-- 遮罩固定占海报高度的 1/3，足够覆盖两行标题，不再按行数收缩。 -->
+    <dimen name="md3_poster_scrim_height">100mm</dimen>
+    <dimen name="md3_poster_scrim_height_two_line">100mm</dimen>
+    <dimen name="md3_poster_scrim_height_two_line_with_subtitle">100mm</dimen>
+    <dimen name="md3_poster_scrim_top_gap">0dp</dimen>
+    <dimen name="md3_poster_scrim_height_compact">100mm</dimen>
+    <dimen name="md3_poster_badge_height">32mm</dimen>
+    <dimen name="md3_poster_title_size">20mm</dimen>
+    <dimen name="md3_poster_subtitle_size">18mm</dimen>
+    <dimen name="md3_poster_badge_size">16mm</dimen>
+
+    <!-- ============================================================
+         MD3 · 8dp spacing system (dp)
+         ============================================================ -->
+    <dimen name="md3_space_1">4dp</dimen>
+    <dimen name="md3_space_2">8dp</dimen>
+    <dimen name="md3_space_3">12dp</dimen>
+    <dimen name="md3_space_4">16dp</dimen>
+    <dimen name="md3_space_5">24dp</dimen>
+    <dimen name="md3_space_6">32dp</dimen>
+    <dimen name="md3_space_7">40dp</dimen>
+    <dimen name="md3_space_8">48dp</dimen>
+
+    <!--
+      缓冲加载指示器尺寸（design-mm，对应 design-tokens.json component.loadingIndicator）。
+      inline：播放画面内嵌缓冲（直播控制条/点播控制器），48mm 不遮挡画面主体。
+      compact：右上角等角落徽标区（直播换台提示旁），32mm。
+      page：LoadSir 整页加载，64mm 与空/错误状态图标同量级。
+    -->
+    <dimen name="md3_loading_size_inline">64mm</dimen>
+    <dimen name="md3_loading_size_compact">40mm</dimen>
+    <dimen name="md3_loading_size_page">80mm</dimen>
+    <!-- 缓冲动画节奏（ms）：与 motion-spec.json transition.loading / skeletonPulse 同族 -->
+    <integer name="md3_loading_show_delay_ms">300</integer>
+    <integer name="md3_loading_slow_hint_ms">3000</integer>
+    <integer name="md3_loading_ripple_period_ms">1200</integer>
+    <!--
+         仅用于已选按钮的短状态竖条。应用启用了 AutoSize 的 MM 子单位，
+         因而竖条也必须使用同一设计画布单位，不能混用物理 dp。
+         4 x 24 维持短条比例，12 的左内缩避免贴边或压住文字。
+    -->
+    <dimen name="md3_state_rail_width">4mm</dimen>
+    <dimen name="md3_state_rail_height">24mm</dimen>
+    <dimen name="md3_state_rail_inset_start">12mm</dimen>
+    <dimen name="md3_state_rail_gap">12mm</dimen>
+
+    <!-- ============================================================
+         MD3 · Elevation levels (tonal elevation on TV)
+         ============================================================ -->
+    <dimen name="md3_elevation_0">0dp</dimen>
+    <dimen name="md3_elevation_1">1dp</dimen>
+    <dimen name="md3_elevation_2">3dp</dimen>
+    <dimen name="md3_elevation_3">6dp</dimen>
+    <dimen name="md3_elevation_4">8dp</dimen>
+    <dimen name="md3_elevation_5">12dp</dimen>
+</resources>

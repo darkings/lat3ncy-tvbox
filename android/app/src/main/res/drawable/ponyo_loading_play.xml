@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 呼吸圆角块 · 播放三角 play_arrow · morph + scale/rotate/alpha + 图标反转 -->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:drawable="@drawable/ponyo_loading_play_vector">
+    <target android:name="blockPath" android:animation="@animator/ponyo_shape_morph" />
+    <target android:name="block" android:animation="@animator/ponyo_breath_block" />
+    <target android:name="icon" android:animation="@animator/ponyo_breath_icon_counter" />
+</animated-vector>

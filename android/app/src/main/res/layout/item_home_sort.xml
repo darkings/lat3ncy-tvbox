@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/vs_44"
+    android:minWidth="@dimen/vs_90"
+    android:background="@drawable/button_home_sort_focus"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:nextFocusUp="@id/topLayout"
+    android:nextFocusDown="@id/mViewPager">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/vs_12">
+
+        <View
+            android:id="@+id/sortSelectedBar"
+            android:layout_width="@dimen/md3_state_rail_width"
+            android:layout_height="@dimen/md3_state_rail_height"
+            android:layout_marginStart="@dimen/md3_state_rail_inset_start"
+            android:layout_marginEnd="@dimen/vs_7"
+            android:background="@drawable/state_rail_primary"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:focusable="false"
+            android:gravity="center"
+            android:maxLines="1"
+            android:textColor="@color/md3_action_text"
+            android:textSize="@dimen/ts_22" />
+
+        <ImageView
+            android:id="@+id/tvFilter"
+            android:layout_width="@dimen/vs_26"
+            android:layout_height="@dimen/vs_26"
+            android:layout_marginStart="@dimen/vs_4"
+            android:src="@drawable/icon_filter"
+            android:visibility="gone"
+            app:tint="@color/md3_icon_tint" />
+
+        <ImageView
+            android:id="@+id/tvFilterColor"
+            android:layout_width="@dimen/vs_26"
+            android:layout_height="@dimen/vs_26"
+            android:layout_marginStart="@dimen/vs_4"
+            android:src="@drawable/icon_filter"
+            android:visibility="gone"
+            app:tint="@color/md3_primary" />
+    </LinearLayout>
+</FrameLayout>

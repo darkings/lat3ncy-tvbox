@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/md3_episode_height"
+    android:layout_margin="@dimen/vs_5"
+    android:background="@drawable/shape_detail_episode"
+    android:clickable="true"
+    android:focusable="true"
+    android:paddingStart="@dimen/md3_state_rail_inset_start"
+    android:paddingEnd="@dimen/md3_state_rail_inset_start">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start|center_vertical"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/stateRail"
+            android:layout_width="@dimen/md3_state_rail_width"
+            android:layout_height="@dimen/md3_state_rail_height"
+            android:layout_marginEnd="@dimen/vs_7"
+            android:background="@drawable/state_rail_primary"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tvSeries"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/text_detail_episode"
+            android:textSize="@dimen/ts_20" />
+    </LinearLayout>
+</FrameLayout>

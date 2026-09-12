@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 统一 Toast 布局
+     设计令牌: design-tokens.json
+       文字     = type.label   (size 20 / weight 500) -> ts_20
+       内边距   = spacing.xl(24) 水平 / spacing.md(12) 垂直
+       最大宽度 = 屏幕 62%，避免长文案铺满整屏
+-->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvToast"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/bg_toast"
+    android:ellipsize="end"
+    android:gravity="center"
+    android:maxWidth="800mm"
+    android:maxLines="2"
+    android:paddingLeft="@dimen/md3_space_5"
+    android:paddingTop="@dimen/md3_space_3"
+    android:paddingRight="@dimen/md3_space_5"
+    android:paddingBottom="@dimen/md3_space_3"
+    android:textColor="@color/md3_on_surface"
+    android:textSize="@dimen/ts_20" />

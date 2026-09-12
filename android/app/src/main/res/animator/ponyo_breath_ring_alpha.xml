@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  涟漪环 strokeAlpha 呼吸：0.9→0.4→0.9，周期 1600ms。
+  涟漪图标是纯描边（strokeColor），需动画 strokeAlpha 而非 fillAlpha。
+-->
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:propertyName="strokeAlpha"
+    android:valueFrom="0.9"
+    android:valueTo="0.4"
+    android:duration="1600"
+    android:interpolator="@interpolator/md3_emphasized"
+    android:repeatCount="infinite"
+    android:repeatMode="reverse" />

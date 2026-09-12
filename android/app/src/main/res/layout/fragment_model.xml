@@ -1,0 +1,835 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md3_surface"
+    android:paddingStart="@dimen/md3_space_4"
+    android:paddingTop="@dimen/md3_space_3"
+    android:paddingEnd="@dimen/md3_space_4"
+    android:paddingBottom="@dimen/md3_space_4">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/md3_space_2"
+            android:paddingBottom="@dimen/md3_space_6">
+
+            <!-- 通用：来源、入口与调试开关 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/md3_space_2"
+                android:tag="group_general"
+                android:text="常规"
+                android:textColor="@color/md3_on_surface_variant"
+                android:textSize="@dimen/ts_14" />
+
+            <LinearLayout
+                android:id="@+id/llDebug"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_general"
+                android:visibility="gone">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="调试模式"
+                    android:textColor="@color/md3_on_surface"
+                    android:textSize="@dimen/ts_18" />
+                <TextView
+                    android:id="@+id/tvDebugOpen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="关"
+                    android:textColor="@color/md3_primary_bright"
+                    android:textSize="@dimen/ts_18" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llApi"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_general">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="配置地址"
+                    android:textColor="@color/md3_on_surface"
+                    android:textSize="@dimen/ts_18" />
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+                <TextView
+                    android:id="@+id/tvApi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="middle"
+                    android:maxWidth="@dimen/md3_dialog_max_width"
+                    android:singleLine="true"
+                    android:textColor="@color/md3_primary_bright"
+                    android:textSize="@dimen/ts_16" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/md3_space_3"
+                    android:includeFontPadding="false"
+                    android:text="›"
+                    android:textColor="@color/md3_on_surface_variant"
+                    android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llApiRightGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:orientation="vertical"
+                android:tag="group_general">
+                <LinearLayout
+                    android:id="@+id/llApiHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/md3_setting_row_height"
+                    android:layout_marginBottom="@dimen/md3_space_3"
+                    android:background="@drawable/shape_setting_model_focus"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:nextFocusLeft="@id/mGridView"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/md3_space_5"
+                    android:paddingEnd="@dimen/md3_space_4">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="配置历史"
+                        android:textColor="@color/md3_on_surface"
+                        android:textSize="@dimen/ts_18" />
+                    <TextView
+                        android:id="@+id/tvMediaCodec1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:text="›"
+                        android:textColor="@color/md3_on_surface_variant"
+                        android:textSize="@dimen/ts_26" />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/llApiLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/md3_setting_row_height"
+                    android:background="@drawable/shape_setting_model_focus"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:nextFocusLeft="@id/mGridView"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/md3_space_5"
+                    android:paddingEnd="@dimen/md3_space_4"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="线路选择"
+                        android:textColor="@color/md3_on_surface"
+                        android:textSize="@dimen/ts_18" />
+                    <Space
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:id="@+id/tvApiLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="middle"
+                        android:maxWidth="@dimen/md3_dialog_max_width"
+                        android:singleLine="true"
+                        android:textColor="@color/md3_primary_bright"
+                        android:textSize="@dimen/ts_16" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/md3_space_3"
+                        android:includeFontPadding="false"
+                        android:text="›"
+                        android:textColor="@color/md3_on_surface_variant"
+                        android:textSize="@dimen/ts_26" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llHomeApi"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_general">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="首页站源" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvHomeApi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:ellipsize="middle" android:maxWidth="@dimen/md3_dialog_max_width" android:singleLine="true" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_16" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/tvHomeLive"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_6"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_general">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="下次进入" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <TextView android:id="@+id/tvHomeText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="点播" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+            </LinearLayout>
+
+            <!-- 内容 -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md3_space_2" android:tag="group_content" android:text="内容" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_14" />
+            <LinearLayout
+                android:id="@+id/llHomeRec"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="首页推荐" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvHomeRec" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llHomeRecStyle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="首页多行" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/showRecStyleText"
+                    android:layout_width="@dimen/md3_setting_switch_width"
+                    android:layout_height="@dimen/md3_setting_switch_height"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:padding="0dp"
+                    android:thumb="@drawable/md3_setting_switch_thumb"
+                    android:track="@drawable/md3_setting_switch_track"
+                    app:thumbTint="@color/md3_setting_switch_thumb_tint"
+                    app:trackTint="@color/md3_setting_switch_track_tint"
+                    app:showText="false"
+                    app:switchMinWidth="@dimen/md3_setting_switch_width" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llSearchView"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="搜索展示" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvSearchView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/showFastSearch"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_6"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_content">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="聚合搜索" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/showFastSearchText"
+                    android:layout_width="@dimen/md3_setting_switch_width"
+                    android:layout_height="@dimen/md3_setting_switch_height"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:padding="0dp"
+                    android:thumb="@drawable/md3_setting_switch_thumb"
+                    android:track="@drawable/md3_setting_switch_track"
+                    app:thumbTint="@color/md3_setting_switch_thumb_tint"
+                    app:trackTint="@color/md3_setting_switch_track_tint"
+                    app:showText="false"
+                    app:switchMinWidth="@dimen/md3_setting_switch_width" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llSearchTv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_content">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="搜索附近 TVBox" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <TextView android:id="@+id/remoteTv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="搜索" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_16" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llHistoryNum"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_6"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="历史记录" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvHistoryNum" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+
+            <!-- 播放 -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md3_space_2" android:tag="group_player" android:text="播放" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_14" />
+            <LinearLayout
+                android:id="@+id/llPlay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_player">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="播放器" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvPlay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llMediaCodec"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_player">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="IJK 解码方式" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvMediaCodec" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/m3u8Ad"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_player">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="去广告" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/m3u8AdText"
+                    android:layout_width="@dimen/md3_setting_switch_width"
+                    android:layout_height="@dimen/md3_setting_switch_height"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:padding="0dp"
+                    android:thumb="@drawable/md3_setting_switch_thumb"
+                    android:track="@drawable/md3_setting_switch_track"
+                    app:thumbTint="@color/md3_setting_switch_thumb_tint"
+                    app:trackTint="@color/md3_setting_switch_track_tint"
+                    app:showText="false"
+                    app:switchMinWidth="@dimen/md3_setting_switch_width" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/danmuOpen"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_player">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="弹幕" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/danmuOpenText"
+                    android:layout_width="@dimen/md3_setting_switch_width"
+                    android:layout_height="@dimen/md3_setting_switch_height"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:padding="0dp"
+                    android:thumb="@drawable/md3_setting_switch_thumb"
+                    android:track="@drawable/md3_setting_switch_track"
+                    app:thumbTint="@color/md3_setting_switch_thumb_tint"
+                    app:trackTint="@color/md3_setting_switch_track_tint"
+                    app:showText="false"
+                    app:switchMinWidth="@dimen/md3_setting_switch_width" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/danmuApi"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_player">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="弹幕地址" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/danmuApiText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llRender"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_player">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="渲染方式" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvRenderType" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llParseWebVew"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_player">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="嗅探 WebView" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvParseWebView" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="系统自带" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llParseSetting"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_player">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="解析器" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvParseSetting" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llScale"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_player">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="画面缩放" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvScaleType" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/showPreview"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_player">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="窗口预览" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/showPreviewText"
+                    android:layout_width="@dimen/md3_setting_switch_width"
+                    android:layout_height="@dimen/md3_setting_switch_height"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:padding="0dp"
+                    android:thumb="@drawable/md3_setting_switch_thumb"
+                    android:track="@drawable/md3_setting_switch_track"
+                    app:thumbTint="@color/md3_setting_switch_thumb_tint"
+                    app:trackTint="@color/md3_setting_switch_track_tint"
+                    app:showText="false"
+                    app:switchMinWidth="@dimen/md3_setting_switch_width" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llIjkCachePlay"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_6"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_player">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="IJK 缓存" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/tvIjkCachePlay"
+                    android:layout_width="@dimen/md3_setting_switch_width"
+                    android:layout_height="@dimen/md3_setting_switch_height"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:padding="0dp"
+                    android:thumb="@drawable/md3_setting_switch_thumb"
+                    android:track="@drawable/md3_setting_switch_track"
+                    app:thumbTint="@color/md3_setting_switch_thumb_tint"
+                    app:trackTint="@color/md3_setting_switch_track_tint"
+                    app:showText="false"
+                    app:switchMinWidth="@dimen/md3_setting_switch_width" />
+            </LinearLayout>
+
+            <!-- 直播 HLS 整片代理开关: 默认关。IJK内核下开启会攒满整个分片再喂给播放器, 大分片源会卡碟 -->
+            <LinearLayout
+                android:id="@+id/llLiveHlsProxy"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_6"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_player">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="直播 HLS 代理" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/tvLiveHlsProxy"
+                    android:layout_width="@dimen/md3_setting_switch_width"
+                    android:layout_height="@dimen/md3_setting_switch_height"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:padding="0dp"
+                    android:thumb="@drawable/md3_setting_switch_thumb"
+                    android:track="@drawable/md3_setting_switch_track"
+                    app:thumbTint="@color/md3_setting_switch_thumb_tint"
+                    app:trackTint="@color/md3_setting_switch_track_tint"
+                    app:showText="false"
+                    app:switchMinWidth="@dimen/md3_setting_switch_width" />
+            </LinearLayout>
+
+            <!-- 网络 -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md3_space_2" android:tag="group_network" android:text="网络" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_14" />
+            <LinearLayout
+                android:id="@+id/autoSwitchLine"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_network">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="自动换线" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/autoSwitchLineText"
+                    android:layout_width="@dimen/md3_setting_switch_width"
+                    android:layout_height="@dimen/md3_setting_switch_height"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:padding="0dp"
+                    android:thumb="@drawable/md3_setting_switch_thumb"
+                    android:track="@drawable/md3_setting_switch_track"
+                    app:thumbTint="@color/md3_setting_switch_thumb_tint"
+                    app:trackTint="@color/md3_setting_switch_track_tint"
+                    app:showText="false"
+                    app:switchMinWidth="@dimen/md3_setting_switch_width" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llDns"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_6"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_4"
+                android:tag="group_network">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="安全 DNS" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <Space android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1" />
+                <TextView android:id="@+id/tvDns" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_16" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/md3_space_3" android:includeFontPadding="false" android:text="›" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_26" />
+            </LinearLayout>
+
+            <!-- 外观 -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md3_space_2" android:tag="group_appearance" android:text="外观" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_14" />
+            <LinearLayout
+                android:id="@+id/llDynamicColor"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_appearance">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="动态取色（壁纸）" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/tvDynamicColor"
+                    android:layout_width="@dimen/md3_setting_switch_width"
+                    android:layout_height="@dimen/md3_setting_switch_height"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:padding="0dp"
+                    android:thumb="@drawable/md3_setting_switch_thumb"
+                    android:track="@drawable/md3_setting_switch_track"
+                    app:thumbTint="@color/md3_setting_switch_thumb_tint"
+                    app:trackTint="@color/md3_setting_switch_track_tint"
+                    app:showText="false"
+                    app:switchMinWidth="@dimen/md3_setting_switch_width" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llReduceMotion"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_appearance">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="减少动态效果" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/tvReduceMotion"
+                    android:layout_width="@dimen/md3_setting_switch_width"
+                    android:layout_height="@dimen/md3_setting_switch_height"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:importantForAccessibility="no"
+                    android:padding="0dp"
+                    android:thumb="@drawable/md3_setting_switch_thumb"
+                    android:track="@drawable/md3_setting_switch_track"
+                    app:thumbTint="@color/md3_setting_switch_thumb_tint"
+                    app:trackTint="@color/md3_setting_switch_track_tint"
+                    app:showText="false"
+                    app:switchMinWidth="@dimen/md3_setting_switch_width" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llWp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_appearance">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="换张壁纸" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="更换" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_16" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llWpRecovery"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_6"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_appearance">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="重置壁纸" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="重置" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_16" />
+            </LinearLayout>
+
+            <!-- 数据与关于 -->
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/md3_space_2" android:tag="group_data" android:text="数据与关于" android:textColor="@color/md3_on_surface_variant" android:textSize="@dimen/ts_14" />
+            <LinearLayout
+                android:id="@+id/llClearCache"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_data">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="清空缓存" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="清空" android:textColor="@color/md3_error" android:textSize="@dimen/ts_16" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llBackup"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_data">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="数据备份" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="备份" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_16" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/llAbout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/md3_setting_row_height"
+                android:layout_marginBottom="@dimen/md3_space_3"
+                android:background="@drawable/shape_setting_model_focus"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:nextFocusLeft="@id/mGridView"
+                android:orientation="horizontal"
+                android:paddingStart="@dimen/md3_space_5"
+                android:paddingEnd="@dimen/md3_space_5"
+                android:tag="group_data">
+                <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="关于" android:textColor="@color/md3_on_surface" android:textSize="@dimen/ts_18" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="查看" android:textColor="@color/md3_primary_bright" android:textSize="@dimen/ts_16" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

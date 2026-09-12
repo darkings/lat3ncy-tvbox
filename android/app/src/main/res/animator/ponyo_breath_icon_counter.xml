@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 图标反向旋转: 抵消 block 的 0→180, 保持图标正向. -->
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:propertyName="rotation"
+    android:valueFrom="0"
+    android:valueTo="-180"
+    android:duration="1600"
+    android:interpolator="@interpolator/md3_emphasized"
+    android:repeatCount="infinite"
+    android:repeatMode="restart" />

@@ -1,0 +1,145 @@
+> Task :app:preBuild UP-TO-DATE
+> Task :app:prePython64DebugBuild UP-TO-DATE
+> Task :app:mergePython64DebugNativeDebugMetadata NO-SOURCE
+> Task :player:preBuild UP-TO-DATE
+> Task :player:preDebugBuild UP-TO-DATE
+> Task :player:compileDebugAidl NO-SOURCE
+> Task :pyramid:preBuild UP-TO-DATE
+> Task :pyramid:prePython64DebugBuild UP-TO-DATE
+> Task :pyramid:compilePython64DebugAidl NO-SOURCE
+> Task :quickjs:preBuild UP-TO-DATE
+> Task :quickjs:preDebugBuild UP-TO-DATE
+> Task :quickjs:compileDebugAidl NO-SOURCE
+> Task :app:compilePython64DebugAidl NO-SOURCE
+> Task :player:packageDebugRenderscript NO-SOURCE
+> Task :pyramid:packagePython64DebugRenderscript NO-SOURCE
+> Task :quickjs:packageDebugRenderscript NO-SOURCE
+> Task :app:compilePython64DebugRenderscript NO-SOURCE
+> Task :app:generatePython64DebugBuildConfig UP-TO-DATE
+> Task :app:javaPreCompilePython64Debug UP-TO-DATE
+> Task :player:writeDebugAarMetadata UP-TO-DATE
+> Task :pyramid:writePython64DebugAarMetadata UP-TO-DATE
+> Task :quickjs:writeDebugAarMetadata UP-TO-DATE
+> Task :app:checkPython64DebugAarMetadata UP-TO-DATE
+> Task :app:generatePython64DebugResValues UP-TO-DATE
+> Task :app:generatePython64DebugResources UP-TO-DATE
+> Task :player:compileDebugRenderscript NO-SOURCE
+> Task :player:generateDebugResValues UP-TO-DATE
+> Task :player:generateDebugResources UP-TO-DATE
+> Task :player:packageDebugResources UP-TO-DATE
+> Task :pyramid:compilePython64DebugRenderscript NO-SOURCE
+> Task :pyramid:generatePython64DebugResValues UP-TO-DATE
+> Task :pyramid:generatePython64DebugResources UP-TO-DATE
+> Task :pyramid:packagePython64DebugResources UP-TO-DATE
+> Task :quickjs:compileDebugRenderscript NO-SOURCE
+> Task :quickjs:generateDebugResValues UP-TO-DATE
+> Task :quickjs:generateDebugResources UP-TO-DATE
+> Task :quickjs:packageDebugResources UP-TO-DATE
+> Task :app:createPython64DebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksPython64Debug UP-TO-DATE
+> Task :player:extractDeepLinksDebug UP-TO-DATE
+> Task :player:processDebugManifest UP-TO-DATE
+> Task :pyramid:extractDeepLinksPython64Debug UP-TO-DATE
+> Task :pyramid:processPython64DebugManifest UP-TO-DATE
+> Task :quickjs:extractDeepLinksDebug UP-TO-DATE
+> Task :quickjs:processDebugManifest UP-TO-DATE
+> Task :app:processPython64DebugMainManifest UP-TO-DATE
+> Task :app:processPython64DebugManifest UP-TO-DATE
+> Task :app:processPython64DebugManifestForPackage UP-TO-DATE
+> Task :player:compileDebugLibraryResources UP-TO-DATE
+> Task :player:parseDebugLocalResources UP-TO-DATE
+> Task :player:generateDebugRFile UP-TO-DATE
+> Task :pyramid:compilePython64DebugLibraryResources UP-TO-DATE
+> Task :pyramid:parsePython64DebugLocalResources UP-TO-DATE
+> Task :pyramid:generatePython64DebugRFile UP-TO-DATE
+> Task :quickjs:compileDebugLibraryResources UP-TO-DATE
+> Task :quickjs:parseDebugLocalResources UP-TO-DATE
+> Task :quickjs:generateDebugRFile UP-TO-DATE
+> Task :player:generateDebugBuildConfig UP-TO-DATE
+> Task :player:javaPreCompileDebug UP-TO-DATE
+> Task :player:compileDebugJavaWithJavac UP-TO-DATE
+> Task :player:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :pyramid:generatePython64DebugBuildConfig UP-TO-DATE
+> Task :pyramid:extractPythonBuildPackages UP-TO-DATE
+> Task :pyramid:generatePython64DebugPythonRequirements UP-TO-DATE
+> Task :pyramid:mergePython64DebugPythonSources UP-TO-DATE
+> Task :pyramid:generatePython64DebugPythonProxies UP-TO-DATE
+> Task :pyramid:javaPreCompilePython64Debug UP-TO-DATE
+> Task :pyramid:compilePython64DebugJavaWithJavac UP-TO-DATE
+> Task :pyramid:bundleLibCompileToJarPython64Debug UP-TO-DATE
+> Task :quickjs:javaPreCompileDebug UP-TO-DATE
+> Task :quickjs:compileDebugJavaWithJavac UP-TO-DATE
+> Task :quickjs:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :app:mergePython64DebugShaders UP-TO-DATE
+> Task :app:compilePython64DebugShaders NO-SOURCE
+> Task :app:generatePython64DebugAssets UP-TO-DATE
+> Task :player:mergeDebugShaders UP-TO-DATE
+> Task :player:compileDebugShaders NO-SOURCE
+> Task :player:generateDebugAssets UP-TO-DATE
+> Task :player:packageDebugAssets UP-TO-DATE
+> Task :pyramid:mergePython64DebugShaders UP-TO-DATE
+> Task :pyramid:compilePython64DebugShaders NO-SOURCE
+> Task :pyramid:generatePython64DebugAssets UP-TO-DATE
+> Task :pyramid:generatePython64DebugPythonAppAssets UP-TO-DATE
+> Task :pyramid:generatePython64DebugPythonLicenseAssets UP-TO-DATE
+> Task :pyramid:generatePython64DebugPythonMiscAssets UP-TO-DATE
+> Task :pyramid:generatePython64DebugPythonRequirementsAssets UP-TO-DATE
+> Task :pyramid:generatePython64DebugPythonBuildAssets UP-TO-DATE
+> Task :pyramid:packagePython64DebugAssets UP-TO-DATE
+> Task :quickjs:mergeDebugShaders UP-TO-DATE
+> Task :quickjs:compileDebugShaders NO-SOURCE
+> Task :quickjs:generateDebugAssets UP-TO-DATE
+> Task :quickjs:packageDebugAssets UP-TO-DATE
+> Task :app:mergePython64DebugAssets UP-TO-DATE
+> Task :app:compressPython64DebugAssets UP-TO-DATE
+> Task :app:checkPython64DebugDuplicateClasses UP-TO-DATE
+> Task :app:desugarPython64DebugFileDependencies UP-TO-DATE
+> Task :app:mergeExtDexPython64Debug UP-TO-DATE
+> Task :player:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :quickjs:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :pyramid:bundleLibRuntimeToJarPython64Debug UP-TO-DATE
+> Task :app:processPython64DebugJavaRes NO-SOURCE
+> Task :player:processDebugJavaRes NO-SOURCE
+> Task :player:bundleLibResDebug NO-SOURCE
+> Task :pyramid:processPython64DebugJavaRes NO-SOURCE
+> Task :pyramid:bundleLibResPython64Debug NO-SOURCE
+> Task :quickjs:processDebugJavaRes NO-SOURCE
+> Task :quickjs:bundleLibResDebug NO-SOURCE
+> Task :app:mergePython64DebugResources
+> Task :app:mergePython64DebugJniLibFolders UP-TO-DATE
+> Task :app:mapPython64DebugSourceSetPaths UP-TO-DATE
+> Task :app:mergeLibDexPython64Debug UP-TO-DATE
+> Task :player:mergeDebugJniLibFolders UP-TO-DATE
+> Task :player:mergeDebugNativeLibs UP-TO-DATE
+> Task :player:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :pyramid:generatePython64DebugPythonJniLibs UP-TO-DATE
+> Task :pyramid:mergePython64DebugJniLibFolders UP-TO-DATE
+> Task :pyramid:mergePython64DebugNativeLibs UP-TO-DATE
+> Task :pyramid:copyPython64DebugJniLibsProjectOnly UP-TO-DATE
+> Task :quickjs:mergeDebugJniLibFolders UP-TO-DATE
+> Task :quickjs:mergeDebugNativeLibs NO-SOURCE
+> Task :quickjs:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :app:mergePython64DebugNativeLibs UP-TO-DATE
+> Task :app:stripPython64DebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningPython64Debug UP-TO-DATE
+> Task :app:writePython64DebugAppMetadata UP-TO-DATE
+> Task :app:writePython64DebugSigningConfigVersions UP-TO-DATE
+> Task :app:processPython64DebugResources
+
+> Task :app:compilePython64DebugJavaWithJavac
+
+> Task :app:dexBuilderPython64Debug
+> Task :app:mergePython64DebugJavaResource UP-TO-DATE
+> Task :app:mergeProjectDexPython64Debug
+> Task :app:packagePython64Debug
+> Task :app:createPython64DebugApkListingFileRedirect UP-TO-DATE
+> Task :app:assemblePython64Debug
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 8.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+See https://docs.gradle.org/7.5/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD SUCCESSFUL in 29s
+93 actionable tasks: 6 executed, 87 up-to-date

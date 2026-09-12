@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 背景轨道 -->
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/md3_outline_variant" />
+            <corners android:radius="@dimen/md3_corner_xs"/>
+            <size android:height="@dimen/md3_space_1"/>
+        </shape>
+    </item>
+    <!-- 缓冲进度 -->
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="@color/md3_on_surface_variant" />
+                <corners android:radius="@dimen/md3_corner_xs"/>
+                <size android:height="@dimen/md3_space_1"/>
+            </shape>
+        </clip>
+    </item>
+    <!-- 当前进度 -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="@color/md3_primary" />
+                <corners android:radius="@dimen/md3_corner_xs"/>
+                <size android:height="@dimen/md3_space_1"/>
+            </shape>
+        </clip>
+    </item>
+</layer-list>

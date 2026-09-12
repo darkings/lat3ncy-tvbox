@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners android:radius="@dimen/md3_corner_md" />
+    <solid android:color="@color/md3_focus_fill_soft" />
+    <stroke
+        android:width="@dimen/md3_focus_stroke_width"
+        android:color="@color/md3_primary_bright" />
+</shape>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+<!--    进度条圆点按压状态颜色-->
+<!--    <solid android:color="@color/color_03DAC5" />-->
+    <solid android:color="@color/md3_primary_bright" />
+    <size
+        android:width="@dimen/md3_space_3"
+        android:height="@dimen/md3_space_3" />
+</shape>

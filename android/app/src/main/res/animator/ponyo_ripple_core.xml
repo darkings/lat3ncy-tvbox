@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  中心核呼吸：fillAlpha 0.9 → 0.45 → 0.9，周期 600ms。
+  与 skeletonPulse(1200ms) 同族节奏，比旧版 700ms 更沉稳。
+-->
+<objectAnimator xmlns:android="http://schemas.android.com/apk/res/android"
+    android:propertyName="fillAlpha"
+    android:valueFrom="0.9"
+    android:valueTo="0.45"
+    android:duration="600"
+    android:repeatCount="infinite"
+    android:repeatMode="reverse" />

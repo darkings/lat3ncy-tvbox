@@ -1,0 +1,18 @@
+{
+  "version": "site-category-overrides-v2",
+  "comment": "按站点 key 追加/覆盖订阅中的 categories。add=在检测结果后追加去重；set=整体替换。官方 drpyS 源(categories 为默认4类)统一补上少儿和纪录片；部分 CMS 站只补少儿。ensure_official_platform_categories 会再兜底一次，避免覆盖文件缺失时纪录片丢失。",
+  "add": {
+    "drpyS_腾云驾雾[官]": ["少儿", "纪录片"],
+    "drpyS_优酷[官]": ["少儿", "纪录片"],
+    "drpyS_百忙无果[官]": ["少儿", "纪录片"],
+    "drpyS_奇珍异兽[官]": ["少儿", "纪录片"],
+    "wujin": ["少儿"],
+    "d09daf6b15ef9ed1f4fc5aff8b87e40a": ["少儿"],
+    "官采": ["少儿"],
+    "金蝉官采": ["少儿"],
+    "奇妙官采": ["少儿"],
+    "zeqaht.com": ["少儿"],
+    "迷你": ["少儿"]
+  },
+  "set": {}
+}
