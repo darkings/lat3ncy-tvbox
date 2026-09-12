@@ -153,7 +153,8 @@ python .\source-manager\scripts\check_syntax.py
 * `source-manager/drpys/js/` 下任何文件（含中文文件名与 `.py` 规则）
 * `android/app/libs/` 下的 `.jar` / `.aar`（构建必需，`.gitignore` 有例外规则）
 * `source-manager/tests/` 下的测试文件
-* `docs/` 下的设计文档与计划
+* `docs/` 下的设计文档、计划，以及被文档引用的截图
+* `releases/` 下的 APK（虽被 `.gitignore` 忽略，但是发行产物）
 
 ### 4.2 不入库内容
 
@@ -166,15 +167,44 @@ python .\source-manager\scripts\check_syntax.py
 * 截图与 UI dump：`*.png`、`tools/*.xml`
 * 本地工作区：`/work/`、`/server-edit/`
 
-### 4.3 已入库但应清理的历史遗留
+### 4.3 已入库内容的性质判定
 
-以下文件**已被 Git 跟踪**，`.gitignore` 规则对已跟踪文件无效，
-需要显式 `git rm --cached` 才能移出版本控制：
+`.gitignore` 规则**对已跟踪文件无效**。以下内容虽匹配忽略规则，
+但已入库且**有保留价值**，不要误删：
 
-* `tools/source-screening/tmp_*.py`（约 50 个一次性调试脚本）
-* `docs/ui-audit/2026-08-10/`（34 个截图，约 16.9 MB）
+| 路径 | 数量 | 性质 |
+|:---|:---|:---|
+| `tools/source-screening/tmp_*.py` | 44 个 | **可复用筛选工具**，`README.md` 有逐脚本说明 |
+| `docs/ui-audit/2026-08-10/实施记录/` | 34 个 | `IMPLEMENTATION.md` 及其引用的验收截图 |
 
-清理前需确认这些内容不再被引用。
+判定原则：**有 README 或文档引用的，视为资产；无引用的，视为过程产物。**
+
+### 4.4 可安全删除清单
+
+以下为纯生成物或缓存，删除后可由构建/运行重建：
+
+| 路径 | 体积 | 说明 |
+|:---|:---|:---|
+| `android/.gradle_home/` | 880 MB | Gradle 用户目录 |
+| `android/app/build/` | 1082 MB | App 构建产物 |
+| `android/player/build/` | 254 MB | player 构建产物 |
+| `android/.gradle/` | 46 MB | Gradle 项目缓存 |
+| `tools/_apk_inspect/` | 210 MB | APK 反编译产物 |
+| `tools/md3_res/` | 36 MB | MD3 资源生成物 |
+| `source-manager/.tmp-test/` | 15 MB | 测试临时目录 |
+| `source-manager/.tmp/` | 5 MB | 临时目录 |
+| `android/backups/`、`toast-backup-*/` | 2 MB | 构建备份 |
+| `__pycache__/`、`.pytest_cache/` | <1 MB | Python 缓存 |
+
+### 4.5 需人工判断的归档项
+
+| 路径 | 体积 | 建议 |
+|:---|:---|:---|
+| `docs/ui-audit/` | 891 MB | 仅 `2026-08-10/实施记录/` 已入库；其余为过程证据，可归档到外部存储 |
+| `work/` | 232 MB | 本地工作区，含 118 MB `main.bundle`，可随时清空 |
+| `deploy.tar.gz` | 61 MB | 部署打包产物，可重新生成 |
+| 根目录临时文件 | 74 MB | 截图、`tmp_*.py`、`patch_*.py`、`findings.md` 等 |
+
 
 ---
 
