@@ -308,3 +308,110 @@ def test_approved_jar_reads_local_materialized_cache(tmp_path, monkeypatch):
     assert row[0] == "fetched"
     assert row[2] is None
     assert "AssertionError" not in str(result)
+
+
+def test_recent_failed_jar_skips_other_fingerprints(tmp_path):
+    """同一 JAR URL 任一指纹 24h 内失败后，其它指纹不再打网络。"""
+    db = tmp_path / "s.db"
+    url = "https://assets.test/shared.jar"
+    # 两个指纹引用完全相同的 jar；只给 fp1 写入最近失败证据。
+    _seed(
+        db,
+        [
+            (1, "fp1", [url], ""),
+            (2, "fp2", [url], ""),
+        ],
+    )
+    with sqlite3.connect(db) as con:
+        con.execute(
+            "INSERT INTO dependency_asset_evidence"
+            "(fingerprint,config_origin,source_field,effective_url,asset_type,"
+            "resolution_status,fetch_status,validation_status,scanned_at,"
+            "first_seen_at,last_seen_at) "
+            "VALUES('fp1','origin','site.jar',?,'jar','resolved','failed',"
+            "'fetch_error',datetime('now'),datetime('now'),datetime('now'))",
+            (url,),
+        )
+    rules, allow, report = _scan_files(tmp_path)
+    fetch_calls = []
+
+    def fake_fetch(*_args, **_kwargs):
+        # 冷却命中后不应再发起任何下载。
+        fetch_calls.append(1)
+        raise AssertionError("cooled-down jar url must not be fetched again")
+
+    result = ss.run_scan(
+        str(db),
+        str(rules),
+        str(allow),
+        str(report),
+        fetch_bytes=fake_fetch,
+    )
+
+    # fp1 / fp2 都会按 URL 级冷却跳过，且报告仍会落盘。
+    assert result["skipped_recent_failed_jar"] >= 2
+    assert result["jar_fetch_errors"] == 0
+    assert fetch_calls == []
+    assert report.is_file()
+
+
+def test_same_run_reuses_jar_bytes_across_fingerprints(tmp_path):
+    """同一轮扫描中，后到的指纹应复用 binary_cache，而不是再打一次网络。"""
+    db = tmp_path / "s.db"
+    url = "https://assets.test/once.jar"
+    _seed(
+        db,
+        [
+            (1, "fp1", [url], ""),
+            (2, "fp2", [url], ""),
+        ],
+    )
+    rules, allow, report = _scan_files(tmp_path)
+    fetch_calls = []
+
+    def fake_fetch(*_args, **_kwargs):
+        fetch_calls.append(1)
+        # 最小合法 ZIP 头，足够走 inspect_jar_bytes 的格式分支。
+        return b"PK\x03\x04fake-jar"
+
+    result = ss.run_scan(
+        str(db),
+        str(rules),
+        str(allow),
+        str(report),
+        fetch_bytes=fake_fetch,
+    )
+
+    assert fetch_calls == [1]
+    assert result["fetch_errors"] == 0
+    assert result["scanned_urls"] == 2
+
+
+def test_fetch_deadline_stops_new_network_requests(tmp_path, monkeypatch):
+    """总预算耗尽后停止新的网络请求，但仍写出 security-report.json。"""
+    # 负值让 deadline 落在 run_scan 入口之前，稳定触发收尾分支。
+    monkeypatch.setattr(ss, "SCAN_FETCH_DEADLINE_SECONDS", -1.0)
+    db = tmp_path / "s.db"
+    url = "https://assets.test/deadline.jar"
+    _seed(db, [(1, "fp1", [url], "")])
+    rules, allow, report = _scan_files(tmp_path)
+    fetch_calls = []
+
+    def fake_fetch(*_args, **_kwargs):
+        fetch_calls.append(1)
+        raise AssertionError("deadline exceeded; network fetch must stop")
+
+    result = ss.run_scan(
+        str(db),
+        str(rules),
+        str(allow),
+        str(report),
+        fetch_bytes=fake_fetch,
+    )
+
+    assert result["skipped_fetch_deadline"] >= 1
+    assert result["jar_fetch_errors"] == 0
+    assert fetch_calls == []
+    assert report.is_file()
+    payload = json.loads(report.read_text(encoding="utf-8"))
+    assert payload["summary"]["skipped_fetch_deadline"] >= 1

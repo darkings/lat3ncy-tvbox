@@ -1110,13 +1110,20 @@ public class PlayFragment extends BaseLazyFragment {
     }
 
     public void setData(Bundle bundle) {
-//        mVodInfo = (VodInfo) bundle.getSerializable("VodInfo");
+        // 先作废进行中的 playerContent，避免旧线路解析结果盖住新源。
+        if (sourceViewModel != null) {
+            sourceViewModel.cancelPlayRequest();
+        }
         mVodInfo = App.getInstance().getVodInfo();
         sourceKey = bundle.getString("sourceKey");
         sourceBean = ApiConfig.get().getSource(sourceKey);
         ApiConfig.get().setCurrentPlaySourceKey(sourceKey);
         initPlayerCfg();
         triedLineFlags.clear();
+        LOG.i("echo-setData key=" + sourceKey
+                + " flag=" + (mVodInfo == null ? "" : mVodInfo.playFlag)
+                + " id=" + (mVodInfo == null ? "" : mVodInfo.id)
+                + " index=" + (mVodInfo == null ? -1 : mVodInfo.playIndex));
         play(false);
     }
 
@@ -1260,6 +1267,9 @@ public class PlayFragment extends BaseLazyFragment {
     private JSONObject mVodPlayerCfg;
     private String sourceKey;
     private SourceBean sourceBean;
+    // G03: 当前解析请求的 Call 与会话编号，用于取消和丢弃旧响应
+    private okhttp3.Call mCurrentParseCall;
+    private int mParseSessionId = 0;
 
     private void playNext(boolean isProgress) {
         triedLineFlags.clear();
@@ -1990,6 +2000,15 @@ public class PlayFragment extends BaseLazyFragment {
         stopLoadWebView(false);
         OkGo.getInstance().cancelTag("play");
         OkGo.getInstance().cancelTag("json_jx");
+        // G03: 使旧解析回调失效并取消底层 OkHttp 请求
+        mParseSessionId++;
+        if (mCurrentParseCall != null) {
+            try {
+                mCurrentParseCall.cancel();
+            } catch (Throwable ignored) {
+            }
+            mCurrentParseCall = null;
+        }
         if (parseThreadPool != null) {
             try {
                 parseThreadPool.shutdown();
@@ -2173,7 +2192,7 @@ public class PlayFragment extends BaseLazyFragment {
         // 关键词按长度降序排列，保证"普通话"优先于"国语"等短词误匹配
         String[][] langKeywords = {
                 {"普通话", "普通话"}, {"国语", "国语"}, {"中文", "普通话"}, {"粤语", "粤语"},
-                {"英文", "英文"}, {"英语", "英文"}, {"原声", "原声"},
+                {"英文", "英文"}, {"英语", "英文"}, {"原声", "原声"}, {"原版", "原声"},
                 {"日语", "日语"}, {"台配", "台配"}, {"中配", "普通话"},
         };
         for (String[] pair : langKeywords) {
@@ -2182,14 +2201,43 @@ public class PlayFragment extends BaseLazyFragment {
         return null;
     }
 
-    private void doServerParse(String nameParam, String flag, String vipUrl) {
-        ParseBean ponyo = null;
+    /**
+     * 语言标记提取（片名优先 + 集名兜底）。
+     * 场景：B站电影"超级马力欧银河大电影"片名不带语言词，但集名是"原版/中文版"——
+     * 语言版本信息只在集名里。片名扫不到时再扫当前集名：
+     *   片名"小猪佩奇 第12季[普通话版]" -> "普通话"（片名命中，集名不再参与）
+     *   片名"超级马力欧银河大电影" + 集名"中文版" -> "普通话"（集名兜底命中）
+     *   片名"超级马力欧银河大电影" + 集名"原版" -> "原声"（集名兜底命中）
+     *   普通内容片名/集名都无关键词 -> null（服务端按无语言处理，行为不变）
+     */
+    private String extractLangTag(String title, String episodeName) {
+        // 1) 片名优先：腾讯"[普通话版]"/爱奇艺" 英文版"后缀在片名上
+        String tag = extractLangTag(title);
+        if (tag != null) return tag;
+        // 2) 集名兜底：B站电影"原版/中文版"、多语言剧集分集命名场景
+        return extractLangTag(episodeName);
+    }
+
+    /**
+     * G04: 显式定位 Ponyo 服务器入口，避免多个 type=1 解析器时按顺序误选。
+     */
+    private ParseBean findPonyoServerParse() {
         for (ParseBean p : ApiConfig.get().getParseBeanList()) {
-            if (p.getType() == 1) {
-                ponyo = p;
-                break;
+            if (p.getType() == 1 && "Ponyo解析".equals(p.getName())) {
+                return p;
             }
         }
+        // 兜底：第一个 type=1
+        for (ParseBean p : ApiConfig.get().getParseBeanList()) {
+            if (p.getType() == 1) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    private void doServerParse(String nameParam, String flag, String vipUrl) {
+        ParseBean ponyo = findPonyoServerParse();
         if (ponyo == null) {
             errorWithRetry("无可用解析器", false);
             return;
@@ -2206,16 +2254,21 @@ public class PlayFragment extends BaseLazyFragment {
         if (mVodInfo != null && !TextUtils.isEmpty(mVodInfo.name)) {
             // 片名：服务端按"精确>前缀>包含"排序采集站候选
             sb.append("&title=").append(mController.encodeUrl(mVodInfo.name));
+            // 当前集：getCurrentSeries 拿 vs.name（如"第01集"/"中文版"），服务端归一化提取数字
+            // 提前到 lang 之前：集名是语言标记的兜底来源（B站电影"原版/中文版"）
+            VodInfo.VodSeries curSeries = getCurrentSeries(mVodInfo.playFlag, mVodInfo.playIndex);
             // ===== 语言标记（四平台多语言版本统一支持）=====
             // 腾讯"[普通话版]"/爱奇艺" 英文版"后缀在服务端 norm_title 也会自动识别，
             // 这里显式传 lang 是双保险 + 覆盖芒果 detail.language 场景（标题不带后缀）。
-            // 提取规则：片名含语言关键词即命中（普通话/国语/粤语/英文/原声/日语/台配）
-            String langTag = extractLangTag(mVodInfo.name);
+            // 提取规则：片名优先（普通话/国语/粤语/英文/原声/日语/台配），
+            // 片名无语言词时扫当前集名（B站电影集名"中文版"->普通话/"原版"->原声）。
+            // 服务端拿到 lang=普通话 后：命中采集站"HD中字"（原声中字）资源时
+            // jxFrom 会带"~原声中字"标注，Toast 提示用户当前流非中文配音。
+            String langTag = extractLangTag(mVodInfo.name,
+                    curSeries == null ? null : curSeries.name);
             if (langTag != null) {
                 sb.append("&lang=").append(mController.encodeUrl(langTag));
             }
-            // 当前集：getCurrentSeries 拿 vs.name（如"第01集"），服务端归一化提取数字
-            VodInfo.VodSeries curSeries = getCurrentSeries(mVodInfo.playFlag, mVodInfo.playIndex);
             if (curSeries != null && !TextUtils.isEmpty(curSeries.name)) {
                 sb.append("&ep=").append(mController.encodeUrl(curSeries.name));
             }
@@ -2258,12 +2311,17 @@ public class PlayFragment extends BaseLazyFragment {
             e.printStackTrace();
         }
         okhttp3.Request okRequest = new okhttp3.Request.Builder().url(reqUrl).headers(hb.build()).build();
-        okClient.newCall(okRequest).enqueue(new okhttp3.Callback() {
+        // G03: 保存 Call 引用并绑定会话编号，切集/退出时可取消、可丢弃旧响应
+        final int parseSessionId = ++mParseSessionId;
+        mCurrentParseCall = okClient.newCall(okRequest);
+        mCurrentParseCall.enqueue(new okhttp3.Callback() {
             @Override
             public void onFailure(okhttp3.Call call, java.io.IOException e) {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
+                        // G03: 旧会话的失败不再触发当前集的重试/换线
+                        if (parseSessionId != mParseSessionId) return;
                         errorWithRetry("解析错误", false);
                     }
                 });
@@ -2275,6 +2333,8 @@ public class PlayFragment extends BaseLazyFragment {
                 mHandler.post(new Runnable() {
                     @Override
                     public void run() {
+                        // G03: 旧会话的响应直接丢弃，防止覆盖新集
+                        if (parseSessionId != mParseSessionId) return;
                         try {
                             JSONObject rs = jsonParse(vipUrl, json);
                             HashMap<String, String> headers = getHeaders(rs);
@@ -2287,6 +2347,12 @@ public class PlayFragment extends BaseLazyFragment {
                                 loadWebView(DefaultConfig.checkReplaceProxy(rs.getString("url")));
                             } else {
                                 if (rs.has("url") && !rs.optString("url").isEmpty()) {
+                                    // jxFrom 透传：服务端 direct:lzm3u8~原声中字 等标注在此路径
+                                    // （Ponyo解析 type-1，B站官方线路）也要 Toast 提示用户。
+                                    // 此处已在 mHandler.post 的 UI 线程内，无需再切线程。
+                                    if (rs.has("jxFrom")) {
+                                        ToastUtil.info(mContext, "解析来自:" + rs.optString("jxFrom"));
+                                    }
                                     playUrl(rs.getString("url"), headers);
                                 } else {
                                     errorWithRetry("解析错误", false);

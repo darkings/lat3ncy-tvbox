@@ -9,6 +9,7 @@ import io
 import json
 import re
 import sqlite3
+import time
 import urllib.error
 import zipfile
 from datetime import datetime, timezone
@@ -21,7 +22,13 @@ from ponyo_source_manager.core.common import DATA_DIR, assert_no_proxy, strip_md
 MAX_JAR_BYTES = 32 * 1024 * 1024
 MAX_JAR_ENTRIES = 20_000
 MAX_JAR_UNCOMPRESSED_BYTES = 256 * 1024 * 1024
-JAR_FETCH_TIMEOUT_SECONDS = 60.0
+# 单次 jar 下载超时。旧值 60s × 多 CDN 回退 × 上百个死链，会直接撑破
+# scheduler 的 2700s 阶段看门狗（线上已连续 5 轮被杀）。
+JAR_FETCH_TIMEOUT_SECONDS = 8.0
+# 预留写库/出报告时间，避免跑到 2700s 被 SIGKILL 导致本轮证据全部丢失。
+SCAN_FETCH_DEADLINE_SECONDS = 2400.0
+# 冷却窗口：同一 URL 任意指纹成功/失败后，其它指纹 24h 内不再打网络。
+FETCH_COOLDOWN_HOURS = 24.0
 
 # 已批准并物化的 jar 本地缓存（materialize_approved_assets 输出）,
 # 按 content_sha256 命名。命中缓存的 jar 无需重复下载（无代理环境下
@@ -325,6 +332,31 @@ def _is_dynamic_local_api(url: str) -> bool:
         return False
 
 
+def _cooldown_window_sql() -> str:
+    """SQLite datetime() 修饰符，控制跨 fingerprint 的 URL 冷却窗口。"""
+    return f"-{FETCH_COOLDOWN_HOURS:g} hours"
+
+
+def _recent_url_fetch_status(
+    con: sqlite3.Connection, url: str, asset_type: str
+) -> str | None:
+    """查询同一 URL 在冷却窗口内是否已有成功/失败结果。
+
+    只按 effective_url + asset_type 判断，不限定 fingerprint：
+    同一 JAR/文本被上百个源引用时，避免对死链重复打网络。
+    返回值仅用于决定是否跳过抓取，不改写当前源的安全判定。
+    """
+    row = con.execute(
+        "SELECT fetch_status FROM dependency_asset_evidence "
+        "WHERE effective_url=? AND asset_type=? "
+        "AND fetch_status IN ('fetched', 'failed') "
+        "AND scanned_at >= datetime('now', ?) "
+        "LIMIT 1",
+        (url, asset_type, _cooldown_window_sql()),
+    ).fetchone()
+    return None if row is None else str(row[0])
+
+
 def run_scan(
     db_path,
     rules_path,
@@ -339,6 +371,8 @@ def run_scan(
     if assert_no_proxy():
         raise SystemExit("代理环境变量非空，安全扫描中止（需无代理）。")
     now = now or datetime.now(timezone.utc).isoformat()
+    # 扫描总预算从进入 run_scan 起算，给写库/出报告留出余量。
+    scan_deadline_monotonic = time.monotonic() + SCAN_FETCH_DEADLINE_SECONDS
     rules = load_rules(rules_path)
     try:
         allow_hosts = set(json.loads(Path(allowlist_path).read_text(encoding="utf-8")))
@@ -414,6 +448,7 @@ def run_scan(
         "skipped_recent_fetched_jar": 0,
         "skipped_recent_text": 0,
         "skipped_dynamic_urls": 0,
+        "skipped_fetch_deadline": 0,
         "retained_prior_jar_results": 0,
     }
     seen_issues = set()
@@ -503,19 +538,18 @@ def run_scan(
                     if url not in binary_cache and cached_jar is not None:
                         binary_cache[url] = (cached_jar, "local:approved-assets")
                     if url not in binary_cache:
-                        # 冷却窗口：24h 内失败的 jar 不重复尝试（无效引用每轮拖 60s+ 超时）；
-                        # 24h 内已成功抓取过的 jar 同样跳过（jar 内容不可变，哈希已入 evidence）
-                        prior = con.execute(
-                            "SELECT fetch_status FROM dependency_asset_evidence "
-                            "WHERE fingerprint=? AND effective_url=? AND asset_type='jar' "
-                            "AND scanned_at >= datetime('now','-24 hours')",
-                            (fp, url),
-                        ).fetchone()
-                        if prior and prior[0] == "failed":
+                        # 跨 fingerprint URL 冷却：任意指纹 24h 内成功/失败后都不再打网络。
+                        # 本轮 binary_cache 仍优先，因此同一轮内后到的指纹会复用字节而非跳过。
+                        prior_status = _recent_url_fetch_status(con, url, "jar")
+                        if prior_status == "failed":
                             summary["skipped_recent_failed_jar"] += 1
                             continue
-                        if prior and prior[0] == "fetched":
+                        if prior_status == "fetched":
                             summary["skipped_recent_fetched_jar"] += 1
+                            continue
+                        # 总预算用尽后停止新的网络请求；已有缓存/证据继续写报告。
+                        if time.monotonic() >= scan_deadline_monotonic:
+                            summary["skipped_fetch_deadline"] += 1
                             continue
                         try:
                             con.commit()  # 网络抓取前释放写锁
@@ -569,17 +603,13 @@ def run_scan(
                         con.commit()
                 else:
                     if url not in text_cache:
-                        # 文本 URL 冷却：24h 内抓取过（成功/失败）的跳过，
-                        # 避免 drpy 规则等静态文本每轮重复 fetch_text（12s 超时）
-                        prior_text = con.execute(
-                            "SELECT fetch_status FROM dependency_asset_evidence "
-                            "WHERE fingerprint=? AND effective_url=? "
-                            "AND asset_type=? "
-                            "AND scanned_at >= datetime('now','-24 hours')",
-                            (fp, url, atype),
-                        ).fetchone()
-                        if prior_text and prior_text[0] in ("fetched", "failed"):
+                        # 文本 URL 同样按 effective_url 跨指纹冷却，避免静态规则重复超时。
+                        prior_text = _recent_url_fetch_status(con, url, atype)
+                        if prior_text in ("fetched", "failed"):
                             summary["skipped_recent_text"] += 1
+                            continue
+                        if time.monotonic() >= scan_deadline_monotonic:
+                            summary["skipped_fetch_deadline"] += 1
                             continue
                         con.commit()  # 网络抓取前释放写锁
                         text_cache[url] = fetch_text(url)

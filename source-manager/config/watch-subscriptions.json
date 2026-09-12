@@ -18,5 +18,167 @@
     "trust_level": "public",
     "enabled": false,
     "disabled_reason": "2026-07-26 upstream repository unavailable"
+  },
+  {
+    "name": "影视仓 YSC",
+    "url": "https://jihulab.com/mengzhu2/ysc/-/raw/main/YSC.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "麒麟 qiaoji8",
+    "url": "http://cdn.qiaoji8.com/tvbox.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "玩偶 blssss",
+    "url": "https://gitee.com/blssss/jk/raw/api/bls.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG Xfyjr69 Pastebin sbPpDm9G",
+    "url": "https://pastebin.com/raw/sbPpDm9G",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG 9280 wex",
+    "url": "https://9280.kstore.space/wex.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG dxawi 0",
+    "url": "https://dxawi.github.io/0/0.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG 9280 newwex",
+    "url": "https://9280.kstore.vip/newwex.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG hulanlu lanlu",
+    "url": "https://raw.giteeusercontent.com/hulanlu/04/raw/master/lanlu.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG clun box",
+    "url": "https://clun.top/box.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG maoystv 001",
+    "url": "https://raw.githubusercontent.com/maoystv/6/main/001.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG 17264 哈基米",
+    "url": "https://17264.kstore.space/哈基米.png",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG 11405 qk4k",
+    "url": "https://11405.kstore.space/xiaye/qk4k.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG jundie top98",
+    "url": "http://home.jundie.top:81/top98.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG nxog m",
+    "url": "http://tv.nxog.top/m/",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG cttv ctys",
+    "url": "https://www.cttv.vip/ys/json/ctys.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG yingm dm",
+    "url": "https://www.yingm.cc/dm/dm.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG xhztv xhz",
+    "url": "http://xhztv.top/xhz",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG bitbucket duoapi xpg",
+    "url": "https://bitbucket.org/xduo/duoapi/raw/master/xpg.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG cccimg zhen6",
+    "url": "https://cccimg.com/down.php/7d1f30263b3f2bf3deda2d7faeef4844.zhen6",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG gh-proxy yw",
+    "url": "https://gh-proxy.com/raw.githubusercontent.com/yw88075/tvbox/main/yw.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG jihulab kai",
+    "url": "https://jihulab.com/jyqhkd/kd/-/raw/main/kai.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG jihulab xzvip",
+    "url": "https://jihulab.com/xuanzhuapp/xzys/-/raw/main/xzvip.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG jsd 1771245847",
+    "url": "https://jsd.cdn.zzko.cn/gh/1771245847/TvBox/tvbox.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG doube config",
+    "url": "https://php.doube.eu.org/spider/php/config.php",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG iptv365 天天开心",
+    "url": "https://play.iptv365.org/%E5%A4%A9%E5%A4%A9%E5%BC%80%E5%BF%83/api.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG iptv365 香雅情",
+    "url": "https://play.iptv365.org/%E9%A6%99%E9%9B%85%E6%83%85/api.json",
+    "trust_level": "public",
+    "enabled": true
+  },
+  {
+    "name": "TG szyyds x",
+    "url": "https://szyyds.cn/tv/x.json",
+    "trust_level": "public",
+    "enabled": true
   }
 ]

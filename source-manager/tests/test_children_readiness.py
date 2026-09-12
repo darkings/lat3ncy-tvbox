@@ -37,12 +37,13 @@ def test_children_aggregate_requires_two_primary_and_two_backup(tmp_path, monkey
     assert result["ready"] is True
     assert result["primary"] == 2
     assert result["backup"] == 2
-    assert result["tvbox_site"]["api"] == "https://api.ponyo.fun"
+    # type=1 源必须带 MacCMS 路径，App 直接请求该端点
+    assert result["tvbox_site"]["api"] == "https://api.ponyo.fun/api.php/provide/vod/"
 
 
-def test_children_aggregate_does_not_publish_without_four_verified_lines(tmp_path, monkeypatch):
+def test_children_aggregate_does_not_publish_without_two_primary(tmp_path, monkeypatch):
     db = tmp_path / "children.db"
-    _children_db(db, 3)
+    _children_db(db, 1)
     monkeypatch.setenv("CHILDREN_API_URL", "https://api.ponyo.fun")
     monkeypatch.setattr(children_aggregate, "_populate_cache_from_sources", lambda *args: None)
 
@@ -81,5 +82,6 @@ def test_children_capability_does_not_pull_from_live_quota(tmp_path, monkeypatch
 
     result = children_aggregate.aggregate_children_sources(str(db))
 
-    assert result["ready"] is False
+    # 直播配额不得混入儿童源；剩余 3 条仍够 2 条主力，可以发布
     assert result["total_children_sources"] == 3
+    assert result["ready"] is True

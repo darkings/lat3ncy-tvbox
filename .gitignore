@@ -1,5 +1,7 @@
-# ── App 源码（完整 Gradle 项目，不入库）──
-/android/
+# ── Android Gradle 生成物（源码保持可见）──
+/android/.gradle/
+/android/*/build/
+/android/build/
 
 # ── 系统 / IDE / 工具 ──
 *.apk

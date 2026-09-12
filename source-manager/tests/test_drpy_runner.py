@@ -26,6 +26,28 @@ def test_drpy_full_chain(monkeypatch):
     assert len(results) == 5
     assert all(r["success"] == 1 for r in results)
 
+
+def test_ffprobe_decoupled_from_playback(monkeypatch):
+    """有可播地址时 ffprobe 应执行，即使真实播放验证失败（解耦）。"""
+    from ponyo_source_manager.probes import playback
+    from ponyo_source_manager.probes import media_quality
+    monkeypatch.setattr(
+        playback, "verify_playback",
+        lambda u, **k: {"success": 0, "error": "non-media payload", "m3u8_ok": 0},
+    )
+    calls = []
+    monkeypatch.setattr(
+        media_quality, "probe_and_save",
+        lambda *a, **k: calls.append(a) or {"success": 1, "ffprobe_success": 1},
+    )
+    results = run_full_chain(
+        "rule.js", "测试", db_path=":memory:", fp="fp1", runner=mock_runner
+    )
+    test_types = [r["test_type"] for r in results]
+    assert "ffprobe" in test_types, "有可播地址时 ffprobe 应执行，即使 playback 失败"
+    assert "playback" in test_types
+    assert calls, "probe_and_save 应被调用"
+
 def test_save_results(tmp_path, monkeypatch):
     from ponyo_source_manager.probes import playback
     from ponyo_source_manager.probes import media_quality

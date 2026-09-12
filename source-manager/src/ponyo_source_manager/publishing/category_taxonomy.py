@@ -149,3 +149,105 @@ def classify_title(title: str, taxonomy: dict[str, Any] | None = None) -> str:
         if any(w in text for w in words):
             return canonical
     return ""
+
+
+DEFAULT_SITE_OVERRIDES_PATH = CONFIG_DIR / "site-category-overrides.json"
+
+# 腾讯 / 优酷 / 芒果 / 爱奇艺 四个官源。本地 drpyS 无法 ac=list 探测，
+# 生成器只会注入电影/电视剧/综艺/动漫；纪录片必须每次生成都补上。
+OFFICIAL_PLATFORM_SITE_KEYS: tuple[str, ...] = (
+    "drpyS_腾云驾雾[官]",
+    "drpyS_优酷[官]",
+    "drpyS_百忙无果[官]",
+    "drpyS_奇珍异兽[官]",
+)
+OFFICIAL_BASE_CATEGORIES: tuple[str, ...] = ("电影", "电视剧", "综艺", "动漫")
+OFFICIAL_REQUIRED_CATEGORIES: tuple[str, ...] = ("少儿", "纪录片")
+
+
+def load_site_category_overrides(
+    path: str | Path | None = None,
+) -> dict[str, Any]:
+    """读取站点级分类覆盖配置（config/site-category-overrides.json）。
+
+    结构:
+      {
+        "add": {"<site key>": ["少儿", "纪录片", ...]},  # 在现有分类后追加（去重）
+        "set": {"<site key>": ["电影", ...]}             # 整体替换
+      }
+    """
+    p = Path(path) if path else DEFAULT_SITE_OVERRIDES_PATH
+    if not p.exists():
+        return {}
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def apply_site_category_overrides(
+    vod_sites: list[dict[str, Any]],
+    path: str | Path | None = None,
+) -> int:
+    """按站点 key 应用分类覆盖，返回发生变更的站点数。
+
+    覆盖在所有检测/缓存回退完成之后执行，
+    保证官源等无法通过 ac=list 检测的源也能带上指定分类。
+    """
+    overrides = load_site_category_overrides(path)
+    add_map = overrides.get("add") or {}
+    set_map = overrides.get("set") or {}
+    if not isinstance(add_map, dict) or not isinstance(set_map, dict):
+        return 0
+    if not add_map and not set_map:
+        return 0
+    changed = 0
+    for s in vod_sites:
+        key = str(s.get("key") or "")
+        if not key:
+            continue
+        if key in set_map:
+            cats = [str(c) for c in set_map[key] if str(c).strip()]
+            s["categories"] = cats
+            s["category_provenance"] = "site_override"
+            changed += 1
+            continue
+        if key in add_map:
+            cats = list(s.get("categories") or [])
+            for c in add_map[key]:
+                c = str(c).strip()
+                if c and c not in cats:
+                    cats.append(c)
+            s["categories"] = cats
+            prov = str(s.get("category_provenance") or "detected")
+            s["category_provenance"] = prov + "+site_override"
+            changed += 1
+    return changed
+
+
+def ensure_official_platform_categories(
+    vod_sites: list[dict[str, Any]],
+) -> int:
+    """每次生成都保证四个官源带上基础四类 + 少儿、纪录片。
+
+    覆盖文件缺失、旧版默认四类、categories 为空时都会补齐。
+    已有分类只追加缺失项，不覆盖探测结果。
+    """
+    changed = 0
+    required = OFFICIAL_BASE_CATEGORIES + OFFICIAL_REQUIRED_CATEGORIES
+    for s in vod_sites:
+        key = str(s.get("key") or "")
+        if key not in OFFICIAL_PLATFORM_SITE_KEYS:
+            continue
+        before = [str(c).strip() for c in (s.get("categories") or []) if str(c).strip()]
+        cats = list(before) if before else list(OFFICIAL_BASE_CATEGORIES)
+        for name in required:
+            if name not in cats:
+                cats.append(name)
+        if cats == before:
+            continue
+        s["categories"] = cats
+        prov = str(s.get("category_provenance") or "")
+        if "official_required" not in prov:
+            s["category_provenance"] = (
+                f"{prov}+official_required" if prov else "official_required"
+            )
+        changed += 1
+    return changed

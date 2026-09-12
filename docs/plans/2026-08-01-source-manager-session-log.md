@@ -885,3 +885,421 @@ playback 每轮每源仅 1 次采样，近 7 天成功样本 1-3 个；`latencie
 **模拟器端到端验证**：改订阅地址（Hawk 加密无法直改，UI 操作：设置→配置地址→清空→输入新地址）→ 切首页源为配置中心 → 主页显示"Ponyo TV · 配置中心"+ 配置列表（王二小/饭太硬/肥猫/宝盒/快乐接口…）
 
 **提交**：f7e1694（配置列表+模板）、04537d2（98源发布）、40991f6/7841d21（托管+双写）。
+
+### 33. 移除奶子资源源（08-11 21:40-21:50 CST）——管理员下架不合规源
+
+**背景**：用户要求移除「奶子资源」（danaizi.com，成人内容源）。该源 2026-08-05 由 profile_search 采集进入 candidate（观察期），评分 96.98（高分），因此出现在临时版（limit=95）订阅产物中（App 源列表可见）。
+
+**操作**：
+1. DB 定位：raw_source id=3205（site_key=danaizi.com）→ norm_source fingerprint=`c2f63857...9207f` → list_state 原为 candidate
+2. 置 `deny`（reason=admin:adult-content-removed）+ promotion_log 记录（candidate→deny）
+3. 机制确认（无需改代码）：`generate_temp_subscription.py` 只选 allow/hard_pass/candidate → deny 自然排除；`generate_subscription.py` full 也排除 deny；scorer 跳过 deny；promote_demote 只评估 candidate/allow；import/discover 用 `INSERT OR IGNORE` 保留 deny（不会被重新发现覆盖）
+4. 重新发布：`daily_publish.py --push`（临时版 limit=95，98 源）→ 服务文件（api.ponyo.fun，即时生效）+ git 仓库（jsDelivr 备份）+ CDN purge 200
+
+**验证**：
+- 新生成订阅 /tmp/ponyo-check.json：奶子/danaizi 计数 0 ✅
+- api.ponyo.fun/ponyo.json、GitHub raw、发布仓库：均 0 ✅
+- 本地仓库同步（fast-forward 7bbb324），subscription/ 全部文件无残留 ✅
+
+**当前晋级全貌（08-11）**：allow 15 个正式源（40-橘猫采集 96.51 / 66-360* 95.39 / 35-最大 95.12 / 无尽 92.39 / 最大 91.87 / 1-艾旦 91.6 / 49-无忧 91.32 / 25-最大 91.07 / 21-爱胆 90.71 / DJ音乐 90.0 / 啊哈DJ 89.48 / 暴風┃采集 89.35 / 暴风资源 88.66 / 最大资源 82.96 / 爱玩音乐 82.61）；candidate 4312；deny 420（新增奶子）。最近晋级：08-11 01:44Z 三源（35-最大 95.12 / 1-艾旦 91.6 / 21-爱胆 90.71）观察满 8 天 4 时段放行。20:00 full 调度运行中。
+
+### 34. 批量下架成人源（08-11 22:40-22:55 CST）——28 个指纹全部 deny 并重发布
+
+**背景**：清理奶子资源后发现发布订阅中仍有多个成人源（爱坤/鸡坤资源、老色逼资源、CK、155、乐播、豆豆、黑料、小鸡、AIvin、番号/FHAPI、11BAT、暴风-三级、白虎视频等）。逐个 curl 接口核实分类后全部下架。
+
+**清单（28 个 fingerprint，按 api 域名）**：jkunzyapi.com（爱坤/鸡坤 2）、apilsbzy1.com（老色逼×2）、doudouzy.com（豆豆 1）、heiliaozyapi.com（黑料 2）、ckzy.me（CK×2，接口证实伦理片）、lbapi9.com（乐播/白虎视频/LBAPI-9 共 3）、155api.com（155 采集×2/155/155API 共 4）、api.xjzyapi.xyz（小鸡 1）、lbapiby.com（AIvin×3/LBAPI-by/GH 共 5）、fhapi9.com（番号×2/FHAPI 共 3）、api.11bat.com（辣椒2/11BAT 共 2）、bfzyapi.com 仅 "暴风┃三级(vpn)" 1 个（主站暴风资源接口 curl 证实为正常影视，保留其余暴风系）。
+
+**操作**：python 脚本按 api 域名匹配 raw_source → norm_source fingerprint → `UPDATE list_state SET state='deny'` + promotion_log（action=deny, reason=admin:adult-content-removed）。28/28 验证 deny，非 deny 数 0。
+
+**发布与验证**：`daily_publish.py --push` 成功（CDN purge 200）；发布产物 98 源中成人源 NONE、无"福利"分类；api.ponyo.fun 与 GitHub raw 均 0 残留；本地 fast-forward 3186378。candidate 4285 / deny 446（+26 净增，2 个指纹原先状态非 candidate）。
+
+### 35. 音乐源保留唯一（08-11 23:00 CST）——保留 DJ音乐，下架其余 3 个
+
+**背景**：用户要求音乐源只保留一个。发布订阅中原有 4 个音乐源：DJ音乐[听](DS) 90.0（allow）、啊哈DJ[听](DS) 89.5（allow）、爱玩音乐[听](DS) 82.5（allow）、米兔音乐[听](DS) 80.94（candidate，评分进前 95）。
+
+**操作**：保留评分最高的 DJ音乐[听](DS)（00b93063，allow）；其余 3 个（56b4cbd0/677abe4d/80873225）置 deny（reason=admin:music-keep-one）+ promotion_log。allow 15 → 13。
+
+**发布与验证**：`daily_publish.py --push`（CDN purge 200）；发布产物 98 源中音乐源仅 DJ音乐[听](DS) 一个（服务器本地 + api.ponyo.fun 双验证）；本地 fast-forward 同步。
+
+### 36. 短视频唯一 + 类别配额机制（08-12 08:50 CST）——发布层限制听歌/短视频各 1 个
+
+**背景**：用户要求短视频也只要一个，且“听歌和短视频在以后的正式版中也要这样”。当前订阅中短剧/短视频源有 5 个（七猫短剧 98.53 / 西饭短剧 96.35 / 短剧聚合 89.58 / 短剧视频库 67.96 / 牛牛短剧 35.0），另有短视频[js] 候选。
+
+**方案（发布层配额，不逐个 deny）**：
+- `scripts/generate_temp_subscription.py`（daily_publish 用，临时/正式版同一脚本）与 `src/ponyo_source_manager/publishing/generate_subscription.py`（正式版生成器）同步新增 `CATEGORY_QUOTAS`：music（含 [听]/音乐/DJ）max=1、short_video（含 短剧/短视频）max=1；`_apply_category_quota` 按评分降序每类只保留最高分源。
+- `_load_sites` 取数从 limit*3 放宽为 limit*5（配额过滤后仍可补满）。
+- 两处需同步修改（代码注释已标明）。
+
+**验证**：
+- 本地 py_compile + basedpyright：两文件 0 errors（其余 warnings 为原有代码 reportAny，非本次引入）
+- 服务器 dry-run：vod 95 中 music 仅 DJ音乐[听](DS)、short_video 仅 七猫短剧[短](DS) ✅
+- 正式发布：`daily_publish.py --push` 成功（CDN purge 200）；api.ponyo.fun 98 源，music/short 各 1 ✅；本地 fast-forward 同步
+**效果**：即使未来更多音乐/短剧源晋级（如西饭短剧 96.35），发布层自动只保留每类最高分，正式版（limit=29）同样生效
+
+### 37. 同站点多入口去重（08-12 08:56 CST）——发布层 SITE_GROUPS 机制 + 漏网成人源清理
+
+**背景**：用户反馈订阅里看到 2 个"360 资源"。根因：discovery 从不同配置仓库采集同一站点多个入口（不同 api 格式/线路，如 360zyzz/360zy/360zy.tv 的 ac=list、from/360m3u8、at/xml 等），指纹按 api 精确匹配无法合并，全部进候选且评分都高。
+
+**处理 1（DB）**：360 系保留评分最高的 🎬360 资源（96.28），deny 其余 8 个入口（含 allow 的 66-360*）；随后推广到 42 个已知站点组（非凡/量子/百度/魔都/最大/飘零/暴风/电影天堂/极速/爱胆/猫眼/爱奇艺/金鹰/虎牙/滴滴/光速/如意/火狐/樱花/速博/红牛/淘片/牛牛/闪电/新浪/U酷/1080/茅台/无尽/飞速/海外看/快车/鸭鸭/卧龙/魔爪/天涯/玉兔/旺仔/辣椒/探探/韩剧/飘花），每组保留最高分，共 deny 191 个变体。
+
+**处理 2（修复误伤）**：站点组去重误伤了 7 个 allow 正式源（1-艾旦/21-爱胆/66-360*/暴风资源/最大/最大资源/25-最大）——恢复为 allow（reason=admin:restore-allow-after-site-dedup），allow 回到 13。**原则：正式源资格保留在 DB，去重由发布层控制。**
+
+**处理 3（漏网成人源）**：全库扫描新发现 21 个成人站点域名整站 deny（ikunzyapi.com（爱坤镜像）、91md.me/madouse.la（麻豆）、api.maozyapi.com/caiji.semaozy.net（色猫）、secj8.com（色色吧）、pgxdy.com（黄AV）、api.apilyzy.com（老鸭）、msnii.com（美少女）、xrbsp.com（淫水机）、naixxzy.com（奶香香）、timizy10.cc（甜蜜）、api.sexnguon.com（性南国）、afasu.com（小湿妹）、kkzy.me（可可三级片）、sewozyapi.com（色窝）、dmmapi.com（大MM）、siwazyw.cc（丝袜）、api.seyavod.com（色鸭）、caoliuzyw.com（草榴）、gdlsp.com（香奶儿））。
+
+**处理 4（发布层机制）**：两个生成脚本新增 `SITE_GROUPS` + `_apply_site_dedup()`（含 360zy 组），与类别配额串行应用：站点去重 → 类别配额 → 取前 limit。代理/聚合域名（ghproxy、notabug、youdu.fan、IP 等）明确不归组（同域名下是不同的源，教训：第一版按域名去重会把 200+ drpy 源误杀）。
+
+**验证**：py_compile + basedpyright 0 errors；dry-run 95 源 music/short 各 1、dup hosts NONE；发布后线上 98 源：music 仅 DJ音乐、short 仅 七猫短剧、360 仅 "360 资源"（另 360影视[官](DS) 为 drpyS 官方源非采集站）、无同 host 重复；CDN purge 200；本地 fast-forward 同步。
+
+### 38. 源名风格统一（08-12 09:40 CST）——纯短名规范落地
+
+**方案**：`docs/plans/2026-08-12-source-naming-spec.md`（v2，用户逐项确认：无序号、采集站简化、多字品牌保留、撞名并存方案 A）。
+
+**规则**（两生成脚本 `normalize_name` + `_assign_names` 重写）：
+- 纯短名：无方括号标签、无 (DS)、无序号、无符号；繁转简（暴風→暴风）；域名映射（lovedan→艾旦、apibdzy→百度，THZY 保留）
+- 词尾简化：资源站/资源/影视/视频/影院/在线/点播/采集（去词尾后至少 2 字符且含汉字或 ≥3 ASCII，3Q影视/泥视频/360影视 等例外保留）
+- 重名回退：评分降序，第一个用简短名（非凡），其余回退保留词尾版（非凡采集）；不引入序号
+- 工具源/内置源（csp_*/./libs）保留原样（南瓜-多线 等「品牌-特性」结构）
+- 类别配额匹配词适配新命名（music 增加 MV/听友，拦截 16wMV/听友）
+- SITE_GROUPS 补充：ffzy3/ffzy4（非凡）、m3u8.apiyhzy/api.apiyhzy/yhzy.cc（樱花）、hongniuzy3（红牛）、haohuazy（火狐/豪华）、suboziyuan（速播）
+- 91av.cyou（91视频，成人）已 deny
+
+**验证**：py_compile + basedpyright 0 errors；dry-run 98 源重名 NONE、残留符号 NONE；发布 CDN purge 200；线上 first8 = 豆瓣推荐/配置中心/本地视频/七猫短剧/橘猫/360/最大/极速；music 仅 DJ音乐、short 仅 七猫短剧；本地 fast-forward 同步。
+
+### 39. 接口实测分类 + 混合站白名单（08-12 15:01 CST）——艾旦/魔都恢复并过滤
+
+**接口实测**（curl 全部采集站 ?ac=list）：发现分类机制根因——有 categories 配置的源（360/飘零/猫眼/爱奇艺/虎牙/火狐）按精确 equals 匹配配置名与接口名，接口命名差异（动画片 vs 动漫、纪录片 vs 记录片、短剧 vs 爽文短剧、电视剧 vs 连续剧）导致分类被过滤丢；无配置源显示接口全部分类。
+
+**顺带发现成人源**：滴滴（ddapi.cc，麻豆/91制片厂/欧美性爱）、THZY（thzy1.me，华语AV/禁漫）纯成人 → deny；艾旦（lovedan.net，allow 93.3）接口含福利视频/三级伦理/波萝社/蜜桃社、墨斗/魔都系（mdzyapi/moduapi/moduzy）含里番动漫/伦理片。
+
+**用户决定**：艾旦/墨斗恢复但配 categories 白名单只显示正常分类；滴滴/THZY 下架。
+
+**实施**：发布脚本新增 `CATEGORY_WHITELIST`（lovedan.net 35 分类、mdzyapi.com/moduapi.cc 40 分类，按接口实际名书写，精确匹配即可生效）`_inject_category_whitelist()` 注入；DB 恢复 1-艾旦/21-爱胆 → allow、lovedan.net┃GH/33-墨斗 → candidate（reason=admin:restore-with-category-whitelist）；allow 13。
+
+**验证**：dry-run 艾旦 35 分类（电影/电视剧/综艺/动漫/纪录片/短剧…）无成人分类、墨斗 40 分类无里番/伦理；发布 CDN purge 200；线上 api.ponyo.fun 确认；本地同步。
+
+**分类丢失修复设计**（待用户确认后实施，详见 docs/plans/2026-08-12-source-naming-spec.md 附录或会话讨论）：三层方案 = App 端归一化比较（DefaultConfig.adjustSort 已改未装，动画片↔动漫、记录片↔纪录片、短剧↔爽文短剧、家庭篇↔家庭片）+ 数据层对齐（白名单按接口名书写，已实施）+ 兜底回退（匹配 <3 时显示接口全部分类）。
+
+### 40. 统一分类字典与动态重算（08-14）——应对源晋级与分类变动
+
+**背景**：用户要求分析“有的源没分类、有的有、有的错”，并强调源会晋级、分类都在变动。
+
+**实施**：
+- 新增 `config/categories.json` 唯一分类字典（标准分类 电影/电视剧/综艺/动漫/纪录片/少儿/短剧/体育/直播/其他，别名映射、成人黑名单、顶级同义词），并随报告沉淀未识别别名为待维护项。
+- 新增 `publishing/category_taxonomy.py`：`normalize_categories`（成人剔除、别名映射、父子折叠、去重排序、unmapped/denied 审计）与 `raw_signature`；7 项单测通过。
+- 生产发布器 `publishing/generate_subscription.py` 改用统一字典；分类缓存升级为 `{sig, at, cats}`，6 小时 TTL，超期标记 stale；每源输出 `category_provenance`；白名单迁移到 `config/category-host-whitelist.json`。
+- 临时版 `scripts/generate_temp_subscription.py` 同步到同一字典，删除本地重复规则。
+- 新增 `scripts/recompute_categories.py`：按当前晋级快照重算并产出 `reports/category-report.json`，支持 `--probe/--probe-all` 实时探测、探测结果回写缓存、与上一份报告 diff（新增/移除/分类漂移）。
+
+**服务器实测（/opt/ponyo-source-manager，13 个 allow 源）**：白名单 2 + 实时探测 10 + 源名推断 1（DJ音乐→其他）= 13/13 有分类；首轮 pending 别名 6 个（女频恋爱/古装仙侠/年代穿越/脑洞悬疑/现代都市→短剧、经典片→电影）已补入字典，重跑归零；diff 记录 8 个源近期新增“其他”分类的漂移。
+
+**待办**：发布前用报告 diff 复检；观察下一轮每日发布的分级变化与 stale 比例。
+
+### 41. 发布 + Android UI 实机验证 + 字典补漏（08-14 12:2x CST）
+
+**发布前复检**：`recompute_categories.py --probe-all` 重跑，13 个 allow 源 13/13 有分类（whitelist 2 + detected 10 + inferred 1），pending_aliases 空、denied 空、diff 无漂移 → 允许发布。
+
+**发布**：`daily_publish.py --push` 成功（13 allow → 临时版 limit=95，CDN purge 200，已推送）。api.ponyo.fun/ponyo.json 即时生效；jsDelivr @main 在 purge 后约 15 分钟内仍回旧内容（CDN 别名缓存滞后），验证改用 api.ponyo.fun 直连。
+
+**Android UI 实机验证**（emulator-5554，Ponyo TV，配置地址切到 api.ponyo.fun 后冷启动重拉）：
+- 极速：主页/电视剧/电影/动漫/综艺/短剧 ✅
+- 360*：主页/电影/连续剧/综艺/动漫/体育/爽文短剧 ✅（源接口原生名）
+- 艾旦：主页/电影/电视剧/综艺/动漫/短剧/直播 ✅ 无任何成人分类（福利/伦理/波萝社等未泄漏）
+- 飘零：主页/电影/连续剧/综艺/动漫/短剧/邵氏大片 ⚠️（发现字典缺口）
+
+**发现与修复**：
+1. 字典缺口两处：`邵氏大片`（飘零，应归电影）、`台球`（红牛，应归体育）。已补入 `categories.json`（邵氏大片→电影、台球→体育），同步服务器并复发布；复发布后全量扫描 95 点播源 `residue={}`（无任何非标准分类名）。
+2. **展示层用源接口原生名**：App `DefaultConfig.adjustSort` 只用订阅 `categories` 做“过滤”（保留顶级、剔除成人/子类），匹配成功后仍显示源接口 `ac=list` 的原生名（连续剧/爽文短剧/剧集），不会改成字典标准名（电视剧/短剧）。故 UI 上同名分类可能因源而异；这是设计使然（数据层归一化 + App 匹配归一化），如要求 UI 全统一需在 App 端对展示名再做一次归一化（后续可选）。
+3. **白名单被实时探测覆盖**：`generate_temp_subscription.py` 先注入 `category-host-whitelist`（provenance=whitelist），随后对 http 源的实时探测成功会覆盖为 `detected`；艾旦/墨斗因此显示 detected 而非 whitelist。当前 taxonomy 成人黑名单仍能兜底（艾旦 UI 无成人分类），但白名单的显式 35/40 分类裁剪已被绕过，属潜在回归，建议后续让白名单命中时跳过实时探测。
+4. **inferred 兜底未进发布**：`DJ音乐→其他` 只在 recompute 报告里 infer，`generate_temp_subscription.py` 无该兜底，故 DJ音乐在订阅中无 categories（音乐源，可接受）。
+
+**遗留观察项**：下一轮每日发布的 stale/新晋源分类变化；jsDelivr @main 缓存刷新后默认订阅 URL 恢复最新。
+
+### 42. 分类内容串数据修复（08-14 15:0x CST）——顶级分类不再置 id="0"
+
+**现象**：用户反馈“选择分类后渲染的数据不对”。实测 极速（jszyapi.com，type_pid 两级源）：选中“电视剧”却渲染出 动漫+足球+篮球 混合内容。
+
+**根因**：`DefaultConfig.buildSortHierarchy` 对有子分类的顶级分类执行 `top.id = "0"`，随后 `SourceViewModel.getList` 用 `t=sortData.id` 发请求 → `t=0`（源站全局混合推荐），所有顶级分类都串到同一份推荐数据。
+- 极速实测：`t=0` 返回 动漫/足球/篮球 混合列表；`t=1`(电视剧) total=0、`t=2`(电影) total=1、`t=3`(欧美剧) total=3954、`t=24`(中国动漫) total=2553 —— 内容在子分类，顶级是空文件夹。
+
+**修复**：删除 `buildSortHierarchy` 里的 `top.id = "0"`，顶级分类保留接口原 `type_id`（同步更新 `SourceViewModel.getList` 注释）。子分类仍通过“类型/地区”筛选访问（`filterSelect["type"]=子分类id`），筛选逻辑未动。
+
+**实机验证**（emulator-5554，`:app:assembleJavaDebug` 重新构建安装）：
+- 极速 电影 → 仅“童年阴影”（= `t=2` 正确）；极速 电视剧 → “暂无内容”（= `t=1` 正确空文件夹）；主页 → 首页推荐（正常）。
+
+**遗留**：type_pid 源的顶级分类若是空文件夹（如 极速 电视剧/动漫），选中会显示空态，实际内容在“类型/地区”筛选的子分类里。可选后续：顶级空文件夹自动聚合子分类内容，或对空文件夹顶级直接展示子分类为平铺 tab。
+
+### 43. 顶级分类聚合子分类内容（08-14 15:2x CST）——空文件夹顶级也有列表
+
+**需求**：用户确认「主页=当前源站推荐/最新」「分类无筛选时应显示当前分类的列表」。删除 id="0" 后空文件夹顶级显示空态仍不满足，需让顶级分类聚合其子分类内容。
+
+**修复**（`SourceViewModel.java`）：
+- `getList`（type 0/1）拆分：筛选选中子分类 → 单请求 `t=子分类id`（原逻辑不变）；无筛选且顶级有子分类 → `aggregateType01List` 并发请求「父分类 + 所有子分类」，按序合并（按 vod_id 去重、取最大 pagecount）后 post。
+- 新增 `childTypeIds()`（从「类型/地区」筛选 values 收集子分类 type_id）、`requestType01List()`（单请求抽取）、`aggregateType01List()`/`finishAggregate()`（并发聚合）。分页沿用 GridFragment 的 page 递增，聚合 pagecount 取子分类最大值。
+
+**实机验证**（emulator-5554，重新构建安装）：
+- 极速 电视剧 → 欧美剧/轮家也疯狂/奥利不见了/星际迷航…（= 聚合 t=3,4,5,6,7,20,28 正确，TV 剧集）
+- 极速 电影 → 童年阴影 + 逃出绝命街/碧血蓝天/器子…（= 父 t=2 + 子 t=9 动作片 正确）
+- 主页 → 首页推荐（正常，不受影响）
+
+### 44. 切源显示 loading + 筛选补「全部」+ 失败回退修正（08-14 16:0x CST）
+
+**背景**：用户反馈两点——① 筛选「类型/地区」只有子分类没有「全部」；② 切源后（尤其 type-4 drpyS 源）分类栏残留上一源「电影/电视剧」，且失败回退标题错乱。
+
+**根因**：
+1. 筛选 values 只有子分类，缺「全部」入口。
+2. 切源走 `loadHomeSort(true)`（keepCurrentContent），不显示 loading、不清旧分类，旧源分类一直挂着。
+3. `postSortResult(sourceKey, null)` 失败时除发 `sortError` 还 post 空 `AbsSortXml`，观察者把空结果当有效结果重建出「只有主页」。
+4. `previousHomeName` 在预览阶段就被 `setHomeTitle(预览源)` 覆盖，失败回退时标题回成预览名而非上一源名。
+5. type-4（drpyS）源 api 是 `http://127.0.0.1:5757/...`（**服务器 loopback**，见 docker-compose `127.0.0.1:5757:5757`），Android 端 127.0.0.1 是设备自身，无 drpyS 服务 → ECONNREFUSED。故七猫短剧/央视大全/DJ音乐等 type-4 源在 App 上不可达（source-manager `audit_types.py` 也标为 `local_only`）。
+
+**修复**：
+- `DefaultConfig.buildSortHierarchy`：筛选 values 顶部补 `全部`（值为空串，选中=聚合顶级全部）。
+- `HomeActivity`：`refreshFromTopBar`/`refreshHome(false)` 由 `loadHomeSort(true)` 改 `loadHomeSort(false)`（切源显示 loading）；站点选择 dialog `click` 补记 `previousHomeName` + `setHomeTitle`；`switchHomeSource` 首次预览时记录 `previousHomeSource/previousHomeName`，`refreshFromTopBar`/`loadHomeSort` 不再覆盖。
+- `SourceViewModel.postSortResult`：失败只发 `sortError`，不再 post 空 `sortResult`。
+
+**实机验证**（emulator-5554，重新构建安装）：
+- 极速 电影 筛选面板首项为「全部」，随后动作片/爱情片/… ✅
+- 切到七猫短剧 → 显示「首页内容加载失败/重试/更换来源」且标题回退「极速」，无旧分类残留 ✅
+- 错误态「更换来源」打开站点选择，选 360* → 正确显示 360* 分类 ✅
+
+**遗留**：type-4 drpyS 源在 App 端不可达（服务器 loopback）。可选后续：source-manager 发布时剔除 local_only 源，或用公共 HTTPS 代理改写 `127.0.0.1:5757`。
+
+### 45. App 内嵌 drpyS 运行时 —— 服务器规则下发（08-14 16:3x CST，进行中）
+
+**决策**：用户选择「App 内嵌 drpyS 运行时」，并明确架构——订阅刷新时 App 先检查订阅里的源及其规则，再从服务器更新规则（不打进 APK）。
+
+**排查结论**：
+- drpyS 运行时是服务器 docker `ponyo-drpy-node`（基于 hjdhnx/drpy-node，Fastify Node.js），监听 `127.0.0.1:5757`。
+- 规则 JS 在容器 `/app/spider/js/*.js`（198 文件，含 `_lib.*.js` 共享库；另有 py/php 目录）；`/api/:module` 按 `{jsDir}/{module}.js` 执行。
+- 规则是 Node.js 环境的 JS（`fetch`/`btoa`/`getHeaderX`/`getRule`/`md5`/`CryptoJS` 等，见 `libs/drpyS.js`），App 端 QuickJS 需做等价桥。
+- App 已有 QuickJS（`JsSpider`，catvod 桥）+ NanoHTTPD（`RemoteServer`），但缺 drpyS 运行时与 API 桥。
+
+**已完成（服务器侧，已部署实测）**：
+- 规则从容器导出到 `/opt/ponyo-source-manager/drpys/js/`。
+- `children.py` 新增 `GET /drpys/manifest`（`{module: sha256}`，190 条）与 `GET /drpys/rule?name=<module>`（返回 JS 源，带路径穿越防护）；`docker-compose.yml` 挂载 `./drpys:/app/drpys:ro`。
+- 实测：manifest/rule 返回正常，`../` 穿越返回 404。
+
+**进行中（Android 侧）**：规则拉取+缓存、本地 5757 NanoHTTPD drpyS 运行时、drpyS JS API QuickJS 桥。详见 `docs/plans/2026-08-14-drpys-runtime-in-app.md`。
+
+### 46. App 内嵌 drpyS 运行时 —— 端到端验证完成（08-14 17:5x CST）
+
+**结论**：七猫短剧（type-4 drpyS 源）在 emulator-5554 上分类/内容/搜索/详情/播放全链路正常。
+
+**关键修复（本轮）**：
+- `toJson` 序列化：`JSUtils.toJsonObject` 对 JSArray 因 `new JSONObject("[...]")` 抛 JSONException 静默返回 `{}` → 改用 `((JSObject)obj).stringify()`（对象/数组通吃），且必须在 executor 线程执行（QuickJS 单线程约束）。
+- `二级` 传 `new String[]{id}` 触发 "Unsupported Java type [Ljava.lang.String;" → 空参数 + `this.orId` 注入。
+- `lazy` 的 `this.input` 应为 `play` 参数（drpy-node `play(flag,id)` 中 `input=id=play`），原实现误用 `flag`。
+- 无 `class_parse` 函数时回退 `class_name`/`class_url` 字符串构造分类（对齐 drpy-node `homeParse`），七猫小说分类因此可用。
+
+**验证（本地 5757 端点 = App 实际请求路径）**：
+- `class_parse`（filter=true）→ 60+ 分类（推荐/新剧/都市情感/都市/古装/玄幻仙侠/年代/奇幻/乡村/民国/青春校园/末世/科幻/武侠/二次元/逆袭…）。
+- `一级`（ac=detail&t=1273）→ 短剧列表（心有暖阳向云霄/蛇年有喜之小草进城/旧信蒙尘难再言/美女总裁爱上我/封总，太太的离婚生效了…）。
+- `搜索`（wd=总裁&ac=detail&quick=false）→ 总裁夫人惹不起/腹黑总裁/陆总裁的娇妻…。
+- `二级`（ids=3793）→ vod_play_from=七猫短剧 + vod_play_url（m3u8 分集列表）。
+- `lazy`（play=<m3u8>&flag=2）→ `{"parse":0,"url":"https://...m3u8"}`。
+- **UI 实测**：站点切换对话框选中「七猫短剧」→ 分类栏显示 主页/推荐/都市情感/都市/古装/玄幻仙侠/年代/奇幻/乡村/民国/青春校园，内容网格显示短剧；logcat 确认 `tag_id=0`(class_parse)→QuickJSObject、`tag_id=1273`(一级)→QuickJSArray。
+
+**已知限制（后续迭代）**：
+- `require()`：央视大全等用 Node CommonJS（`require('./_lib.xxx.cjs')`），QuickJS 不支持，需模块加载器。
+- `CryptoJS`/`_fetch`/`JSON5`：七猫小说等用这些全局，需在 DrpySBridge 补齐。
+- 字符串型选择器（DJ音乐 `一级`/`搜索` 为 CSS 选择器字符串）：需 cheerio 式解析器，当前仅支持函数型规则。
+
+**涉及文件**：`DrpySRuntime.java`（toJson/二级/lazy/class 回退）、`DrpySServer.java`（play 路由）、`DrpySRuleManager.java`、`ApiConfig.java`（syncAsync 钩子）、`App.java`（startDrpySServer）。详见 `docs/plans/2026-08-14-drpys-runtime-in-app.md`。
+
+### 47. App 内嵌 drpyS 运行时 —— P0 补齐基础全局 + 七猫小说全链路（08-14 19:3x CST）
+
+**目标**：补齐函数型规则所需全局，覆盖 CryptoJS/_fetch/HTML 解析类规则（6 条），以七猫小说为验证对象。
+
+**补齐内容（`DrpySBridge.java` / `DrpySRuntime.java`）**：
+- `_fetch`/`fetch`：返回 `{status, headers, text(), json(), content}` 响应对象（复用 okhttp 阻塞请求）。
+- `pdfa/pdfh/pd`：复用 catvod `HtmlParser`（jsoup）作为 `this` 上下文解析助手（对齐 createParserContext）。
+- `buildUrl/buildQueryString/parseQueryString`、`joinUrl/urljoin`。
+- `CryptoJS`：规则引用时懒注入内置 `assets/js/lib/crypto-js.js`（198KB UMD）。
+- 修正 `escape/unescape` 为标准 Annex B 语义（此前 `escape` 对 <256 字节未编码，导致 crypto-js `Utf8.stringify` 中文乱码）。
+- URL 解析：相对 URL 用 `rule.host` 绝对化（对齐 initParse）+ cateParse 的 fyclass/fyfilter/fypage + filter_url jinja 简化渲染。
+- 详情结果对齐 `detailParseAfter` 的 `{list:[vod]}`。
+
+**修复的 bug**：相对 URL 未拼 host 被 okhttp 拒绝、`HtmlParser` 空 html 首次调用 NPE、`escape` 语义错误致中文乱码。
+
+**验证（七猫小说全链路，emulator-5554 本地 5757）**：
+- 分类（class_name 回退）→ 全部/女生原创/男生原创/出版图书 ✅
+- 内容 `t=1`（一级）→ pdfa 解析 qimao.com 小说列表 ✅
+- 搜索 `wd=前夫`（搜索）→ buildUrl + md5 sign ✅
+- 详情（二级）→ pdfh/pd + buildUrl，章节列表 ✅
+- 播放 `play=book@@chapter@@title`（lazy）→ CryptoJS AES 解密，`novel://{title,content}`，UTF-8 正常 ✅
+
+**回归**：七猫短剧 分类/内容/搜索/详情/播放 均无回归（详情改为 `{list:[...]}` 包裹后格式正确）。
+
+**剩余（P1/P2）**：`require()` 模块加载（央视大全等 4 条）、字符串型选择器方法（DJ音乐等 14 条）。详见 `docs/plans/2026-08-14-drpys-runtime-in-app.md`。
+
+### 48. App 内嵌 drpyS 运行时 —— P1 require/_lib 模块加载 + 番茄小说全链路（08-14 19:5x CST）
+
+**目标**：实现 `require`/`$.require` 模块加载，覆盖 require 类规则（番茄小说/毒舌影视），以番茄小说为验证对象。
+
+**补齐内容**：
+- `DrpySRuleManager`：扫描规则里 `require('./_lib.xxx')` / `$.require(...)`，增量拉取 `_lib.*.js` 到 `files/drpys/`（4 个 lib 已落地；`.cjs` 需服务器端扩展后支持）。
+- `DrpySRuntime.setupLibSupport()`：注入 `$`（`exports`/`require`）、全局 `require`、`PC_UA`/`iconv` 占位、`req`、`cut`；`requireLib` 用 IIFE 包裹 `_lib` 内容执行并返回 `$.exports`（对齐 drpy-node moduleLoader 的 `$.exports` 机制）。
+- 全局 `require` 处理内置模块（iconv-lite/crypto-js 等）返回占位/对象。
+- PREAMBLE 补 `JSON5.parse/stringify` 与 `String.prototype.parseX`（JSON5 降级为 JSON.parse）。
+- URL 解析：`fypage` 括号算术求值（`(fypage-1)`、`((fypage-1)*10)` → 逐层求值），filter_url `{{fl.KEY}}`（无 or 默认）→ 空串。
+
+**修复的 bug**：
+- `_lib` 顶层 `function` 声明污染全局、与规则顶层 `const` 冲突 → IIFE 包裹。
+- 反射绑定不支持 varargs（`log(Object...)`）与缺省参数（`req(input)` 1 参）→ 新增 `invokeMethod` 反射适配（varargs 正确包裹 + 缺失参数补 null）。
+
+**验证（番茄小说全链路，emulator-5554 本地 5757）**：
+- 分类（class_parse + `_lib.random`/`_lib.request`）→ 全部/主分类/主题/角色/情节 + filters ✅
+- 内容 `t=-1`（一级 + `req` + fypage 求值）→ 神通者/时停起手… ✅
+- 搜索 `wd=神通`（搜索 + `req`）→ 神通者 ✅
+- 详情（二级 + `cut` + `parseX`）→ vod_play_url 章节列表 ✅
+- 播放（lazy + `req` + `cut`）→ `novel://{title,content}`，UTF-8 正常 ✅
+
+**回归**：七猫短剧/七猫小说 分类、搜索无回归。
+
+**剩余（P2）**：字符串型选择器方法（DJ音乐等 14 条）；`.cjs` CommonJS + WASM/Buffer/crypto（央视大全，需服务器端 `.cjs` 下发 + 大额 Node API 面）。详见 `docs/plans/2026-08-14-drpys-runtime-in-app.md`。
+
+### 49. App 内嵌 drpyS 运行时 —— P2 字符串选择器 + DJ音乐全链路（08-14 20:0x CST）
+
+**目标**：实现字符串型 `一级`/`搜索`/`二级` 选择器解析，覆盖 DJ音乐等 14 条选择器规则。
+
+**补齐内容（`DrpySRuntime.java`）**：
+- 字符串型 `一级`/`搜索`：`parseStringList`（请求 url → `pdfa(p0)` → 逐项 `pdfh/pd` 提取，`p4` 支持 `+` 拼接、`二级='*'` 时 vod_id 追加 `@@name@@pic`）；`*` 部分回退到 `一级` 对应部分（对齐 `getPP`/`initCommonParseConfig`）。
+- 字符串型 `二级='*'`：`detailContent` 直接由 `orId`（`url@@name@@pic`）构造 `{vod_play_from:'道长在线', vod_play_url:'嗅探播放$url'}`（对齐 `commonDetailListParse` p==='*'）。
+- `lazy` 返回字符串（直接播放地址）时包装为 `{parse, jx, url}`（对齐 `playParseAfter`，`parse` 按 .m3u8/.mp4/.m4a/.mp3 判定）。
+- JSON5 宽松解析：PREAMBLE 里 `JSON5.parse` 先 `JSON.parse`，失败后做去注释/尾逗号/单引号转双引号/无引号键加引号/undefined-NaN-Infinity→null 的宽松修复；`String.prototype.parseX` 改为走 `JSON5.parse`。
+
+**验证（DJ音乐全链路，emulator-5554 本地 5757）**：
+- 分类（class_name/class_url 回退）→ 迪高串烧/慢摇串烧/中文Remix… ✅
+- 内容 `t=1`（一级字符串选择器）→ DJVinCent/… ✅
+- 搜索 `wd=Disco`（搜索字符串选择器 + `*` 继承）→ 王强-秋天不回来… ✅
+- 详情（二级 `*`）→ 道长在线/嗅探播放 ✅
+- 播放（lazy 函数 + JSON5 + urljoin + 字符串包装）→ `{"parse":0,"jx":0,"url":"http://mp4.djuu.com/...m4a"}` ✅
+
+**回归**：七猫短剧/七猫小说/番茄小说 分类、搜索无回归。
+
+**剩余（仅央视大全）**：`.cjs` CommonJS（`module.exports`）+ `_lib.cntv*.cjs` 依赖 WebAssembly/Buffer/crypto/axios 等大额 Node API；需服务器端 `.cjs` 下发 + QuickJS 增加 WASM 支持，工作量最大，属独立攻坚项。详见 `docs/plans/2026-08-14-drpys-runtime-in-app.md`。
+
+### 50. App 内嵌 drpyS 运行时 —— 央视大全 分类/内容/搜索 + es6-extend（08-14 20:1x CST）
+
+**目标**：让央视大全的 分类/内容/搜索 可用（WASM 仅用于详情/播放签名，分类/内容/搜索不依赖）。
+
+**补齐内容**：
+- `objectToQueryString`/`encodeIfContainsSpecialChars`（drpyCustom.js 工具）。
+- es6-extend 的 Python 风格扩展：`String.prototype.join`（`"||".join(arr)`）、`Array.prototype.append`、`String.prototype.strip`、`String.prototype.replaceX`、`removeHtml`、`matchesAll`。
+- 央视大全的 `require('./_lib.cntv*.cjs')`（不在设备上）与 `$.require('./_lib.cntv.js')`（WASM）失败后软降级为 `{}`，规则仍可加载。
+
+**验证（央视大全，emulator-5554 本地 5757）**：
+- 分类（class_name/class_url 回退）→ 4K专区/栏目大全/特别节目/纪录片/电视剧/动画片 ✅
+- 内容 `t=纪录片`（一级 + request + JSON 解析）→ 纪录片《江泽民》… ✅
+- 搜索 `wd=纪录片`（搜索 + removeHtml + String.join）→ [视频]文献纪录片《江泽民》… ✅
+- 详情/播放：❌（依赖 `getVideoInfoByPid`/`processFile`/`setH5Str`，来自 `.cjs`/WASM，QuickJS 无 WebAssembly）
+
+**回归**：七猫短剧/七猫小说/番茄小说/DJ音乐 分类无回归。
+
+**结论**：具名源（七猫短剧/央视大全/DJ音乐）的「分类/内容/搜索」全部实测正常；央视大全详情/播放需 WASM（QuickJS 未暴露 WebAssembly，独立攻坚）。详见 `docs/plans/2026-08-14-drpys-runtime-in-app.md`。
+
+### 51. 订阅源 hard_pass 覆盖阻塞定位 + P0 ffprobe 解耦 + P1 嗅探回退（08-14 20:3x CST）
+
+**定位（订阅源评分管道，非 App 运行时）**：
+- `score_snapshot`：4605 指纹，`hard_pass=1` 仅 **7 个**，1866 有分，2732 零分。
+- hard_pass 门槛（`scorer.py`）：功能≥90%、播放≥85%、720p≥80%、首帧<4s、连续失败<3、时隙+JAR 门。
+- 近 miss 源（1859 个）逐项统计：**缺播放验证 1786 / 缺功能验证 1608 / 缺高清数据 1822** 是压倒性大头；真正质量不达标的只有功能 182、播放 41、首帧 15、高清 11。
+- 漏斗（近7天去重指纹）：search 823 → detail 697 → episode 689 → playback 189 → ffprobe(media_probe) 82。media_probe 覆盖仅 1.8%。
+- 最大断崖在 episode(689)→playback(189)：主因 `playurl_runtime_error`(689) + `platform_page`(109) + `playurl_timeout`(21)；次因 playback 侧 `non_media_payload`(453) + `media_playback_failed`(~418) + `media_manifest_failed`(~90)。
+- 根因：`media_probe` 是 6 步短路漏斗的终点（`run_full_chain` 里 ffprobe 被 `pb_res["success"]` 门禁）+ 每轮 `drpy_run` 只测 176 源 + 7 天窗口。
+
+**P0 已实现（`drpy_runner.py`）**：`run_full_chain` 里把 ffprobe 从「真实播放验证成功后」解耦为「拿到可播地址即执行」，真实播放验证独立运行——高清/时长证据不再被播放验证结果卡死。
+
+**P1 已实现（`playback.py`）**：`verify_playback` 直链返回「网页/非媒体」时，新增 `sniff_media_url` 静态嗅探回退（正则提取 m3u8/mp4/m4a/mp3，m3u8 优先，限 1 层递归），把「播放地址其实是网页/接口响应」的源救回真实媒体直链，而非直接判 `non_media_payload` 失败。
+
+**验证**：
+- 新增测试：`test_ffprobe_decoupled_from_playback`、`test_sniff_media_url_extracts_and_prioritizes_m3u8`、`test_webpage_sniffing_fallback`。
+- 本地全量 pytest **251 passed**；服务器 `.venv` 上 `test_drpy_runner`+`test_playback_unit` **16 passed**。
+
+**部署（已上线，无 docker 重建）**：scp 4 个文件（`drpy_runner.py`/`playback.py` + 两个测试）到 `/opt/ponyo-source-manager/`；宿主 `.venv` 为 editable install（`_editable_impl_ponyo_source_manager.pth` → `src/`），调度器（crontab `--phase full`）下一次运行即用新代码；`ponyo-children-api` 只 import 未改动的 `run_drpy_detail/episode/playurl`，无需重建镜像。已核验部署后 `sniff_media_url` 存在、`verify_playback` 带 `_sniff_depth`、`run_full_chain` 中 ffprobe 先于真实播放且无 `pb_res["success"]` 门禁。
+
+**待办**：下一次 `drpy_test`（crontab 08/13/20/23 每 6h）跑完 + `scoring` 后，观察 media_probe 覆盖与 hard_pass 数量变化；后续 P2（提吞吐+放宽窗口）、P3（门禁分级）见方案。
+
+### 52. 央视大全剔除订阅 + App 密文规则 base64 解码 + 全源分类实测（08-14 21:4x CST）
+
+**订阅源剔除央视大全（已上线）**：
+- 正确脚本是 `scripts/generate_temp_subscription.py`（生成服务文件 `subscription/ponyo.json`，非 src 里的 generate_subscription.py）。
+- 加 `BLOCKED_KEYS = {"drpyS_央视大全[官]"}` 到 `_load_sites`，并保留 src 版 generate_subscription.py 的同名过滤（正式版也排除）。
+- 部署后重跑生成：`ponyo.json` type-4 源 43→**42**，央视大全已剔除。
+
+**App 端密文规则 base64 解码（`DrpySRuntime.decodeRule`）**：
+- 部分 drpyS 规则（瓜子/电影港/阅读助手/小苹果/热播等）在 `@header` 注释后是 **base64 密文**，drpy-node 靠 `getOriginalJs` 解码，App 端原样 evaluate 会报 `invalid assignment/invalid number literal/unexpected token`。
+- 对齐 drpy-node：明文（含 `var rule|function|let|const|async|this.`）直接返回；否则去 `@header` 注释后 base64 解码。
+- 顺带补 `URLSearchParams` polyfill（`new URLSearchParams(obj).toString()`，热播/小苹果用到）。
+
+**全源分类实测（42 个 type-4 源，`?filter=true`）**：
+- ✅ 有分类 **37/42**；❌ 空 5 个：
+  - 小苹果[优]：class_parse 动态设 `this.class_name/class_url` 后 return []，需 homeParseAfter 后处理（待补）。
+  - 爱推图[画]：`@header` 里是字符串型 class_parse（选择器），需 commonClassParse（待补）。
+  - 非凡采集[采]/TG搜[搜]/兄弟盘[搜]：采集/搜索型，无首页分类（属正常）。
+
+**涉及文件**：`scripts/generate_temp_subscription.py`、`src/.../publishing/generate_subscription.py`（BLOCKED_KEYS）、`DrpySRuntime.java`（decodeRule + URLSearchParams polyfill）。
+
+**补全（续）**：
+- 订阅配额：小说+听书合并为一类 `book_audio` max=1，`_apply_category_quota` 改为匹配 `s`（含 `类型` 字段）；重新生成后 type-4 源 42→**37**，书/听仅留 1（阅读助手），央视已剔除。
+- App：`DrpySRuntime` 补 homeUrl 空时回退 host（对齐 initParse）、`buildClassFromDynamic`（class_parse 动态设 class_name/class_url 后重读）、`buildClassFromSelector`（字符串型 class_parse 选择器，对齐 commonClassParse）。
+- 全源分类复测：37/37 有效分类（除 2 个上游 403：小苹果 su.haotv.site、爱推图 aituitu.com 均返回 403/反爬，非运行时缺陷；另 3 个非凡采集/TG搜/兄弟盘为搜索/采集型无首页分类，属正常）。
+
+**结论**：App 内嵌 drpyS 运行时已覆盖函数型/字符串选择器/动态 class_name/base64 密文/require·$.exports/CryptoJS 等规则型；订阅源中所有「有首页分类」的 type-4 源均能出分类，剩余 2 个是上游站点反爬（403）。
+
+**补全（反爬 + 预处理）**：
+- `DrpySBridge.doHttp` 默认加浏览器 UA（否则 okhttp/3.x 被 aituitu/su.haotv 403），并把 `PC_UA/MOBILE_UA/UC_UA/IOS_UA` 占位符替换为真实 UA。
+- `DrpySRuntime.loadRule` 执行规则 `预处理`（对齐 initParse），动态设置的 `class_name/class_url/filter` 得以在加载期被读入。
+
+**最终全源分类实测（37 个 type-4）**：
+- ✅ 有分类 **34/37**；❌ 空 3 个：非凡采集[采]/TG搜[搜]/兄弟盘[搜]（搜索/采集型，无首页分类，属正常）。
+- 即：**所有「有首页分类」的源 100% 出分类**；爱推图（23 分类）、小苹果（5 分类）已由反爬/预处理修复恢复。
+
+### 53. 2026-09-02：scan_security 超时修复与点播精选发布闭环
+
+独立记录见：
+
+```text
+docs/plans/2026-09-02-source-manager-security-timeout-and-vod-release.md
+```
+
+摘要：
+
+- `scan_security` 已做最小修复并上传线上（备份 `scan_security.py.bak-20260902`）：单 JAR 超时 8s、总预算 2400s、24h 跨 fingerprint 冷却、同轮 `binary_cache` 复用；到达预算后停网络但仍写库出报告。安全判定未改。
+- 本地测试：`37 passed in 3.88s`（`test_scan_security` / `test_scorer` / `test_release_validation`）。
+- 线上 waiter PID `3547153` 等 scheduler `3487363` 退出后单独跑安全扫描；不杀进程，不跑 `scheduler --phase full`。
+- 发布仍失败：普通精选 9≠29，计入 VOD 10≠30；allow=15，同站点去重后约 10；「纪录」分类=0。
+- **下一步**：先确认 waiter/scheduler/`drpy_runner` 结束，再核对 `/opt/ponyo-source-manager/reports/security-report.json`；报告未出之前不进入精选补量。禁止改 `Hawk2.xml`、全量部署、手工 allow。
+
+### 54. 2026-09-02 晚：播放器窗口黑屏 / 流畅度 / source-manager 只读
+
+独立记录：
+
+```text
+docs/plans/2026-09-02-player-window-switch-black-screen.md
+docs/plans/2026-09-02-live-vod-loading-optimization.md
+docs/plans/2026-09-02-source-manager-security-timeout-and-vod-release.md  （第 10 节）
+```
+
+摘要：
+
+- 详情页小窗↔全屏：先挂新 Surface，就绪后再拆旧 View，且旧 `release()` 不再 `setDisplay(null)`。MuMu 安装 `PonyoTV_debug-java.apk` 后，播放中双向切换均出画（IJK + SurfaceView）。暂停/缓冲/TextureView/Exo 点播切换未覆盖。
+- 点播 HLS：预取 4→2、线程 8→3；直播窗口仅 `livePins` + `PLAYER_IS_LIVE`。点播 IJK 补探测/重连；Exo 缓冲 12–25s / 800ms 起播。直播默认仍不走整片代理。MuMu 点播可播；直播第一路失败后切 Exo/备用源出画。
+- source-manager：`ssh jie`（116.196.98.184:22）多次超时，dininghall 对照也超时。第 1 步 PID/报告未读到，未进入精选补量。
+
+### 55. 2026-09-03 凌晨：source-manager 只读闭环（SSH 恢复后）
+
+独立记录：
+
+```text
+docs/plans/2026-09-02-source-manager-security-timeout-and-vod-release.md  （第 11 节）
+```
+
+摘要：
+
+- SSH 改走 `ssh.ponyo.fun` → `124.222.190.214` 已通。waiter `3547153`、scheduler `3487363` 均已退出，当前无相关进程。
+- 手动 `scan_security` `rc=0`，报告 `generated_at=2026-09-02T15:25:02Z`，`findings=4357`，`skipped_fetch_deadline=2645`（预算耗尽后剩余 fingerprint×URL 对，不是唯一 URL）。旧 pipeline 2700 秒 `returncode=-9` 不能代表本次手动扫描失败。
+- 无 `source` 表；`list_state` allow=15 / candidate=6907 / deny=653。15 个 allow 全部能 join `dedup_group`。发布层 `SITE_GROUPS` 把 15 折成 9 个普通源；staging 约 12 站点。`zitv.cc` 不在 SITE_GROUPS，两个橘猫都保留。
+- 最新评分 `hard_pass=0` / `hard_fail=6931`。4 个 hard-pass 全是 deny（奶子/爱坤/360ZZ/鸡坤）。allow 全部不足 3 个成功时段；高分源多数只缺时段，低分源另缺高清/JAR/功能证据。crontab 为 `8,13,20,5`，night 在 05:00 CST。
+- 源名称无纪录命中；约 117 个混合站接口带纪录片类目，但不能充纪录配额。综艺名称 candidate 仅 3；动漫有分但未 hard-pass。
+- 未发布、未改 `Hawk2.xml`、未跑 full scheduler、未手工 allow。门禁仍是 9≠29、10≠30。
