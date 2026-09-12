@@ -196,14 +196,49 @@ python .\source-manager\scripts\check_syntax.py
 | `android/backups/`、`toast-backup-*/` | 2 MB | 构建备份 |
 | `__pycache__/`、`.pytest_cache/` | <1 MB | Python 缓存 |
 
-### 4.5 需人工判断的归档项
+### 4.5 已完成的清理（2026-09-12）
 
-| 路径 | 体积 | 建议 |
-|:---|:---|:---|
-| `docs/ui-audit/` | 891 MB | 仅 `2026-08-10/实施记录/` 已入库；其余为过程证据，可归档到外部存储 |
-| `work/` | 232 MB | 本地工作区，含 118 MB `main.bundle`，可随时清空 |
-| `deploy.tar.gz` | 61 MB | 部署打包产物，可重新生成 |
-| 根目录临时文件 | 74 MB | 截图、`tmp_*.py`、`patch_*.py`、`findings.md` 等 |
+仓库占用从约 4.0 GB 降至 **384.7 MB**，跟踪文件数保持 1248 不变。
+
+**A 类：生成物与缓存（约 2.53 GB）**
+
+* `android/app/build/`、`player/build/`、`pyramid/build/`、`quickjs/build/`
+* `android/.gradle/`、`.gradle_home/`、`backups/`、`toast-backup-*/`
+* `tools/_apk_inspect/`、`tools/md3_res/` 下的 `_*.py`/`_*.png`/`_*.txt`
+* `source-manager/.tmp-test/`、`.tmp/`、`__pycache__/`、`.pytest_cache/`
+* `docs/apk-audit/`、`docs/morph-verify/`、`server-edit/`
+* 根目录 35 个临时文件（截图、`tmp_*.py`、`patch_*.py`、`findings.md` 等）
+
+**B 类：过程证据与工作区（约 1.17 GB）**
+
+* `docs/ui-audit/2026-08-27/`、`2026-09-03-277-smoke/`、`2026-09-08-277-deep/`（405 MB）
+* `docs/ui-audit/` 顶层 145 个临时脚本与产物
+* `docs/ui-audit/2026-08-10/实施记录/` 中 1419 个未被引用的过程文件（445 MB）
+* `work/` 全部内容（232 MB，含 118 MB `main.bundle`）
+* `deploy.tar.gz`（61 MB，可由 `git archive` 重新生成）
+
+### 4.6 保留的 UI 审计交付包
+
+`docs/ui-audit/2026-08-10/` 是**完整交付包**，`README.md` 列出交付清单，**不得删除**：
+
+| 内容 | 说明 |
+|:---|:---|
+| `README.md` | 交付入口与完整性对照表 |
+| `ponyo-tv-ui-deep-beautification-audit.md` | 主方案（最终页面方案与验收标准） |
+| `PONYO_TV_DEEP_VISUAL_REDESIGN.md` | 补充分析稿 |
+| `ponyo-tv-ui-remediation-plan-v2.md` | 整改计划 |
+| `materials/` | 10 个文件：design-tokens、copy-deck、motion-spec、style-board、resource-map、qa-checklist 等 |
+| 44 张 PNG + 5 张 JPG | README 明确列为"原始证据" |
+| `实施记录/` | `IMPLEMENTATION.md` + 33 张验收截图（已入库） |
+
+### 4.7 可重新生成的产物
+
+以下内容删除后可由构建或命令重建，需要时再生成：
+
+* `deploy.tar.gz`：`git archive` 打包
+* `work/srv-sync.bundle`：`git bundle create` 生成
+* `android/*/build/`：Gradle 构建
+* `tools/_apk_inspect/`：APK 反编译
 
 
 ---
