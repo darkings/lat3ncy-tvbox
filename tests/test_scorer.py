@@ -22,7 +22,7 @@ def test_check_hard_thresholds():
     metrics_pass = {
         "func": {"rate": 0.95},
         "play": {"rate": 0.90},
-        "quality": {"hd_ratio": 0.85, "duration_total": 1, "duration_pass_rate": 1.0},
+        "quality": {"hd_ratio": 0.85, "fhd_uhd_ratio": 0.60, "duration_total": 1, "duration_pass_rate": 1.0},
         "consecutive_fail": 0,
         "speed": {"p50": 1200},
         "timeslot_completeness": {"complete": True},
@@ -42,6 +42,7 @@ def test_check_hard_thresholds():
     passed, errs = check_hard_thresholds(metrics_fail)
     assert passed is False
     assert len(errs) == 7
+    assert any("真高清" in err or "fhd+uhd" in err for err in errs)  # 新增真高清门福校验
     assert any("duration" in err.lower() or "时长" in err for err in errs)
 
 
