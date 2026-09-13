@@ -9,6 +9,7 @@ import io
 import json
 import re
 import sqlite3
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import time
 import urllib.error
 import zipfile
@@ -42,6 +43,16 @@ JAR_FETCH_TIMEOUT_SECONDS = 5.0
 # 方案E：连续失败 >= 该次数后，JAR 只试首个候选（gh-proxy），
 # 不再回退 raw.githubusercontent.com / 原始 URL，避免 3× 超时。
 JAR_SINGLE_CANDIDATE_AFTER_FAILURES = 2
+
+# 方案A：并发预抓取。
+# 原实现完全串行抓取，3891 个 URL 在 40min 预算内扫不完
+# （skipped_fetch_deadline=1387）。改为按 host 分组并发：
+#   - 同 host 串行（防目标限流，RateLimiter 已线程安全）
+#   - 跨 host 并发（ThreadPoolExecutor）
+# 与 probe_conn 的 16 workers 保持一致。
+SCAN_FETCH_WORKERS = 16
+# 单批预抓取的 URL 上限，控制内存（并发持有多个 JAR 字节，单个最大 32MB）。
+SCAN_PREFETCH_BATCH = 400
 
 # 已批准并物化的 jar 本地缓存（materialize_approved_assets 输出）,
 # 按 content_sha256 命名。命中缓存的 jar 无需重复下载（无代理环境下
@@ -426,6 +437,115 @@ def _url_fail_count(con: sqlite3.Connection, url: str, asset_type: str) -> int:
     return int(row[0]) if row else 0
 
 
+def _prefetch_concurrent(
+    urls: list[str],
+    *,
+    con: sqlite3.Connection,
+    binary_cache: dict,
+    text_cache: dict,
+    summary: dict,
+    deadline: float,
+) -> None:
+    """方案A：并发预抓取。
+
+    原实现完全串行抓取，3891 个 URL 在 40min 预算内扫不完。本函数把
+    网络抓取提前并发完成并填入缓存，后续串行循环命中缓存后不再打网络，
+    业务逻辑（inspect / DB 写入 / 评分）完全不变。
+
+    并发策略：
+      * 按 host 分组，同 host 串行 —— 避免触发目标站限流
+        （RateLimiter 本身线程安全，但同 host 并发仍会撞 429）
+      * 跨 host 并发 —— ThreadPoolExecutor(SCAN_FETCH_WORKERS)
+      * 每个 worker 只做网络 IO，不碰 sqlite / findings，避免竞态
+
+    参数：
+      urls:          待抓取的 URL 列表（已去重）
+      con:           sqlite 连接。仅用于在主线程预读失败次数，
+                     不传入 worker（worker 只做网络 IO，不碰 sqlite）。
+      binary_cache:  JAR 字节缓存，key=url，value=(bytes, source) 或 Exception
+      text_cache:    文本缓存，key=url，value=str
+      summary:       统计计数器（仅主线程写，worker 不写）
+      deadline:      抓取截止时间（time.monotonic() 基准）
+    """
+    if not urls:
+        return
+
+    # 方案E 修复：在主线程预读每个 JAR URL 的历史失败次数。
+    # 原实现只在串行循环里判定 single_candidate，但预抓取先于串行循环执行
+    # 并填充 binary_cache，导致串行循环的 `if url not in binary_cache` 直接
+    # 跳过，单候选优化永远不生效（jar_single_candidate_fetches 恒为 0）。
+    # 这里提前判定，保证并发路径与串行路径语义一致。
+    # 注意：sqlite 连接非线程安全，必须在主线程查询，worker 只读该集合。
+    single_candidate_urls: set[str] = set()
+    for u in urls:
+        if _asset_type(u) != "jar":
+            continue
+        if _url_fail_count(con, u, "jar") >= JAR_SINGLE_CANDIDATE_AFTER_FAILURES:
+            single_candidate_urls.add(u)
+
+    # 按 host 分组：同 host 的 URL 放进同一组，组内串行执行
+    by_host: dict[str, list[str]] = {}
+    for u in urls:
+        host = urlsplit(u).hostname or ""
+        by_host.setdefault(host, []).append(u)
+
+    # 每个 host 一个任务；任务内部串行抓取该 host 的所有 URL
+    def _fetch_host(host_urls: list[str]) -> list[tuple[str, object, object]]:
+        """抓取单个 host 下的所有 URL，返回 (url, kind, payload) 列表。
+
+        kind: "jar" -> payload=(bytes, source) 或 Exception
+              "text" -> payload=str 或 Exception
+        """
+        out: list[tuple[str, object, object]] = []
+        for u in host_urls:
+            # 每次抓取前检查截止时间，超时则放弃剩余 URL
+            if time.monotonic() >= deadline:
+                break
+            atype = _asset_type(u)
+            try:
+                if atype == "jar":
+                    # JAR 走 _fetch_jar（含候选回退 + 单候选优化）。
+                    # 注意：_fetch_jar 第一个参数是 fetch_bytes 函数本身。
+                    # 本函数是模块级，无法访问 run_scan 的局部变量 fetch_bytes，
+                    # 因此直接引用 net.fetch_bytes。
+                    # single_candidate 由主线程预读的集合决定（见上方注释）。
+                    payload = _fetch_jar(
+                        net.fetch_bytes,
+                        u,
+                        single_candidate=(u in single_candidate_urls),
+                    )
+                    out.append((u, "jar", payload))
+                else:
+                    # 文本抓取沿用原串行逻辑的默认超时（8s），
+                    # 仅 JAR 使用缩短后的 JAR_FETCH_TIMEOUT_SECONDS。
+                    # 同样直接引用 net.fetch_text（模块级函数无局部作用域）。
+                    payload = net.fetch_text(u)
+                    out.append((u, "text", payload))
+            except Exception as exc:  # noqa: BLE001 - 失败也要回填缓存
+                out.append((u, "jar" if atype == "jar" else "text", exc))
+        return out
+
+    # 并发执行：host 数可能远小于 URL 数，用 min 避免空转线程
+    workers = max(1, min(SCAN_FETCH_WORKERS, len(by_host)))
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        futures = [pool.submit(_fetch_host, host_urls) for host_urls in by_host.values()]
+        for fut in as_completed(futures):
+            try:
+                results = fut.result()
+            except Exception:  # noqa: BLE001 - 单个 host 失败不影响整体
+                continue
+            # 主线程统一回填缓存，避免 worker 并发写 dict
+            for u, kind, payload in results:
+                if kind == "jar":
+                    binary_cache[u] = payload
+                    # 方案E 统计修复：单候选路径实际触发次数。
+                    # 原实现从未递增该字段，报告恒为 0，无法诊断优化是否生效。
+                    if u in single_candidate_urls:
+                        summary["jar_single_candidate_fetches"] += 1
+                else:
+                    text_cache[u] = payload
+
+
 def run_scan(
     db_path,
     rules_path,
@@ -570,6 +690,42 @@ def run_scan(
             (f"resolution_status={resolution_status}", now, asset_id),
         )
     con.commit()  # 立即释放写锁，后续网络抓取期间不阻塞同库其他阶段
+
+    # 方案A：并发预抓取。
+    # 先收集本轮所有待抓取 URL（跳过模板 / 动态本地 API / 已在缓存中的），
+    # 按 host 分组并发抓取，结果回填 binary_cache / text_cache。
+    # 后续串行循环命中缓存后不再打网络，业务逻辑完全不变。
+    if not jar_only:
+        prefetch_urls: list[str] = []
+        for _fp, _info in fps.items():
+            for _u in sorted(_info["urls"]):
+                if net.classify_url(_u) == "template":
+                    continue
+                if _is_dynamic_local_api(_u):
+                    continue
+                if _u in binary_cache or _u in text_cache:
+                    continue
+                # 关键：预抓取会填充 binary_cache/text_cache，使后续串行循环
+                # 跳过冷却检查（`if url not in binary_cache`）。因此必须在此
+                # 提前应用与串行循环完全一致的冷却/退避判定，否则会重复抓取
+                # 本应跳过的 URL，破坏方案E 的退避语义。
+                _atype = _asset_type(_u)
+                _prior = _recent_url_fetch_status(con, _u, _atype)
+                if _prior in ("failed", "fetched"):
+                    continue
+                prefetch_urls.append(_u)
+        # 去重但保持稳定顺序
+        prefetch_urls = list(dict.fromkeys(prefetch_urls))
+        if prefetch_urls:
+            _prefetch_concurrent(
+                prefetch_urls,
+                con=con,
+                binary_cache=binary_cache,
+                text_cache=text_cache,
+                summary=summary,
+                deadline=scan_deadline_monotonic,
+            )
+
     for fp, info in fps.items():
         # Scan raw_json itself
         if info["raw_json"] and not jar_only:
