@@ -19,6 +19,7 @@ from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 from ponyo_source_manager.core import net
 from ponyo_source_manager.core.common import PONYO_HOME as HERE
 from ponyo_source_manager.core.common import assert_no_proxy, iri_to_uri
+from ponyo_source_manager.probes import coverage_scheduler
 
 _TIMESLOTS = {
     (6, 11): "morning",
@@ -220,6 +221,7 @@ def run_probe(
     fingerprints=None,
     max_age_hours: float = 24.0,
     fail_cool_hours: float = 12.0,
+    source_budget: int = 0,
 ) -> dict:
     """对所有指纹的远程 URL 做无代理连通性探测，结果写入 conn_probe 表。
 
@@ -249,6 +251,42 @@ def run_probe(
             for fingerprint, urls in groups.items()
             if fingerprint in selected
         }
+    # 方案A：源级公平时段覆盖调度。
+    # 原逻辑以「URL 在 24h 内是否成功」为跳过依据，但四时段 cron 间隔仅
+    # 3-9h（全部 < 24h），导致 evening 每轮全量重探、其他时段只探 1/4 分片，
+    # 7 天内大量源只覆盖 1 个时段，无法满足 MIN_SLOTS_REQUIRED=3。
+    # 现改为按「覆盖缺口」分配预算：优先补齐覆盖 < 3 时段的源。
+    schedule_info: dict = {}
+    gap_fill_fps: set[str] = set()
+    if source_budget and source_budget > 0:
+        coverage = coverage_scheduler.load_coverage(con)
+        plan = coverage_scheduler.plan_round(
+            coverage,
+            list(groups.keys()),
+            timeslot,
+            budget=source_budget,
+        )
+        selected = set(plan["selected"])
+        groups = {fp: urls for fp, urls in groups.items() if fp in selected}
+        # P0 桶（当前时段未覆盖 且 总覆盖 < 3）的源必须真正被探测，
+        # 否则 URL 级冷却窗口会把它们跳过，覆盖缺口永远补不上。
+        # 因此这些源的 URL 需要绕过 URL 级 skip。
+        gap_fill_fps = {
+            fp for fp in selected
+            if coverage_scheduler.classify_priority(
+                coverage.get(fp, set()), timeslot
+            ) == coverage_scheduler.PRIO_FILL_GAP
+        }
+        schedule_info = {
+            "source_budget": source_budget,
+            "scheduled_sources": len(selected),
+            "bucket_sizes": plan["bucket_sizes"],
+            "selected_by_bucket": plan["selected_by_bucket"],
+            "coverage_distribution": coverage_scheduler.coverage_distribution(
+                coverage, list(groups.keys())
+            ),
+        }
+
     all_urls: set[str] = set()
     for urls in groups.values():
         all_urls.update(urls)
@@ -282,6 +320,17 @@ def run_probe(
         ).fetchall()
         skip_fail_urls = {r[0] for r in fail_rows} & all_urls
     skip_urls = (skip_ok_urls | skip_fail_urls) - rotated_reprobe
+
+    # 方案A 修复：P0 桶（补缺口）的源必须真正被探测。
+    # URL 级 24h/12h 冷却窗口会把刚探过的 URL 跳过，导致源被选中却未探测，
+    # 覆盖缺口无法补齐。这里把 P0 源的 URL 从 skip 集合中移除。
+    bypassed_urls: set[str] = set()
+    if gap_fill_fps:
+        gap_fill_urls: set[str] = set()
+        for fp in gap_fill_fps:
+            gap_fill_urls.update(groups.get(fp, set()))
+        bypassed_urls = gap_fill_urls & skip_urls
+        skip_urls = skip_urls - gap_fill_urls
 
     # 按 host 分组，同 host 串行 + 间隔
     from urllib.parse import urlsplit
@@ -411,11 +460,14 @@ def run_probe(
         "skipped_recent_ok": len(skip_ok_urls),
         "skipped_recent_fail": len(skip_fail_urls),
         "rotated_reprobe": len(rotated_reprobe),
+        "bypassed_urls": len(bypassed_urls),
         "ok": ok,
         "fail": fail,
         "rows_written": rows_written,
         "fingerprints": len(groups),
     }
+    if schedule_info:
+        summary["schedule"] = schedule_info
 
     if report_path:
         report = {
@@ -459,6 +511,12 @@ def main() -> None:
         default=12.0,
         help="skip URLs that failed within this window (0 = always retry)",
     )
+    p.add_argument(
+        "--source-budget",
+        type=int,
+        default=0,
+        help="max sources to probe this round (0 = legacy URL-level window)",
+    )
     args = p.parse_args()
     result = run_probe(
         args.db,
@@ -467,6 +525,7 @@ def main() -> None:
         fingerprints=args.fingerprint,
         max_age_hours=args.max_age_hours,
         fail_cool_hours=args.fail_cool_hours,
+        source_budget=args.source_budget,
     )
     print(json.dumps(result, ensure_ascii=False))
 

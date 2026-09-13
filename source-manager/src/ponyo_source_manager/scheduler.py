@@ -327,6 +327,11 @@ def run_quick(
     if run_discovery:
         results.update(_run_discovery_pipeline(db_path, recorder))
 
+    # 方案A：源级公平时段覆盖调度。
+    # 原 URL 级 24h 窗口在四时段（间隔 3-9h）下失效，evening 吞占约 80% 预算，
+    # 导致大量源 7 天内只覆盖 1 个时段。现按覆盖缺口分配源级预算。
+    # 预算可用环境变量 PONYO_PROBE_SOURCE_BUDGET 覆盖（默认 1200）。
+    probe_budget = os.getenv("PONYO_PROBE_SOURCE_BUDGET", "1200")
     results["probe_conn"] = _run_subprocess(
         [
             sys.executable,
@@ -338,6 +343,8 @@ def run_quick(
             timeslot,
             "--report",
             str(REPORT_DIR / f"conn-{timeslot}.json"),
+            "--source-budget",
+            probe_budget,
         ],
         "probe_conn",
         recorder,
