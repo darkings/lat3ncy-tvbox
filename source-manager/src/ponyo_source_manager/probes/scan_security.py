@@ -22,13 +22,26 @@ from ponyo_source_manager.core.common import DATA_DIR, assert_no_proxy, strip_md
 MAX_JAR_BYTES = 32 * 1024 * 1024
 MAX_JAR_ENTRIES = 20_000
 MAX_JAR_UNCOMPRESSED_BYTES = 256 * 1024 * 1024
-# 单次 jar 下载超时。旧值 60s × 多 CDN 回退 × 上百个死链，会直接撑破
-# scheduler 的 2700s 阶段看门狗（线上已连续 5 轮被杀）。
-JAR_FETCH_TIMEOUT_SECONDS = 8.0
 # 预留写库/出报告时间，避免跑到 2700s 被 SIGKILL 导致本轮证据全部丢失。
 SCAN_FETCH_DEADLINE_SECONDS = 2400.0
 # 冷却窗口：同一 URL 任意指纹成功/失败后，其它指纹 24h 内不再打网络。
 FETCH_COOLDOWN_HOURS = 24.0
+
+# 方案E：失败 URL 指数退避。
+# 原逻辑失败后仅冷却 24h，之后无条件重试。实测失败 URL 理论耗时 11.2h
+# （JAR 3 候选 × 8s = 24s/URL），远超 40min 预算，导致 4322 个 URL 被
+# skipped_fetch_deadline 跳过。改为按连续失败次数指数退避：
+#   第1次 24h / 第2次 48h / 第3次 96h / 第4次 168h(7天) / 第5次+ 336h(14天)
+# 死链不再每天消耗预算，预算可分配给真正需要扫描的 URL。
+FAIL_BACKOFF_HOURS = (24.0, 48.0, 96.0, 168.0, 336.0)
+
+# 方案E：JAR 抓取超时从 8s 缩短到 5s。
+# 实测 gh-proxy.com 正常响应 <2s，8s 对死链是纯浪费。
+JAR_FETCH_TIMEOUT_SECONDS = 5.0
+
+# 方案E：连续失败 >= 该次数后，JAR 只试首个候选（gh-proxy），
+# 不再回退 raw.githubusercontent.com / 原始 URL，避免 3× 超时。
+JAR_SINGLE_CANDIDATE_AFTER_FAILURES = 2
 
 # 已批准并物化的 jar 本地缓存（materialize_approved_assets 输出）,
 # 按 content_sha256 命名。命中缓存的 jar 无需重复下载（无代理环境下
@@ -280,9 +293,20 @@ def _jar_fetch_candidates(url: str) -> list[str]:
     return list(dict.fromkeys(candidates))
 
 
-def _fetch_jar(fetch_bytes, url: str) -> tuple[bytes, str]:
+def _fetch_jar(
+    fetch_bytes, url: str, *, single_candidate: bool = False
+) -> tuple[bytes, str]:
+    """抓取 JAR 字节。
+
+    方案E：``single_candidate=True`` 时只试首个候选（gh-proxy），
+    用于连续失败 >= JAR_SINGLE_CANDIDATE_AFTER_FAILURES 的死链，
+    避免 3 候选 × 超时 = 3 倍浪费。
+    """
     failures = []
-    for candidate in _jar_fetch_candidates(url):
+    candidates = _jar_fetch_candidates(url)
+    if single_candidate:
+        candidates = candidates[:1]
+    for candidate in candidates:
         try:
             try:
                 payload = fetch_bytes(
@@ -345,16 +369,61 @@ def _recent_url_fetch_status(
     只按 effective_url + asset_type 判断，不限定 fingerprint：
     同一 JAR/文本被上百个源引用时，避免对死链重复打网络。
     返回值仅用于决定是否跳过抓取，不改写当前源的安全判定。
+
+    方案E：失败 URL 使用指数退避窗口，而非固定 24h。
+    连续失败次数越多，冷却窗口越长（24h -> 48h -> 96h -> 168h -> 336h），
+    避免死链每天消耗扫描预算。
     """
+    # 成功：固定 24h 冷却
     row = con.execute(
         "SELECT fetch_status FROM dependency_asset_evidence "
         "WHERE effective_url=? AND asset_type=? "
-        "AND fetch_status IN ('fetched', 'failed') "
+        "AND fetch_status='fetched' "
         "AND scanned_at >= datetime('now', ?) "
         "LIMIT 1",
         (url, asset_type, _cooldown_window_sql()),
     ).fetchone()
-    return None if row is None else str(row[0])
+    if row is not None:
+        return "fetched"
+
+    # 失败：按连续失败次数指数退避
+    fail_row = con.execute(
+        "SELECT COUNT(*) FROM dependency_asset_evidence "
+        "WHERE effective_url=? AND asset_type=? AND fetch_status='failed'",
+        (url, asset_type),
+    ).fetchone()
+    fail_count = int(fail_row[0]) if fail_row else 0
+    if fail_count <= 0:
+        return None
+    backoff_hours = _fail_backoff_hours(fail_count)
+    row = con.execute(
+        "SELECT fetch_status FROM dependency_asset_evidence "
+        "WHERE effective_url=? AND asset_type=? "
+        "AND fetch_status='failed' "
+        "AND scanned_at >= datetime('now', ?) "
+        "LIMIT 1",
+        (url, asset_type, f"-{backoff_hours:g} hours"),
+    ).fetchone()
+    return None if row is None else "failed"
+
+
+def _fail_backoff_hours(fail_count: int) -> float:
+    """按连续失败次数返回退避小时数（方案E）。
+
+    第1次 24h / 第2次 48h / 第3次 96h / 第4次 168h / 第5次+ 336h。
+    """
+    idx = min(max(fail_count, 1), len(FAIL_BACKOFF_HOURS)) - 1
+    return FAIL_BACKOFF_HOURS[idx]
+
+
+def _url_fail_count(con: sqlite3.Connection, url: str, asset_type: str) -> int:
+    """查询某 URL 的历史失败次数，用于决定 JAR 候选数（方案E）。"""
+    row = con.execute(
+        "SELECT COUNT(*) FROM dependency_asset_evidence "
+        "WHERE effective_url=? AND asset_type=? AND fetch_status='failed'",
+        (url, asset_type),
+    ).fetchone()
+    return int(row[0]) if row else 0
 
 
 def run_scan(
@@ -450,6 +519,10 @@ def run_scan(
         "skipped_dynamic_urls": 0,
         "skipped_fetch_deadline": 0,
         "retained_prior_jar_results": 0,
+        # 方案E：退避与候选递减统计，便于诊断预算去向
+        "skipped_backoff_jar": 0,
+        "skipped_backoff_text": 0,
+        "jar_single_candidate_fetches": 0,
     }
     seen_issues = set()
     # 每处理一批 jar 就 commit：长事务会持写锁 90+ 分钟，阻塞同库的其他阶段
@@ -543,6 +616,9 @@ def run_scan(
                         prior_status = _recent_url_fetch_status(con, url, "jar")
                         if prior_status == "failed":
                             summary["skipped_recent_failed_jar"] += 1
+                            # 方案E：区分「退避窗口内」与「普通冷却」
+                            if _url_fail_count(con, url, "jar") >= 2:
+                                summary["skipped_backoff_jar"] += 1
                             continue
                         if prior_status == "fetched":
                             summary["skipped_recent_fetched_jar"] += 1
@@ -553,7 +629,16 @@ def run_scan(
                             continue
                         try:
                             con.commit()  # 网络抓取前释放写锁
-                            binary_cache[url] = _fetch_jar(fetch_bytes, url)
+                            # 方案E：连续失败 >=2 次的死链只试首个候选，
+                            # 避免 3 候选 × 超时 = 3 倍浪费。
+                            fail_cnt = _url_fail_count(con, url, "jar")
+                            binary_cache[url] = _fetch_jar(
+                                fetch_bytes,
+                                url,
+                                single_candidate=(
+                                    fail_cnt >= JAR_SINGLE_CANDIDATE_AFTER_FAILURES
+                                ),
+                            )
                         except Exception as fetch_exc:
                             binary_cache[url] = fetch_exc
                     cached = binary_cache[url]
@@ -607,6 +692,11 @@ def run_scan(
                         prior_text = _recent_url_fetch_status(con, url, atype)
                         if prior_text in ("fetched", "failed"):
                             summary["skipped_recent_text"] += 1
+                            # 方案E：区分「退避窗口内」与「普通冷却」
+                            if prior_text == "failed" and _url_fail_count(
+                                con, url, atype
+                            ) >= 2:
+                                summary["skipped_backoff_text"] += 1
                             continue
                         if time.monotonic() >= scan_deadline_monotonic:
                             summary["skipped_fetch_deadline"] += 1
