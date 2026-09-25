@@ -281,25 +281,6 @@
       "category_provenance": "default_drpy"
     },
     {
-      "key": "jisuzy",
-      "name": "极速",
-      "type": 1,
-      "api": "https://jszyapi.com/api.php/provide/vod/from/jsm3u8/at/json/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "categories": [
-        "电视剧",
-        "电影",
-        "动漫",
-        "综艺",
-        "体育",
-        "短剧",
-        "其他"
-      ],
-      "category_provenance": "detected"
-    },
-    {
       "key": "jinying",
       "name": "金鹰",
       "type": 1,
@@ -318,12 +299,13 @@
       "category_provenance": "detected"
     },
     {
-      "key": "虎牙",
-      "name": "虎牙",
+      "key": "jisuzy",
+      "name": "极速",
       "type": 1,
-      "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
+      "api": "https://jszyapi.com/api.php/provide/vod/from/jsm3u8/at/json/",
       "searchable": 1,
       "quickSearch": 1,
+      "filterable": 1,
       "categories": [
         "电视剧",
         "电影",
@@ -354,6 +336,24 @@
         "动漫"
       ],
       "category_provenance": "default_drpy"
+    },
+    {
+      "key": "虎牙",
+      "name": "虎牙",
+      "type": 1,
+      "api": "https://www.huyaapi.com/api.php/provide/vod/from/hym3u8",
+      "searchable": 1,
+      "quickSearch": 1,
+      "categories": [
+        "电视剧",
+        "电影",
+        "动漫",
+        "综艺",
+        "体育",
+        "短剧",
+        "其他"
+      ],
+      "category_provenance": "detected"
     },
     {
       "key": "drpyS_稀饭动漫",
@@ -396,6 +396,27 @@
       "category_provenance": "default_drpy"
     },
     {
+      "key": "drpyS_3Q影视[优]",
+      "name": "3Q影视",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/3Q影视[优]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "3Q影视[优]",
+      "author": "EylinSir",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
+    },
+    {
       "id": "10496a01-15b0-4077-9ec1-63d022b85c9c",
       "key": "最大资源",
       "name": "最大",
@@ -422,47 +443,6 @@
         "短剧"
       ],
       "category_provenance": "detected"
-    },
-    {
-      "key": "drpyS_3Q影视[优]",
-      "name": "3Q影视",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/3Q影视[优]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "3Q影视[优]",
-      "author": "EylinSir",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "drpyS_永乐视频[优]",
-      "name": "永乐",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/永乐视频[优]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 1,
-      "quickSearch": 1,
-      "title": "永乐视频[优]",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
     },
     {
       "key": "lziapi",
@@ -510,35 +490,14 @@
       "category_provenance": "default_drpy"
     },
     {
-      "key": "drpyS_非凡采集[采]",
-      "name": "非凡",
+      "key": "drpyS_永乐视频[优]",
+      "name": "永乐",
       "type": 4,
-      "api": "http://127.0.0.1:5757/api/非凡采集[采]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 1,
-      "title": "非凡采集[采]",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "drpyS_泥视频[优]",
-      "name": "泥视频",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/泥视频[优]?pwd=ponyo-local-drpy",
+      "api": "http://127.0.0.1:5757/api/永乐视频[优]?pwd=ponyo-local-drpy",
       "searchable": 1,
       "filterable": 1,
       "quickSearch": 1,
-      "title": "泥视频[优]",
-      "author": "eylinsir",
+      "title": "永乐视频[优]",
       "类型": "影视",
       "lang": "ds",
       "ext": "",
@@ -549,61 +508,6 @@
         "动漫"
       ],
       "category_provenance": "default_drpy"
-    },
-    {
-      "id": "9c3bab8d-99c1-4c72-8771-cef896b3c56a",
-      "key": "红牛资源",
-      "name": "红牛",
-      "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
-      "type": 2,
-      "isActive": 0,
-      "time": "2025-08-20T19:32:09.6476237+08:00",
-      "isDefault": 0,
-      "remark": "",
-      "tags": [
-        "优秀"
-      ],
-      "priority": 0,
-      "proxyMode": "none",
-      "customProxy": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "纪录片",
-        "短剧",
-        "其他",
-        "体育"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "id": "a57bbfa1-283d-4068-8b43-c32a34302e8b",
-      "key": "新浪点播",
-      "name": "新浪",
-      "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
-      "type": 2,
-      "isActive": 0,
-      "time": "2025-08-20T19:31:45.2241586+08:00",
-      "isDefault": 0,
-      "remark": "",
-      "tags": [
-        "优秀"
-      ],
-      "priority": 0,
-      "proxyMode": "none",
-      "customProxy": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "动漫",
-        "综艺",
-        "体育",
-        "短剧",
-        "其他"
-      ],
-      "category_provenance": "detected"
     },
     {
       "key": "drpyS_飞牛影视",
@@ -615,6 +519,26 @@
       "quickSearch": 1,
       "title": "飞牛影视",
       "author": "EylinSir",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
+    },
+    {
+      "key": "drpyS_非凡采集[采]",
+      "name": "非凡",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/非凡采集[采]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 1,
+      "title": "非凡采集[采]",
       "类型": "影视",
       "lang": "ds",
       "ext": "",
@@ -668,6 +592,54 @@
       "category_provenance": "default_drpy"
     },
     {
+      "id": "a57bbfa1-283d-4068-8b43-c32a34302e8b",
+      "key": "新浪点播",
+      "name": "新浪",
+      "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-20T19:31:45.2241586+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "动漫",
+        "综艺",
+        "体育",
+        "短剧",
+        "其他"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "drpyS_泥视频[优]",
+      "name": "泥视频",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/泥视频[优]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 1,
+      "quickSearch": 1,
+      "title": "泥视频[优]",
+      "author": "eylinsir",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
+    },
+    {
       "key": "drpyS_小苹果[优]",
       "name": "小苹果",
       "type": 4,
@@ -676,6 +648,55 @@
       "filterable": 1,
       "quickSearch": 0,
       "title": "小苹果[优]",
+      "author": "EylinSir",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
+    },
+    {
+      "id": "9c3bab8d-99c1-4c72-8771-cef896b3c56a",
+      "key": "红牛资源",
+      "name": "红牛",
+      "api": "https://www.hongniuzy2.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-20T19:32:09.6476237+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "纪录片",
+        "短剧",
+        "其他",
+        "体育"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "drpyS_集百动漫[漫]",
+      "name": "集百动漫",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/集百动漫[漫]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "集百动漫[漫]",
       "author": "EylinSir",
       "类型": "影视",
       "lang": "ds",
@@ -708,27 +729,6 @@
       "category_provenance": "default_drpy"
     },
     {
-      "key": "drpyS_集百动漫[漫]",
-      "name": "集百动漫",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/集百动漫[漫]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "集百动漫[漫]",
-      "author": "EylinSir",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
       "key": "刺桐资源",
       "name": "刺桐高清-自营",
       "type": 1,
@@ -742,6 +742,22 @@
         "动漫",
         "纪录片",
         "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "大奶子",
+      "name": "大奶子",
+      "type": 1,
+      "api": "https://apidanaizi.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "categories": [
+        "视频一区",
+        "视频二区",
+        "视频三区",
+        "视频四区"
       ],
       "category_provenance": "detected"
     },
@@ -760,21 +776,6 @@
       "category_provenance": "cache"
     },
     {
-      "key": "6b9cc227262a",
-      "name": "非凡资源",
-      "type": 0,
-      "api": "http://cj.ffzyapi.com/api.php/provide/vod/from/ffm3u8/",
-      "ext": "",
-      "remark": "addr-audit 2026-08-08 [tvbox-suite]",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "detected"
-    },
-    {
       "key": "电影天堂",
       "name": "天堂",
       "type": 1,
@@ -784,6 +785,21 @@
       "changeable": 1,
       "filterable": 1,
       "timeout": 10,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "6b9cc227262a",
+      "name": "非凡资源",
+      "type": 0,
+      "api": "http://cj.ffzyapi.com/api.php/provide/vod/from/ffm3u8/",
+      "ext": "",
+      "remark": "addr-audit 2026-08-08 [tvbox-suite]",
       "categories": [
         "电影",
         "电视剧",
@@ -811,14 +827,14 @@
       "category_provenance": "detected"
     },
     {
-      "key": "drpyS_247看",
-      "name": "247看",
+      "key": "drpyS_毒舌影视[优]",
+      "name": "毒舌",
       "type": 4,
-      "api": "http://127.0.0.1:5757/api/247看?pwd=ponyo-local-drpy",
+      "api": "http://127.0.0.1:5757/api/毒舌影视[优]?pwd=ponyo-local-drpy",
       "searchable": 2,
       "filterable": 0,
       "quickSearch": 0,
-      "title": "247看",
+      "title": "毒舌影视[优]",
       "类型": "影视",
       "lang": "ds",
       "ext": "",
@@ -831,14 +847,14 @@
       "category_provenance": "default_drpy"
     },
     {
-      "key": "drpyS_毒舌影视[优]",
-      "name": "毒舌",
+      "key": "drpyS_247看",
+      "name": "247看",
       "type": 4,
-      "api": "http://127.0.0.1:5757/api/毒舌影视[优]?pwd=ponyo-local-drpy",
+      "api": "http://127.0.0.1:5757/api/247看?pwd=ponyo-local-drpy",
       "searchable": 2,
       "filterable": 0,
       "quickSearch": 0,
-      "title": "毒舌影视[优]",
+      "title": "247看",
       "类型": "影视",
       "lang": "ds",
       "ext": "",
@@ -889,6 +905,40 @@
       "category_provenance": "detected"
     },
     {
+      "api": "https://api.apiyhzy.com/api.php/provide/vod/",
+      "key": "30e07a544ffe9b6069a1ba66d6442ca9",
+      "name": "樱花",
+      "type": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "纪录片"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "drpyS_wai76[画]",
+      "name": "wai76",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/wai76[画]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "wai76[画]",
+      "类型": "图片",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
+    },
+    {
       "key": "k4",
       "name": "新4K",
       "type": 1,
@@ -904,20 +954,6 @@
       "category_provenance": "cache"
     },
     {
-      "api": "https://api.apiyhzy.com/api.php/provide/vod/",
-      "key": "30e07a544ffe9b6069a1ba66d6442ca9",
-      "name": "樱花",
-      "type": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "纪录片"
-      ],
-      "category_provenance": "detected"
-    },
-    {
       "key": "drpyS_麦田影院",
       "name": "麦田",
       "type": 4,
@@ -926,26 +962,6 @@
       "filterable": 0,
       "quickSearch": 0,
       "title": "麦田影院",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "drpyS_爱壹帆",
-      "name": "爱壹帆",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/爱壹帆?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "爱壹帆",
       "类型": "影视",
       "lang": "ds",
       "ext": "",
@@ -977,6 +993,24 @@
       "category_provenance": "detected"
     },
     {
+      "key": "php_猫眼资源",
+      "name": "猫眼资源(CMS)",
+      "type": 1,
+      "api": "https://www.maoyanzy.com/api.php/provide/vod/from/mym3u8/",
+      "searchable": 1,
+      "quickSearch": 0,
+      "changeable": 0,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
       "key": "c71554edd070",
       "name": "光速",
       "type": 0,
@@ -996,32 +1030,14 @@
       "category_provenance": "detected"
     },
     {
-      "key": "php_猫眼资源",
-      "name": "猫眼资源(CMS)",
-      "type": 1,
-      "api": "https://www.maoyanzy.com/api.php/provide/vod/from/mym3u8/",
-      "searchable": 1,
-      "quickSearch": 0,
-      "changeable": 0,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "体育",
-        "短剧"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "drpyS_映像星球",
-      "name": "映像星球",
+      "key": "drpyS_爱壹帆",
+      "name": "爱壹帆",
       "type": 4,
-      "api": "http://127.0.0.1:5757/api/映像星球?pwd=ponyo-local-drpy",
+      "api": "http://127.0.0.1:5757/api/爱壹帆?pwd=ponyo-local-drpy",
       "searchable": 2,
       "filterable": 0,
       "quickSearch": 0,
-      "title": "映像星球",
+      "title": "爱壹帆",
       "类型": "影视",
       "lang": "ds",
       "ext": "",
@@ -1053,20 +1069,36 @@
       "category_provenance": "detected"
     },
     {
-      "key": "wyvod.com",
-      "name": "无忧",
+      "key": "php_虎牙资源",
+      "name": "虎牙资源(CMS)",
       "type": 1,
-      "api": "https://www.wyvod.com/api.php/provide/vod",
+      "api": "https://huyazy.net/api.php/provide/vod/from/hym3u8/",
       "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
+      "quickSearch": 0,
+      "changeable": 0,
+      "categories": [
+        "电视剧",
+        "电影",
+        "动漫",
+        "综艺",
+        "体育",
+        "短剧",
+        "其他"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "d53beb13-ec35-4043-81f9-309a63f4de74",
+      "name": "飘零",
+      "api": "https://p2100.net/api.php/provide/vod",
+      "type": "",
       "categories": [
         "电影",
         "电视剧",
         "综艺",
         "动漫",
-        "纪录片",
-        "短剧"
+        "短剧",
+        "纪录片"
       ],
       "category_provenance": "detected"
     },
@@ -1088,23 +1120,24 @@
       "category_provenance": "detected"
     },
     {
-      "key": "php_虎牙资源",
-      "name": "虎牙资源(CMS)",
-      "type": 1,
-      "api": "https://huyazy.net/api.php/provide/vod/from/hym3u8/",
-      "searchable": 1,
+      "key": "drpyS_映像星球",
+      "name": "映像星球",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/映像星球?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
       "quickSearch": 0,
-      "changeable": 0,
+      "title": "映像星球",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
       "categories": [
-        "电视剧",
         "电影",
-        "动漫",
+        "电视剧",
         "综艺",
-        "体育",
-        "短剧",
-        "其他"
+        "动漫"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "default_drpy"
     },
     {
       "key": "wujinapi.com",
@@ -1125,42 +1158,25 @@
         "短剧",
         "少儿"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "cache"
     },
     {
-      "key": "d53beb13-ec35-4043-81f9-309a63f4de74",
-      "name": "飘零",
-      "api": "https://p2100.net/api.php/provide/vod",
-      "type": "",
+      "key": "wyvod.com",
+      "name": "无忧",
+      "type": 1,
+      "api": "https://www.wyvod.com/api.php/provide/vod",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
       "categories": [
         "电影",
         "电视剧",
         "综艺",
         "动漫",
-        "短剧",
-        "纪录片"
+        "纪录片",
+        "短剧"
       ],
       "category_provenance": "detected"
-    },
-    {
-      "key": "drpyS_wai76[画]",
-      "name": "wai76",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/wai76[画]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "wai76[画]",
-      "类型": "图片",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
     },
     {
       "key": "source_01",
@@ -1177,118 +1193,6 @@
         "动漫",
         "体育",
         "短剧"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "爱奇艺资源",
-      "name": "爱奇艺资源-刺桐",
-      "type": 1,
-      "api": "https://www.iqiyizyapi.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "体育",
-        "短剧"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "php_百度资源",
-      "name": "百度资源(CMS)",
-      "type": 1,
-      "api": "https://api.apibdzy.com/api.php/provide/vod/from/dbm3u8/",
-      "searchable": 1,
-      "quickSearch": 0,
-      "changeable": 0,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "体育",
-        "其他"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "php_爱奇艺资源",
-      "name": "爱奇艺资源(CMS)",
-      "type": 1,
-      "api": "https://www.iqiyizy.com/api.php/provide/vod/from/iqym3u8/",
-      "searchable": 1,
-      "quickSearch": 0,
-      "changeable": 0,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "体育",
-        "短剧"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "drpyS_枫林影视",
-      "name": "枫林",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/枫林影视?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "枫林影视",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "魔都资源",
-      "name": "魔都-动漫",
-      "type": 1,
-      "api": "https://caiji.moduapi.cc/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "jar": "http://yydsok.com/api/bendi/yydsapi/og/spider.jar",
-      "filterable": 1,
-      "categories": [
-        "动漫",
-        "电影",
-        "电视剧",
-        "综艺",
-        "体育",
-        "短剧"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "hhys",
-      "name": "华华云-秒播",
-      "type": 1,
-      "api": "http://hhzyapi.com/api.php/provide/vod",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "timeout": 20,
-      "categories": [
-        "电视剧",
-        "电影",
-        "动漫",
-        "综艺",
-        "短剧",
-        "其他",
-        "体育"
       ],
       "category_provenance": "detected"
     },
@@ -1311,6 +1215,116 @@
         "动漫"
       ],
       "category_provenance": "default_drpy"
+    },
+    {
+      "key": "php_百度资源",
+      "name": "百度资源(CMS)",
+      "type": 1,
+      "api": "https://api.apibdzy.com/api.php/provide/vod/from/dbm3u8/",
+      "searchable": 1,
+      "quickSearch": 0,
+      "changeable": 0,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "其他"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "爱奇艺资源",
+      "name": "爱奇艺资源-刺桐",
+      "type": 1,
+      "api": "https://www.iqiyizyapi.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "php_爱奇艺资源",
+      "name": "爱奇艺资源(CMS)",
+      "type": 1,
+      "api": "https://www.iqiyizy.com/api.php/provide/vod/from/iqym3u8/",
+      "searchable": 1,
+      "quickSearch": 0,
+      "changeable": 0,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "魔都资源",
+      "name": "魔都-动漫",
+      "type": 1,
+      "api": "https://caiji.moduapi.cc/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "jar": "http://yydsok.com/api/bendi/yydsapi/og/spider.jar",
+      "filterable": 1,
+      "categories": [
+        "动漫",
+        "电影",
+        "电视剧",
+        "综艺",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "id": "94",
+      "key": "黄色仓库",
+      "name": "黄色仓库",
+      "api": "https://hsckzy.vip/api.php/provide/vod/",
+      "playUrl": "",
+      "search": 1,
+      "group": "影视",
+      "type": 1,
+      "ext": "",
+      "categories": [
+        "动漫",
+        "其他",
+        "OnlyFans"
+      ],
+      "isActive": true,
+      "category_provenance": "detected"
+    },
+    {
+      "key": "hhys",
+      "name": "华华云-秒播",
+      "type": 1,
+      "api": "http://hhzyapi.com/api.php/provide/vod",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "timeout": 20,
+      "categories": [
+        "电视剧",
+        "电影",
+        "动漫",
+        "综艺",
+        "短剧",
+        "其他",
+        "体育"
+      ],
+      "category_provenance": "detected"
     },
     {
       "key": "suboziyuan.net",
@@ -1367,23 +1381,6 @@
       "category_provenance": "detected"
     },
     {
-      "key": "西瓜视频",
-      "name": "西瓜视频-刺桐",
-      "type": 1,
-      "api": "https://caiji.xgzyapi.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "短剧",
-        "体育"
-      ],
-      "category_provenance": "detected"
-    },
-    {
       "key": "subocj.com",
       "name": "速播资源站",
       "type": 1,
@@ -1404,22 +1401,41 @@
       "category_provenance": "detected"
     },
     {
-      "key": "php_如意资源",
-      "name": "如意资源(CMS)",
+      "key": "西瓜视频",
+      "name": "西瓜视频-刺桐",
       "type": 1,
-      "api": "https://ryzy.tv/api.php/provide/vod/from/rym3u8/",
+      "api": "https://caiji.xgzyapi.com/api.php/provide/vod/",
       "searchable": 1,
-      "quickSearch": 0,
-      "changeable": 0,
+      "quickSearch": 1,
       "categories": [
         "电影",
         "电视剧",
         "综艺",
         "动漫",
-        "体育",
-        "其他"
+        "短剧",
+        "体育"
       ],
-      "category_provenance": "cache"
+      "category_provenance": "detected"
+    },
+    {
+      "key": "drpyS_枫林影视",
+      "name": "枫林",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/枫林影视?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "枫林影视",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
     },
     {
       "key": "drpyS_电影港[磁]",
@@ -1506,6 +1522,46 @@
       "category_provenance": "default_drpy"
     },
     {
+      "key": "drpyS_360影视[官]",
+      "name": "360影视",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/360影视[官]?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "360影视[官]",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
+    },
+    {
+      "key": "drpyS_樱之空动漫",
+      "name": "樱之空动漫",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/樱之空动漫?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "樱之空动漫",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
+    },
+    {
       "key": "drpyS_菜狗[官]",
       "name": "菜狗",
       "type": 4,
@@ -1548,26 +1604,6 @@
       "category_provenance": "default_drpy"
     },
     {
-      "key": "drpyS_樱之空动漫",
-      "name": "樱之空动漫",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/樱之空动漫?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "樱之空动漫",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
       "key": "drpyS_动漫啦[画]",
       "name": "动漫啦",
       "type": 4,
@@ -1590,26 +1626,6 @@
       "category_provenance": "default_drpy"
     },
     {
-      "key": "drpyS_360影视[官]",
-      "name": "360影视",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/360影视[官]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "360影视[官]",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
       "key": "drpyS_西瓜影院",
       "name": "西瓜",
       "type": 4,
@@ -1619,27 +1635,6 @@
       "quickSearch": 0,
       "title": "西瓜影院",
       "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "drpyS_包子漫画[画]",
-      "name": "包子漫画",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/包子漫画[画]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "包子漫画[画]",
-      "类型": "漫画",
-      "logo": "https://cn.czmanga.com/favicon.ico",
       "lang": "ds",
       "ext": "",
       "categories": [
@@ -1715,55 +1710,16 @@
       "category_provenance": "default_drpy"
     },
     {
-      "key": "drpyS_荐片[优]",
-      "name": "荐片",
+      "key": "drpyS_包子漫画[画]",
+      "name": "包子漫画",
       "type": 4,
-      "api": "http://127.0.0.1:5757/api/荐片[优]?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "荐片[优]",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "drpyS_橘子动漫",
-      "name": "橘子动漫",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/橘子动漫?pwd=ponyo-local-drpy",
+      "api": "http://127.0.0.1:5757/api/包子漫画[画]?pwd=ponyo-local-drpy",
       "searchable": 2,
       "filterable": 0,
       "quickSearch": 0,
-      "title": "橘子动漫",
-      "类型": "动漫",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "drpyS_热播之家",
-      "name": "热播之家",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/热播之家?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "热播之家",
-      "类型": "影视",
+      "title": "包子漫画[画]",
+      "类型": "漫画",
+      "logo": "https://cn.czmanga.com/favicon.ico",
       "lang": "ds",
       "ext": "",
       "categories": [
