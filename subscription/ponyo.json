@@ -273,30 +273,20 @@
       "category_provenance": "detected"
     },
     {
-      "id": "10496a01-15b0-4077-9ec1-63d022b85c9c",
-      "key": "最大资源",
-      "name": "最大",
-      "api": "https://api.zuidapi.com/api.php/provide/vod/",
-      "type": 2,
-      "isActive": 0,
-      "time": "2025-08-09T17:44:43.6072971+08:00",
-      "isDefault": 0,
-      "remark": "http://zuidazy.me/api.php/provide/vod/",
-      "tags": [
-        "优秀"
-      ],
-      "priority": 0,
-      "proxyMode": "none",
-      "customProxy": "",
+      "key": "jinying",
+      "name": "金鹰",
+      "type": 1,
+      "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
+      "searchable": 1,
+      "quickSearch": 1,
       "categories": [
-        "电影",
         "电视剧",
-        "综艺",
+        "电影",
         "动漫",
-        "纪录片",
+        "综艺",
         "体育",
-        "其他",
-        "短剧"
+        "短剧",
+        "其他"
       ],
       "category_provenance": "detected"
     },
@@ -336,33 +326,6 @@
         "动漫"
       ],
       "category_provenance": "default_drpy"
-    },
-    {
-      "id": "4aa83ed0-bce5-4d86-ae48-3524bf7fc907",
-      "key": "暴风资源",
-      "name": "暴风",
-      "api": "https://bfzyapi.com/api.php/provide/vod/",
-      "type": 2,
-      "isActive": 0,
-      "time": "2025-08-09T17:40:23.5352433+08:00",
-      "isDefault": 0,
-      "remark": "",
-      "tags": [
-        "代理"
-      ],
-      "priority": 0,
-      "proxyMode": "none",
-      "customProxy": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "动漫",
-        "综艺",
-        "其他",
-        "体育",
-        "短剧"
-      ],
-      "category_provenance": "cache"
     },
     {
       "key": "lziapi",
@@ -407,6 +370,34 @@
         "动漫"
       ],
       "category_provenance": "default_drpy"
+    },
+    {
+      "id": "10496a01-15b0-4077-9ec1-63d022b85c9c",
+      "key": "最大资源",
+      "name": "最大",
+      "api": "https://api.zuidapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-09T17:44:43.6072971+08:00",
+      "isDefault": 0,
+      "remark": "http://zuidazy.me/api.php/provide/vod/",
+      "tags": [
+        "优秀"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "纪录片",
+        "体育",
+        "其他",
+        "短剧"
+      ],
+      "category_provenance": "detected"
     },
     {
       "key": "drpyS_非凡采集[采]",
@@ -484,6 +475,33 @@
       "category_provenance": "detected"
     },
     {
+      "id": "4aa83ed0-bce5-4d86-ae48-3524bf7fc907",
+      "key": "暴风资源",
+      "name": "暴风",
+      "api": "https://bfzyapi.com/api.php/provide/vod/",
+      "type": 2,
+      "isActive": 0,
+      "time": "2025-08-09T17:40:23.5352433+08:00",
+      "isDefault": 0,
+      "remark": "",
+      "tags": [
+        "代理"
+      ],
+      "priority": 0,
+      "proxyMode": "none",
+      "customProxy": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "动漫",
+        "综艺",
+        "其他",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "cache"
+    },
+    {
       "key": "drpyS_小苹果[优]",
       "name": "小苹果",
       "type": 4,
@@ -505,32 +523,14 @@
       "category_provenance": "default_drpy"
     },
     {
-      "key": "jinying",
-      "name": "金鹰",
-      "type": 1,
-      "api": "http://jyzyapi.com/provide/vod/from/jinyingm3u8/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "categories": [
-        "电视剧",
-        "电影",
-        "动漫",
-        "综艺",
-        "体育",
-        "短剧",
-        "其他"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "drpyS_热播影视[优]",
-      "name": "热播",
+      "key": "drpyS_飞牛影视",
+      "name": "飞牛",
       "type": 4,
-      "api": "http://127.0.0.1:5757/api/热播影视[优]?pwd=ponyo-local-drpy",
+      "api": "http://127.0.0.1:5757/api/飞牛影视?pwd=ponyo-local-drpy",
       "searchable": 1,
       "filterable": 1,
       "quickSearch": 1,
-      "title": "热播影视[优]",
+      "title": "飞牛影视",
       "author": "EylinSir",
       "类型": "影视",
       "lang": "ds",
@@ -559,14 +559,14 @@
       "category_provenance": "detected"
     },
     {
-      "key": "drpyS_飞牛影视",
-      "name": "飞牛",
+      "key": "drpyS_热播影视[优]",
+      "name": "热播",
       "type": 4,
-      "api": "http://127.0.0.1:5757/api/飞牛影视?pwd=ponyo-local-drpy",
+      "api": "http://127.0.0.1:5757/api/热播影视[优]?pwd=ponyo-local-drpy",
       "searchable": 1,
       "filterable": 1,
       "quickSearch": 1,
-      "title": "飞牛影视",
+      "title": "热播影视[优]",
       "author": "EylinSir",
       "类型": "影视",
       "lang": "ds",
@@ -612,6 +612,23 @@
       "category_provenance": "detected"
     },
     {
+      "api": "https://www.lovedan.net/api.php/provide/vod/",
+      "key": "b4d4414ba19c27a00bf907d34b47bc3d",
+      "name": "艾旦",
+      "type": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "纪录片",
+        "短剧",
+        "直播",
+        "其他"
+      ],
+      "category_provenance": "detected"
+    },
+    {
       "key": "drpyS_wai76[画]",
       "name": "wai76",
       "type": 4,
@@ -646,7 +663,7 @@
         "SM重味",
         "教师学生"
       ],
-      "category_provenance": "detected"
+      "category_provenance": "cache"
     },
     {
       "key": "源28",
@@ -684,33 +701,6 @@
       "category_provenance": "detected"
     },
     {
-      "key": "鲨鱼影视",
-      "name": "鲨鱼",
-      "type": 1,
-      "api": "https://shayuzy5.com/api.php/provide/vod/",
-      "changeable": 1
-    },
-    {
-      "key": "bak_adan",
-      "name": "备用-艾旦",
-      "type": 1,
-      "api": "https://www.lovedan.net/api.php/provide/vod",
-      "searchable": 1,
-      "quickSearch": 0,
-      "filterable": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "纪录片",
-        "短剧",
-        "直播",
-        "其他"
-      ],
-      "category_provenance": "detected"
-    },
-    {
       "key": "cms_非凡备用",
       "name": "非凡备用",
       "type": 1,
@@ -724,6 +714,22 @@
         "电视剧",
         "综艺",
         "动漫"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "大奶子",
+      "name": "大奶子",
+      "type": 1,
+      "api": "https://apidanaizi.com/api.php/provide/vod/?ac=list",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 1,
+      "categories": [
+        "视频一区",
+        "视频二区",
+        "视频三区",
+        "视频四区"
       ],
       "category_provenance": "detected"
     },
@@ -747,22 +753,6 @@
         "动漫"
       ],
       "category_provenance": "default_drpy"
-    },
-    {
-      "key": "大奶子",
-      "name": "大奶子",
-      "type": 1,
-      "api": "https://apidanaizi.com/api.php/provide/vod/?ac=list",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 1,
-      "categories": [
-        "视频一区",
-        "视频二区",
-        "视频三区",
-        "视频四区"
-      ],
-      "category_provenance": "detected"
     },
     {
       "key": "csp_tt",
@@ -793,6 +783,7 @@
       "categories": [
         "国产精品",
         "中文字幕",
+        "动漫",
         "日韩精品",
         "3P合辑",
         "SM重味",
@@ -800,6 +791,26 @@
         "大秀视频"
       ],
       "category_provenance": "detected"
+    },
+    {
+      "key": "drpyS_247看",
+      "name": "247看",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/247看?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "247看",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
     },
     {
       "key": "bf_json",
@@ -839,44 +850,6 @@
       "category_provenance": "detected"
     },
     {
-      "key": "source_01",
-      "name": "老虎",
-      "type": 1,
-      "api": "http://ys.huyal.com/api.php/provide/vod/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "filterable": 0,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "体育",
-        "短剧"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "drpyS_247看",
-      "name": "247看",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/247看?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "247看",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
       "key": "drpyS_毒舌影视[优]",
       "name": "毒舌",
       "type": 4,
@@ -897,12 +870,10 @@
       "category_provenance": "default_drpy"
     },
     {
-      "key": "yhzy.cc",
-      "name": "樱花资源2",
-      "type": 0,
-      "api": "https://yhzy.cc/api.php/provide/vod/",
-      "ext": "",
-      "remark": "tvbox-suite: 直链m3u8 total=101526",
+      "api": "https://api.apiyhzy.com/api.php/provide/vod/",
+      "key": "30e07a544ffe9b6069a1ba66d6442ca9",
+      "name": "樱花",
+      "type": 1,
       "categories": [
         "电影",
         "电视剧",
@@ -921,26 +892,6 @@
       "filterable": 1,
       "quickSearch": 0,
       "title": "旺旺影视",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "key": "drpyS_麦田影院",
-      "name": "麦田",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/麦田影院?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "麦田影院",
       "类型": "影视",
       "lang": "ds",
       "ext": "",
@@ -1067,6 +1018,20 @@
       "category_provenance": "detected"
     },
     {
+      "api": "http://www.zitv.cc/api.php/provide/vod/",
+      "key": "dcbb4b646ce9e6b0c0565925f2008037",
+      "name": "橘猫",
+      "type": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "动漫",
+        "综艺",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
       "key": "s_112d3b0aee",
       "name": "暴风影音",
       "type": 0,
@@ -1122,6 +1087,20 @@
       "category_provenance": "detected"
     },
     {
+      "api": "https://hong.hgyx.vip/api.php/provide/vod/",
+      "key": "fbfa5eed414e1f6137f2496a68005ef5",
+      "name": "HG",
+      "type": 1,
+      "categories": [
+        "影视片",
+        "影视剧",
+        "综艺",
+        "动漫",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
       "key": "cms_subo",
       "name": "速播",
       "type": 1,
@@ -1156,6 +1135,26 @@
         "短剧"
       ],
       "category_provenance": "detected"
+    },
+    {
+      "key": "drpyS_麦田影院",
+      "name": "麦田",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/麦田影院?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "麦田影院",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
     },
     {
       "key": "虎牙",
@@ -1233,6 +1232,26 @@
       "category_provenance": "cache"
     },
     {
+      "key": "guangsu",
+      "name": "光速m3u8",
+      "type": 1,
+      "api": "https://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8/at/m3u8/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "changeable": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "纪录片",
+        "体育",
+        "短剧",
+        "其他"
+      ],
+      "category_provenance": "detected"
+    },
+    {
       "key": "ys_cxkjg_cn",
       "name": "影视仓·直连",
       "type": 0,
@@ -1244,8 +1263,6 @@
         "电视剧",
         "电影",
         "纪录片",
-        "动漫",
-        "综艺",
         "体育",
         "短剧"
       ],
@@ -1271,61 +1288,6 @@
         "短剧"
       ],
       "category_provenance": "cache"
-    },
-    {
-      "key": "drpyS_3Q影视[优]",
-      "name": "3Q影视",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/3Q影视[优]?pwd=ponyo-local-drpy",
-      "searchable": 1,
-      "filterable": 1,
-      "quickSearch": 0,
-      "title": "3Q影视[优]",
-      "author": "EylinSir",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
-    },
-    {
-      "api": "https://hong.hgyx.vip/api.php/provide/vod/",
-      "key": "fbfa5eed414e1f6137f2496a68005ef5",
-      "name": "HG",
-      "type": 1,
-      "categories": [
-        "影视片",
-        "影视剧",
-        "综艺",
-        "动漫",
-        "短剧"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "drpyS_枫林影视",
-      "name": "枫林",
-      "type": 4,
-      "api": "http://127.0.0.1:5757/api/枫林影视?pwd=ponyo-local-drpy",
-      "searchable": 2,
-      "filterable": 0,
-      "quickSearch": 0,
-      "title": "枫林影视",
-      "类型": "影视",
-      "lang": "ds",
-      "ext": "",
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫"
-      ],
-      "category_provenance": "default_drpy"
     },
     {
       "key": "wyvod.com",
@@ -1363,40 +1325,6 @@
       "category_provenance": "detected"
     },
     {
-      "api": "http://www.zitv.cc/api.php/provide/vod/",
-      "key": "dcbb4b646ce9e6b0c0565925f2008037",
-      "name": "橘猫",
-      "type": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "动漫",
-        "综艺",
-        "短剧"
-      ],
-      "category_provenance": "detected"
-    },
-    {
-      "key": "guangsu",
-      "name": "光速m3u8",
-      "type": 1,
-      "api": "https://api.guangsuapi.com/api.php/provide/vod/from/gsm3u8/at/m3u8/",
-      "searchable": 1,
-      "quickSearch": 1,
-      "changeable": 1,
-      "categories": [
-        "电影",
-        "电视剧",
-        "综艺",
-        "动漫",
-        "纪录片",
-        "体育",
-        "短剧",
-        "其他"
-      ],
-      "category_provenance": "cache"
-    },
-    {
       "key": "live012",
       "name": "暴风资源2",
       "type": 1,
@@ -1416,6 +1344,27 @@
         "短剧"
       ],
       "category_provenance": "detected"
+    },
+    {
+      "key": "drpyS_3Q影视[优]",
+      "name": "3Q影视",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/3Q影视[优]?pwd=ponyo-local-drpy",
+      "searchable": 1,
+      "filterable": 1,
+      "quickSearch": 0,
+      "title": "3Q影视[优]",
+      "author": "EylinSir",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
     },
     {
       "key": "源03",
@@ -1472,9 +1421,104 @@
       "category_provenance": "cache"
     },
     {
+      "key": "drpyS_枫林影视",
+      "name": "枫林",
+      "type": 4,
+      "api": "http://127.0.0.1:5757/api/枫林影视?pwd=ponyo-local-drpy",
+      "searchable": 2,
+      "filterable": 0,
+      "quickSearch": 0,
+      "title": "枫林影视",
+      "类型": "影视",
+      "lang": "ds",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫"
+      ],
+      "category_provenance": "default_drpy"
+    },
+    {
       "api": "http://www.lzzy.tv/api.php/provide/vod/",
       "key": "d2fee2579b5b9f122d45709ce08226fb",
       "name": "12-量子",
+      "type": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "api": "https://lzizy4.com/api.php/provide/vod/",
+      "key": "fb264ae3b34e829817f35b9b59ea9c36",
+      "name": "14-量子",
+      "type": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "api": "https://lzizy8.com/api.php/provide/vod/",
+      "key": "548c69066731916a1611dacb0e3b452c",
+      "name": "15-量子",
+      "type": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "api": "https://lzizy2.com/api.php/provide/vod/",
+      "key": "6c22ca0c90b5e44cd830d7ca515efa9c",
+      "name": "16-量子",
+      "type": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "api": "https://lzizy5.com/api.php/provide/vod/",
+      "key": "5d7bbc2b3aa0bfea3296946bf1ecda92",
+      "name": "17-量子",
+      "type": 1,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "api": "http://lzizy.net/api.php/provide/vod/",
+      "key": "4797280cffa831567a8b737ec684ac1d",
+      "name": "19-量子",
       "type": 1,
       "categories": [
         "电影",
@@ -1616,6 +1660,43 @@
       "category_provenance": "detected"
     },
     {
+      "api": "https://ys.cxkjg.cn/api/provide/vod?source=531717376",
+      "filterable": 1,
+      "key": "source_531717376",
+      "name": "樱花",
+      "quickSearch": 1,
+      "searchable": 1,
+      "type": 1,
+      "jar": "",
+      "ext": "",
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "纪录片"
+      ],
+      "category_provenance": "detected"
+    },
+    {
+      "key": "source_01",
+      "name": "老虎",
+      "type": 1,
+      "api": "http://ys.huyal.com/api.php/provide/vod/",
+      "searchable": 1,
+      "quickSearch": 1,
+      "filterable": 0,
+      "categories": [
+        "电影",
+        "电视剧",
+        "综艺",
+        "动漫",
+        "体育",
+        "短剧"
+      ],
+      "category_provenance": "detected"
+    },
+    {
       "key": "live045",
       "name": "19-量子",
       "type": 1,
@@ -1636,21 +1717,20 @@
       "category_provenance": "detected"
     },
     {
-      "key": "live040",
-      "name": "量子影视 · lzzy.tv",
-      "type": 1,
-      "api": "https://www.lzzy.tv/api.php/provide/vod",
+      "key": "s_c3389de107",
+      "name": "百度云(5万)·876ms",
+      "type": 0,
+      "api": "https://api.apibdzy.com/api.php/provide/vod/",
       "searchable": 1,
       "quickSearch": 1,
-      "filterable": 1,
-      "jar": "",
-      "ext": "",
+      "filter": 1,
       "categories": [
         "电影",
         "电视剧",
         "综艺",
         "动漫",
         "体育",
+        "其他",
         "短剧"
       ],
       "category_provenance": "detected"
